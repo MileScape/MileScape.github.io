@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MileScape - Project Portfolio</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;500;600;700;800&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;500;600;700;800&display=swap");
 
         :root {
             --background: #fdfcf8;
@@ -119,17 +119,19 @@
             transform: translateX(-50%);
             z-index: 140;
             display: flex;
-            gap: 8px;
-            padding: 8px;
-            width: min(calc(100vw - 36px), 1320px);
+            gap: 4px;
+            padding: 6px;
+            width: fit-content;
+            max-width: min(calc(100vw - 28px), 1120px);
             justify-content: center;
             border-radius: 999px;
-            border: var(--line);
-            box-shadow: var(--hard-shadow);
+            border: none;
+            box-shadow: 0 18px 40px -18px rgba(15, 24, 32, 0.4);
             background:
-                linear-gradient(180deg, rgba(255, 255, 252, 0.38) 0%, rgba(247, 240, 229, 0.24) 100%);
-            backdrop-filter: blur(16px) saturate(120%);
-            -webkit-backdrop-filter: blur(16px) saturate(120%);
+                linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(244, 239, 231, 0.12) 100%);
+            backdrop-filter: blur(24px) saturate(140%);
+            -webkit-backdrop-filter: blur(24px) saturate(140%);
+            transition: background 0.28s var(--bounce), box-shadow 0.28s var(--bounce), color 0.28s var(--bounce);
         }
 
         .apple-nav::before {
@@ -139,44 +141,85 @@
             border-radius: inherit;
             z-index: -1;
             background:
-                radial-gradient(circle at 10% 30%, rgba(193, 140, 93, 0.18) 0, rgba(193, 140, 93, 0) 46%),
-                radial-gradient(circle at 90% 70%, rgba(93, 112, 82, 0.16) 0, rgba(93, 112, 82, 0) 44%);
+                radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.24) 0, rgba(255, 255, 255, 0) 46%),
+                radial-gradient(circle at 90% 70%, rgba(93, 112, 82, 0.1) 0, rgba(93, 112, 82, 0) 44%);
             pointer-events: none;
             filter: blur(8px);
         }
 
+        .apple-nav::after {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: inherit;
+            background: transparent;
+            pointer-events: none;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.24),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+            opacity: 0.75;
+        }
+
+        .apple-nav.nav-solid {
+            background:
+                linear-gradient(180deg, rgba(255, 252, 247, 0.88) 0%, rgba(244, 238, 230, 0.8) 100%);
+            box-shadow: 0 18px 36px -18px rgba(93, 112, 82, 0.28);
+        }
+
         .apple-nav a {
             text-decoration: none;
-            color: rgba(44, 44, 36, 0.88);
-            font-size: 14px;
+            color: rgba(255, 248, 240, 0.92);
+            font-size: 12px;
             font-weight: 700;
-            padding: 10px 18px;
+            padding: 9px 14px;
             border-radius: var(--radius-full);
             border: 1px solid transparent;
             white-space: nowrap;
             transition: all 0.3s var(--bounce);
         }
 
+        .apple-nav.nav-solid a {
+            color: rgba(44, 44, 36, 0.88);
+        }
+
         .apple-nav a:hover {
             transform: translateY(-2px);
-            background: linear-gradient(90deg, var(--primary) 0%, #708664 100%);
-            color: var(--primary-foreground);
-            border-color: rgba(255, 255, 255, 0.22);
-            box-shadow: 0 6px 24px -4px rgba(93, 112, 82, 0.25);
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.45);
+        }
+
+        .apple-nav.nav-solid a:hover {
+            background: rgba(93, 112, 82, 0.12);
+            color: var(--foreground);
+            box-shadow: 0 10px 24px -16px rgba(93, 112, 82, 0.22);
         }
 
         .apple-nav a.is-active {
-            background: linear-gradient(90deg, var(--primary) 0%, #708664 100%);
-            color: var(--primary-foreground);
-            border-color: rgba(255, 255, 255, 0.22);
-            box-shadow: 0 6px 24px -4px rgba(93, 112, 82, 0.25);
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 12px 26px -16px rgba(0, 0, 0, 0.55);
+        }
+
+        .apple-nav.nav-solid a.is-active {
+            background: rgba(93, 112, 82, 0.16);
+            color: var(--foreground);
+            box-shadow: 0 10px 22px -16px rgba(93, 112, 82, 0.28);
         }
 
         .apple-nav a:focus-visible {
-            outline: 3px solid var(--ring);
+            outline: 3px solid rgba(255, 255, 255, 0.85);
             outline-offset: 3px;
-            background: var(--primary);
-            color: var(--primary-foreground);
+            background: rgba(255, 255, 255, 0.24);
+            color: #ffffff;
+        }
+
+        .apple-nav.nav-solid a:focus-visible {
+            outline: 3px solid rgba(93, 112, 82, 0.5);
+            background: rgba(93, 112, 82, 0.18);
+            color: var(--foreground);
         }
 
         .hero-card {
@@ -261,13 +304,13 @@
 
         .hero-title {
             margin: 0;
-            font-family: "Bodoni Moda", "Fraunces", serif;
+            font-family: "DM Serif Display", "Fraunces", serif;
             font-size: clamp(46px, 5.8vw, 92px);
-            font-weight: 600;
-            line-height: 0.96;
+            font-weight: 400;
+            line-height: 0.94;
             color: #f7f4ee;
             text-transform: none;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
             text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             max-width: min(68vw, 620px);
         }
@@ -1146,7 +1189,7 @@
 
         @media (max-width: 900px) {
             .apple-nav {
-                width: min(calc(100vw - 28px), 840px);
+                width: min(calc(100vw - 20px), 840px);
                 overflow-x: auto;
                 justify-content: flex-start;
             }
@@ -1249,9 +1292,10 @@
             }
 
             .apple-nav a {
-                min-height: 48px;
+                min-height: 44px;
                 display: inline-flex;
                 align-items: center;
+                padding: 8px 12px;
             }
 
             .section-title {
@@ -2189,6 +2233,7 @@
 
     (function () {
         const nav = document.querySelector(".apple-nav");
+        const hero = document.querySelector(".hero-card");
 
         if (!nav) {
             return;
@@ -2254,6 +2299,19 @@
         window.addEventListener("hashchange", syncByScrollPosition);
         window.addEventListener("scroll", syncByScrollPosition, { passive: true });
         syncByScrollPosition();
+
+        if (hero) {
+            function syncNavSurface() {
+                const heroBottom = hero.getBoundingClientRect().bottom;
+                const navBottom = nav.getBoundingClientRect().bottom + 16;
+                nav.classList.toggle("nav-solid", heroBottom <= navBottom);
+            }
+
+            window.addEventListener("load", syncNavSurface);
+            window.addEventListener("resize", syncNavSurface);
+            window.addEventListener("scroll", syncNavSurface, { passive: true });
+            syncNavSurface();
+        }
     }());
 
     (function () {

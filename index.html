@@ -640,6 +640,34 @@
             padding-bottom: 8px;
         }
 
+        .journey-map-subsection {
+            margin-top: 28px;
+        }
+
+        .journey-map-subtitle {
+            margin: 0 0 10px;
+            font-size: 28px;
+        }
+
+        .journey-map-note {
+            margin: 0 0 18px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .journey-map-scenario {
+            margin-bottom: 18px;
+            padding: 16px 20px;
+            border-radius: 24px 20px 26px 20px / 20px 24px 18px 28px;
+            border: var(--line);
+            box-shadow: var(--soft-shadow);
+            background: linear-gradient(180deg, rgba(255, 253, 248, 0.98) 0%, rgba(247, 240, 229, 0.98) 100%);
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text-primary);
+        }
+
         .grid-map {
             display: grid;
             grid-template-columns: 120px repeat(6, minmax(170px, 1fr));
@@ -1917,6 +1945,160 @@
             <div class="item-card opportunity">High-quality visual sharing content</div>
         </div>
     </div>
+    </div>
+
+    <div class="journey-map-subsection">
+        <h3 class="journey-map-subtitle">Organizer Journey Map</h3>
+        <p class="journey-map-note">Parallel to the runner journey, this map focuses on how an organizer creates a PaceCrew, launches missions, maintains participation, and closes the group lifecycle responsibly.</p>
+        <div class="journey-map-scenario"><strong>Actor &amp; Scenario:</strong> A runner wants to organize a PaceCrew, launch shared missions, and keep members engaged through collaborative running challenges.</div>
+
+        <div class="journey-map-scroll">
+        <div class="grid-map">
+            <div class="row-label"></div>
+            <div class="stage-header">1. Create Crew</div>
+            <div class="stage-header">2. Launch First Mission</div>
+            <div class="stage-header">3. Manage Members</div>
+            <div class="stage-header">4. Operate Missions</div>
+            <div class="stage-header">5. Reward &amp; Motivate</div>
+            <div class="stage-header">6. Dissolve or End</div>
+
+            <div class="row-label">Actions</div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Create a new PaceCrew</div>
+                    <div class="action-item">Set up the crew identity and purpose</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Publish the first team mission</div>
+                    <div class="action-item">Set a clear shared starting goal</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Invite, approve, or manage members</div>
+                    <div class="action-item">Watch who joins and who stays active</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Monitor mission participation</div>
+                    <div class="action-item">Adjust tasks to sustain crew activity</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Maintain shared rewards and goals</div>
+                    <div class="action-item">Keep team motivation visible</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">End the crew when needed</div>
+                    <div class="action-item">Close the group in a clear, responsible way</div>
+                </div>
+            </div>
+
+            <div class="row-label">Thoughts</div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    I want to build a running community.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    The crew needs a clear starting goal.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    I need to keep members involved.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    The crew should stay active over time.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    Shared rewards make the team feel connected.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    If it no longer works, I should close it properly.
+                </div>
+            </div>
+
+            <div class="row-label">Emotions</div>
+            <div class="col emotion-trend">
+                <div class="emotion-cell">
+                    <div class="emotion-wave">
+                        <svg viewBox="0 0 640 64" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="emotion-curve-shadow" d="M20 34 C 70 24, 95 16, 120 16 C 150 16, 185 22, 220 22 C 260 22, 320 16, 370 12 C 420 9, 470 6, 510 6 C 555 6, 590 22, 620 28" />
+                            <path class="emotion-path" d="M20 34 C 70 24, 95 16, 120 16 C 150 16, 185 22, 220 22 C 260 22, 320 16, 370 12 C 420 9, 470 6, 510 6 C 555 6, 590 22, 620 28" />
+                            <circle class="emotion-point" cx="20" cy="34" r="5" />
+                            <circle class="emotion-point" cx="120" cy="16" r="5" />
+                            <circle class="emotion-point" cx="220" cy="22" r="5" />
+                            <circle class="emotion-point" cx="370" cy="12" r="5" />
+                            <circle class="emotion-point" cx="510" cy="6" r="5" />
+                            <circle class="emotion-point" cx="620" cy="28" r="5" />
+                        </svg>
+                    </div>
+                    <div class="emotion-labels">
+                        <div class="emotion-label">Initiative</div>
+                        <div class="emotion-label">Activated</div>
+                        <div class="emotion-label">Responsible</div>
+                        <div class="emotion-label">Focused</div>
+                        <div class="emotion-label">Encouraged</div>
+                        <div class="emotion-label">Resolved</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-label">Pain Points</div>
+            <div class="col">
+                <div class="item-card pain-point">Hard to start a group</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Crew feels inactive at launch</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Low member engagement</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Difficult to sustain activity</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Rewards may feel weak</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Organizer cannot simply leave</div>
+            </div>
+
+            <div class="row-label">Opportunities</div>
+            <div class="col">
+                <div class="item-card opportunity">Lower the barrier to forming a crew</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Turn a static group into a shared challenge</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Support belonging through team structure</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Help organizers monitor and sustain participation</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Strengthen motivation with collective rewards</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Support responsible closure of the crew lifecycle</div>
+            </div>
+        </div>
+        </div>
     </div>
 </div>
 

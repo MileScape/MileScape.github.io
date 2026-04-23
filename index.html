@@ -613,10 +613,404 @@
             text-shadow: 2px 2px 0 rgba(251, 191, 36, 0.8);
         }
 
+        .card-title {
+            margin: 0 0 16px;
+            font-size: 26px;
+        }
+
+        .card-title--large {
+            font-size: 28px;
+        }
+
+        .content-stack {
+            display: grid;
+            gap: 16px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .content-stack--comfortable {
+            gap: 18px;
+            font-size: 16px;
+        }
+
+        .content-stack p {
+            margin: 0;
+        }
+
+        .info-list {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .info-list li {
+            position: relative;
+            padding: 14px 16px 14px 42px;
+            border-radius: 16px;
+            border: 1px solid rgba(143, 174, 163, 0.28);
+            background: rgba(255, 255, 255, 0.42);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        }
+
+        .info-list li::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--quaternary) 100%);
+            box-shadow: 0 0 0 4px rgba(214, 124, 92, 0.12);
+        }
+
+        .media-panel {
+            margin-top: 4px;
+            padding: 18px;
+            border-radius: 22px;
+            border: 1px solid rgba(143, 174, 163, 0.24);
+            background:
+                linear-gradient(180deg, rgba(255, 253, 248, 0.88) 0%, rgba(246, 238, 226, 0.94) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+        }
+
+        .media-panel--compact {
+            padding: 14px;
+        }
+
+        .media-frame {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+        }
+
+        .media-frame--tight {
+            padding: 8px;
+        }
+
+        .media-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .media-grid--three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .media-grid--feature {
+            grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+            align-items: stretch;
+        }
+
+        .placeholder-panel {
+            min-height: 100%;
+            padding: 22px;
+            border-radius: 20px;
+            border: 1px dashed rgba(107, 92, 82, 0.28);
+            background:
+                radial-gradient(circle at top left, rgba(143, 174, 163, 0.18) 0, rgba(143, 174, 163, 0) 38%),
+                linear-gradient(180deg, rgba(255, 253, 248, 0.92) 0%, rgba(247, 240, 229, 0.96) 100%);
+            display: grid;
+            align-content: space-between;
+            gap: 18px;
+        }
+
+        .placeholder-kicker {
+            display: inline-flex;
+            width: fit-content;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(143, 174, 163, 0.32);
+            background: rgba(255, 255, 255, 0.58);
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .placeholder-title {
+            margin: 0;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 30px;
+            line-height: 0.98;
+            letter-spacing: 0.03em;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .placeholder-copy {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text-primary);
+        }
+
+        .link-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(143, 174, 163, 0.36);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .alt-option {
+            padding: 18px 18px 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(143, 174, 163, 0.24);
+            background: rgba(255, 255, 255, 0.42);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+        }
+
+        .alt-option strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 17px;
+            color: var(--text-primary);
+        }
+
+        .impact-card--insight {
+            background: linear-gradient(180deg, rgba(231, 243, 238, 0.88) 0%, rgba(244, 248, 243, 0.98) 100%);
+        }
+
+        .crazy8-slider {
+            margin-top: 18px;
+            padding: 24px;
+            border-radius: 24px;
+            border: var(--line);
+            background:
+                radial-gradient(circle at top left, rgba(214, 124, 92, 0.12) 0, rgba(214, 124, 92, 0) 34%),
+                radial-gradient(circle at bottom right, rgba(143, 174, 163, 0.14) 0, rgba(143, 174, 163, 0) 32%),
+                linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(247, 240, 229, 0.98) 100%);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .crazy8-slider-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .crazy8-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            border: var(--line);
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+        }
+
+        .crazy8-hint {
+            margin: 12px 0 0;
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+        }
+
+        .crazy8-page-indicator {
+            flex-shrink: 0;
+            min-width: 74px;
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: var(--line);
+            background: linear-gradient(180deg, rgba(255, 250, 242, 0.96) 0%, rgba(248, 243, 234, 0.98) 100%);
+            color: var(--foreground);
+            font-family: "Barlow Condensed", "Inter", sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            box-shadow: 0 10px 22px rgba(135, 110, 86, 0.12);
+        }
+
+        .crazy8-viewport {
+            position: relative;
+            min-height: 560px;
+            padding: 8px 0 14px;
+            overflow: hidden;
+        }
+
+        .crazy8-slide {
+            position: absolute;
+            inset: 8px 0 14px;
+            display: grid;
+            grid-template-rows: minmax(260px, 1fr) auto;
+            gap: 16px;
+            min-height: 100%;
+            padding: 18px;
+            border-radius: 26px;
+            border: var(--line);
+            background:
+                linear-gradient(180deg, rgba(255, 253, 248, 0.98) 0%, rgba(247, 240, 229, 0.98) 100%);
+            box-shadow: var(--hard-shadow);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(18px) scale(0.94);
+            transform-origin: center center;
+            transition: transform 0.38s var(--bounce), opacity 0.28s var(--bounce), box-shadow 0.32s var(--bounce);
+        }
+
+        .crazy8-slide.is-active {
+            z-index: 3;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+            box-shadow: 0 24px 48px rgba(135, 110, 86, 0.22);
+        }
+
+        .crazy8-slide.is-prev {
+            z-index: 2;
+            transform: translateY(14px) scale(0.965);
+            box-shadow: 0 18px 36px rgba(135, 110, 86, 0.16);
+        }
+
+        .crazy8-slide.is-next {
+            z-index: 1;
+            transform: translateY(26px) scale(0.93);
+            box-shadow: 0 14px 28px rgba(135, 110, 86, 0.12);
+        }
+
+        .crazy8-slide.is-hidden {
+            z-index: 0;
+            opacity: 1;
+            transform: translateY(34px) scale(0.9);
+            box-shadow: none;
+        }
+
+        .crazy8-slide-media {
+            overflow: hidden;
+            border-radius: 20px;
+            border: var(--line);
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+        }
+
+        .crazy8-slide-media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .crazy8-slide-body {
+            display: grid;
+            gap: 8px;
+        }
+
+        .crazy8-slide-kicker {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .crazy8-slide-title {
+            font-family: "Barlow Condensed", "Inter", sans-serif;
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--foreground);
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .crazy8-slide-description {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-primary);
+        }
+
+        .crazy8-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .crazy8-control {
+            min-width: 120px;
+            min-height: 46px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: var(--line);
+            background: linear-gradient(180deg, rgba(255, 250, 242, 0.96) 0%, rgba(248, 243, 234, 0.98) 100%);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.24s var(--bounce), box-shadow 0.24s var(--bounce), background 0.24s var(--bounce), color 0.24s var(--bounce);
+            box-shadow: 0 10px 22px rgba(135, 110, 86, 0.12);
+        }
+
+        .crazy8-control:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(214, 124, 92, 0.16);
+            background: linear-gradient(90deg, var(--accent) 0%, var(--tertiary) 100%);
+            color: #fffaf2;
+        }
+
+        .crazy8-control:focus-visible,
+        .crazy8-dot:focus-visible,
+        .crazy8-viewport:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 3px;
+        }
+
+        .crazy8-dots {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .crazy8-dot {
+            width: 12px;
+            height: 12px;
+            padding: 0;
+            border: none;
+            border-radius: 999px;
+            background: rgba(143, 174, 163, 0.45);
+            cursor: pointer;
+            transition: transform 0.24s var(--bounce), background 0.24s var(--bounce), width 0.24s var(--bounce);
+        }
+
+        .crazy8-dot.is-active {
+            width: 36px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--quaternary) 100%);
+        }
+
         @media (max-width: 1200px) {
             .team-grid,
             .impact-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .media-grid--feature {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -681,6 +1075,23 @@
             .grid-map {
                 min-width: 1260px;
             }
+
+            .crazy8-slider {
+                padding: 18px;
+            }
+
+            .crazy8-slider-head {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .crazy8-page-indicator {
+                align-self: flex-start;
+            }
+
+            .crazy8-viewport {
+                min-height: 520px;
+            }
         }
 
         @media (max-width: 640px) {
@@ -703,12 +1114,39 @@
                 font-size: 34px;
             }
 
+            .crazy8-viewport {
+                min-height: 470px;
+                padding-bottom: 10px;
+            }
+
+            .crazy8-slide {
+                grid-template-rows: minmax(220px, 1fr) auto;
+                gap: 14px;
+                padding: 14px;
+                border-radius: 22px;
+            }
+
+            .crazy8-slide-description {
+                font-size: 13px;
+                line-height: 1.55;
+            }
+
+            .crazy8-control {
+                min-width: 108px;
+            }
+
+            .media-grid--three {
+                grid-template-columns: 1fr;
+            }
+
             .inner-card,
             .item-card,
             .stage-header,
             .emotion-cell,
             .hero-card,
-            .section-container {
+            .section-container,
+            .crazy8-slider,
+            .crazy8-slide {
                 box-shadow: 2px 2px 0 0 var(--foreground);
             }
         }
@@ -723,7 +1161,8 @@
             }
 
             .inner-card:hover,
-            .apple-nav a:hover {
+            .apple-nav a:hover,
+            .crazy8-control:hover {
                 transform: none;
             }
         }
@@ -1259,68 +1698,91 @@
 
     <div class="persona-grid">
         <div class="inner-card">
-            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Crazy Eights</h3>
-            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+            <h3 class="card-title">Crazy Eights</h3>
+            <div class="content-stack">
                 <p>Rapid ideation sketches exploring multiple UI directions and interaction concepts.</p>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin-top:12px;">
-                    <img
-                        src="images/crazy8-1.jpg"
-                        alt="Crazy Eights Sketch 1"
-                        style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
-                    >
-                    <img
-                        src="images/crazy8-2.jpg"
-                        alt="Crazy Eights Sketch 2"
-                        style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
-                    >
-                    <img
-                        src="images/crazy8-3.jpg"
-                        alt="Crazy Eights Sketch 3"
-                        style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
-                    >
+                <div class="crazy8-slider" id="crazy8Slider">
+                    <div class="crazy8-slider-head">
+                        <div>
+                            <div class="crazy8-chip">Sketch Flow</div>
+                            <p class="crazy8-hint">Keep one sketch in focus while the other sheets stay stacked behind it for a cleaner view.</p>
+                        </div>
+                        <div class="crazy8-page-indicator" id="crazy8PageIndicator" aria-live="polite">1 / 3</div>
+                    </div>
+
+                    <div class="crazy8-viewport" id="crazy8Viewport" tabindex="0" aria-label="Crazy Eights sketch slider">
+                        <article class="crazy8-slide is-active" data-index="0">
+                            <div class="crazy8-slide-media">
+                                <img src="images/crazy8-1.jpg" alt="Crazy Eights Sketch 1">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">Crazy Eights</div>
+                                <div class="crazy8-slide-title">Concept Sheet 01</div>
+                                <div class="crazy8-slide-description">Early layout directions exploring how route discovery, milestone rewards, and playful running feedback could live together in one flow.</div>
+                            </div>
+                        </article>
+
+                        <article class="crazy8-slide" data-index="1">
+                            <div class="crazy8-slide-media">
+                                <img src="images/crazy8-2.jpg" alt="Crazy Eights Sketch 2">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">Crazy Eights</div>
+                                <div class="crazy8-slide-title">Concept Sheet 02</div>
+                                <div class="crazy8-slide-description">Alternative compositions testing map-first navigation, progress reveal, and how reward moments could appear without overloading the screen.</div>
+                            </div>
+                        </article>
+
+                        <article class="crazy8-slide" data-index="2">
+                            <div class="crazy8-slide-media">
+                                <img src="images/crazy8-3.jpg" alt="Crazy Eights Sketch 3">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">Crazy Eights</div>
+                                <div class="crazy8-slide-title">Concept Sheet 03</div>
+                                <div class="crazy8-slide-description">Refined sketch directions comparing feature density, route storytelling, and landmark collection interactions across several product layouts.</div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="crazy8-controls">
+                        <button class="crazy8-control" id="crazy8Prev" type="button" aria-label="Previous Crazy Eights sketch">Previous</button>
+                        <div class="crazy8-dots" id="crazy8Dots" aria-label="Crazy Eights page indicators"></div>
+                        <button class="crazy8-control" id="crazy8Next" type="button" aria-label="Next Crazy Eights sketch">Next</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="inner-card">
-            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Design Alternatives</h3>
-            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
-                <p><strong>Option 1: Data-driven Dashboard</strong><br>
-                ✔ Clear metrics<br>
-                ✖ Lacks engagement</p>
-
-                <p><strong>Option 2: Gamified Rewards System</strong><br>
-                ✔ Short-term motivation<br>
-                ✖ May feel superficial</p>
-
-                <p><strong>Option 3: Exploration-based Journey (Chosen)</strong><br>
-                ✔ Long-term engagement<br>
-                ✔ Emotional connection<br>
-                ✔ Aligns with user needs</p>
+            <h3 class="card-title">Design Alternatives</h3>
+            <div class="content-stack">
+                <div class="alt-option">
+                    <strong>Option 1: Data-driven Dashboard</strong>
+                    <div>Clear metrics and direct performance reading, but it lacks enough engagement to sustain curiosity over time.</div>
+                </div>
+                <div class="alt-option">
+                    <strong>Option 2: Gamified Rewards System</strong>
+                    <div>Creates stronger short-term motivation, but risks feeling superficial if rewards are disconnected from the running journey.</div>
+                </div>
+                <div class="alt-option">
+                    <strong>Option 3: Exploration-based Journey (Chosen)</strong>
+                    <div>Builds long-term engagement, emotional connection, and stronger alignment with what users actually wanted from the experience.</div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="inner-card" style="margin-top:24px;">
-        <h3 style="margin: 0 0 16px 0; font-size: 26px;">Low-Fi Prototype</h3>
-        <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+        <h3 class="card-title">Low-Fi Prototype</h3>
+        <div class="content-stack">
             <p>Early wireframes and interaction flows tested through Figma prototype.</p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin-top:12px;">
-                <img
-                    src="images/low-1.png"
-                    alt="Low-Fi Prototype Screen 1"
-                    style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
-                >
-                <img
-                    src="images/low-2.png"
-                    alt="Low-Fi Prototype Screen 2"
-                    style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
-                >
-                <img
-                    src="images/low-3.png"
-                    alt="Low-Fi Prototype Screen 3"
-                    style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
-                >
+            <div class="media-panel">
+                <div class="media-grid media-grid--three">
+                    <img class="media-frame media-frame--tight" src="images/low-1.png" alt="Low-Fi Prototype Screen 1">
+                    <img class="media-frame media-frame--tight" src="images/low-2.png" alt="Low-Fi Prototype Screen 2">
+                    <img class="media-frame media-frame--tight" src="images/low-3.png" alt="Low-Fi Prototype Screen 3">
+                </div>
             </div>
         </div>
     </div>
@@ -1332,24 +1794,36 @@
 
     <div class="persona-grid">
         <div class="inner-card">
-            <h3 style="margin: 0 0 16px 0; font-size: 26px;">System Architecture</h3>
-            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+            <h3 class="card-title">System Architecture</h3>
+            <div class="content-stack">
                 <p>Overview of how the web application handles user data, map rendering, and interaction logic.</p>
-                <div style="margin-top:12px;">
+                <div class="media-panel media-panel--compact">
                     <img
+                        class="media-frame"
                         src="images/milescape_system_flow.png"
                         alt="MileScape System Architecture Diagram"
-                        style="width:100%; max-width:720px; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
                     >
                 </div>
             </div>
         </div>
 
         <div class="inner-card">
-            <h3 style="margin: 0 0 16px 0; font-size: 26px;">High-Fi Prototype</h3>
-            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+            <h3 class="card-title">High-Fi Prototype</h3>
+            <div class="content-stack">
                 <p>Interactive high-fidelity prototype deployed online.</p>
-                <p><strong>[ Insert Live Demo URL Here ]</strong></p>
+                <div class="media-panel">
+                    <div class="media-grid media-grid--feature">
+                        <img class="media-frame" src="images/start.png" alt="MileScape high-fidelity prototype preview">
+                        <div class="placeholder-panel">
+                            <div class="placeholder-kicker">Prototype Preview</div>
+                            <div>
+                                <h4 class="placeholder-title">High-Fi Experience</h4>
+                                <p class="placeholder-copy">A polished mobile interface that turns running progress into a route-based exploration flow, with clearer feedback and stronger emotional rewards.</p>
+                            </div>
+                            <div class="link-chip">Live Demo Link To Be Added</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1376,8 +1850,8 @@
     <p class="section-subtitle">How we evaluated MileScape in an early-stage user study</p>
 
     <div class="inner-card" style="margin-bottom: 24px;">
-        <h3 style="margin: 0 0 16px 0; font-size: 28px;">Evaluation Method</h3>
-        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+        <h3 class="card-title card-title--large">Evaluation Method</h3>
+        <div class="content-stack content-stack--comfortable">
             <p>We conducted a small-scale comparative user study (n=7) to evaluate the user experience of MileScape and a mainstream fitness app (Keep).</p>
 
             <p>A simplified version of the User Experience Questionnaire (UEQ-S) was used to assess usability and experience quality across 8 semantic differential scales, including ease of use, efficiency, clarity, excitement, and novelty.</p>
@@ -1387,25 +1861,31 @@
     </div>
 
     <div class="impact-grid">
-        <div class="inner-card impact-card" style="min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 22px; font-weight: 700; color: var(--text-secondary);">
-            <img
-                src="images/ueqs_item_square.png"
-                alt="Figure 1: UEQ-S Item Square"
-                style="width:100%; max-width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
-            >
+        <div class="inner-card impact-card" style="min-height: 320px;">
+            <h3 class="card-title">UEQ-S Snapshot</h3>
+            <div class="media-panel media-panel--compact">
+                <img
+                    class="media-frame"
+                    src="images/ueqs_item_square.png"
+                    alt="Figure 1: UEQ-S Item Square"
+                >
+            </div>
         </div>
 
-        <div class="inner-card impact-card" style="min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 22px; font-weight: 700; color: var(--text-secondary);">
-            <img
-                src="images/imi_item_bar_chart.png"
-                alt="Figure 2: IMI Item Bar Chart"
-                style="width:100%; max-width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
-            >
+        <div class="inner-card impact-card" style="min-height: 320px;">
+            <h3 class="card-title">IMI Snapshot</h3>
+            <div class="media-panel media-panel--compact">
+                <img
+                    class="media-frame"
+                    src="images/imi_item_bar_chart.png"
+                    alt="Figure 2: IMI Item Bar Chart"
+                >
+            </div>
         </div>
 
-        <div class="inner-card impact-card" style="min-height: 320px; background: rgba(52, 211, 153, 0.12);">
-            <h3 style="margin: 0; font-size: 26px;">Key Findings</h3>
-            <div style="font-size: 15px; line-height: 1.75; color: var(--text-primary);">
+        <div class="inner-card impact-card impact-card--insight" style="min-height: 320px;">
+            <h3 class="card-title">Key Findings</h3>
+            <div class="content-stack">
                 <p>MileScape consistently achieved higher scores than Keep across multiple dimensions, particularly in enjoyment, motivation, and novelty.</p>
 
                 <p>Although MileScape falls slightly behind Keep in terms of supportiveness, the gap is minimal. This demonstrates that MileScape has achieved comparable functionality with simple data presentation and a clean interface.</p>
@@ -1456,6 +1936,87 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        const viewport = document.getElementById("crazy8Viewport");
+
+        if (!viewport) {
+            return;
+        }
+
+        const slides = Array.from(viewport.querySelectorAll(".crazy8-slide"));
+        const prevButton = document.getElementById("crazy8Prev");
+        const nextButton = document.getElementById("crazy8Next");
+        const pageIndicator = document.getElementById("crazy8PageIndicator");
+        const dotsContainer = document.getElementById("crazy8Dots");
+
+        let activeIndex = 0;
+
+        function updateActiveState(nextIndex) {
+            activeIndex = nextIndex;
+            pageIndicator.textContent = (activeIndex + 1) + " / " + slides.length;
+
+            slides.forEach(function (slide, index) {
+                slide.classList.remove("is-active", "is-prev", "is-next", "is-hidden");
+
+                if (index === activeIndex) {
+                    slide.classList.add("is-active");
+                } else if (index === (activeIndex + 1) % slides.length) {
+                    slide.classList.add("is-prev");
+                } else if (index === (activeIndex + 2) % slides.length) {
+                    slide.classList.add("is-next");
+                } else {
+                    slide.classList.add("is-hidden");
+                }
+            });
+
+            Array.from(dotsContainer.children).forEach(function (dot, index) {
+                const isActive = index === activeIndex;
+                dot.classList.toggle("is-active", isActive);
+                dot.setAttribute("aria-current", isActive ? "true" : "false");
+            });
+        }
+
+        function scrollToIndex(index) {
+            const normalizedIndex = (index + slides.length) % slides.length;
+            updateActiveState(normalizedIndex);
+        }
+
+        slides.forEach(function (_, index) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "crazy8-dot";
+            dot.setAttribute("aria-label", "Go to sketch " + (index + 1));
+            dot.addEventListener("click", function () {
+                scrollToIndex(index);
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        prevButton.addEventListener("click", function () {
+            scrollToIndex(activeIndex - 1);
+        });
+
+        nextButton.addEventListener("click", function () {
+            scrollToIndex(activeIndex + 1);
+        });
+
+        viewport.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                scrollToIndex(activeIndex - 1);
+            }
+
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                scrollToIndex(activeIndex + 1);
+            }
+        });
+
+        scrollToIndex(0);
+    }());
+</script>
 
 </body>
 </html>

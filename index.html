@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MileScape - Project Portfolio</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+        :root {
+            --background: #09111f;
+            --foreground: #f8fafc;
+            --muted: #121d31;
+            --muted-foreground: #94a3b8;
+            --accent: #22c55e;
+            --accent-foreground: #ffffff;
+            --secondary: #f97316;
+            --tertiary: #facc15;
+            --quaternary: #38bdf8;
+            --border: #23324c;
+            --card: #0f1729;
+            --ring: #22c55e;
+
+            /* compatibility aliases for existing markup */
+            --bg-color: var(--background);
+            --card-bg: var(--card);
+            --text-primary: var(--foreground);
+            --text-secondary: var(--muted-foreground);
+            --morandi-blue: #38bdf8;
+            --morandi-red: #f97316;
+            --morandi-green: #22c55e;
+            --morandi-dark: var(--foreground);
+
+            --radius-sm: 6px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-full: 9999px;
+            --apple-radius-sm: var(--radius-sm);
+            --apple-radius: var(--radius-md);
+            --apple-radius-lg: var(--radius-lg);
+
+            --line: 1px solid rgba(148, 163, 184, 0.42);
+            --hard-shadow: 0 18px 38px rgba(8, 15, 30, 0.38);
+            --hard-shadow-hover: 0 24px 52px rgba(8, 15, 30, 0.5);
+            --hard-shadow-active: 0 10px 24px rgba(8, 15, 30, 0.3);
+            --soft-shadow: 0 18px 40px rgba(15, 23, 41, 0.3);
+            --bounce: cubic-bezier(0.2, 0.8, 0.2, 1);
+            --module-height: 136px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 52px 16px 56px;
+            color: var(--text-primary);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.18) 0, rgba(34, 197, 94, 0) 24%),
+                radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.18) 0, rgba(56, 189, 248, 0) 26%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0, rgba(255, 255, 255, 0) 32%),
+                repeating-linear-gradient(-63deg, rgba(255, 255, 255, 0.045) 0, rgba(255, 255, 255, 0.045) 2px, transparent 2px, transparent 24px),
+                linear-gradient(180deg, #07101d 0%, #0b1627 58%, #09111f 100%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Barlow Condensed", "Inter", sans-serif;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .apple-nav {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            display: flex;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 999px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background:
+                linear-gradient(180deg, rgba(15, 23, 41, 0.94) 0%, rgba(9, 17, 31, 0.9) 100%);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+        }
+
+        .apple-nav::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: inherit;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 10% 30%, rgba(34, 197, 94, 0.24) 0, rgba(34, 197, 94, 0) 46%),
+                radial-gradient(circle at 90% 70%, rgba(249, 115, 22, 0.2) 0, rgba(249, 115, 22, 0) 44%);
+            pointer-events: none;
+        }
+
+        .apple-nav a {
+            text-decoration: none;
+            color: rgba(248, 250, 252, 0.88);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: var(--radius-full);
+            border: 1px solid transparent;
+            white-space: nowrap;
+            transition: all 0.3s var(--bounce);
+        }
+
+        .apple-nav a:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, var(--accent) 0%, var(--quaternary) 100%);
+            color: #04111c;
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 14px 28px rgba(34, 197, 94, 0.24);
+        }
+
+        .apple-nav a:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 3px;
+            background: var(--accent);
+            color: var(--accent-foreground);
+        }
+
+        .hero-card {
+            width: 100%;
+            max-width: 1560px;
+            min-height: 320px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background:
+                linear-gradient(125deg, rgba(15, 23, 41, 0.98) 0%, rgba(11, 22, 39, 0.96) 48%, rgba(14, 30, 50, 0.96) 100%);
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: -140px;
+            top: -180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.42) 0%, rgba(34, 197, 94, 0) 70%);
+            border: none;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                -63deg,
+                rgba(255, 255, 255, 0.07) 0,
+                rgba(255, 255, 255, 0.07) 2px,
+                transparent 2px,
+                transparent 24px
+            );
+            pointer-events: none;
+        }
+
+        .hero-card-content {
+            position: relative;
+            z-index: 2;
+            padding: 72px 60px 64px;
+            text-align: center;
+            text-shadow: 0 0 30px rgba(34, 197, 94, 0.08);
+        }
+
+        .hero-title {
+            margin: 0;
+            font-size: clamp(56px, 7vw, 110px);
+            font-weight: 800;
+            line-height: 0.9;
+            color: #f8fafc;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 0 4px 24px rgba(34, 197, 94, 0.22);
+        }
+
+        .hero-subtitle {
+            margin: 14px auto 0;
+            max-width: 780px;
+            font-size: clamp(18px, 2vw, 26px);
+            color: rgba(226, 232, 240, 0.78);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-card-stack {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-card-layer {
+            position: absolute;
+            width: 260px;
+            height: 150px;
+            border-radius: 14px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            opacity: 0.95;
+        }
+
+        .hero-card-layer--left {
+            left: 56px;
+            top: 56px;
+            transform: rotate(-11deg);
+            background:
+                linear-gradient(135deg, rgba(34, 197, 94, 0.32) 0%, rgba(15, 23, 41, 0.22) 100%);
+        }
+
+        .hero-card-layer--right {
+            right: 56px;
+            top: 44px;
+            transform: rotate(10deg);
+            background:
+                linear-gradient(135deg, rgba(56, 189, 248, 0.34) 0%, rgba(15, 23, 41, 0.18) 100%);
+        }
+
+        .hero-card-layer--center {
+            left: 50%;
+            bottom: -34px;
+            width: 340px;
+            transform: translateX(-50%) rotate(-6deg);
+            background:
+                linear-gradient(135deg, rgba(249, 115, 22, 0.36) 0%, rgba(15, 23, 41, 0.18) 100%);
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: 1560px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 26px;
+            padding: 56px;
+            border: var(--line);
+            box-shadow: var(--soft-shadow);
+            background:
+                linear-gradient(180deg, rgba(15, 23, 41, 0.94) 0%, rgba(12, 19, 34, 0.98) 100%);
+        }
+
+        .section-container::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            right: -72px;
+            top: -72px;
+            border-radius: 24px;
+            border: none;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0) 72%);
+            pointer-events: none;
+        }
+
+        .section-container[id] {
+            scroll-margin-top: 110px;
+        }
+
+        .section-title {
+            margin: 0 0 8px;
+            font-size: clamp(34px, 4.2vw, 54px);
+            font-weight: 800;
+            color: var(--foreground);
+        }
+
+        .section-subtitle {
+            margin: 0 0 34px;
+            color: var(--muted-foreground);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .inner-card,
+        .item-card,
+        .stage-header,
+        .emotion-cell {
+            background: linear-gradient(180deg, rgba(19, 30, 50, 0.95) 0%, rgba(11, 18, 31, 0.95) 100%);
+            border: var(--line);
+            box-shadow: 0 16px 34px rgba(5, 10, 20, 0.3);
+        }
+
+        .inner-card {
+            border-radius: 18px;
+            padding: 30px;
+            transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--bounce);
+        }
+
+        .inner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 44px rgba(34, 197, 94, 0.14);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            border-radius: 18px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background: var(--morandi-blue);
+        }
+
+        .member-name {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+        }
+
+        .member-role {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        .member-desc {
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--text-primary);
+        }
+
+        .motivation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .motivation-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--text-primary);
+        }
+
+        .motivation-graphic {
+            height: 300px;
+            border-radius: var(--radius-lg);
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            color: var(--foreground);
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(249, 115, 22, 0.24) 0, rgba(249, 115, 22, 0) 34%),
+                radial-gradient(circle at 82% 74%, rgba(34, 197, 94, 0.28) 0, rgba(34, 197, 94, 0) 36%),
+                repeating-linear-gradient(
+                    -63deg,
+                    rgba(255, 255, 255, 0.07) 0,
+                    rgba(255, 255, 255, 0.07) 2px,
+                    transparent 2px,
+                    transparent 20px
+                ),
+                #0d1627;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px 24px 24px 8px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background: var(--morandi-green);
+        }
+
+        .persona-quote {
+            margin-bottom: 20px;
+            padding: 14px 0 14px 16px;
+            font-style: italic;
+            font-size: 16px;
+            color: #dbeafe;
+            border-left: 5px solid var(--accent);
+            background: rgba(34, 197, 94, 0.08);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .persona-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 0 5px 7px 0;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            border: var(--line);
+            background: rgba(8, 15, 30, 0.56);
+            box-shadow: none;
+        }
+
+        .journey-map-scroll {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .grid-map {
+            display: grid;
+            grid-template-columns: 120px repeat(6, minmax(170px, 1fr));
+            gap: 14px;
+        }
+
+        .row-label {
+            display: flex;
+            align-items: flex-start;
+            padding-top: 14px;
+            font-size: 12px;
+            line-height: 1.35;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .stage-header {
+            min-height: 84px;
+            padding: 16px 14px;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Outfit", sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            background: linear-gradient(135deg, #fff 0%, rgba(251, 191, 36, 0.14) 100%);
+        }
+
+        .item-card {
+            margin-top: 0;
+            min-height: 120px;
+            height: auto;
+            overflow: hidden;
+            border-radius: 16px;
+            padding: 18px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .action-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-item + .action-item {
+            padding-top: 12px;
+            border-top: 2px dashed rgba(30, 41, 59, 0.16);
+        }
+
+        .emotion-trend {
+            grid-column: span 6;
+        }
+
+        .emotion-cell {
+            margin-top: 0;
+            min-height: 120px;
+            height: auto;
+            border-radius: 16px;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background:
+                linear-gradient(180deg, rgba(139, 92, 246, 0.08) 0%, rgba(255, 255, 255, 1) 48%);
+        }
+
+        .emotion-wave {
+            width: 100%;
+            height: 62px;
+        }
+
+        .emotion-wave svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .emotion-curve-shadow {
+            fill: none;
+            stroke: rgba(52, 211, 153, 0.3);
+            stroke-width: 7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .emotion-path {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .emotion-point {
+            fill: #fff;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+        }
+
+        .emotion-labels {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+        }
+
+        .emotion-label {
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-align: center;
+            line-height: 1.35;
+        }
+
+        .pain-point {
+            background: rgba(244, 114, 182, 0.22);
+            color: var(--foreground);
+            box-shadow: 6px 6px 0 0 rgba(244, 114, 182, 0.24);
+        }
+
+        .opportunity {
+            background: rgba(52, 211, 153, 0.22);
+            color: var(--foreground);
+            box-shadow: 6px 6px 0 0 rgba(52, 211, 153, 0.24);
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .impact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .impact-number {
+            font-family: "Outfit", sans-serif;
+            font-size: 52px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--accent);
+            text-shadow: 2px 2px 0 rgba(251, 191, 36, 0.8);
+        }
+
+        @media (max-width: 1200px) {
+            .team-grid,
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .apple-nav {
+                width: min(100%, 840px);
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .hero-card {
+                min-height: 260px;
+            }
+
+            .hero-card-content {
+                padding: 50px 26px 44px;
+            }
+
+            .hero-title {
+                font-size: clamp(42px, 13vw, 72px);
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-card-layer {
+                width: 180px;
+                height: 110px;
+            }
+
+            .hero-card-layer--left {
+                left: 14px;
+                top: 80px;
+            }
+
+            .hero-card-layer--right {
+                right: 14px;
+                top: 72px;
+            }
+
+            .hero-card-layer--center {
+                width: 220px;
+                bottom: -26px;
+            }
+
+            .section-container {
+                padding: 36px 22px;
+            }
+
+            .motivation-content,
+            .persona-grid,
+            .impact-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-map-scroll {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .grid-map {
+                min-width: 1260px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                gap: 28px;
+                padding-top: 34px;
+            }
+
+            .apple-nav {
+                top: 10px;
+            }
+
+            .apple-nav a {
+                min-height: 48px;
+                display: inline-flex;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .inner-card,
+            .item-card,
+            .stage-header,
+            .emotion-cell,
+            .hero-card,
+            .section-container {
+                box-shadow: 2px 2px 0 0 var(--foreground);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+
+            .inner-card:hover,
+            .apple-nav a:hover {
+                transform: none;
+            }
+        }
+
+        @media (forced-colors: active) {
+            .apple-nav,
+            .hero-card,
+            .section-container,
+            .inner-card,
+            .item-card,
+            .stage-header,
+            .emotion-cell {
+                border: 2px solid CanvasText;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="apple-nav" aria-label="页面导航">
+    <a href="#team">Team</a>
+    <a href="#motivation">Motivation</a>
+    <a href="#research-gap">Research</a>
+    <a href="#personas">Personas</a>
+    <a href="#design-solutions">Solutions</a>
+    <a href="#journey-map">Journey</a>
+    <a href="#ideation">Ideation</a>
+    <a href="#technical">Technical</a>
+    <a href="#evaluation">Impact</a>
+    <a href="#references">References</a>
+</nav>
+
+<div class="hero-card" role="banner" aria-label="MileScape 首页主视觉">
+    <div class="hero-card-stack" aria-hidden="true">
+        <div class="hero-card-layer hero-card-layer--left"></div>
+        <div class="hero-card-layer hero-card-layer--right"></div>
+        <div class="hero-card-layer hero-card-layer--center"></div>
+    </div>
+    <div class="hero-card-content">
+        <h1 class="hero-title">MileScape</h1>
+        <p class="hero-subtitle">Redefining the Minimalist Running Experience.</p>
+    </div>
+</div>
+
+<div class="section-container" id="team">
+    <h2 class="section-title">The Team</h2>
+    <p class="section-subtitle">Team members and key responsibilities</p>
+
+    <div class="team-grid">
+        <div class="inner-card team-member">
+            <div class="avatar-placeholder"></div>
+            <div class="member-name">Shengyang Yin</div>
+            <div class="member-role">Algorithm Design & Core Development</div>
+            <div class="member-desc">Responsible for system architecture and machine learning–based trajectory processing, optimizing route smoothing and data efficiency.</div>
+        </div>
+        <div class="inner-card team-member">
+            <div class="avatar-placeholder" style="background: var(--morandi-green);"></div>
+            <div class="member-name">Yize Zheng</div>
+            <div class="member-role">UI/UX & Interaction Design</div>
+            <div class="member-desc">Led the minimalist design language, crafting Morandi color systems and Apple-style smooth interaction experiences.</div>
+        </div>
+        <div class="inner-card team-member">
+            <div class="avatar-placeholder" style="background: var(--morandi-red);"></div>
+            <div class="member-name">Chenrui Zhu</div>
+            <div class="member-role">Mobile Architecture</div>
+            <div class="member-desc">Handled map API integration, sensor data processing, and background location stability optimization.</div>
+        </div>
+        <div class="inner-card team-member">
+            <div class="avatar-placeholder" style="background: var(--tertiary);"></div>
+            <div class="member-name">Qi Chen</div>
+            <div class="member-role">Product Strategy & Testing</div>
+            <div class="member-desc">Oversaw user journey design, conducted usability testing, and iterated based on user feedback.</div>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="motivation">
+    <h2 class="section-title">Introduction &amp; Motivation</h2>
+    <p class="section-subtitle">Why MileScape is needed</p>
+
+    <div class="motivation-content">
+        <div class="motivation-text">
+            <p>In their daily exercise routines, runners require an app to help them plan their training schedules and provide support during workouts, driven by a desire for self-discipline and the ability to track their progress.</p>
+
+            <p>Existing fitness apps merely quantify running in terms of distance and duration, providing feedback in the form of figures such as calories burned or weekly summaries [1]. While such self-monitoring features are useful for basic activity tracking, they struggle to address the repetitive nature of running itself, making it difficult to maintain long-term motivation.</p>
+
+            <p>Research indicates that up to 42% of users lose interest in fitness trackers within six months [2]. This high attrition rate is partly due to saturation and redundancy in the information provided by fitness apps, as well as a lack of meaningful feedback and a sense of belonging [2][3].</p>
+
+            <p>Based on the above issues, our group has identified the following two research questions.</p>
+
+            <p><strong>RQ1:</strong> How can playful and creative running applications enhance user engagement and sustain long-term interest in running activities?</p>
+
+            <p><strong>RQ2:</strong> How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
+        </div>
+        <div class="motivation-graphic">
+            [ Place App Interface Concept Here ]
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="research-gap">
+    <h2 class="section-title">Research & The Gap</h2>
+    <p class="section-subtitle">Positioning MileScape between academic research and existing commercial products</p>
+
+    <div class="persona-grid">
+        <!-- Market Analysis -->
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Market Analysis</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p><strong>Common Products in the Market</strong></p>
+                <p>Existing running and fitness applications such as Keep, Nike Run Club, Strava, and Apple Fitness focus heavily on performance tracking and structured training.</p>
+
+                <div style="margin-top:12px;">
+                    <img
+                        src="images/fitness_app_usage_transparent.png"
+                        alt="Figure 1: Market Distribution Pie Chart"
+                        style="width:100%; max-width:720px; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
+                    >
+                </div>
+                <p style="font-size:14px; color: var(--text-secondary);">Example: Keep 45%</p>
+
+                <p style="margin-top:16px;"><strong>Market Issues (Runner Perspective)</strong></p>
+                <div style="margin-top:8px;">
+                    <img
+                        src="images/fitness_app_gaps_ranked_bar_transparent.png"
+                        alt="Figure 2: Ranked Bar Chart of Market Problems"
+                        style="width:100%; max-width:720px; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem Identification -->
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Problem Identification</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>Our group survey revealed that most existing running applications focus excessively on data—such as mileage and calories—while lacking fun and engaging elements.</p>
+                <p>Many users reported that these systems fail to provide fresh experiences or meaningful rewards, making it difficult to sustain long-term motivation.</p>
+                <p>Approximately half of the users mentioned that competitive ranking systems introduce stress rather than enjoyment.</p>
+                <p>Although social features can increase engagement, they often require continuous coordination by organizers and may not suit all users.</p>
+
+                <div style="margin-top:12px;">
+                    <img
+                        src="images/desired_playful_features_radar_8_dimensions.png"
+                        alt="Figure 3: User Preference Radar Chart"
+                        style="width:100%; max-width:720px; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="persona-grid" style="margin-top:24px;">
+        <!-- User Requirements -->
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">User Requirements</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>To identify effective incentives, we examined users’ interests beyond running, including gaming and travel.</p>
+                <p>Users showed strong interest in exploration and collection mechanisms, such as unlocking items and discovering new places.</p>
+                <p>Therefore, MileScape integrates these two core elements to create a more engaging running experience.</p>
+                <p>Although blind-box mechanics were considered, they were ultimately rejected due to the difficulty of delivering meaningful surprise and value in a digital environment.</p>
+            </div>
+        </div>
+
+        <!-- Organizer Insights -->
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Organizer Insights</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>Although organizers represent only 13% of users, they strongly influence participation.</p>
+                <p>They reported that:</p>
+                <p>• Runner motivation declines quickly after initial enthusiasm</p>
+                <p>• Existing apps struggle to retain users</p>
+                <p>• Group coordination is time-consuming and difficult</p>
+
+                <p>These findings suggest the need for systems that reduce reliance on organizers while supporting intrinsic motivation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card" style="margin-top:24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 26px;">Identified Gap</h3>
+        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+            <p>Current running apps focus on data tracking and competition, while lacking engagement, fun, and emotional rewards.</p>
+            <p>There is a clear gap between user expectations and existing solutions.</p>
+            <p><strong>→ MileScape addresses this gap by combining exploration, collection, and emotional engagement into a unified running experience.</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="personas">
+    <h2 class="section-title">Target Personas</h2>
+    <p class="section-subtitle">Primary and secondary users identified through research</p>
+
+    <div class="persona-grid">
+        <div class="inner-card">
+            <div class="persona-header">
+                <div class="persona-avatar"></div>
+                <div>
+                    <h3 style="margin: 0 0 5px 0; font-size: 22px;">Persona 1: Runner (Primary User)</h3>
+                    <span style="color: var(--text-secondary); font-size: 14px;">Li, Consistent Runner · Market Size: 87%</span>
+                </div>
+            </div>
+
+            <div class="persona-quote">
+                “In team applications, those who run less know it's not their effort, while those who run more are more willing to post their statistics. I need a visual profile to make my off-season mileage feel meaningful.”
+            </div>
+
+            <div class="persona-details">
+                <div>
+                    <strong>Demography:</strong><br>
+                    Male | 21 years<br>
+                    Suzhou, China<br>
+                    Member of University Running Club<br>
+                    Half-marathoner / running 40-70km/month
+                </div>
+                <div>
+                    <strong>Motivation:</strong><br>
+                    Exploration ⭐⭐⭐⭐⭐<br>
+                    Achievement ⭐⭐⭐⭐<br>
+                    Competition ⭐
+                </div>
+            </div>
+
+            <div style="margin-top: 18px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Background:</strong><br>
+                Li is a runner who insists on running a half marathon. During the competition season, his mileage reaches a peak of 70 kilometers per month, but drops to 40 kilometers per month during the off-season. He uses professional equipment (Apple Watch/Garmin), but feels that pure physiological data tracking is saturated and cannot provide psychological motivation during the long and lonely off-season running. He likes to establish his own visual profile of effort (such as tracking running shoe mileage), but actively avoids the intense ranking culture, which is often dominated by "naturally talented runners" and brings him peer pressure rather than fun.
+            </div>
+
+            <div style="margin-top: 16px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Frustrations:</strong><br>
+                • Pure mechanical data (speed, maximum oxygen uptake) is no longer sufficient to maintain power during the off-season.<br>
+                • Anxiety and frustration caused by comparing oneself to "naturally gifted runners" on the leaderboard.<br>
+                • In existing team applications, simply aggregating team miles can make high performers feel unrewarded and beginners feel uninterested.
+            </div>
+
+            <div style="margin-top: 16px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Goals:</strong><br>
+                • To maintain a stable running habit during the off-season without competitive pressure.<br>
+                • To establish a long-term, satisfactory visual profile to document his running efforts.
+            </div>
+
+            <div style="margin-top: 16px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Needs:</strong><br>
+                • Seamless data synchronization with his existing wearable devices.<br>
+                • Visual progress feedback transforms repeated milestones into exploratory journeys.<br>
+                • A collaborative team model that clearly divides individual contributions.
+            </div>
+        </div>
+
+        <div class="inner-card">
+            <div class="persona-header">
+                <div class="persona-avatar" style="background: var(--morandi-blue);"></div>
+                <div>
+                    <h3 style="margin: 0 0 5px 0; font-size: 22px;">Persona 2: Organizer (Secondary User)</h3>
+                    <span style="color: var(--text-secondary); font-size: 14px;">Niu, Running Organizer · Market Size: 13%</span>
+                </div>
+            </div>
+
+            <div class="persona-quote">
+                “I need a system that motivates the team so that I don't have to chase after everyone's screenshots every day.”
+            </div>
+
+            <div class="persona-details">
+                <div>
+                    <strong>Demography:</strong><br>
+                    Male | 21 years<br>
+                    Suzhou, China<br>
+                    Former High School Running Club President
+                </div>
+                <div>
+                    <strong>Motivation:</strong><br>
+                    Convenience ⭐⭐⭐⭐⭐<br>
+                    Team Bonding ⭐⭐⭐⭐<br>
+                    Social Status ⭐⭐⭐
+                </div>
+            </div>
+
+            <div style="margin-top: 18px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Background:</strong><br>
+                Niu has extensive experience in managing student group activities. During his tenure as the president of the high school running club, he often organized group runs. However, in the first few weeks, he struggled to cope with the rapid decline in members' enthusiasm. He spent a lot of time manually tracking everyone's progress using WeChat and Excel, making group coordination a challenging task.
+            </div>
+
+            <div style="margin-top: 16px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Frustrations:</strong><br>
+                • After the initial hype, team engagement and motivation rapidly declined.<br>
+                • Heavy manual coordination (chasing screenshots on WeChat).<br>
+                • The existing applications lack a common visual goal for a unified team.
+            </div>
+
+            <div style="margin-top: 16px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Goals:</strong><br>
+                • To keep team members engaged and active in the long term.<br>
+                • To cultivate a strong sense of community and belonging.
+            </div>
+
+            <div style="margin-top: 16px; font-size: 14px; line-height: 1.65; color: var(--text-primary);">
+                <strong>Needs:</strong><br>
+                • A centralized dashboard for automatic data aggregation.<br>
+                • A low-cost coordination tool for organizing activities.<br>
+                • Team based collective goals (e.g. relay tasks).
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="design-solutions">
+    <h2 class="section-title">Design Solutions</h2>
+    <p class="section-subtitle">How MileScape addresses motivation, playfulness, and human-centered running experience</p>
+
+    <div class="inner-card" style="margin-bottom: 24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 28px;">Overall Aim</h3>
+        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+            <p><strong>MileScape aims to turn running into a journey, not a task.</strong></p>
+            <p>To design a playful, human-centered running experience that transforms repetitive physical activity into a meaningful, emotionally engaging journey, thereby improving long-term user motivation and engagement.</p>
+        </div>
+    </div>
+
+    <div class="inner-card" style="margin-bottom: 24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 28px;">Inspiration</h3>
+        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+            <p>Adapt Forest’s “accumulate focus → visualize as a tree” mechanism to the running context.</p>
+            <p>At the same time, consider that most existing apps focus on normative social comparisons (such as leaderboards), which may not suit users with a weaker competitive spirit or those pursuing mastery goals rather than performance goals [4].</p>
+            <p>Instead, adopt the concept of “accumulate running miles → collect stamps,” where stamps can be used to unlock collection items—landmarks.</p>
+        </div>
+    </div>
+
+    <div class="persona-grid" style="margin-bottom: 24px;">
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Specific Objectives</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p><strong>1. RQ1 aims: Enhance Playfulness in Running</strong><br>
+                • Transform running from a data-driven activity into a goal-oriented exploration experience<br>
+                • Reduce user drop-off by introducing progressive milestone rewards (landmark unlocking)</p>
+
+                <p><strong>2. RQ2 aims: Foster Social and Emotional Connection</strong><br>
+                • Replace abstract metrics (distance, calories) with visually meaningful progress (global routes and landmark journeys)<br>
+                • Provide emotional rewards (e.g., postcard-style landmark unlock moments)<br>
+                • Enable users to form running groups and participate in shared challenges, fostering a sense of community and belonging<br>
+                • Allow users to collect and share achievements, enhancing social interaction and long-term attachment to the platform</p>
+
+                <p><strong>3. Iterative Minimalist User Experience Design</strong><br>
+                • Design a clean, distraction-free interface following minimalist principles<br>
+                • Develop a wearable interface optimized for glanceability, focusing only on essential information (e.g., distance and heart rate)<br>
+                • Prioritize simplicity not as a static design choice, but as an iterative process shaped by real user feedback.</p>
+            </div>
+        </div>
+
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Novel Design Concept</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>1. Replace traditional exercise-data dashboards with an exploration-based map experience. Through Mapbox route previews, destination detail pages, and landmark timelines, the project translates running outcomes into a sense of “moving forward in space.”</p>
+                <p>2. Replace traditional ranking-based motivation with landmark unlocking.</p>
+                <p>3. Transform scattered running sessions into long-term route progress.</p>
+                <p>4. Turn running routes into collectible destinations.</p>
+                <p>5. Allow users to repeat the same route and earn advanced achievements.</p>
+                <p>6. Reduce the burden of manual recording through wearable-device integration.</p>
+                <p>7. Use PaceCrew to shift group running from competition and ranking to collaborative exploration.</p>
+                <p>8. Directly connect social motivation with content unlocking, creating team-exclusive reward mechanisms.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card">
+        <h3 style="margin: 0 0 16px 0; font-size: 28px;">Why This Experience Is Engaging or Human-Centric</h3>
+        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+            <p>MileScape has created an attractive and user-centered experience by transforming the repetitive action of running from simple digital tracking into an interactive journey full of exploration and discovery.</p>
+            <p>Firstly, the system turns running into an exploration-filled journey, guided by landmarks, thereby enhancing the users' intrinsic motivation.</p>
+            <p>Secondly, MileScape brings emotional value and a sense of belonging to users through meaningful rewards.</p>
+            <p>Thirdly, the design focuses on creating a sense of belonging and connection. Through features such as "PaceCrew", users can participate in team challenges and strive towards a common goal, thus transforming running from a personal activity into a socially significant one.</p>
+            <p>Finally, the system adopts a minimalist design style and an iterative design approach to ensure that the interaction operations remain simple and intuitive, while continuously optimizing based on user feedback.</p>
+            <p><strong>Overall, the MileScape project provides effective solutions for our RQ1 and RQ2.</strong></p>
+        </div>
+    </div>
+</div>
+<div class="section-container" id="journey-map">
+    <div class="header" style="border:none; margin-bottom: 0;">
+        <h2 class="section-title">User Journey Map</h2>
+    </div>
+
+    <div class="journey-map-scroll">
+    <div class="grid-map">
+        <div class="row-label"></div>
+        <div class="stage-header">1. Goal Setting</div>
+        <div class="stage-header">2. Landmark Selection</div>
+        <div class="stage-header">3. Running</div>
+        <div class="stage-header">4. Unlock & Share</div>
+        <div class="stage-header">5. Milestone Unlock</div>
+        <div class="stage-header">6. Sharing</div>
+
+        <div class="row-label">Actions</div>
+        <div class="col">
+            <div class="item-card action-card">
+                <div class="action-item">Choose a small running goal (1km / 2km)</div>
+                <div class="action-item">Quickly confirm and start running</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card action-card">
+                <div class="action-item">Select a virtual route (e.g. West Lake / Central Park)</div>
+                <div class="action-item">Browse landmarks along the route</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card action-card">
+                <div class="action-item">Start running, system auto-tracks</div>
+                <div class="action-item">Quickly check pace and distance</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card action-card">
+                <div class="action-item">Finish run and sync progress</div>
+                <div class="action-item">Unlock landmark and generate share card</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card action-card">
+                <div class="action-item">Accumulate distance to unlock new landmarks</div>
+                <div class="action-item">View collected landmarks</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card action-card">
+                <div class="action-item">Generate running poster</div>
+                <div class="action-item">Share to social platforms</div>
+            </div>
+        </div>
+
+        <div class="row-label">Thoughts</div>
+        <div class="col">
+            <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                Just a short run today, keep it easy.
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                A fun route will keep me motivated.
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                No need for too much data, just keep the pace.
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                Unlocked a new landmark, worth sharing.
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                Another one unlocked, feels rewarding.
+            </div>
+        </div>
+        <div class="col">
+            <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                This looks great, I should post it.
+            </div>
+        </div>
+
+        <div class="row-label">Emotions</div>
+        <div class="col emotion-trend">
+            <div class="emotion-cell">
+                <div class="emotion-wave">
+                    <svg viewBox="0 0 640 64" preserveAspectRatio="none" aria-hidden="true">
+                        <path class="emotion-curve-shadow" d="M20 42 C 70 40, 95 35, 120 34 C 150 33, 190 30, 220 30 C 260 30, 320 32, 370 26 C 420 20, 470 14, 510 14 C 555 14, 590 16, 620 18" />
+                        <path class="emotion-path" d="M20 42 C 70 40, 95 35, 120 34 C 150 33, 190 30, 220 30 C 260 30, 320 32, 370 26 C 420 20, 470 14, 510 14 C 555 14, 590 16, 620 18" />
+                        <circle class="emotion-point" cx="20" cy="42" r="5" />
+                        <circle class="emotion-point" cx="120" cy="34" r="5" />
+                        <circle class="emotion-point" cx="220" cy="30" r="5" />
+                        <circle class="emotion-point" cx="370" cy="26" r="5" />
+                        <circle class="emotion-point" cx="510" cy="14" r="5" />
+                        <circle class="emotion-point" cx="620" cy="18" r="5" />
+                    </svg>
+                </div>
+                <div class="emotion-labels">
+                    <div class="emotion-label">😌 Easy Start</div>
+                    <div class="emotion-label">🤔 Anticipation</div>
+                    <div class="emotion-label">🏃 Focused</div>
+                    <div class="emotion-label">🙂 Satisfaction</div>
+                    <div class="emotion-label">🏆 Achievement</div>
+                    <div class="emotion-label">🎉 Share</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-label">Pain Points</div>
+        <div class="col">
+            <div class="item-card pain-point">Goals too big → easy to give up</div>
+        </div>
+        <div class="col">
+            <div class="item-card pain-point">No direction → boring runs</div>
+        </div>
+        <div class="col">
+            <div class="item-card pain-point">Too much data → distraction</div>
+        </div>
+        <div class="col">
+            <div class="item-card pain-point">Lack of achievement or sharing motivation</div>
+        </div>
+        <div class="col">
+            <div class="item-card pain-point">No long-term motivation system</div>
+        </div>
+        <div class="col">
+            <div class="item-card pain-point">Unattractive share content</div>
+        </div>
+
+        <div class="row-label">Opportunities</div>
+        <div class="col">
+            <div class="item-card opportunity">Small goals to reduce entry barrier</div>
+        </div>
+        <div class="col">
+            <div class="item-card opportunity">Introduce virtual routes & landmarks</div>
+        </div>
+        <div class="col">
+            <div class="item-card opportunity">Minimal UI with core data only</div>
+        </div>
+        <div class="col">
+            <div class="item-card opportunity">Landmark unlock + aesthetic sharing cards</div>
+        </div>
+        <div class="col">
+            <div class="item-card opportunity">Landmark collection system</div>
+        </div>
+        <div class="col">
+            <div class="item-card opportunity">High-quality visual sharing content</div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="section-container" id="ideation">
+    <h2 class="section-title">Ideation &amp; Alternatives</h2>
+    <p class="section-subtitle">Exploration of design ideas and decision-making process</p>
+
+    <div class="persona-grid">
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Crazy Eights</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>Rapid ideation sketches exploring multiple UI directions and interaction concepts.</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin-top:12px;">
+                    <img
+                        src="images/crazy8-1.jpg"
+                        alt="Crazy Eights Sketch 1"
+                        style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
+                    >
+                    <img
+                        src="images/crazy8-2.jpg"
+                        alt="Crazy Eights Sketch 2"
+                        style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
+                    >
+                    <img
+                        src="images/crazy8-3.jpg"
+                        alt="Crazy Eights Sketch 3"
+                        style="width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:8px;"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">Design Alternatives</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p><strong>Option 1: Data-driven Dashboard</strong><br>
+                ✔ Clear metrics<br>
+                ✖ Lacks engagement</p>
+
+                <p><strong>Option 2: Gamified Rewards System</strong><br>
+                ✔ Short-term motivation<br>
+                ✖ May feel superficial</p>
+
+                <p><strong>Option 3: Exploration-based Journey (Chosen)</strong><br>
+                ✔ Long-term engagement<br>
+                ✔ Emotional connection<br>
+                ✔ Aligns with user needs</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card" style="margin-top:24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 26px;">Low-Fi Prototype</h3>
+        <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+            <p>Early wireframes and interaction flows tested through Figma prototype.</p>
+            <p><strong>[ Insert Figma Link Here ]</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="technical">
+    <h2 class="section-title">Technical Implementation</h2>
+    <p class="section-subtitle">System design and development details</p>
+
+    <div class="persona-grid">
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">System Architecture</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>Overview of how the web application handles user data, map rendering, and interaction logic.</p>
+                <div style="margin-top:12px;">
+                    <img
+                        src="images/milescape_system_flow.png"
+                        alt="MileScape System Architecture Diagram"
+                        style="width:100%; max-width:720px; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card">
+            <h3 style="margin: 0 0 16px 0; font-size: 26px;">High-Fi Prototype</h3>
+            <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+                <p>Interactive high-fidelity prototype deployed online.</p>
+                <p><strong>[ Insert Live Demo URL Here ]</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card" style="margin-top:24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 26px;">Individual Contributions</h3>
+        <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="border-bottom: 2px solid var(--border);">
+                    <th style="text-align:left; padding:8px;">Member</th>
+                    <th style="text-align:left; padding:8px;">Contribution</th>
+                </tr>
+                <tr><td style="padding:8px;">Shengyang Yin</td><td style="padding:8px;">Algorithm & Backend Development</td></tr>
+                <tr><td style="padding:8px;">Yize Zheng</td><td style="padding:8px;">UI/UX Design</td></tr>
+                <tr><td style="padding:8px;">Chenrui Zhu</td><td style="padding:8px;">Mobile & System Integration</td></tr>
+                <tr><td style="padding:8px;">Qi Chen</td><td style="padding:8px;">Product Strategy & Testing</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="evaluation">
+    <h2 class="section-title">Early Evaluation &amp; Impact</h2>
+    <p class="section-subtitle">How we evaluated MileScape in an early-stage user study</p>
+
+    <div class="inner-card" style="margin-bottom: 24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 28px;">Evaluation Method</h3>
+        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+            <p>We conducted a small-scale comparative user study (n=7) to evaluate the user experience of MileScape and a mainstream fitness app (Keep).</p>
+
+            <p>A simplified version of the User Experience Questionnaire (UEQ-S) was used to assess usability and experience quality across 8 semantic differential scales, including ease of use, efficiency, clarity, excitement, and novelty.</p>
+
+            <p>Additionally, inspired by the Intrinsic Motivation Inventory (IMI), we incorporated measures of interest/enjoyment and perceived value to better capture users’ motivation and long-term engagement.</p>
+        </div>
+    </div>
+
+    <div class="impact-grid">
+        <div class="inner-card impact-card" style="min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 22px; font-weight: 700; color: var(--text-secondary);">
+            <img
+                src="images/ueqs_item_square.png"
+                alt="Figure 1: UEQ-S Item Square"
+                style="width:100%; max-width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
+            >
+        </div>
+
+        <div class="inner-card impact-card" style="min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 22px; font-weight: 700; color: var(--text-secondary);">
+            <img
+                src="images/imi_item_bar_chart.png"
+                alt="Figure 2: IMI Item Bar Chart"
+                style="width:100%; max-width:100%; display:block; border-radius:18px; border:var(--line); box-shadow:var(--hard-shadow); background:rgba(255,255,255,0.04); padding:12px;"
+            >
+        </div>
+
+        <div class="inner-card impact-card" style="min-height: 320px; background: rgba(52, 211, 153, 0.12);">
+            <h3 style="margin: 0; font-size: 26px;">Key Findings</h3>
+            <div style="font-size: 15px; line-height: 1.75; color: var(--text-primary);">
+                <p>MileScape consistently achieved higher scores than Keep across multiple dimensions, particularly in enjoyment, motivation, and novelty.</p>
+
+                <p>Although MileScape falls slightly behind Keep in terms of supportiveness, the gap is minimal. This demonstrates that MileScape has achieved comparable functionality with simple data presentation and a clean interface.</p>
+
+                <p>IMI-based results further indicate that users found MileScape more engaging and meaningful, suggesting stronger intrinsic motivation and perceived long-term value.</p>
+            </div>
+
+            <div style="margin-top: 6px;">
+                <div style="font-weight: 700; margin-bottom: 10px; font-size: 16px;">User Feedback</div>
+                <div class="persona-quote" style="margin-bottom: 12px;">
+                    “MileScape feels more engaging and meaningful.”
+                </div>
+                <div class="persona-quote" style="margin-bottom: 0;">
+                    “Unlocking landmarks makes running more enjoyable.”
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="references">
+    <h2 class="section-title">References &amp; Acknowledgments</h2>
+    <p class="section-subtitle">Academic sources and AI disclosure</p>
+
+    <div class="inner-card" style="margin-bottom: 24px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 28px;">AI Disclosure</h3>
+        <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
+            <p>AI-generated visual content used in this project is disclosed in the references below in accordance with university policy.</p>
+        </div>
+    </div>
+
+    <div class="inner-card">
+        <h3 style="margin: 0 0 16px 0; font-size: 28px;">References</h3>
+        <div style="font-size: 15px; line-height: 1.85; color: var(--text-primary);">
+            <p>[1] Y. Bhargava and J. Nabi, "The opportunities, challenges and obligations of Fitness Data Analytics," <em>Procedia Computer Science</em>, vol. 167, pp. 1354–1362, 2020, doi: 10.1016/j.procs.2020.03.346.</p>
+
+            <p>[2] Natalie, "42 percent of users lose interest in fitness trackers after 6 months," <em>Big Think</em>, 2015. [Online]. Available: https://bigthink.com/ideafeed/users-lose-interest-in-fitness-trackers-after-6-months</p>
+
+            <p>[3] X. Yu and S. Wang, "Research on the Development Status, Problems and Countermeasures of Sports and Fitness APPs," <em>Asian Journal of Social Pharmacy</em>, vol. 20, no. 1, pp. 88–93, 2025.</p>
+
+            <p>[4] R. Rockmann and H. Gewald, "Individual fitness app use: The role of goal orientations and motivational affordances," in <em>Proc. Americas Conf. on Information Systems (AMCIS)</em>, Cancun, Mexico, 2019. [Online]. Available: https://aisel.aisnet.org/amcis2019/healthcare_it/healthcare_it/3</p>
+
+            <p>[5] M. Schrepp, A. Hinderks, and J. Thomaschewski, "Design and Evaluation of a Short Version of the User Experience Questionnaire (UEQ-S)," <em>International Journal of Interactive Multimedia and Artificial Intelligence</em>, vol. 4, no. 6, pp. 103–108, 2017.</p>
+
+            <p>[6] Ryan, R. M. (1982). Control and information in the intrapersonal sphere: An extension of cognitive evaluation theory. <em>Journal of Personality and Social Psychology</em>, 43(3), 450–461.</p>
+
+            <p>[7] ByteDance Doubao, <em>Seedream 4.5</em>, accessed 5 April 2026. [Online]. Available: https://www.doubao.com. Applied to generate the conceptual hero image in the illustrative figure. Prompt: "Minimal abstract visualization of 70% runners and 30% organizers, contains two overlapping circles, clean Apple-style, flat design, soft shadows, no pie chart, no bar chart."</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MileScape - Mobile Portfolio</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+        :root {
+            /* 保持 Playful Geometric 的色彩与系统 */
+            --background: #09111f;
+            --foreground: #f8fafc;
+            --muted: #121d31;
+            --muted-foreground: #94a3b8;
+            --accent: #22c55e;
+            --accent-foreground: #ffffff;
+            --secondary: #f97316;
+            --tertiary: #facc15;
+            --quaternary: #38bdf8;
+            --border: #23324c;
+            --card: #0f1729;
+
+            --radius-sm: 6px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-full: 9999px;
+
+            --line: 1px solid rgba(148, 163, 184, 0.42);
+            /* 针对移动端缩小了阴影偏移量以节省屏幕空间 */
+            --hard-shadow: 0 18px 38px rgba(8, 15, 30, 0.38);
+            --hard-shadow-sm: 0 12px 24px rgba(8, 15, 30, 0.28);
+            --bounce: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* 移除手机点击的高亮蓝块 */
+        }
+
+        html, body {
+            overflow-x: hidden; /* 严防横向滚动条 */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 16px 16px 60px;
+            color: var(--foreground);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 24px; /* 减小模块间距 */
+            background-color: var(--background);
+            background-image:
+                    radial-gradient(circle at 20% 10%, rgba(34, 197, 94, 0.18) 0, rgba(34, 197, 94, 0) 24%),
+                    radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.16) 0, rgba(56, 189, 248, 0) 30%),
+                    repeating-linear-gradient(-63deg, rgba(255, 255, 255, 0.045) 0, rgba(255, 255, 255, 0.045) 2px, transparent 2px, transparent 22px),
+                    linear-gradient(180deg, #07101d 0%, #0b1627 60%, #09111f 100%);
+            background-size: 100% 100%;
+        }
+
+        h1, h2, h3 {
+            font-family: "Barlow Condensed", sans-serif;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* ================= 移动端导航栏 ================= */
+        .mobile-nav {
+            position: sticky;
+            top: 8px;
+            z-index: 100;
+            display: flex;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 999px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow-sm);
+            background: linear-gradient(180deg, rgba(15, 23, 41, 0.94) 0%, rgba(9, 17, 31, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow-x: auto;
+            /* 隐藏滚动条但保留滑动功能 */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .mobile-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: rgba(248, 250, 252, 0.88);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .mobile-nav a:active {
+            background: linear-gradient(90deg, var(--accent) 0%, var(--quaternary) 100%);
+            color: #04111c;
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        /* ================= 主视觉 Hero (高度压缩) ================= */
+        .hero-card {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background: linear-gradient(125deg, rgba(15, 23, 41, 0.98) 0%, rgba(11, 22, 39, 0.96) 48%, rgba(14, 30, 50, 0.96) 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 42px; /* 缩小字体适应竖屏 */
+            font-weight: 800;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #f8fafc;
+            letter-spacing: 0.06em;
+            text-shadow: 0 4px 24px rgba(34, 197, 94, 0.22);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            margin: 12px 0 0;
+            font-size: 16px;
+            color: rgba(226, 232, 240, 0.78);
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* 背景几何图形重新定位 */
+        .hero-card-layer {
+            position: absolute;
+            border: var(--line);
+            opacity: 0.8;
+            z-index: 1;
+        }
+        .hero-card-layer--1 {
+            width: 80px; height: 80px; border-radius: 14px;
+            background: var(--tertiary);
+            left: -20px; top: -20px;
+            transform: rotate(18deg);
+        }
+        .hero-card-layer--2 {
+            width: 100px; height: 100px; border-radius: 14px;
+            background: var(--secondary);
+            right: -20px; bottom: -20px;
+            transform: rotate(-18deg);
+        }
+
+        /* ================= 通用内容容器 ================= */
+        .section-container {
+            width: 100%;
+            position: relative;
+            border-radius: 22px;
+            padding: 28px 20px; /* 减小内边距 */
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            background: linear-gradient(180deg, rgba(15, 23, 41, 0.94) 0%, rgba(12, 19, 34, 0.98) 100%);
+        }
+        .section-container[id] { scroll-margin-top: 80px; }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            color: var(--muted-foreground);
+            font-size: 15px;
+            font-weight: 500;
+            margin: 0 0 24px;
+        }
+
+        /* ================= 单列卡片 ================= */
+        .inner-card {
+            background: linear-gradient(180deg, rgba(19, 30, 50, 0.95) 0%, rgba(11, 18, 31, 0.95) 100%);
+            border: var(--line);
+            box-shadow: var(--hard-shadow);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        /* Team & Personas 布局 */
+        .avatar-placeholder, .persona-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-full);
+            border: var(--line);
+            box-shadow: var(--hard-shadow-sm);
+            margin-bottom: 16px;
+            background: var(--accent);
+        }
+
+        .member-name { font-size: 20px; }
+        .member-role { font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 8px;}
+        .member-desc { font-size: 14px; line-height: 1.5; color: var(--muted-foreground); }
+
+        .tag {
+            display: inline-block;
+            margin: 0 4px 6px 0;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            border: var(--line);
+            background: rgba(8, 15, 30, 0.56);
+        }
+
+        /* ================= 全新：垂直体验地图 (Vertical Journey Map) ================= */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            border-left: 2px dashed rgba(248, 250, 252, 0.4);
+            margin-top: 10px;
+        }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        /* 时间轴上的小圆点 */
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: -34px; /* 对齐虚线 */
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            background: var(--tertiary);
+            border: var(--line);
+            z-index: 2;
+            transform: rotate(45deg);
+        }
+
+        .timeline-step:nth-child(even)::before { background: var(--quaternary); }
+        .timeline-step:nth-child(3n)::before { background: var(--secondary); }
+
+        .step-header {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--foreground);
+            transform: translateY(-4px); /* 视觉对齐圆点 */
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-block {
+            background: var(--muted);
+            border: var(--line);
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        /* 强调块的样式 */
+        .info-block.action { background: linear-gradient(180deg, rgba(19, 30, 50, 0.95) 0%, rgba(11, 18, 31, 0.95) 100%); box-shadow: var(--hard-shadow-sm); }
+        .info-block.thought { font-style: italic; color: var(--muted-foreground); border-style: dashed; }
+        .info-block.emotion {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            padding: 6px 14px;
+            width: fit-content;
+        }
+        .info-block.pain { background: rgba(244, 114, 182, 0.15); border-color: var(--secondary); font-weight: 600;}
+        .info-block.opp { background: rgba(52, 211, 153, 0.15); border-color: var(--quaternary); font-weight: 600;}
+
+        .block-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 4px;
+            opacity: 0.6;
+        }
+
+        /* ================= Impact 模块 ================= */
+        .impact-number {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 42px;
+            line-height: 1;
+            font-weight: 800;
+            color: var(--accent);
+            text-shadow: 0 4px 24px rgba(34, 197, 94, 0.22);
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="mobile-nav" aria-label="页面导航">
+    <a href="#team">Team</a>
+    <a href="#motivation">Motivation</a>
+    <a href="#personas">Personas</a>
+    <a href="#journey-map">Journey Map</a>
+    <a href="#evaluation">Impact</a>
+</nav>
+
+<div class="hero-card" role="banner">
+    <div class="hero-card-layer hero-card-layer--1"></div>
+    <div class="hero-card-layer hero-card-layer--2"></div>
+    <h1 class="hero-title">MileScape</h1>
+    <p class="hero-subtitle">Redefining Minimalist Running.</p>
+</div>
+
+<div class="section-container" id="team">
+    <h2 class="section-title">The Team</h2>
+    <p class="section-subtitle">Core members</p>
+
+    <div class="inner-card">
+        <div class="avatar-placeholder"></div>
+        <div class="member-name">Shengyang Yin</div>
+        <div class="member-role">ALGORITHM & CORE</div>
+        <div class="member-desc">Responsible for architecture and machine learning–based trajectory processing.</div>
+    </div>
+
+    <div class="inner-card">
+        <div class="avatar-placeholder" style="background: var(--quaternary);"></div>
+        <div class="member-name">Yize Zheng</div>
+        <div class="member-role">UI/UX DESIGN</div>
+        <div class="member-desc">Led the minimalist design language and smooth interaction experiences.</div>
+    </div>
+</div>
+
+<div class="section-container" id="motivation">
+    <h2 class="section-title">Motivation</h2>
+    <p class="section-subtitle">Why build MileScape?</p>
+    <div class="inner-card" style="font-size: 15px; line-height: 1.6;">
+        <p>Most apps focus only on quantitative data—distance, pace, calories—ignoring emotional value. Users struggle to maintain long-term commitment.</p>
+        <p style="margin-bottom: 0;">MileScape shifts running from passive tracking to an immersive experience, turning every run into a visual journey of personal growth.</p>
+    </div>
+</div>
+
+<div class="section-container" id="personas">
+    <h2 class="section-title">Personas</h2>
+    <p class="section-subtitle">Target users</p>
+
+    <div class="inner-card">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+            <div class="persona-avatar" style="margin: 0; background: var(--secondary); border-radius: 12px;"></div>
+            <div>
+                <h3 style="font-size: 20px;">Xiao Li (22)</h3>
+                <span style="font-size: 13px; color: var(--muted-foreground);">Easily bored runner</span>
+            </div>
+        </div>
+        <p style="font-size: 14px; font-style: italic; color: var(--muted-foreground); margin: 0 0 12px;">"My app shows numbers, but nothing makes me want to run tomorrow."</p>
+        <div>
+            <span class="tag">Visual progress</span>
+            <span class="tag">Meaningful goals</span>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="journey-map" style="background: #fff8e6;">
+    <h2 class="section-title">Journey Map</h2>
+    <p class="section-subtitle">User flow & emotional analysis</p>
+
+    <div class="timeline">
+        <div class="timeline-step">
+            <div class="step-header">1. Goal Setting</div>
+            <div class="step-content">
+                <div class="info-block action">
+                    <div class="block-label">Action</div>
+                    Choose a small running goal (1km / 2km) and quickly confirm.
+                </div>
+                <div class="info-block thought">"Just a short run today, keep it easy."</div>
+                <div class="info-block emotion">😌 Easy Start</div>
+                <div class="info-block pain"><div class="block-label">Pain Point</div>Goals too big → easy to give up.</div>
+                <div class="info-block opp"><div class="block-label">Opportunity</div>Small goals to reduce entry barrier.</div>
+            </div>
+        </div>
+
+        <div class="timeline-step">
+            <div class="step-header">2. Landmark Selection</div>
+            <div class="step-content">
+                <div class="info-block action">
+                    <div class="block-label">Action</div>
+                    Select a virtual route & browse landmarks.
+                </div>
+                <div class="info-block thought">"A fun route will keep me motivated."</div>
+                <div class="info-block emotion" style="background: var(--tertiary); color: var(--foreground);">🤔 Anticipation</div>
+                <div class="info-block pain"><div class="block-label">Pain Point</div>No direction → boring runs.</div>
+                <div class="info-block opp"><div class="block-label">Opportunity</div>Introduce virtual routes.</div>
+            </div>
+        </div>
+
+        <div class="timeline-step">
+            <div class="step-header">3. Running</div>
+            <div class="step-content">
+                <div class="info-block action">
+                    <div class="block-label">Action</div>
+                    System auto-tracks. Quickly check pace.
+                </div>
+                <div class="info-block thought">"No need for too much data, just keep the pace."</div>
+                <div class="info-block emotion" style="background: var(--quaternary); color: var(--foreground);">🏃 Focused</div>
+                <div class="info-block opp"><div class="block-label">Opportunity</div>Minimal UI with core data only.</div>
+            </div>
+        </div>
+
+        <div class="timeline-step">
+            <div class="step-header">4. Unlock & Share</div>
+            <div class="step-content">
+                <div class="info-block action">
+                    <div class="block-label">Action</div>
+                    Finish run. Unlock landmark & generate card.
+                </div>
+                <div class="info-block emotion" style="background: var(--secondary);">🙂 Satisfaction</div>
+                <div class="info-block opp"><div class="block-label">Opportunity</div>Aesthetic sharing cards.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="evaluation">
+    <h2 class="section-title">Impact</h2>
+    <p class="section-subtitle">Evaluation & Results</p>
+
+    <div class="inner-card">
+        <h3 style="font-size: 18px;">Usability Score</h3>
+        <div class="impact-number">88.5</div>
+        <p style="font-size: 13px; color: var(--muted-foreground); margin:0;">SUS 测试中极简 UI 与防误触机制获高评价。</p>
+    </div>
+
+    <div class="inner-card">
+        <h3 style="font-size: 18px;">Memory Optimization</h3>
+        <div class="impact-number" style="color: var(--quaternary);">40% ↓</div>
+        <p style="font-size: 13px; color: var(--muted-foreground); margin:0;">道格拉斯-普克抽稀算法减少长距离渲染消耗。</p>
+    </div>
+</div>
+
+</body>
+</html>

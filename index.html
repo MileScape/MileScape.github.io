@@ -537,10 +537,9 @@
         }
 
         .motivation-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
         }
 
         .motivation-text p {
@@ -550,22 +549,35 @@
             color: var(--text-primary);
         }
 
-        .motivation-graphic {
-            height: 300px;
-            border-radius: var(--radius-lg);
+        .motivation-text p:nth-last-of-type(-n+2) {
+            margin-bottom: 0;
+            padding: 24px 24px 22px;
+            border-radius: 30px 24px 32px 24px / 24px 30px 24px 34px;
             border: var(--line);
             box-shadow: var(--hard-shadow);
-            color: var(--foreground);
-            font-family: "Fraunces", serif;
-            font-size: 24px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background:
-                radial-gradient(circle at 18% 20%, rgba(193, 140, 93, 0.18) 0, rgba(193, 140, 93, 0) 34%),
-                radial-gradient(circle at 82% 74%, rgba(93, 112, 82, 0.16) 0, rgba(93, 112, 82, 0) 36%),
+                radial-gradient(circle at 12% 20%, rgba(193, 140, 93, 0.18) 0, rgba(193, 140, 93, 0) 30%),
+                radial-gradient(circle at 88% 78%, rgba(93, 112, 82, 0.16) 0, rgba(93, 112, 82, 0) 34%),
                 linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(240, 235, 229, 0.98) 100%);
+        }
+
+        .motivation-text p:nth-last-of-type(2) {
+            margin-bottom: 16px;
+        }
+
+        .motivation-text p:nth-last-of-type(-n+2) strong {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            margin-bottom: 12px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fffdf8;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .persona-grid {
@@ -1472,9 +1484,6 @@
 
             <p><strong>RQ2:</strong> How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
         </div>
-        <div class="motivation-graphic">
-            [ Place App Interface Concept Here ]
-        </div>
     </div>
 </div>
 
@@ -1546,7 +1555,7 @@
         <div class="inner-card">
             <h3 style="margin: 0 0 16px 0; font-size: 26px;">Organizer Insights</h3>
             <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
-                <p>Although organizers represent only 13% of users, they strongly influence participation.</p>
+                <p>Although organizers represent only 30% of users, they strongly influence participation.</p>
                 <p>They reported that:</p>
                 <p>• Runner motivation declines quickly after initial enthusiasm</p>
                 <p>• Existing apps struggle to retain users</p>
@@ -1579,7 +1588,7 @@
                 </div>
                 <div>
                     <h3 style="margin: 0 0 5px 0; font-size: 22px;">Persona 1: Runner (Primary User)</h3>
-                    <span style="color: var(--text-secondary); font-size: 14px;">Li, Consistent Runner · Market Size: 87%</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">Li, Consistent Runner · Market Size: 70%</span>
                 </div>
             </div>
 
@@ -1636,7 +1645,8 @@
                 </div>
                 <div>
                     <h3 style="margin: 0 0 5px 0; font-size: 22px;">Persona 2: Organizer (Secondary User)</h3>
-                    <span style="color: var(--text-secondary); font-size: 14px;">Niu, Running Organizer · Market Size: 13%</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">Niu, Running Organizer · Market Size: 30
+                        %</span>
                 </div>
             </div>
 
@@ -1702,7 +1712,7 @@
     <div class="inner-card" style="margin-bottom: 24px;">
         <h3 style="margin: 0 0 16px 0; font-size: 28px;">Inspiration</h3>
         <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
-            <p>Adapt Forest’s “accumulate focus → visualize as a tree” mechanism to the running context.</p>
+            <p>Adapt Forest's “accumulate focus → visualize as a tree” mechanism to the running context.</p>
             <p>At the same time, consider that most existing apps focus on normative social comparisons (such as leaderboards), which may not suit users with a weaker competitive spirit or those pursuing mastery goals rather than performance goals [4].</p>
             <p>Instead, adopt the concept of “accumulate running miles → collect stamps,” where stamps can be used to unlock collection items—landmarks.</p>
         </div>

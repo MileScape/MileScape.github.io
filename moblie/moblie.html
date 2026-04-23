@@ -9,27 +9,28 @@
 
         :root {
             /* 保持 Playful Geometric 的色彩与系统 */
-            --background: #09111f;
-            --foreground: #f8fafc;
-            --muted: #121d31;
-            --muted-foreground: #94a3b8;
-            --accent: #22c55e;
+            --background: #f8f3ea;
+            --foreground: #6f8f7c;
+            --text-primary: #374151;
+            --muted: #efe6d8;
+            --muted-foreground: #7c6f64;
+            --accent: #d67c5c;
             --accent-foreground: #ffffff;
-            --secondary: #f97316;
-            --tertiary: #facc15;
-            --quaternary: #38bdf8;
-            --border: #23324c;
-            --card: #0f1729;
+            --secondary: #b7846c;
+            --tertiary: #e7b977;
+            --quaternary: #8faea3;
+            --border: #d9cbbb;
+            --card: #fffaf2;
 
             --radius-sm: 6px;
             --radius-md: 14px;
             --radius-lg: 22px;
             --radius-full: 9999px;
 
-            --line: 1px solid rgba(148, 163, 184, 0.42);
+            --line: 1px solid rgba(124, 111, 100, 0.28);
             /* 针对移动端缩小了阴影偏移量以节省屏幕空间 */
-            --hard-shadow: 0 18px 38px rgba(8, 15, 30, 0.38);
-            --hard-shadow-sm: 0 12px 24px rgba(8, 15, 30, 0.28);
+            --hard-shadow: 0 16px 36px rgba(135, 110, 86, 0.16);
+            --hard-shadow-sm: 0 10px 20px rgba(135, 110, 86, 0.14);
             --bounce: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
@@ -53,10 +54,10 @@
             gap: 24px; /* 减小模块间距 */
             background-color: var(--background);
             background-image:
-                    radial-gradient(circle at 20% 10%, rgba(34, 197, 94, 0.18) 0, rgba(34, 197, 94, 0) 24%),
-                    radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.16) 0, rgba(56, 189, 248, 0) 30%),
-                    repeating-linear-gradient(-63deg, rgba(255, 255, 255, 0.045) 0, rgba(255, 255, 255, 0.045) 2px, transparent 2px, transparent 22px),
-                    linear-gradient(180deg, #07101d 0%, #0b1627 60%, #09111f 100%);
+                    radial-gradient(circle at 18% 12%, rgba(214, 124, 92, 0.16) 0, rgba(214, 124, 92, 0) 26%),
+                    radial-gradient(circle at 82% 8%, rgba(143, 174, 163, 0.18) 0, rgba(143, 174, 163, 0) 24%),
+                    repeating-linear-gradient(-63deg, rgba(124, 111, 100, 0.04) 0, rgba(124, 111, 100, 0.04) 2px, transparent 2px, transparent 22px),
+                    linear-gradient(180deg, #f8f3ea 0%, #f6efe4 60%, #f4ecdf 100%);
             background-size: 100% 100%;
         }
 
@@ -78,7 +79,7 @@
             border-radius: 999px;
             border: var(--line);
             box-shadow: var(--hard-shadow-sm);
-            background: linear-gradient(180deg, rgba(15, 23, 41, 0.94) 0%, rgba(9, 17, 31, 0.9) 100%);
+            background: linear-gradient(180deg, rgba(255, 250, 242, 0.92) 0%, rgba(248, 243, 234, 0.9) 100%);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             overflow-x: auto;
@@ -92,7 +93,7 @@
 
         .mobile-nav a {
             text-decoration: none;
-            color: rgba(248, 250, 252, 0.88);
+            color: rgba(45, 55, 72, 0.88);
             font-size: 14px;
             font-weight: 700;
             padding: 8px 16px;
@@ -103,8 +104,8 @@
         }
 
         .mobile-nav a:active {
-            background: linear-gradient(90deg, var(--accent) 0%, var(--quaternary) 100%);
-            color: #04111c;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--tertiary) 100%);
+            color: #fffaf2;
             border-color: rgba(255, 255, 255, 0.22);
         }
 
@@ -116,7 +117,7 @@
             border-radius: 24px;
             border: var(--line);
             box-shadow: var(--hard-shadow);
-            background: linear-gradient(125deg, rgba(15, 23, 41, 0.98) 0%, rgba(11, 22, 39, 0.96) 48%, rgba(14, 30, 50, 0.96) 100%);
+            background: linear-gradient(135deg, rgba(255, 250, 242, 0.98) 0%, rgba(244, 236, 223, 0.96) 56%, rgba(239, 230, 216, 0.96) 100%);
             padding: 40px 20px;
             text-align: center;
         }
@@ -126,9 +127,9 @@
             font-weight: 800;
             line-height: 1;
             text-transform: uppercase;
-            color: #f8fafc;
+            color: #3d342f;
             letter-spacing: 0.06em;
-            text-shadow: 0 4px 24px rgba(34, 197, 94, 0.22);
+            text-shadow: 0 4px 18px rgba(214, 124, 92, 0.16);
             position: relative;
             z-index: 2;
         }
@@ -136,7 +137,7 @@
         .hero-subtitle {
             margin: 12px 0 0;
             font-size: 16px;
-            color: rgba(226, 232, 240, 0.78);
+            color: rgba(124, 111, 100, 0.9);
             font-weight: 600;
             position: relative;
             z-index: 2;
@@ -172,7 +173,7 @@
             padding: 28px 20px; /* 减小内边距 */
             border: var(--line);
             box-shadow: var(--hard-shadow);
-            background: linear-gradient(180deg, rgba(15, 23, 41, 0.94) 0%, rgba(12, 19, 34, 0.98) 100%);
+            background: linear-gradient(180deg, rgba(255, 250, 242, 0.95) 0%, rgba(248, 243, 234, 0.98) 100%);
         }
         .section-container[id] { scroll-margin-top: 80px; }
 
@@ -190,7 +191,7 @@
 
         /* ================= 单列卡片 ================= */
         .inner-card {
-            background: linear-gradient(180deg, rgba(19, 30, 50, 0.95) 0%, rgba(11, 18, 31, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(255, 253, 248, 0.98) 0%, rgba(247, 240, 229, 0.98) 100%);
             border: var(--line);
             box-shadow: var(--hard-shadow);
             border-radius: 16px;
@@ -221,14 +222,14 @@
             font-weight: 700;
             border-radius: var(--radius-full);
             border: var(--line);
-            background: rgba(8, 15, 30, 0.56);
+            background: rgba(255, 249, 240, 0.85);
         }
 
         /* ================= 全新：垂直体验地图 (Vertical Journey Map) ================= */
         .timeline {
             position: relative;
             padding-left: 24px;
-            border-left: 2px dashed rgba(248, 250, 252, 0.4);
+            border-left: 2px dashed rgba(124, 111, 100, 0.35);
             margin-top: 10px;
         }
 
@@ -279,7 +280,7 @@
         }
 
         /* 强调块的样式 */
-        .info-block.action { background: linear-gradient(180deg, rgba(19, 30, 50, 0.95) 0%, rgba(11, 18, 31, 0.95) 100%); box-shadow: var(--hard-shadow-sm); }
+        .info-block.action { background: linear-gradient(180deg, rgba(255, 253, 248, 0.98) 0%, rgba(247, 240, 229, 0.98) 100%); box-shadow: var(--hard-shadow-sm); }
         .info-block.thought { font-style: italic; color: var(--muted-foreground); border-style: dashed; }
         .info-block.emotion {
             display: inline-flex;

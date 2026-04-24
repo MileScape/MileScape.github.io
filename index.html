@@ -537,10 +537,9 @@
         }
 
         .motivation-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
         }
 
         .motivation-text p {
@@ -550,22 +549,35 @@
             color: var(--text-primary);
         }
 
-        .motivation-graphic {
-            height: 300px;
-            border-radius: var(--radius-lg);
+        .motivation-text p:nth-last-of-type(-n+2) {
+            margin-bottom: 0;
+            padding: 24px 24px 22px;
+            border-radius: 30px 24px 32px 24px / 24px 30px 24px 34px;
             border: var(--line);
             box-shadow: var(--hard-shadow);
-            color: var(--foreground);
-            font-family: "Fraunces", serif;
-            font-size: 24px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background:
-                radial-gradient(circle at 18% 20%, rgba(193, 140, 93, 0.18) 0, rgba(193, 140, 93, 0) 34%),
-                radial-gradient(circle at 82% 74%, rgba(93, 112, 82, 0.16) 0, rgba(93, 112, 82, 0) 36%),
+                radial-gradient(circle at 12% 20%, rgba(193, 140, 93, 0.18) 0, rgba(193, 140, 93, 0) 30%),
+                radial-gradient(circle at 88% 78%, rgba(93, 112, 82, 0.16) 0, rgba(93, 112, 82, 0) 34%),
                 linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(240, 235, 229, 0.98) 100%);
+        }
+
+        .motivation-text p:nth-last-of-type(2) {
+            margin-bottom: 16px;
+        }
+
+        .motivation-text p:nth-last-of-type(-n+2) strong {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            margin-bottom: 12px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fffdf8;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .persona-grid {
@@ -626,6 +638,34 @@
             width: 100%;
             overflow-x: auto;
             padding-bottom: 8px;
+        }
+
+        .journey-map-subsection {
+            margin-top: 28px;
+        }
+
+        .journey-map-subtitle {
+            margin: 0 0 10px;
+            font-size: 28px;
+        }
+
+        .journey-map-note {
+            margin: 0 0 18px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .journey-map-scenario {
+            margin-bottom: 18px;
+            padding: 16px 20px;
+            border-radius: 24px 20px 26px 20px / 20px 24px 18px 28px;
+            border: var(--line);
+            box-shadow: var(--soft-shadow);
+            background: linear-gradient(180deg, rgba(255, 253, 248, 0.98) 0%, rgba(247, 240, 229, 0.98) 100%);
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text-primary);
         }
 
         .grid-map {
@@ -1485,9 +1525,6 @@
 
             <p><strong>RQ2:</strong> How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
         </div>
-        <div class="motivation-graphic">
-            [ Place App Interface Concept Here ]
-        </div>
     </div>
 </div>
 
@@ -1559,7 +1596,7 @@
         <div class="inner-card">
             <h3 style="margin: 0 0 16px 0; font-size: 26px;">Organizer Insights</h3>
             <div style="font-size: 15px; line-height: 1.8; color: var(--text-primary);">
-                <p>Although organizers represent only 13% of users, they strongly influence participation.</p>
+                <p>Although organizers represent only 30% of users, they strongly influence participation.</p>
                 <p>They reported that:</p>
                 <p>• Runner motivation declines quickly after initial enthusiasm</p>
                 <p>• Existing apps struggle to retain users</p>
@@ -1592,7 +1629,7 @@
                 </div>
                 <div>
                     <h3 style="margin: 0 0 5px 0; font-size: 22px;">Persona 1: Runner (Primary User)</h3>
-                    <span style="color: var(--text-secondary); font-size: 14px;">Li, Consistent Runner · Market Size: 87%</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">Li, Consistent Runner · Market Size: 70%</span>
                 </div>
             </div>
 
@@ -1649,7 +1686,8 @@
                 </div>
                 <div>
                     <h3 style="margin: 0 0 5px 0; font-size: 22px;">Persona 2: Organizer (Secondary User)</h3>
-                    <span style="color: var(--text-secondary); font-size: 14px;">Niu, Running Organizer · Market Size: 13%</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">Niu, Running Organizer · Market Size: 30
+                        %</span>
                 </div>
             </div>
 
@@ -1715,7 +1753,7 @@
     <div class="inner-card" style="margin-bottom: 24px;">
         <h3 style="margin: 0 0 16px 0; font-size: 28px;">Inspiration</h3>
         <div style="font-size: 16px; line-height: 1.8; color: var(--text-primary);">
-            <p>Adapt Forest’s “accumulate focus → visualize as a tree” mechanism to the running context.</p>
+            <p>Adapt Forest's “accumulate focus → visualize as a tree” mechanism to the running context.</p>
             <p>At the same time, consider that most existing apps focus on normative social comparisons (such as leaderboards), which may not suit users with a weaker competitive spirit or those pursuing mastery goals rather than performance goals [4].</p>
             <p>Instead, adopt the concept of “accumulate running miles → collect stamps,” where stamps can be used to unlock collection items—landmarks.</p>
         </div>
@@ -1920,6 +1958,160 @@
             <div class="item-card opportunity">High-quality visual sharing content</div>
         </div>
     </div>
+    </div>
+
+    <div class="journey-map-subsection">
+        <h3 class="journey-map-subtitle">Organizer Journey Map</h3>
+        <p class="journey-map-note">Parallel to the runner journey, this map focuses on how an organizer creates a PaceCrew, launches missions, maintains participation, and closes the group lifecycle responsibly.</p>
+        <div class="journey-map-scenario"><strong>Actor &amp; Scenario:</strong> A runner wants to organize a PaceCrew, launch shared missions, and keep members engaged through collaborative running challenges.</div>
+
+        <div class="journey-map-scroll">
+        <div class="grid-map">
+            <div class="row-label"></div>
+            <div class="stage-header">1. Create Crew</div>
+            <div class="stage-header">2. Launch First Mission</div>
+            <div class="stage-header">3. Manage Members</div>
+            <div class="stage-header">4. Operate Missions</div>
+            <div class="stage-header">5. Reward &amp; Motivate</div>
+            <div class="stage-header">6. Dissolve or End</div>
+
+            <div class="row-label">Actions</div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Create a new PaceCrew</div>
+                    <div class="action-item">Set up the crew identity and purpose</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Publish the first team mission</div>
+                    <div class="action-item">Set a clear shared starting goal</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Invite, approve, or manage members</div>
+                    <div class="action-item">Watch who joins and who stays active</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Monitor mission participation</div>
+                    <div class="action-item">Adjust tasks to sustain crew activity</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">Maintain shared rewards and goals</div>
+                    <div class="action-item">Keep team motivation visible</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card action-card">
+                    <div class="action-item">End the crew when needed</div>
+                    <div class="action-item">Close the group in a clear, responsible way</div>
+                </div>
+            </div>
+
+            <div class="row-label">Thoughts</div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    I want to build a running community.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    The crew needs a clear starting goal.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    I need to keep members involved.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    The crew should stay active over time.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    Shared rewards make the team feel connected.
+                </div>
+            </div>
+            <div class="col">
+                <div class="item-card" style="font-style: italic; color: var(--text-secondary);">
+                    If it no longer works, I should close it properly.
+                </div>
+            </div>
+
+            <div class="row-label">Emotions</div>
+            <div class="col emotion-trend">
+                <div class="emotion-cell">
+                    <div class="emotion-wave">
+                        <svg viewBox="0 0 640 64" preserveAspectRatio="none" aria-hidden="true">
+                            <path class="emotion-curve-shadow" d="M20 34 C 70 24, 95 16, 120 16 C 150 16, 185 22, 220 22 C 260 22, 320 16, 370 12 C 420 9, 470 6, 510 6 C 555 6, 590 22, 620 28" />
+                            <path class="emotion-path" d="M20 34 C 70 24, 95 16, 120 16 C 150 16, 185 22, 220 22 C 260 22, 320 16, 370 12 C 420 9, 470 6, 510 6 C 555 6, 590 22, 620 28" />
+                            <circle class="emotion-point" cx="20" cy="34" r="5" />
+                            <circle class="emotion-point" cx="120" cy="16" r="5" />
+                            <circle class="emotion-point" cx="220" cy="22" r="5" />
+                            <circle class="emotion-point" cx="370" cy="12" r="5" />
+                            <circle class="emotion-point" cx="510" cy="6" r="5" />
+                            <circle class="emotion-point" cx="620" cy="28" r="5" />
+                        </svg>
+                    </div>
+                    <div class="emotion-labels">
+                        <div class="emotion-label">Initiative</div>
+                        <div class="emotion-label">Activated</div>
+                        <div class="emotion-label">Responsible</div>
+                        <div class="emotion-label">Focused</div>
+                        <div class="emotion-label">Encouraged</div>
+                        <div class="emotion-label">Resolved</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-label">Pain Points</div>
+            <div class="col">
+                <div class="item-card pain-point">Hard to start a group</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Crew feels inactive at launch</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Low member engagement</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Difficult to sustain activity</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Rewards may feel weak</div>
+            </div>
+            <div class="col">
+                <div class="item-card pain-point">Organizer cannot simply leave</div>
+            </div>
+
+            <div class="row-label">Opportunities</div>
+            <div class="col">
+                <div class="item-card opportunity">Lower the barrier to forming a crew</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Turn a static group into a shared challenge</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Support belonging through team structure</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Help organizers monitor and sustain participation</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Strengthen motivation with collective rewards</div>
+            </div>
+            <div class="col">
+                <div class="item-card opportunity">Support responsible closure of the crew lifecycle</div>
+            </div>
+        </div>
+        </div>
     </div>
 </div>
 

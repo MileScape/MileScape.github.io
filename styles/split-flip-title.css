@@ -1,0 +1,27 @@
+[data-split-flip-title].is-split-ready {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    line-height: inherit;
+}
+
+[data-split-flip-title].is-split-ready .split-flip-char {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    vertical-align: top;
+    white-space: pre;
+}
+
+[data-split-flip-title].is-split-ready .split-flip-stack {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+[data-split-flip-title].is-split-ready .split-flip-glyph {
+    display: block;
+    white-space: pre;
+}

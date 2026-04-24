@@ -1,0 +1,211 @@
+body.has-layout-dialog {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+.layout-expandable-card {
+    position: relative;
+    cursor: zoom-in;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.layout-expandable-card::after {
+    content: "Expand";
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    background: rgba(44, 44, 36, 0.72);
+    color: rgba(255, 250, 242, 0.94);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.24s ease, transform 0.24s ease;
+    pointer-events: none;
+    box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.5);
+}
+
+.layout-expandable-card:hover::after,
+.layout-expandable-card:focus-visible::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.layout-expandable-card:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 4px;
+}
+
+.layout-expandable-card.is-layout-open {
+    visibility: hidden;
+}
+
+.layout-expandable-card.is-layout-return-target {
+    visibility: visible;
+    opacity: 0;
+    transform: scale(0.985);
+    pointer-events: none;
+}
+
+.layout-dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 2400;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.layout-dialog.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.layout-dialog-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 25, 21, 0.48);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+}
+
+.layout-dialog-frame {
+    position: relative;
+    z-index: 1;
+    width: min(980px, calc(100vw - 48px));
+    max-height: calc(100vh - 48px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.layout-dialog-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    min-width: 92px;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 999px;
+    background: rgba(36, 34, 30, 0.78);
+    color: #fffaf2;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.68);
+    transition: transform 0.24s ease, background 0.24s ease;
+}
+
+.layout-dialog-close:hover {
+    transform: translateY(-1px);
+    background: rgba(26, 25, 21, 0.88);
+}
+
+.layout-dialog-close:focus-visible {
+    outline: 3px solid rgba(255, 250, 242, 0.92);
+    outline-offset: 3px;
+}
+
+.layout-dialog-copy {
+    overflow: auto;
+    padding-top: 18px;
+    -webkit-overflow-scrolling: touch;
+    contain: layout paint;
+}
+
+.layout-dialog-copy > .inner-card {
+    width: 100%;
+    margin: 0;
+    padding: clamp(24px, 3vw, 34px);
+    box-shadow: 0 34px 80px -32px rgba(26, 25, 21, 0.6);
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout paint style;
+}
+
+.layout-dialog-copy > .inner-card:hover {
+    transform: none;
+}
+
+.layout-dialog-copy > .inner-card .media-frame {
+    box-shadow: var(--hard-shadow-hover);
+}
+
+@media (max-width: 900px) {
+    .layout-dialog {
+        padding: 12px;
+    }
+
+    .layout-dialog-frame {
+        width: min(calc(100vw - 24px), 820px);
+        max-height: calc(100vh - 24px);
+    }
+
+    .layout-dialog-copy {
+        padding-top: 10px;
+    }
+
+    .layout-dialog-copy > .inner-card {
+        padding: 20px;
+        border-radius: 28px;
+    }
+}
+
+@media (max-width: 640px) {
+    .layout-expandable-card::after {
+        right: 14px;
+        bottom: 14px;
+        padding: 7px 10px;
+        font-size: 10px;
+        opacity: 0.92;
+        transform: none;
+    }
+
+    .layout-dialog {
+        padding: 8px;
+    }
+
+    .layout-dialog-frame {
+        width: calc(100vw - 16px);
+        max-height: calc(100vh - 16px);
+    }
+
+    .layout-dialog-close {
+        top: 10px;
+        right: 10px;
+        min-width: 84px;
+        min-height: 40px;
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .layout-dialog-copy > .inner-card {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .layout-expandable-card::after,
+    .layout-dialog-close {
+        transition: none;
+    }
+}

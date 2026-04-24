@@ -1087,6 +1087,19 @@
             object-fit: cover;
         }
 
+        .crazy8-slide-media--contain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, 0.92) 0%, rgba(244, 240, 232, 0.94) 58%, rgba(234, 228, 216, 0.98) 100%);
+        }
+
+        .crazy8-slide-media--contain img {
+            object-fit: contain;
+        }
+
         .crazy8-slide-body {
             display: grid;
             gap: 8px;
@@ -2028,18 +2041,66 @@
         <div class="inner-card">
             <h3 class="card-title">High-Fi Prototype</h3>
             <div class="content-stack">
-                <p>Interactive high-fidelity prototype deployed online.</p>
-                <div class="media-panel">
-                    <div class="media-grid media-grid--feature">
-                        <img class="media-frame" src="images/start.png" alt="MileScape high-fidelity prototype preview">
-                        <div class="placeholder-panel">
-                            <div class="placeholder-kicker">Prototype Preview</div>
-                            <div>
-                                <h4 class="placeholder-title">High-Fi Experience</h4>
-                                <p class="placeholder-copy">A polished mobile interface that turns running progress into a route-based exploration flow, with clearer feedback and stronger emotional rewards.</p>
-                            </div>
-                            <div class="link-chip">Live Demo Link To Be Added</div>
+                <p>Interactive high-fidelity prototype screens presented with the same stacked page-flip browsing effect as the Crazy Eights sketches.</p>
+                <div class="crazy8-slider" id="highfiSlider">
+                    <div class="crazy8-slider-head">
+                        <div>
+                            <div class="crazy8-chip">High-Fi Flow</div>
+                            <p class="crazy8-hint">Browse the polished mobile screens one by one while the next views stay layered behind the current page.</p>
                         </div>
+                        <div class="crazy8-page-indicator" id="highfiPageIndicator" aria-live="polite">1 / 4</div>
+                    </div>
+
+                    <div class="crazy8-viewport" id="highfiViewport" tabindex="0" aria-label="High-fidelity prototype slider">
+                        <article class="crazy8-slide is-active" data-index="0">
+                            <div class="crazy8-slide-media crazy8-slide-media--contain">
+                                <img src="images/start.png" alt="MileScape high-fidelity prototype start screen">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                                <div class="crazy8-slide-title">Start Screen</div>
+                                <div class="crazy8-slide-description">Landing view introducing the route card interaction and the press-and-hold flip metaphor for exploration-based running.</div>
+                            </div>
+                        </article>
+
+                        <article class="crazy8-slide" data-index="1">
+                            <div class="crazy8-slide-media crazy8-slide-media--contain">
+                                <img src="images/微信图片_20260423223748_8000_389.png" alt="MileScape high-fidelity route detail screen">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                                <div class="crazy8-slide-title">Route Detail</div>
+                                <div class="crazy8-slide-description">Map-based route selection view showing progress setup, exploration framing, and the primary call to start the run.</div>
+                            </div>
+                        </article>
+
+                        <article class="crazy8-slide" data-index="2">
+                            <div class="crazy8-slide-media crazy8-slide-media--contain">
+                                <img src="images/微信图片_20260423223747_7999_389.png" alt="MileScape high-fidelity run result screen">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                                <div class="crazy8-slide-title">Run Result</div>
+                                <div class="crazy8-slide-description">Post-run summary with route context, earned rewards, and health metrics presented in a calm, polished dashboard.</div>
+                            </div>
+                        </article>
+
+                        <article class="crazy8-slide" data-index="3">
+                            <div class="crazy8-slide-media crazy8-slide-media--contain">
+                                <img src="images/微信图片_20260423223746_7998_389.png" alt="MileScape high-fidelity collectible route card screen">
+                            </div>
+                            <div class="crazy8-slide-body">
+                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                                <div class="crazy8-slide-title">Collectible Route Card</div>
+                                <div class="crazy8-slide-description">Shareable city card view combining destination imagery, collectible value, and the signature flip interaction for emotional reward.</div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="crazy8-controls">
+                        <button class="crazy8-control" id="highfiPrev" type="button" aria-label="Previous high-fidelity screen">Previous</button>
+                        <div class="crazy8-dots" id="highfiDots" aria-label="High-fidelity page indicators"></div>
+                        <button class="crazy8-control" id="highfiNext" type="button" aria-label="Next high-fidelity screen">Next</button>
                     </div>
                 </div>
             </div>
@@ -2315,82 +2376,106 @@
     }());
 
     (function () {
-        const viewport = document.getElementById("crazy8Viewport");
+        function initStackSlider(options) {
+            const viewport = document.getElementById(options.viewportId);
 
-        if (!viewport) {
-            return;
-        }
+            if (!viewport) {
+                return;
+            }
 
-        const slides = Array.from(viewport.querySelectorAll(".crazy8-slide"));
-        const prevButton = document.getElementById("crazy8Prev");
-        const nextButton = document.getElementById("crazy8Next");
-        const pageIndicator = document.getElementById("crazy8PageIndicator");
-        const dotsContainer = document.getElementById("crazy8Dots");
+            const slides = Array.from(viewport.querySelectorAll(".crazy8-slide"));
+            const prevButton = document.getElementById(options.prevButtonId);
+            const nextButton = document.getElementById(options.nextButtonId);
+            const pageIndicator = document.getElementById(options.pageIndicatorId);
+            const dotsContainer = document.getElementById(options.dotsContainerId);
 
-        let activeIndex = 0;
+            if (!slides.length || !prevButton || !nextButton || !pageIndicator || !dotsContainer) {
+                return;
+            }
 
-        function updateActiveState(nextIndex) {
-            activeIndex = nextIndex;
-            pageIndicator.textContent = (activeIndex + 1) + " / " + slides.length;
+            let activeIndex = 0;
 
-            slides.forEach(function (slide, index) {
-                slide.classList.remove("is-active", "is-prev", "is-next", "is-hidden");
+            function updateActiveState(nextIndex) {
+                activeIndex = nextIndex;
+                pageIndicator.textContent = (activeIndex + 1) + " / " + slides.length;
 
-                if (index === activeIndex) {
-                    slide.classList.add("is-active");
-                } else if (index === (activeIndex + 1) % slides.length) {
-                    slide.classList.add("is-prev");
-                } else if (index === (activeIndex + 2) % slides.length) {
-                    slide.classList.add("is-next");
-                } else {
-                    slide.classList.add("is-hidden");
+                slides.forEach(function (slide, index) {
+                    slide.classList.remove("is-active", "is-prev", "is-next", "is-hidden");
+
+                    if (index === activeIndex) {
+                        slide.classList.add("is-active");
+                    } else if (index === (activeIndex + 1) % slides.length) {
+                        slide.classList.add("is-prev");
+                    } else if (index === (activeIndex + 2) % slides.length) {
+                        slide.classList.add("is-next");
+                    } else {
+                        slide.classList.add("is-hidden");
+                    }
+                });
+
+                Array.from(dotsContainer.children).forEach(function (dot, index) {
+                    const isActive = index === activeIndex;
+                    dot.classList.toggle("is-active", isActive);
+                    dot.setAttribute("aria-current", isActive ? "true" : "false");
+                });
+            }
+
+            function scrollToIndex(index) {
+                const normalizedIndex = (index + slides.length) % slides.length;
+                updateActiveState(normalizedIndex);
+            }
+
+            slides.forEach(function (_, index) {
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "crazy8-dot";
+                dot.setAttribute("aria-label", options.dotLabelPrefix + " " + (index + 1));
+                dot.addEventListener("click", function () {
+                    scrollToIndex(index);
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            prevButton.addEventListener("click", function () {
+                scrollToIndex(activeIndex - 1);
+            });
+
+            nextButton.addEventListener("click", function () {
+                scrollToIndex(activeIndex + 1);
+            });
+
+            viewport.addEventListener("keydown", function (event) {
+                if (event.key === "ArrowLeft") {
+                    event.preventDefault();
+                    scrollToIndex(activeIndex - 1);
+                }
+
+                if (event.key === "ArrowRight") {
+                    event.preventDefault();
+                    scrollToIndex(activeIndex + 1);
                 }
             });
 
-            Array.from(dotsContainer.children).forEach(function (dot, index) {
-                const isActive = index === activeIndex;
-                dot.classList.toggle("is-active", isActive);
-                dot.setAttribute("aria-current", isActive ? "true" : "false");
-            });
+            scrollToIndex(0);
         }
 
-        function scrollToIndex(index) {
-            const normalizedIndex = (index + slides.length) % slides.length;
-            updateActiveState(normalizedIndex);
-        }
-
-        slides.forEach(function (_, index) {
-            const dot = document.createElement("button");
-            dot.type = "button";
-            dot.className = "crazy8-dot";
-            dot.setAttribute("aria-label", "Go to sketch " + (index + 1));
-            dot.addEventListener("click", function () {
-                scrollToIndex(index);
-            });
-            dotsContainer.appendChild(dot);
+        initStackSlider({
+            viewportId: "crazy8Viewport",
+            prevButtonId: "crazy8Prev",
+            nextButtonId: "crazy8Next",
+            pageIndicatorId: "crazy8PageIndicator",
+            dotsContainerId: "crazy8Dots",
+            dotLabelPrefix: "Go to sketch"
         });
 
-        prevButton.addEventListener("click", function () {
-            scrollToIndex(activeIndex - 1);
+        initStackSlider({
+            viewportId: "highfiViewport",
+            prevButtonId: "highfiPrev",
+            nextButtonId: "highfiNext",
+            pageIndicatorId: "highfiPageIndicator",
+            dotsContainerId: "highfiDots",
+            dotLabelPrefix: "Go to high-fidelity screen"
         });
-
-        nextButton.addEventListener("click", function () {
-            scrollToIndex(activeIndex + 1);
-        });
-
-        viewport.addEventListener("keydown", function (event) {
-            if (event.key === "ArrowLeft") {
-                event.preventDefault();
-                scrollToIndex(activeIndex - 1);
-            }
-
-            if (event.key === "ArrowRight") {
-                event.preventDefault();
-                scrollToIndex(activeIndex + 1);
-            }
-        });
-
-        scrollToIndex(0);
     }());
 </script>
 

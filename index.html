@@ -1724,6 +1724,91 @@
             line-height: 1.7;
         }
 
+        .scrapbook {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 24px;
+        }
+
+        .scrapbook-item {
+            position: relative;
+            background: #fff;
+            padding: 10px 10px 28px;
+            border-radius: 4px;
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.08),
+                0 6px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 300ms var(--bounce), box-shadow 300ms var(--bounce);
+        }
+
+        .scrapbook-item:nth-child(1) { transform: rotate(-1.8deg); }
+        .scrapbook-item:nth-child(2) { transform: rotate(1.2deg); }
+        .scrapbook-item:nth-child(3) { transform: rotate(-0.6deg); }
+        .scrapbook-item:nth-child(4) { transform: rotate(2deg); }
+        .scrapbook-item:nth-child(5) { transform: rotate(-1.2deg); }
+        .scrapbook-item:nth-child(6) { transform: rotate(0.8deg); }
+
+        .scrapbook-item:hover {
+            transform: rotate(0deg) scale(1.04) translateY(-4px);
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                0 12px 28px rgba(0, 0, 0, 0.12);
+            z-index: 2;
+        }
+
+        .scrapbook-item::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 12px;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .scrapbook-item:nth-child(odd)::before {
+            background: linear-gradient(135deg, rgba(193, 140, 93, 0.45), rgba(193, 140, 93, 0.25));
+        }
+
+        .scrapbook-item:nth-child(even)::before {
+            background: linear-gradient(135deg, rgba(93, 112, 82, 0.4), rgba(93, 112, 82, 0.2));
+        }
+
+        .scrapbook-img {
+            width: 100%;
+            display: block;
+            border-radius: 2px;
+            background: #f4f0e8;
+        }
+
+        .scrapbook-caption {
+            margin-top: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .scrapbook {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scrapbook {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 12px;
+            }
+        }
+
         .appendix-block {
             display: grid;
             gap: 16px;
@@ -3590,6 +3675,7 @@
     <a href="#motivation">Motivation</a>
     <a href="#research-gap">Research</a>
     <a href="#personas">Personas</a>
+    <a href="#scrapbook">Moodboard</a>
     <a href="#design-solutions">Solutions</a>
     <a href="#journey-map">Journey</a>
     <a href="#timeline">Timeline</a>
@@ -4132,6 +4218,27 @@
                 • A centralized dashboard for automatic data aggregation.<br>
                 • A low-cost coordination tool for organizing activities.<br>
                 • Team based collective goals (e.g. relay tasks).
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="scrapbook">
+    <h2 class="section-title">Moodboard</h2>
+
+    <div class="inner-card">
+        <div class="scrapbook">
+            <div class="scrapbook-item">
+                <img class="scrapbook-img" src="images/Interview1.jpg" alt="User interview session 1">
+                <div class="scrapbook-caption">User interview</div>
+            </div>
+            <div class="scrapbook-item">
+                <img class="scrapbook-img" src="images/Interview2.jpg" alt="User interview session 2">
+                <div class="scrapbook-caption">User interview</div>
+            </div>
+            <div class="scrapbook-item">
+                <img class="scrapbook-img" src="images/Interview3.jpg" alt="User interview session 3">
+                <div class="scrapbook-caption">User interview</div>
             </div>
         </div>
     </div>

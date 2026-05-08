@@ -3304,6 +3304,39 @@
             background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
         }
 
+        .crazy8-slider--app-gallery .crazy8-viewport {
+            min-height: 620px;
+        }
+
+        .crazy8-slider--app-gallery .crazy8-slide {
+            grid-template-columns: minmax(260px, 0.86fr) 1fr;
+        }
+
+        .crazy8-slider--app-gallery .crazy8-slide-media {
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, 0.98) 0%, rgba(244, 240, 232, 0.96) 56%, rgba(234, 228, 216, 0.98) 100%);
+        }
+
+        .crazy8-slider--app-gallery .crazy8-slide-media img {
+            max-height: 560px;
+        }
+
+        .crazy8-slider--app-gallery .crazy8-dots {
+            max-width: 560px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .crazy8-slider--app-gallery .crazy8-dot {
+            width: 9px;
+            height: 9px;
+        }
+
+        .crazy8-slider--app-gallery .crazy8-dot.is-active {
+            width: 28px;
+        }
+
         @media (max-width: 1200px) {
             .team-grid,
             .impact-grid {
@@ -3425,9 +3458,18 @@
                 min-height: 520px;
             }
 
+            .crazy8-slider--app-gallery .crazy8-viewport {
+                min-height: 660px;
+            }
+
             .crazy8-slide {
                 grid-template-columns: 1fr;
                 grid-template-rows: minmax(280px, 1fr) auto;
+            }
+
+            .crazy8-slider--app-gallery .crazy8-slide {
+                grid-template-columns: 1fr;
+                grid-template-rows: minmax(420px, 1fr) auto;
             }
 
             .comparison-evidence-grid {
@@ -4093,7 +4135,7 @@
         <div class="text-block-md">
             <p>Based on our questionnaire responses, 70% of participants were regular runners and 30% had experience organizing running activities. These two groups informed our primary and secondary personas.</p>
             <p>The charts below summarize patterns from our questionnaire and market observation, including commonly used running apps, perceived problems in existing fitness products, and preferred playful features.</p>
-            <p>Original interview screenshots are retained in the appendix as qualitative evidence for the research insights.</p>
+            <p>Original interview screenshots and the field interview photo are presented in the moodboard carousel as qualitative evidence for the research insights.</p>
         </div>
         <div class="evidence-link-panel" aria-label="Questionnaire evidence">
             <div class="evidence-link-copy">
@@ -5366,58 +5408,355 @@
     </div>
 
     <div class="inner-card crazy8-card flow-gap-top">
-        <div class="crazy8-slider" id="profiSlider">
+        <div class="crazy8-slider crazy8-slider--app-gallery" id="profiSlider">
             <div class="crazy8-slider-head">
                 <div>
-                    <h3 class="card-title" style="margin-bottom: 8px;">Version Pro</h3>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Version Pro Final App Flow</h3>
                     <div class="crazy8-chip">Pro Flow</div>
-                    <p class="crazy8-hint">Refined high-fidelity screens with enhanced visuals and interaction polish.</p>
+                    <p class="crazy8-hint">This sequence shows the latest MileScape build from entry and route discovery to PaceCrew, My Scape rewards, capsule draws, wearable sync, and profile settings.</p>
                 </div>
-                <div class="crazy8-page-indicator" id="profiPageIndicator" aria-live="polite">1 / 4</div>
+                <div class="crazy8-page-indicator" id="profiPageIndicator" aria-live="polite">1 / 31</div>
             </div>
 
             <div class="crazy8-viewport" id="profiViewport" tabindex="0" aria-label="Version Pro prototype slider">
                 <article class="crazy8-slide is-active" data-index="0">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/high-fi/pro-1.png" alt="Version Pro screen 1">
+                        <img src="images/version pro/pro1.png" alt="MileScape Version Pro splash screen">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
-                        <div class="crazy8-slide-title">Screen 01</div>
-                        <div class="crazy8-slide-description">Description for the first Version Pro screen.</div>
+                        <div class="crazy8-slide-title">Splash Screen</div>
+                        <div class="crazy8-slide-description">A quiet branded entry screen introduces MileScape before the user moves into the running journey flow.</div>
                     </div>
                 </article>
 
                 <article class="crazy8-slide" data-index="1">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/high-fi/pro-2.png" alt="Version Pro screen 2">
+                        <img src="images/version pro/pro2.png" alt="MileScape Version Pro route poster preview">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
-                        <div class="crazy8-slide-title">Screen 02</div>
-                        <div class="crazy8-slide-description">Description for the second Version Pro screen.</div>
+                        <div class="crazy8-slide-title">Route Poster Preview</div>
+                        <div class="crazy8-slide-description">A postcard-style route card presents the selected journey as a collectible destination rather than a plain running record.</div>
                     </div>
                 </article>
 
                 <article class="crazy8-slide" data-index="2">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/high-fi/pro-3.png" alt="Version Pro screen 3">
+                        <img src="images/version pro/pro3.png" alt="MileScape Version Pro start journey screen">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
-                        <div class="crazy8-slide-title">Screen 03</div>
-                        <div class="crazy8-slide-description">Description for the third Version Pro screen.</div>
+                        <div class="crazy8-slide-title">Start Journey</div>
+                        <div class="crazy8-slide-description">The first action point gives users a direct way to enter the route experience or test the flow through demo mode.</div>
                     </div>
                 </article>
 
                 <article class="crazy8-slide" data-index="3">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/high-fi/pro-4.png" alt="Version Pro screen 4">
+                        <img src="images/version pro/pro4.png" alt="MileScape Version Pro side navigation menu">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
-                        <div class="crazy8-slide-title">Screen 04</div>
-                        <div class="crazy8-slide-description">Description for the fourth Version Pro screen.</div>
+                        <div class="crazy8-slide-title">Side Navigation</div>
+                        <div class="crazy8-slide-description">The menu groups the major modules, helping users move between PaceCrew, Paceport, My Scape, achievements, wearable data, and profile settings.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="4">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro5.png" alt="MileScape Version Pro Paceport map overview">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Paceport Map Overview</div>
+                        <div class="crazy8-slide-description">The map-based hub frames running as city exploration, with route cards and distance controls layered over the destination view.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="5">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro6.png" alt="MileScape Version Pro route detail map">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Route Detail Map</div>
+                        <div class="crazy8-slide-description">Neon Sakura Circuit is shown with route distance, visual waypoints, and a clear start action for beginning the run.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="6">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro7.png" alt="MileScape Version Pro route progress view">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Route Progress View</div>
+                        <div class="crazy8-slide-description">The in-route view keeps the runner's progress visible on the city map while preserving the journey metaphor.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="7">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro8.png" alt="MileScape Version Pro route poster reveal">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Route Poster Reveal</div>
+                        <div class="crazy8-slide-description">A destination poster turns the route into a collectible visual object that can be remembered and shared after selection.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="8">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro9.png" alt="MileScape Version Pro run result summary">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Run Result Summary</div>
+                        <div class="crazy8-slide-description">Post-run feedback combines stamps, health metrics, unlocked landmarks, and decoration rewards in one calm summary.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="9">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro10.png" alt="MileScape Version Pro PaceCrew hub">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">PaceCrew Hub</div>
+                        <div class="crazy8-slide-description">The social entry page supports creating or joining crews while keeping collaboration lightweight and asynchronous.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="10">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro11.png" alt="MileScape Version Pro PaceCrew fieldbook">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">PaceCrew Fieldbook</div>
+                        <div class="crazy8-slide-description">Crew pages are organized as fieldbook entries, making shared routes feel like group missions instead of ranking boards.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="11">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro12.png" alt="MileScape Version Pro Japan route catalogue">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Japan Route Catalogue</div>
+                        <div class="crazy8-slide-description">Country-level route browsing helps users compare available journeys, route distance, and completion state before running.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="12">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro13.png" alt="MileScape Version Pro United Kingdom route catalogue">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">United Kingdom Routes</div>
+                        <div class="crazy8-slide-description">Locked and unlockable routes show how progression can expand the world map without overwhelming the first-time user.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="13">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro14.png" alt="MileScape Version Pro My Scape overview">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">My Scape Overview</div>
+                        <div class="crazy8-slide-description">Unlocked landmarks are placed into a personal island scene, turning running effort into a persistent visual collection.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="14">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro15.png" alt="MileScape Version Pro My Scape landmark inventory">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Landmark Inventory</div>
+                        <div class="crazy8-slide-description">The inventory tray separates landmarks from other rewards so users can review what each route has contributed to My Scape.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="15">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro16.png" alt="MileScape Version Pro My Scape decoration inventory">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Decoration Inventory</div>
+                        <div class="crazy8-slide-description">Decoration items can be browsed and placed, extending My Scape beyond route landmarks into a customizable reward space.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="16">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro17.png" alt="MileScape Version Pro capsule machine start state">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Capsule Machine</div>
+                        <div class="crazy8-slide-description">The capsule interface adds surprise to rewards while still using earned stamps as the visible running-based currency.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="17">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro18.png" alt="MileScape Version Pro capsule reward reveal">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Reward Reveal</div>
+                        <div class="crazy8-slide-description">After a draw, the reward card names the item and rarity so the surprise moment stays readable and purposeful.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="18">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro19.png" alt="MileScape Version Pro capsule reward item">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Reward Item Detail</div>
+                        <div class="crazy8-slide-description">Individual reward cards show how small decorative objects become part of the larger collection loop.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="19">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro20.png" alt="MileScape Version Pro duplicate reward conversion">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Duplicate Conversion</div>
+                        <div class="crazy8-slide-description">Duplicate rewards are converted into usable value, reducing frustration and keeping the capsule loop fair.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="20">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro21.png" alt="MileScape Version Pro capsule shop exchange list">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Capsule Shop</div>
+                        <div class="crazy8-slide-description">The shop gives users a direct exchange path for specific atmosphere items when random draws are not enough.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="21">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro22.png" alt="MileScape Version Pro shop item ownership state">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Owned Shop Items</div>
+                        <div class="crazy8-slide-description">Purchased and owned states clarify which decorations are already available, preventing repeated or confusing exchanges.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="22">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro23.png" alt="MileScape Version Pro My Scape capsule rewards">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">My Scape Rewards</div>
+                        <div class="crazy8-slide-description">Capsule rewards return to the island inventory, closing the loop between running, drawing, and personal world-building.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="23">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro24.png" alt="MileScape Version Pro My Scape full collection">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Expanded My Scape</div>
+                        <div class="crazy8-slide-description">A fuller island view demonstrates how landmarks and decorative rewards accumulate into a personalized landscape.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="24">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro25.png" alt="MileScape Version Pro achievements page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Achievements</div>
+                        <div class="crazy8-slide-description">Badge cards provide a lightweight recognition layer for long-term milestones without turning progress into a leaderboard.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="25">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro26.png" alt="MileScape Version Pro wearable pairing page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Wearable Pairing</div>
+                        <div class="crazy8-slide-description">The wearable entry explains how external run data can be brought into MileScape before starting device setup.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="26">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro27.png" alt="MileScape Version Pro choose wearable device page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Choose Device</div>
+                        <div class="crazy8-slide-description">Device selection supports common watch models and keeps pairing as a simple list-based task.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="27">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro28.png" alt="MileScape Version Pro connected wearable data page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Connected Wearable</div>
+                        <div class="crazy8-slide-description">The connected view summarizes watch distance and collected health metrics, making imported data legible inside the app.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="28">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro29.png" alt="MileScape Version Pro wearable settings page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Wearable Settings</div>
+                        <div class="crazy8-slide-description">Settings expose sync mode, disconnection, and recent activity so users can control how their running data is imported.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="29">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro30.png" alt="MileScape Version Pro profile statistics page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Profile Overview</div>
+                        <div class="crazy8-slide-description">Profile statistics summarize distance, stamps, owned routes, completed routes, and collected landmarks in one personal dashboard.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="30">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/version pro/pro31.png" alt="MileScape Version Pro profile settings and history page">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Version Pro</div>
+                        <div class="crazy8-slide-title">Profile Settings</div>
+                        <div class="crazy8-slide-description">Settings cover run distance range, language choice, route history, and data reset controls for final prototype management.</div>
                     </div>
                 </article>
             </div>
@@ -5653,54 +5992,6 @@
         </div>
     </details>
 
-    <details class="inner-card appendix-block flow-gap-top">
-        <summary class="content-heading appendix-summary">Interview Evidence</summary>
-        <div class="text-block-sm">
-            <p>Original interview screenshots and field interview photo are preserved here as qualitative evidence for runner motivation, pressure from performance metrics, and the decision to shift from competition toward meaningful progress.</p>
-        </div>
-        <div class="appendix-grid">
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 1</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/Interview1.jpg"
-                        alt="Interview screenshot about running mileage, wearable data, and satisfaction"
-                    >
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 2</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/Interview2.jpg"
-                        alt="Interview screenshot about VO2max, pressure, and online running events"
-                    >
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 3</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/Interview3.jpg"
-                        alt="Interview screenshot about removing competition and connecting mileage with activities"
-                    >
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 4</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/interview4.jpg"
-                        alt="Interview photo showing an in-person user interview on a running track"
-                    >
-                </div>
-            </div>
-        </div>
-    </details>
 </div>
 
 <div class="section-container" id="contributions">

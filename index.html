@@ -242,6 +242,32 @@
             color: var(--foreground);
         }
 
+        .nav-progress-ring {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 141;
+            width: fit-content;
+            max-width: min(calc(100vw - 28px), 1120px);
+            height: 44px;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .nav-progress-track {
+            stroke: rgba(93, 112, 82, 0.12);
+            stroke-width: 2;
+        }
+
+        .nav-progress-fill {
+            stroke: var(--primary);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 80ms linear;
+            filter: drop-shadow(0 0 4px rgba(93, 112, 82, 0.3));
+        }
+
         .site-footer {
             width: min(1120px, calc(100vw - 48px));
             margin: 8px auto 0;
@@ -3462,6 +3488,10 @@
     <a href="#evaluation">Impact</a>
     <a href="#references">References</a>
 </nav>
+<svg class="nav-progress-ring" aria-hidden="true" fill="none">
+    <path class="nav-progress-track"/>
+    <path class="nav-progress-fill"/>
+</svg>
 
 <div class="hero-card" id="top" role="banner" aria-label="MileScape 首页主视觉">
     <div class="hero-slider" id="heroSlider" aria-hidden="true">
@@ -3672,6 +3702,41 @@
 
                 <p>These findings suggest the need for systems that reduce reliance on organizers while supporting intrinsic motivation.</p>
             </div>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-top">
+        <h3 class="content-heading">Three Must-Have Playful Features</h3>
+        <div class="text-block-md">
+            <p>Based on our user research, MileScape must include the following three playful features to transform running from a repetitive tracking activity into an engaging exploration experience.</p>
+        </div>
+        <div class="table-scroll">
+            <table class="contribution-table" aria-label="Three must-have playful features for MileScape">
+                <thead>
+                    <tr>
+                        <th scope="col">Must-Have Feature</th>
+                        <th scope="col">User Need Addressed</th>
+                        <th scope="col">How MileScape Responds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Must-Have Feature"><strong>Exploration-Based Route Progress</strong></td>
+                        <td data-label="User Need Addressed">Users want running to feel less repetitive and more goal-oriented.</td>
+                        <td data-label="How MileScape Responds">MileScape converts local running distance into progress along virtual global routes, allowing users to experience running as a journey rather than a task.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Must-Have Feature"><strong>Landmark Unlocking and Collection</strong></td>
+                        <td data-label="User Need Addressed">Users want meaningful rewards that can accumulate over time.</td>
+                        <td data-label="How MileScape Responds">Users unlock postcard-style landmarks and collectible route achievements when they reach distance milestones. This creates a long-term visual record of their running effort.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Must-Have Feature"><strong>PaceCrew Collaborative Exploration</strong></td>
+                        <td data-label="User Need Addressed">Users want social motivation without ranking pressure.</td>
+                        <td data-label="How MileScape Responds">PaceCrew allows users to contribute mileage to shared team journeys asynchronously, supporting belonging and cooperation without real-time competition.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

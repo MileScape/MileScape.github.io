@@ -1020,3 +1020,67 @@
         });
     }
 }());
+
+(function () {
+    var nav = document.querySelector(".apple-nav");
+    var svg = document.querySelector(".nav-progress-ring");
+    if (!nav || !svg) return;
+
+    var track = svg.querySelector(".nav-progress-track");
+    var fill = svg.querySelector(".nav-progress-fill");
+    if (!track || !fill) return;
+
+    var pathLength = 0;
+
+    function pillPath(w, h) {
+        var r = h / 2;
+        return "M " + r + " 0" +
+            " L " + (w - r) + " 0" +
+            " A " + r + " " + r + " 0 0 1 " + w + " " + r +
+            " L " + w + " " + (h - r) +
+            " A " + r + " " + r + " 0 0 1 " + (w - r) + " " + h +
+            " L " + r + " " + h +
+            " A " + r + " " + r + " 0 0 1 0 " + (h - r) +
+            " L 0 " + r +
+            " A " + r + " " + r + " 0 0 1 " + r + " 0 Z";
+    }
+
+    function syncSize() {
+        var rect = nav.getBoundingClientRect();
+        var w = rect.width;
+        var h = rect.height;
+        svg.style.width = w + "px";
+        svg.style.height = h + "px";
+        svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+        var d = pillPath(w, h);
+        track.setAttribute("d", d);
+        fill.setAttribute("d", d);
+        pathLength = fill.getTotalLength();
+        track.style.strokeDasharray = pathLength;
+        track.style.strokeDashoffset = 0;
+        fill.style.strokeDasharray = pathLength;
+        fill.style.strokeDashoffset = pathLength;
+    }
+
+    function updateProgress() {
+        if (!pathLength) return;
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+        fill.style.strokeDashoffset = pathLength * (1 - progress);
+    }
+
+    syncSize();
+    updateProgress();
+
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+            syncSize();
+            updateProgress();
+        }, 100);
+    });
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+}());

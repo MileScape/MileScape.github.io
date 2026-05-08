@@ -2952,7 +2952,12 @@
         .comparison-card {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
+        }
+
+        .comparison-header {
+            display: grid;
+            gap: 8px;
         }
 
         .comparison-intro {
@@ -2960,6 +2965,21 @@
             font-size: 15px;
             line-height: 1.75;
             color: var(--text-secondary);
+        }
+
+        .comparison-table {
+            table-layout: fixed;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            overflow-wrap: normal;
+            word-break: normal;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            width: 184px;
         }
 
         .comparison-product {
@@ -3017,7 +3037,7 @@
         .comparison-evidence-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 10px;
+            gap: 12px;
         }
 
         .comparison-evidence-item {
@@ -3029,14 +3049,14 @@
 
         .comparison-evidence-image {
             width: 100%;
-            height: 280px;
             display: block;
-            object-fit: contain;
+            aspect-ratio: 1206 / 2622;
+            object-fit: cover;
             object-position: top center;
-            padding: 6px;
             border: var(--line);
             border-radius: 18px;
-            background: rgba(26, 25, 21, 0.9);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(247, 241, 233, 0.92) 100%);
             box-shadow: 0 12px 24px -18px rgba(26, 25, 21, 0.5);
         }
 
@@ -3561,7 +3581,19 @@
             }
 
             .comparison-evidence-image {
-                height: 300px;
+                max-height: 420px;
+            }
+
+            .comparison-table td:first-child {
+                padding-bottom: 4px;
+            }
+
+            .comparison-table td:first-child::before {
+                display: none;
+            }
+
+            .comparison-table .comparison-product {
+                font-size: 17px;
             }
 
             .evidence-link-panel {
@@ -4205,10 +4237,12 @@
     </div>
 
     <div class="inner-card comparison-card flow-gap-top">
-        <h3 class="content-heading">Commercial Product Comparison</h3>
-        <p class="comparison-intro">We compared MileScape against widely used running and fitness products to understand where current tools succeed, and where they leave room for more playful, emotionally meaningful running experiences.</p>
+        <div class="comparison-header">
+            <h3 class="content-heading">Commercial Product Comparison</h3>
+            <p class="comparison-intro">We compared MileScape against widely used running and fitness products to understand where current tools succeed, and where they leave room for more playful, emotionally meaningful running experiences.</p>
+        </div>
         <div class="table-scroll">
-            <table class="contribution-table" aria-label="Comparison of commercial running products">
+            <table class="contribution-table comparison-table" aria-label="Comparison of commercial running products">
                 <thead>
                     <tr>
                         <th scope="col">Commercial Product</th>

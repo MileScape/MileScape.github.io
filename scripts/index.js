@@ -440,6 +440,93 @@
 }());
 
 (function () {
+    const moodboard = document.getElementById("interviewMoodboard");
+
+    if (!moodboard) {
+        return;
+    }
+
+    const items = Array.from(moodboard.querySelectorAll(".scrapbook-item"));
+    const prevButton = document.getElementById("interviewMoodboardPrev");
+    const nextButton = document.getElementById("interviewMoodboardNext");
+    const pageIndicator = document.getElementById("interviewMoodboardPageIndicator");
+
+    if (!items.length || !prevButton || !nextButton || !pageIndicator) {
+        return;
+    }
+
+    let activeIndex = 0;
+
+    function syncIndicator() {
+        const moodboardRect = moodboard.getBoundingClientRect();
+        const moodboardCenter = moodboardRect.left + moodboardRect.width / 2;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        items.forEach(function (item, index) {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenter = itemRect.left + itemRect.width / 2;
+            const distance = Math.abs(itemCenter - moodboardCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+        });
+
+        activeIndex = closestIndex;
+        pageIndicator.textContent = (activeIndex + 1) + " / " + items.length;
+    }
+
+    function scrollToIndex(index) {
+        const normalizedIndex = (index + items.length) % items.length;
+        items[normalizedIndex].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
+        activeIndex = normalizedIndex;
+        pageIndicator.textContent = (activeIndex + 1) + " / " + items.length;
+    }
+
+    let scrollFrame = 0;
+
+    moodboard.addEventListener("scroll", function () {
+        if (scrollFrame) {
+            window.cancelAnimationFrame(scrollFrame);
+        }
+
+        scrollFrame = window.requestAnimationFrame(function () {
+            scrollFrame = 0;
+            syncIndicator();
+        });
+    }, { passive: true });
+
+    moodboard.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            scrollToIndex(activeIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            scrollToIndex(activeIndex + 1);
+        }
+    });
+
+    prevButton.addEventListener("click", function () {
+        scrollToIndex(activeIndex - 1);
+    });
+
+    nextButton.addEventListener("click", function () {
+        scrollToIndex(activeIndex + 1);
+    });
+
+    window.addEventListener("resize", syncIndicator);
+    syncIndicator();
+}());
+
+(function () {
     function initStackSlider(options) {
         const viewport = document.getElementById(options.viewportId);
 

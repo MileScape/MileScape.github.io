@@ -1,7 +1,7 @@
 (function () {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const baseSelector = ".inner-card";
-    const excludedSelector = "a[href], button, input, select, textarea, summary, table, .crazy8-slider";
+    const excludedSelector = "a[href], button, input, select, textarea, summary, table, .crazy8-slider, .scrapbook-carousel";
     const cards = Array.from(document.querySelectorAll(baseSelector)).filter(function (card) {
         return !card.querySelector(excludedSelector);
     });

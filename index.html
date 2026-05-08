@@ -424,32 +424,32 @@
         }
 
         .hero-slide--tokyo {
-            background-image: url("images/louie-martinez-IocJwyqRv3M-unsplash.jpg");
+            background-image: url("images/hero/louie-martinez-IocJwyqRv3M-unsplash.jpg");
             background-position: center center;
         }
 
         .hero-slide--newyork {
-            background-image: url("images/jermaine-ee-A2CChTZvzTE-unsplash.jpg");
+            background-image: url("images/hero/jermaine-ee-A2CChTZvzTE-unsplash.jpg");
             background-position: center center;
         }
 
         .hero-slide--vida {
-            background-image: url("images/vida-huang-U9i8CrmdPdE-unsplash.jpg");
+            background-image: url("images/hero/vida-huang-U9i8CrmdPdE-unsplash.jpg");
             background-position: center center;
         }
 
         .hero-slide--benjamin {
-            background-image: url("images/benjamin-davies-Oja2ty_9ZLM-unsplash.jpg");
+            background-image: url("images/hero/benjamin-davies-Oja2ty_9ZLM-unsplash.jpg");
             background-position: center center;
         }
 
         .hero-slide--adam {
-            background-image: url("images/adam-jang-MLKrf51NV8w-unsplash.jpg");
+            background-image: url("images/hero/adam-jang-MLKrf51NV8w-unsplash.jpg");
             background-position: center center;
         }
 
         .hero-slide--nicolas {
-            background-image: url("images/nicolas-j-leclercq-va_nrBLonf8-unsplash.jpg");
+            background-image: url("images/hero/nicolas-j-leclercq-va_nrBLonf8-unsplash.jpg");
             background-position: center center;
         }
 
@@ -1724,15 +1724,41 @@
             line-height: 1.7;
         }
 
-        .scrapbook {
+        .scrapbook-carousel {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            padding: 24px;
+            gap: 16px;
+        }
+
+        .scrapbook {
+            display: flex;
+            gap: 26px;
+            padding: 24px 8px 28px;
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-snap-type: x mandatory;
+            scroll-padding-inline: 14px;
+            overscroll-behavior-x: contain;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .scrapbook::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scrapbook::-webkit-scrollbar-track {
+            background: rgba(222, 216, 207, 0.42);
+            border-radius: 999px;
+        }
+
+        .scrapbook::-webkit-scrollbar-thumb {
+            background: rgba(93, 112, 82, 0.42);
+            border-radius: 999px;
         }
 
         .scrapbook-item {
             position: relative;
+            flex: 0 0 clamp(260px, 42vw, 380px);
+            scroll-snap-align: center;
             background: #fff;
             padding: 10px 10px 28px;
             border-radius: 4px;
@@ -1779,9 +1805,12 @@
 
         .scrapbook-img {
             width: 100%;
+            height: clamp(260px, 42vw, 430px);
             display: block;
             border-radius: 2px;
             background: #f4f0e8;
+            object-fit: contain;
+            object-position: center;
         }
 
         .scrapbook-caption {
@@ -1793,19 +1822,69 @@
             font-style: italic;
         }
 
+        .scrapbook-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .scrapbook-control {
+            min-width: 116px;
+            min-height: 44px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: 2px solid rgba(193, 140, 93, 0.56);
+            background: rgba(255, 255, 255, 0.56);
+            color: var(--primary);
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.22s var(--bounce), background 0.22s var(--bounce), color 0.22s var(--bounce), box-shadow 0.22s var(--bounce);
+        }
+
+        .scrapbook-control:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, var(--primary) 0%, #708664 100%);
+            color: var(--primary-foreground);
+            box-shadow: 0 6px 24px -4px rgba(93, 112, 82, 0.24);
+        }
+
+        .scrapbook-control:focus-visible,
+        .scrapbook:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 3px;
+        }
+
+        .scrapbook-page-indicator {
+            min-width: 74px;
+            padding: 9px 13px;
+            border-radius: 16px;
+            border: var(--line);
+            background: rgba(255, 250, 242, 0.92);
+            color: var(--primary);
+            font-weight: 800;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .scrapbook {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 14px;
-                padding: 16px;
+                gap: 16px;
+                padding: 18px 2px 24px;
+            }
+
+            .scrapbook-item {
+                flex-basis: min(78vw, 340px);
             }
         }
 
         @media (max-width: 480px) {
-            .scrapbook {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                padding: 12px;
+            .scrapbook-item {
+                flex-basis: min(82vw, 300px);
+            }
+
+            .scrapbook-control {
+                min-width: 104px;
             }
         }
 
@@ -1845,12 +1924,6 @@
 
         .appendix-item .media-frame {
             padding: 8px;
-        }
-
-        .appendix-item .media-frame--interview {
-            max-height: 620px;
-            object-fit: contain;
-            object-position: top center;
         }
 
         .media-grid--two {
@@ -3729,28 +3802,28 @@
     <div class="team-grid">
         <div class="inner-card team-member">
             <div class="avatar-placeholder">
-                <img class="avatar-image" src="images/YSY.jpg" alt="Shengyang Yin">
+                <img class="avatar-image" src="images/team/YSY.jpg" alt="Shengyang Yin">
             </div>
             <div class="member-name">Shengyang Yin</div>
             <div class="member-role">2361841</div>
         </div>
         <div class="inner-card team-member">
             <div class="avatar-placeholder avatar-placeholder--green">
-                <img class="avatar-image" src="images/ZYZ.jpg" alt="Yize Zheng">
+                <img class="avatar-image" src="images/team/ZYZ.jpg" alt="Yize Zheng">
             </div>
             <div class="member-name">Yize Zheng</div>
             <div class="member-role">2362042</div>
         </div>
         <div class="inner-card team-member">
             <div class="avatar-placeholder avatar-placeholder--red">
-                <img class="avatar-image" src="images/ZCR.jpg" alt="Chenrui Zhu">
+                <img class="avatar-image" src="images/team/ZCR.jpg" alt="Chenrui Zhu">
             </div>
             <div class="member-name">Chenrui Zhu</div>
             <div class="member-role">2361387</div>
         </div>
         <div class="inner-card team-member">
             <div class="avatar-placeholder avatar-placeholder--tertiary">
-                <img class="avatar-image" src="images/CQ.jpg" alt="Qi Chen">
+                <img class="avatar-image" src="images/team/CQ.jpg" alt="Qi Chen">
             </div>
             <div class="member-name">Qi Chen</div>
             <div class="member-role">2363203</div>
@@ -4014,19 +4087,19 @@
                 <h5 class="comparison-evidence-group-title">Keep</h5>
                 <div class="comparison-evidence-grid">
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Keep1.jpg" alt="Keep outdoor running start screen showing map, AI guidance, music, equipment, and Go button">
+                        <img class="comparison-evidence-image" src="images/competitive/Keep1.jpg" alt="Keep outdoor running start screen showing map, AI guidance, music, equipment, and Go button">
                         <figcaption class="comparison-evidence-caption">Keep provides map-based outdoor running, AI guidance, music, and equipment entry points.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Keep2.jpg" alt="Keep live running screen showing map, total distance, duration, and real-time pace">
+                        <img class="comparison-evidence-image" src="images/competitive/Keep2.jpg" alt="Keep live running screen showing map, total distance, duration, and real-time pace">
                         <figcaption class="comparison-evidence-caption">During a run, Keep focuses on distance, duration, real-time pace, and current location.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Keep3.jpg" alt="Keep live map view showing running location and performance drawer">
+                        <img class="comparison-evidence-image" src="images/competitive/Keep3.jpg" alt="Keep live map view showing running location and performance drawer">
                         <figcaption class="comparison-evidence-caption">The larger map still frames progress as a live route record rather than a collectible journey.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Keep4.jpg" alt="Keep discovery page showing competitions, brand events, and running activities">
+                        <img class="comparison-evidence-image" src="images/competitive/Keep4.jpg" alt="Keep discovery page showing competitions, brand events, and running activities">
                         <figcaption class="comparison-evidence-caption">Keep's events and competitions sit in discovery, separate from the personal running journey.</figcaption>
                     </figure>
                 </div>
@@ -4036,15 +4109,15 @@
                 <h5 class="comparison-evidence-group-title">Huawei Health</h5>
                 <div class="comparison-evidence-grid">
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Huawei1.jpg" alt="Huawei Health achievements screen showing steps, mileage, days, and calories">
+                        <img class="comparison-evidence-image" src="images/competitive/Huawei1.jpg" alt="Huawei Health achievements screen showing steps, mileage, days, and calories">
                         <figcaption class="comparison-evidence-caption">Huawei achievements are organized around cumulative steps, mileage, active days, and calories.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Huawei2.jpg" alt="Huawei Health badge screen showing activity rings, walking, and challenge medals">
+                        <img class="comparison-evidence-image" src="images/competitive/Huawei2.jpg" alt="Huawei Health badge screen showing activity rings, walking, and challenge medals">
                         <figcaption class="comparison-evidence-caption">Badges make effort visible, but they mainly reward metric thresholds and activity rings.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/Huawei3.jpg" alt="Huawei Health live workout screen showing map, target distance, calories, pace, and steps">
+                        <img class="comparison-evidence-image" src="images/competitive/Huawei3.jpg" alt="Huawei Health live workout screen showing map, target distance, calories, pace, and steps">
                         <figcaption class="comparison-evidence-caption">The live workout view combines map tracking with distance, time, calories, pace, and steps.</figcaption>
                     </figure>
                 </div>
@@ -4054,15 +4127,15 @@
                 <h5 class="comparison-evidence-group-title">Nike Run Club</h5>
                 <div class="comparison-evidence-grid">
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/NikeRun1.jpg" alt="Nike Run Club activity screen showing weekly distance, pace, duration, and shoe mileage">
+                        <img class="comparison-evidence-image" src="images/competitive/NikeRun1.jpg" alt="Nike Run Club activity screen showing weekly distance, pace, duration, and shoe mileage">
                         <figcaption class="comparison-evidence-caption">Nike Run Club foregrounds weekly mileage, pace, duration, and activity records.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/NikeRun2.jpg" alt="Nike Run Club weekly challenge list showing 30K, 15K, and 5K challenges">
+                        <img class="comparison-evidence-image" src="images/competitive/NikeRun2.jpg" alt="Nike Run Club weekly challenge list showing 30K, 15K, and 5K challenges">
                         <figcaption class="comparison-evidence-caption">Nike weekly challenges are structured around distance targets and badge-like rewards.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/NikeRun3.jpg" alt="Nike Run Club monthly 80K challenge screen with locked badge">
+                        <img class="comparison-evidence-image" src="images/competitive/NikeRun3.jpg" alt="Nike Run Club monthly 80K challenge screen with locked badge">
                         <figcaption class="comparison-evidence-caption">The monthly 80K challenge turns progress into a locked badge, not a location-based story.</figcaption>
                     </figure>
                 </div>
@@ -4072,19 +4145,19 @@
                 <h5 class="comparison-evidence-group-title">Apple Fitness</h5>
                 <div class="comparison-evidence-grid">
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/AppleFitness1.jpg" alt="Apple Fitness summary screen showing rings, calories, steps, walking distance, and badges">
+                        <img class="comparison-evidence-image" src="images/competitive/AppleFitness1.jpg" alt="Apple Fitness summary screen showing rings, calories, steps, walking distance, and badges">
                         <figcaption class="comparison-evidence-caption">Apple Fitness centers rings, steps, walking distance, trends, and activity badges.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/AppleFitness2.jpg" alt="Apple Fitness workout details showing duration, distance, calories, pace, and heart rate">
+                        <img class="comparison-evidence-image" src="images/competitive/AppleFitness2.jpg" alt="Apple Fitness workout details showing duration, distance, calories, pace, and heart rate">
                         <figcaption class="comparison-evidence-caption">Workout details present a dense physiological summary of time, distance, calories, pace, and heart rate.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/AppleFitness3.jpg" alt="Apple Fitness badge screen showing walking workout record based on calories burned">
+                        <img class="comparison-evidence-image" src="images/competitive/AppleFitness3.jpg" alt="Apple Fitness badge screen showing walking workout record based on calories burned">
                         <figcaption class="comparison-evidence-caption">Badges reward record moments, such as highest calories burned in walking training.</figcaption>
                     </figure>
                     <figure class="comparison-evidence-item">
-                        <img class="comparison-evidence-image" src="images/AppleFitness4.jpg" alt="Apple Fitness sharing screen inviting friends to share workout records">
+                        <img class="comparison-evidence-image" src="images/competitive/AppleFitness4.jpg" alt="Apple Fitness sharing screen inviting friends to share workout records">
                         <figcaption class="comparison-evidence-caption">Sharing invites friends around fitness records, but does not create a shared route journey.</figcaption>
                     </figure>
                 </div>
@@ -4110,7 +4183,7 @@
         <div class="inner-card">
             <div class="persona-header">
                 <div class="persona-avatar">
-                    <img class="avatar-image" src="images/Li.jpg" alt="Li Persona">
+                    <img class="avatar-image" src="images/personas/Li.jpg" alt="Li Persona">
                 </div>
                 <div>
                     <h3 class="persona-title">Persona 1: Runner (Primary User)</h3>
@@ -4167,7 +4240,7 @@
         <div class="inner-card">
             <div class="persona-header">
                 <div class="persona-avatar avatar-placeholder--blue">
-                    <img class="avatar-image" src="images/Niu.jpg" alt="Niu Persona">
+                    <img class="avatar-image" src="images/personas/Niu.jpg" alt="Niu Persona">
                 </div>
                 <div>
                     <h3 class="persona-title">Persona 2: Organizer (Secondary User)</h3>
@@ -4227,18 +4300,33 @@
     <h2 class="section-title">Moodboard</h2>
 
     <div class="inner-card">
-        <div class="scrapbook">
-            <div class="scrapbook-item">
-                <img class="scrapbook-img" src="images/Interview1.jpg" alt="User interview session 1">
-                <div class="scrapbook-caption">User interview</div>
+        <div class="scrapbook-carousel">
+            <div class="scrapbook" id="interviewMoodboard" tabindex="0" aria-label="Interview moodboard carousel">
+                <div class="scrapbook-item">
+                    <img class="scrapbook-img" src="images/moodboard/Interview1.jpg" alt="Interview screenshot about running mileage, wearable data, and satisfaction">
+                    <div class="scrapbook-caption">Interview 01</div>
+                </div>
+                <div class="scrapbook-item">
+                    <img class="scrapbook-img" src="images/moodboard/Interview2.jpg" alt="Interview screenshot about VO2max, pressure, and online running events">
+                    <div class="scrapbook-caption">Interview 02</div>
+                </div>
+                <div class="scrapbook-item">
+                    <img class="scrapbook-img" src="images/moodboard/Interview3.jpg" alt="Interview screenshot about removing competition and connecting mileage with activities">
+                    <div class="scrapbook-caption">Interview 03</div>
+                </div>
+                <div class="scrapbook-item">
+                    <img class="scrapbook-img" src="images/moodboard/interview4.jpg" alt="Interview photo showing an in-person user interview on a running track">
+                    <div class="scrapbook-caption">Interview 04</div>
+                </div>
+                <div class="scrapbook-item">
+                    <img class="scrapbook-img" src="images/moodboard/interview5.jpg" alt="Interview evidence screenshot">
+                    <div class="scrapbook-caption">Interview 05</div>
+                </div>
             </div>
-            <div class="scrapbook-item">
-                <img class="scrapbook-img" src="images/Interview2.jpg" alt="User interview session 2">
-                <div class="scrapbook-caption">User interview</div>
-            </div>
-            <div class="scrapbook-item">
-                <img class="scrapbook-img" src="images/Interview3.jpg" alt="User interview session 3">
-                <div class="scrapbook-caption">User interview</div>
+            <div class="scrapbook-controls">
+                <button class="scrapbook-control" id="interviewMoodboardPrev" type="button" aria-label="Previous interview image">Previous</button>
+                <div class="scrapbook-page-indicator" id="interviewMoodboardPageIndicator" aria-live="polite">1 / 5</div>
+                <button class="scrapbook-control" id="interviewMoodboardNext" type="button" aria-label="Next interview image">Next</button>
             </div>
         </div>
     </div>
@@ -4793,7 +4881,7 @@
             <div class="crazy8-viewport" id="crazy8Viewport" tabindex="0" aria-label="Crazy Eights sketch slider">
                 <article class="crazy8-slide is-active" data-index="0">
                     <div class="crazy8-slide-media">
-                        <img src="images/crazy8-1.jpg" alt="Crazy Eights Sketch 1">
+                        <img src="images/ideation/crazy8-1.jpg" alt="Crazy Eights Sketch 1">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Crazy Eights</div>
@@ -4804,7 +4892,7 @@
 
                 <article class="crazy8-slide" data-index="1">
                     <div class="crazy8-slide-media">
-                        <img src="images/crazy8-2.jpg" alt="Crazy Eights Sketch 2">
+                        <img src="images/ideation/crazy8-2.jpg" alt="Crazy Eights Sketch 2">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Crazy Eights</div>
@@ -4815,7 +4903,7 @@
 
                 <article class="crazy8-slide" data-index="2">
                     <div class="crazy8-slide-media">
-                        <img src="images/crazy8-3.jpg" alt="Crazy Eights Sketch 3">
+                        <img src="images/ideation/crazy8-3.jpg" alt="Crazy Eights Sketch 3">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Crazy Eights</div>
@@ -4891,9 +4979,9 @@
             <p>Early wireframes and interaction flows tested through Figma prototype.</p>
             <div class="media-panel">
                 <div class="media-grid media-grid--three">
-                    <img class="media-frame media-frame--tight" src="images/low-1.png" alt="Low-Fi Prototype Screen 1">
-                    <img class="media-frame media-frame--tight" src="images/low-2.png" alt="Low-Fi Prototype Screen 2">
-                    <img class="media-frame media-frame--tight" src="images/low-3.png" alt="Low-Fi Prototype Screen 3">
+                    <img class="media-frame media-frame--tight" src="images/low-fi/low-1.png" alt="Low-Fi Prototype Screen 1">
+                    <img class="media-frame media-frame--tight" src="images/low-fi/low-2.png" alt="Low-Fi Prototype Screen 2">
+                    <img class="media-frame media-frame--tight" src="images/low-fi/low-3.png" alt="Low-Fi Prototype Screen 3">
                 </div>
             </div>
         </div>
@@ -4924,7 +5012,7 @@
         <figure class="architecture-figure">
             <img
                 class="architecture-image"
-                src="images/milescape_system_flow.png"
+                src="images/technical/milescape_system_flow.png"
                 alt="MileScape System Architecture Diagram"
             >
         </figure>
@@ -4944,7 +5032,7 @@
             <div class="crazy8-viewport" id="highfiViewport" tabindex="0" aria-label="High-fidelity prototype slider">
                 <article class="crazy8-slide is-active" data-index="0">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/start.png" alt="MileScape high-fidelity prototype start screen">
+                        <img src="images/high-fi/start.png" alt="MileScape high-fidelity prototype start screen">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">High-Fi Prototype</div>
@@ -4955,7 +5043,7 @@
 
                 <article class="crazy8-slide" data-index="1">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/微信图片_20260423223748_8000_389.png" alt="MileScape high-fidelity route detail screen">
+                        <img src="images/high-fi/微信图片_20260423223748_8000_389.png" alt="MileScape high-fidelity route detail screen">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">High-Fi Prototype</div>
@@ -4966,7 +5054,7 @@
 
                 <article class="crazy8-slide" data-index="2">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/微信图片_20260423223747_7999_389.png" alt="MileScape high-fidelity run result screen">
+                        <img src="images/high-fi/微信图片_20260423223747_7999_389.png" alt="MileScape high-fidelity run result screen">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">High-Fi Prototype</div>
@@ -4977,7 +5065,7 @@
 
                 <article class="crazy8-slide" data-index="3">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/微信图片_20260423223746_7998_389.png" alt="MileScape high-fidelity collectible route card screen">
+                        <img src="images/high-fi/微信图片_20260423223746_7998_389.png" alt="MileScape high-fidelity collectible route card screen">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">High-Fi Prototype</div>
@@ -5009,7 +5097,7 @@
             <div class="crazy8-viewport" id="profiViewport" tabindex="0" aria-label="Version Pro prototype slider">
                 <article class="crazy8-slide is-active" data-index="0">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/pro-1.png" alt="Version Pro screen 1">
+                        <img src="images/high-fi/pro-1.png" alt="Version Pro screen 1">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
@@ -5020,7 +5108,7 @@
 
                 <article class="crazy8-slide" data-index="1">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/pro-2.png" alt="Version Pro screen 2">
+                        <img src="images/high-fi/pro-2.png" alt="Version Pro screen 2">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
@@ -5031,7 +5119,7 @@
 
                 <article class="crazy8-slide" data-index="2">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/pro-3.png" alt="Version Pro screen 3">
+                        <img src="images/high-fi/pro-3.png" alt="Version Pro screen 3">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
@@ -5042,7 +5130,7 @@
 
                 <article class="crazy8-slide" data-index="3">
                     <div class="crazy8-slide-media crazy8-slide-media--contain">
-                        <img src="images/pro-4.png" alt="Version Pro screen 4">
+                        <img src="images/high-fi/pro-4.png" alt="Version Pro screen 4">
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
@@ -5222,7 +5310,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame"
-                        src="images/ueqs_item_square.png"
+                        src="images/evaluation/ueqs_item_square.png"
                         alt="Original UEQ-S comparison figure"
                     >
                 </div>
@@ -5232,7 +5320,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame"
-                        src="images/imi_item_bar_chart.png"
+                        src="images/evaluation/imi_item_bar_chart.png"
                         alt="Original IMI comparison figure"
                     >
                 </div>
@@ -5248,7 +5336,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame"
-                        src="images/fitness_app_usage_transparent.png"
+                        src="images/research/fitness_app_usage_transparent.png"
                         alt="Original fitness app usage figure"
                     >
                 </div>
@@ -5258,7 +5346,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame"
-                        src="images/fitness_app_gaps_ranked_bar_transparent.png"
+                        src="images/research/fitness_app_gaps_ranked_bar_transparent.png"
                         alt="Original fitness app gap ranking figure"
                     >
                 </div>
@@ -5268,7 +5356,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame"
-                        src="images/desired_playful_features_radar_8_dimensions.png"
+                        src="images/research/desired_playful_features_radar_8_dimensions.png"
                         alt="Original playful feature preference figure"
                     >
                 </div>
@@ -5280,55 +5368,6 @@
                 <p class="evidence-link-note">Full questionnaire record retained for traceability alongside the summarized research figures.</p>
             </div>
             <a class="evidence-link-button" href="evidence/milescape-questionnaire.pdf" target="_blank" rel="noreferrer">Open PDF</a>
-        </div>
-    </div>
-
-    <div class="inner-card appendix-block flow-gap-top">
-        <h3 class="content-heading">Interview Evidence</h3>
-        <div class="text-block-sm">
-            <p>Original interview screenshots and field interview photo are preserved here as qualitative evidence for runner motivation, pressure from performance metrics, and the decision to shift from competition toward meaningful progress.</p>
-        </div>
-        <div class="appendix-grid">
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 1</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/Interview1.jpg"
-                        alt="Interview screenshot about running mileage, wearable data, and satisfaction"
-                    >
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 2</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/Interview2.jpg"
-                        alt="Interview screenshot about VO2max, pressure, and online running events"
-                    >
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 3</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/Interview3.jpg"
-                        alt="Interview screenshot about removing competition and connecting mileage with activities"
-                    >
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Interview Evidence 4</div>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame media-frame--interview"
-                        src="images/interview4.jpg"
-                        alt="Interview photo showing an in-person user interview on a running track"
-                    >
-                </div>
-            </div>
         </div>
     </div>
 </div>

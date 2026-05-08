@@ -199,6 +199,55 @@
             margin-bottom: 16px;
         }
 
+        .site-footer {
+            width: 100%;
+            padding: 4px 4px 0;
+            color: var(--text-primary);
+        }
+
+        .site-footer__brand {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .site-footer__tagline {
+            margin: 10px 0 0;
+            color: var(--muted-foreground);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .site-footer__nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 18px 0 0;
+        }
+
+        .site-footer__nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .site-footer__divider {
+            border: 0;
+            border-top: var(--line);
+            margin: 18px 0 14px;
+        }
+
+        .site-footer__copyright {
+            margin: 0;
+            color: var(--muted-foreground);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
         /* Team & Personas 布局 */
         .avatar-placeholder, .persona-avatar {
             width: 80px;
@@ -328,7 +377,7 @@
     <a href="#evaluation">Impact</a>
 </nav>
 
-<div class="hero-card" role="banner">
+<div class="hero-card" id="top" role="banner">
     <div class="hero-card-layer hero-card-layer--1"></div>
     <div class="hero-card-layer hero-card-layer--2"></div>
     <h1 class="hero-title" data-split-flip-title>MileScape</h1>
@@ -459,6 +508,19 @@
         <p style="font-size: 13px; color: var(--muted-foreground); margin:0;">道格拉斯-普克抽稀算法减少长距离渲染消耗。</p>
     </div>
 </div>
+
+<footer class="site-footer" aria-label="MileScape copyright footer">
+    <p class="site-footer__brand">MileScape</p>
+    <p class="site-footer__tagline">"Run locally, explore globally."</p>
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+        <a href="https://milescape.vercel.app" target="_blank" rel="noreferrer">MileScape</a>
+        <a href="https://github.com/MileScape/MileScape" target="_blank" rel="noreferrer">Github</a>
+        <a href="https://www.figma.com/proto/H7QpI1PgyFgl2eg6vI0sbC/CPT208_GroupC1-2_MileScape_Low-Fi-Prototype?node-id=0-1&t=qa9ZkeNCy2ZbsSEe-1" target="_blank" rel="noreferrer">Low-Fi Prototype</a>
+        <a href="#">Video</a>
+    </nav>
+    <hr class="site-footer__divider">
+    <p class="site-footer__copyright">© 2026 MileScape. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

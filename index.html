@@ -2530,6 +2530,20 @@
             flex-shrink: 0;
         }
 
+        .timeline-manuscript-frame--filled {
+            padding: 5px;
+            border-style: solid;
+            border-color: rgba(193, 140, 93, 0.32);
+            overflow: hidden;
+            background: rgba(255, 253, 248, 0.96);
+        }
+
+        .timeline-manuscript-frame--stack {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 4px;
+        }
+
         .timeline-manuscript-frame:hover {
             transform: rotate(-2deg) scale(1.06);
             box-shadow:
@@ -2552,6 +2566,96 @@
             color: rgba(92, 88, 80, 0.4);
             font-weight: 600;
             user-select: none;
+        }
+
+        .timeline-frame-link {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            overflow: hidden;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.72);
+            cursor: zoom-in;
+        }
+
+        .timeline-frame-link:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 2px;
+        }
+
+        .timeline-frame-link img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .timeline-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1500;
+            display: grid;
+            place-items: center;
+            padding: 18px;
+        }
+
+        .timeline-lightbox[hidden] {
+            display: none;
+        }
+
+        .timeline-lightbox__backdrop {
+            position: absolute;
+            inset: 0;
+            border: 0;
+            padding: 0;
+            background: rgba(25, 21, 17, 0.78);
+            cursor: zoom-out;
+        }
+
+        .timeline-lightbox__frame {
+            position: relative;
+            z-index: 1;
+            width: min(92vw, 980px);
+            max-height: 88vh;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(253, 252, 248, 0.98);
+            box-shadow: 0 22px 60px rgba(27, 22, 17, 0.35);
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            gap: 10px;
+            overflow: hidden;
+        }
+
+        .timeline-lightbox__close {
+            justify-self: end;
+            width: 34px;
+            height: 34px;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(92, 88, 80, 0.12);
+            color: var(--foreground);
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .timeline-lightbox__close:focus-visible {
+            outline: 3px solid var(--ring);
+            outline-offset: 2px;
+        }
+
+        .timeline-lightbox__image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.66);
         }
 
         /* ── alternating layout ── */
@@ -4773,10 +4877,14 @@
     <div class="timeline-track-scroll">
         <ol class="project-timeline-list" aria-label="MileScape project timeline">
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled">
+                    <a class="timeline-frame-link" href="images/timeline/timeline3.png" aria-label="Preview team formation image">
+                        <img src="images/timeline/timeline3.png" alt="Team chat about meeting for the project">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">03/10</span>
+                    <span class="timeline-date">03/07</span>
                     <h3>Team Formation</h3>
                     <p>Defined team roles and project vision.</p>
                 </article>
@@ -4786,47 +4894,72 @@
                 <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">03/17</span>
+                    <span class="timeline-date">03/14</span>
                     <h3>Project Planning</h3>
                     <p>Set milestones and module responsibilities.</p>
                 </article>
             </li>
 
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled">
+                    <a class="timeline-frame-link" href="images/timeline/timeline4.jpg" aria-label="Preview questionnaire image">
+                        <img src="images/timeline/timeline4.jpg" alt="Questionnaire poster shared for running habit and sports app research">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">03/23</span>
+                    <span class="timeline-date">04/13</span>
                     <h3>User Research</h3>
                     <p>Gathered feedback on running motivation and rewards.</p>
                 </article>
             </li>
 
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled timeline-manuscript-frame--stack">
+                    <a class="timeline-frame-link" href="images/timeline/timeline5.jpg" aria-label="Preview route and crew requirements image">
+                        <img src="images/timeline/timeline5.jpg" alt="Team chat discussing route milestones and team running mode">
+                    </a>
+                    <a class="timeline-frame-link" href="images/timeline/timeline2.jpg" aria-label="Preview PaceCrew requirements image">
+                        <img src="images/timeline/timeline2.jpg" alt="Team chat discussing organizer and runner group flow">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">03/26</span>
+                    <span class="timeline-date">04/14</span>
                     <h3>Requirements</h3>
                     <p>Defined routes, crews, achievements, and My Scape.</p>
                 </article>
             </li>
 
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled timeline-manuscript-frame--stack">
+                    <a class="timeline-frame-link" href="images/timeline/timeline1.jpg" aria-label="Preview map journey concept image">
+                        <img src="images/timeline/timeline1.jpg" alt="Team chat proposing map selection, goals, coins, and map completeness">
+                    </a>
+                    <a class="timeline-frame-link" href="images/timeline/timeline10.jpg" aria-label="Preview reward logic concept image">
+                        <img src="images/timeline/timeline10.jpg" alt="Team chat discussing running rewards and buying items">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">03/31</span>
+                    <span class="timeline-date">04/15</span>
                     <h3>Concept Design</h3>
                     <p>Turned running progress into a virtual journey.</p>
                 </article>
             </li>
 
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled timeline-manuscript-frame--stack">
+                    <a class="timeline-frame-link" href="images/timeline/timeline8.jpg" aria-label="Preview route setup interaction image">
+                        <img src="images/timeline/timeline8.jpg" alt="Team chat discussing landmark selection and progress logic">
+                    </a>
+                    <a class="timeline-frame-link" href="images/timeline/timeline9.jpg" aria-label="Preview route detail interaction image">
+                        <img src="images/timeline/timeline9.jpg" alt="Team chat showing route detail prototype and progress reward logic">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">04/03</span>
+                    <span class="timeline-date">04/16</span>
                     <h3>Interaction Design</h3>
                     <p>Designed the main app flow and page structure.</p>
                 </article>
@@ -4836,7 +4969,7 @@
                 <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">04/08</span>
+                    <span class="timeline-date">04/17</span>
                     <h3>Prototype Setup</h3>
                     <p>Built the mobile-first frontend foundation.</p>
                 </article>
@@ -4846,7 +4979,7 @@
                 <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">04/10</span>
+                    <span class="timeline-date">04/18</span>
                     <h3>Visual Direction</h3>
                     <p>Set the soft card style and playful reward tone.</p>
                 </article>
@@ -4856,17 +4989,30 @@
                 <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">04/16</span>
+                    <span class="timeline-date">04/20</span>
                     <h3>Core Scaffold</h3>
                     <p>Added Paceport, PaceCrew, My Scape, run, and achievement pages.</p>
                 </article>
             </li>
 
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled timeline-manuscript-frame--stack">
+                    <a class="timeline-frame-link" href="images/timeline/timeline6.jpg" aria-label="Preview currency and landmark badge image">
+                        <img src="images/timeline/timeline6.jpg" alt="Team chat discussing currency, landmark badges, and shop logic">
+                    </a>
+                    <a class="timeline-frame-link" href="images/timeline/timeline7.jpg" aria-label="Preview map completeness image">
+                        <img src="images/timeline/timeline7.jpg" alt="Team chat discussing map completeness and brightness for unlocked landmarks">
+                    </a>
+                    <a class="timeline-frame-link" href="images/timeline/timeline12.jpg" aria-label="Preview post-run reward image">
+                        <img src="images/timeline/timeline12.jpg" alt="Team chat discussing rewards after real running and landmark unlocks">
+                    </a>
+                    <a class="timeline-frame-link" href="images/timeline/timeline11.jpg" aria-label="Preview reward content image">
+                        <img src="images/timeline/timeline11.jpg" alt="Team chat discussing currency logic and reward content changes">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">04/19</span>
+                    <span class="timeline-date">04/21</span>
                     <h3>Route &amp; Reward Data</h3>
                     <p>Expanded routes, posters, landmarks, and capsule rewards.</p>
                 </article>
@@ -4876,14 +5022,18 @@
                 <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">04/22</span>
+                    <span class="timeline-date">04/23</span>
                     <h3>My Scape System</h3>
                     <p>Improved placement, inventory, footprints, and item actions.</p>
                 </article>
             </li>
 
             <li class="timeline-step">
-                <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
+                <div class="timeline-manuscript-frame timeline-manuscript-frame--filled">
+                    <a class="timeline-frame-link" href="images/timeline/timeline13.jpg" aria-label="Preview achievement reference image">
+                        <img src="images/timeline/timeline13.jpg" alt="Team chat sharing achievement badge reference examples">
+                    </a>
+                </div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
                     <span class="timeline-date">04/24</span>
@@ -4926,7 +5076,7 @@
                 <div class="timeline-manuscript-frame"><span class="frame-placeholder">Add Image</span></div>
                 <span class="timeline-node" aria-hidden="true"></span>
                 <article class="timeline-card">
-                    <span class="timeline-date">05/05</span>
+                    <span class="timeline-date">05/08</span>
                     <h3>Demo Completion</h3>
                     <p>Finalized Paceport details and PaceCrew management.</p>
                 </article>

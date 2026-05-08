@@ -1,4 +1,81 @@
 (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".timeline-frame-link"));
+
+    if (!links.length) {
+        return;
+    }
+
+    var activeTrigger = null;
+    var previousOverflow = "";
+    var lightbox = document.createElement("div");
+    lightbox.className = "timeline-lightbox";
+    lightbox.hidden = true;
+    lightbox.setAttribute("aria-hidden", "true");
+    lightbox.innerHTML = [
+        '<button class="timeline-lightbox__backdrop" type="button" aria-label="Close enlarged timeline image"></button>',
+        '<div class="timeline-lightbox__frame" role="dialog" aria-modal="true" aria-label="Timeline image preview">',
+        '    <button class="timeline-lightbox__close" type="button" aria-label="Close enlarged timeline image">&times;</button>',
+        '    <img class="timeline-lightbox__image" alt="">',
+        "</div>"
+    ].join("");
+    document.body.appendChild(lightbox);
+
+    var image = lightbox.querySelector(".timeline-lightbox__image");
+    var backdrop = lightbox.querySelector(".timeline-lightbox__backdrop");
+    var closeButton = lightbox.querySelector(".timeline-lightbox__close");
+
+    function openLightbox(trigger) {
+        var thumbnail = trigger.querySelector("img");
+        var source = trigger.getAttribute("href") || (thumbnail && thumbnail.currentSrc) || "";
+
+        if (!source || !image) {
+            return;
+        }
+
+        activeTrigger = trigger;
+        previousOverflow = document.body.style.overflow;
+        image.src = source;
+        image.alt = thumbnail ? thumbnail.alt : "";
+        lightbox.hidden = false;
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
+    }
+
+    function closeLightbox() {
+        if (lightbox.hidden) {
+            return;
+        }
+
+        lightbox.hidden = true;
+        lightbox.setAttribute("aria-hidden", "true");
+        image.removeAttribute("src");
+        document.body.style.overflow = previousOverflow;
+
+        if (activeTrigger) {
+            activeTrigger.focus();
+        }
+
+        activeTrigger = null;
+    }
+
+    links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            openLightbox(link);
+        });
+    });
+
+    backdrop.addEventListener("click", closeLightbox);
+    closeButton.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeLightbox();
+        }
+    });
+}());
+
+(function () {
     const trackStage = document.querySelector("[data-track-animation]");
 
     if (!trackStage) {

@@ -752,37 +752,53 @@
             color: var(--text-primary);
         }
 
-        .motivation-text p:nth-last-of-type(-n+2) {
-            margin-bottom: 0;
-            padding: 18px 0 0;
-            border-radius: 0;
-            border: none;
-            box-shadow: none;
+        .research-question-list {
             display: grid;
-            grid-template-columns: auto minmax(0, 1fr);
+            gap: 18px;
+            margin-top: 6px;
+        }
+
+        .research-question {
+            display: grid;
+            grid-template-columns: 120px minmax(0, 1fr);
+            gap: 18px;
             align-items: start;
-            column-gap: 16px;
-            background: transparent;
+            padding: 18px 0;
+            border-top: 1px solid rgba(222, 216, 207, 0.8);
         }
 
-        .motivation-text p:nth-last-of-type(2) {
-            margin-bottom: 16px;
+        .research-question:last-child {
+            border-bottom: 1px solid rgba(222, 216, 207, 0.8);
         }
 
-        .motivation-text p:nth-last-of-type(-n+2) strong {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 34px;
-            padding: 0 14px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-            color: #fffdf8;
-            font-size: 13px;
+        .research-question__label {
+            display: grid;
+            gap: 4px;
+            align-content: start;
+        }
+
+        .research-question__eyebrow {
+            color: var(--primary);
+            font-size: 11px;
             font-weight: 800;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            white-space: nowrap;
+        }
+
+        .research-question__index {
+            font-family: "Fraunces", serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            color: var(--foreground);
+        }
+
+        .research-question__text {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-primary);
         }
 
         .persona-grid {
@@ -2295,6 +2311,19 @@
                 line-height: 1.75;
             }
 
+            .research-question {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .research-question__index {
+                font-size: 28px;
+            }
+
+            .research-question__text {
+                font-size: 18px;
+            }
+
             .persona-header {
                 align-items: flex-start;
             }
@@ -2704,9 +2733,23 @@
 
             <p>Based on the above issues, our group has identified the following two research questions.</p>
 
-            <p><strong>RQ1:</strong> How can playful and creative running applications enhance user engagement and sustain long-term interest in running activities?</p>
+            <div class="research-question-list" aria-label="Research questions">
+                <article class="research-question">
+                    <div class="research-question__label">
+                        <span class="research-question__eyebrow">Research Question</span>
+                        <span class="research-question__index">RQ1</span>
+                    </div>
+                    <p class="research-question__text">How can playful and creative running applications enhance user engagement and sustain long-term interest in running activities?</p>
+                </article>
 
-            <p><strong>RQ2:</strong> How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
+                <article class="research-question">
+                    <div class="research-question__label">
+                        <span class="research-question__eyebrow">Research Question</span>
+                        <span class="research-question__index">RQ2</span>
+                    </div>
+                    <p class="research-question__text">How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
+                </article>
+            </div>
         </div>
     </div>
 </div>

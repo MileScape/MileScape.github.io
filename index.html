@@ -1248,6 +1248,122 @@
             box-shadow: 0 0 0 4px rgba(193, 140, 93, 0.12);
         }
 
+        .timeline-section {
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+
+        .timeline-section .section-subtitle {
+            margin-bottom: 0;
+        }
+
+        .timeline-eyebrow {
+            display: block;
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .timeline-display-title {
+            margin: 0 0 8px;
+            color: var(--foreground);
+            font-family: "Fraunces", "Times New Roman", serif;
+            font-size: clamp(34px, 4.2vw, 54px);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+            font-variation-settings: "SOFT" 75, "WONK" 0;
+        }
+
+        .timeline-track-scroll {
+            width: 100%;
+            margin-top: 86px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0 0 10px;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: thin;
+        }
+
+        .project-timeline-list {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(16, minmax(156px, 1fr));
+            gap: 34px;
+            min-width: 3000px;
+            margin: 0;
+            padding: 34px 0 0;
+            list-style: none;
+        }
+
+        .project-timeline-list::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 20px;
+            height: 1px;
+            background: rgba(93, 112, 82, 0.14);
+        }
+
+        .timeline-step {
+            position: relative;
+            min-width: 0;
+            text-align: center;
+        }
+
+        .timeline-node {
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            top: -28px;
+            width: 20px;
+            height: 20px;
+            transform: translateX(-50%);
+            border-radius: var(--radius-full);
+            background: rgba(92, 88, 80, 0.92);
+            box-shadow: 0 0 0 8px rgba(253, 252, 248, 0.92);
+        }
+
+        .timeline-card {
+            display: block;
+            padding: 0 8px;
+        }
+
+        .timeline-date {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted-foreground);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+        }
+
+        .timeline-card h3 {
+            margin: 0 0 8px;
+            color: var(--foreground);
+            font-family: "Fraunces", "Times New Roman", serif;
+            font-size: 23px;
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+            font-variation-settings: "SOFT" 75, "WONK" 0;
+        }
+
+        .timeline-card p {
+            max-width: 192px;
+            margin: 0 auto;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.65;
+        }
+
         .media-panel {
             margin-top: 4px;
             padding: 18px;
@@ -1810,6 +1926,39 @@
                 font-size: 16px;
             }
 
+            .timeline-section {
+                padding-top: 34px;
+                padding-bottom: 34px;
+            }
+
+            .timeline-eyebrow {
+                margin-bottom: 10px;
+                font-size: 12px;
+            }
+
+            .timeline-track-scroll {
+                margin-top: 58px;
+            }
+
+            .project-timeline-list {
+                grid-template-columns: repeat(16, minmax(140px, 1fr));
+                min-width: 2620px;
+                gap: 26px;
+            }
+
+            .timeline-date {
+                font-size: 15px;
+            }
+
+            .timeline-card h3 {
+                font-size: 20px;
+            }
+
+            .timeline-card p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
             .motivation-text p {
                 font-size: 16px;
                 line-height: 1.75;
@@ -2049,6 +2198,10 @@
                 font-size: 30px;
             }
 
+            .timeline-display-title {
+                font-size: 30px;
+            }
+
             .journey-stage-title {
                 font-size: 22px;
             }
@@ -2116,6 +2269,7 @@
     <a href="#personas">Personas</a>
     <a href="#design-solutions">Solutions</a>
     <a href="#journey-map">Journey</a>
+    <a href="#timeline">Timeline</a>
     <a href="#ideation">Ideation</a>
     <a href="#technical">Technical</a>
     <a href="#evaluation">Impact</a>
@@ -2799,6 +2953,160 @@
             </div>
         </div>
         </div>
+    </div>
+</div>
+
+<div class="section-container timeline-section" id="timeline">
+    <span class="timeline-eyebrow">Development Timeline</span>
+    <h2 class="timeline-display-title">From Team Formation to Demo</h2>
+    <p class="section-subtitle">A compact view of MileScape's research, design, implementation, and final demo progress.</p>
+
+    <div class="timeline-track-scroll">
+        <ol class="project-timeline-list" aria-label="MileScape project timeline">
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">03/10</span>
+                    <h3>Team Formation</h3>
+                    <p>Defined team roles and project vision.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">03/17</span>
+                    <h3>Project Planning</h3>
+                    <p>Set milestones and module responsibilities.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">03/23</span>
+                    <h3>User Research</h3>
+                    <p>Gathered feedback on running motivation and rewards.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">03/26</span>
+                    <h3>Requirements</h3>
+                    <p>Defined routes, crews, achievements, and My Scape.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">03/31</span>
+                    <h3>Concept Design</h3>
+                    <p>Turned running progress into a virtual journey.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/03</span>
+                    <h3>Interaction Design</h3>
+                    <p>Designed the main app flow and page structure.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/08</span>
+                    <h3>Prototype Setup</h3>
+                    <p>Built the mobile-first frontend foundation.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/10</span>
+                    <h3>Visual Direction</h3>
+                    <p>Set the soft card style and playful reward tone.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/16</span>
+                    <h3>Core Scaffold</h3>
+                    <p>Added Paceport, PaceCrew, My Scape, run, and achievement pages.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/19</span>
+                    <h3>Route &amp; Reward Data</h3>
+                    <p>Expanded routes, posters, landmarks, and capsule rewards.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/22</span>
+                    <h3>My Scape System</h3>
+                    <p>Improved placement, inventory, footprints, and item actions.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/24</span>
+                    <h3>Achievement Assets</h3>
+                    <p>Added badge visuals and optimized achievement pages.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/27</span>
+                    <h3>Running Polish</h3>
+                    <p>Tuned route simulation, camera movement, and route access.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">04/29</span>
+                    <h3>Feature Upgrade</h3>
+                    <p>Added sharing, date switching, atmosphere effects, and better interactions.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">05/02</span>
+                    <h3>UI Refinement</h3>
+                    <p>Expanded My Scape and refined the achievement carousel.</p>
+                </article>
+            </li>
+
+            <li class="timeline-step">
+                <span class="timeline-node" aria-hidden="true"></span>
+                <article class="timeline-card">
+                    <span class="timeline-date">05/05</span>
+                    <h3>Demo Completion</h3>
+                    <p>Finalized Paceport details and PaceCrew management.</p>
+                </article>
+            </li>
+        </ol>
     </div>
 </div>
 

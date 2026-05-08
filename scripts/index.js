@@ -540,6 +540,15 @@
         dotsContainerId: "highfiDots",
         dotLabelPrefix: "Go to high-fidelity screen"
     });
+
+    initStackSlider({
+        viewportId: "profiViewport",
+        prevButtonId: "profiPrev",
+        nextButtonId: "profiNext",
+        pageIndicatorId: "profiPageIndicator",
+        dotsContainerId: "profiDots",
+        dotLabelPrefix: "Go to Version Pro screen"
+    });
 }());
 
 (function () {

@@ -1724,6 +1724,120 @@
             line-height: 1.7;
         }
 
+        .iteration-refinement {
+            display: grid;
+            gap: 24px;
+        }
+
+        .iteration-refinement__intro {
+            margin: 0;
+            max-width: 980px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .iteration-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .iteration-card {
+            display: grid;
+            gap: 20px;
+            padding: 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(222, 216, 207, 0.88);
+            background:
+                radial-gradient(circle at top left, rgba(193, 140, 93, 0.12) 0, rgba(193, 140, 93, 0) 36%),
+                linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(247, 241, 232, 0.98) 100%);
+        }
+
+        .iteration-card__header {
+            display: grid;
+            gap: 8px;
+        }
+
+        .iteration-card__eyebrow {
+            display: inline-flex;
+            width: fit-content;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(93, 112, 82, 0.12);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .iteration-card__title {
+            margin: 0;
+            font-size: clamp(24px, 3vw, 34px);
+        }
+
+        .iteration-card__copy {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .iteration-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .iteration-shot {
+            display: grid;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .iteration-shot__label {
+            display: inline-flex;
+            width: fit-content;
+            padding: 6px 11px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .iteration-shot__label--before {
+            background: rgba(168, 84, 72, 0.1);
+            color: var(--destructive);
+        }
+
+        .iteration-shot__label--after {
+            background: rgba(93, 112, 82, 0.12);
+            color: var(--primary);
+        }
+
+        .iteration-shot__frame {
+            width: 100%;
+            min-height: 260px;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 22px;
+            border: 1px solid rgba(222, 216, 207, 0.88);
+            background: rgba(255, 255, 255, 0.68);
+            box-shadow: 0 18px 34px -26px rgba(44, 44, 36, 0.42);
+            padding: 10px;
+        }
+
+        .iteration-result {
+            margin: 0;
+            padding: 16px 18px;
+            border-radius: 22px;
+            background: rgba(93, 112, 82, 0.08);
+            color: var(--foreground);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
         .scrapbook-carousel {
             display: grid;
             gap: 16px;
@@ -3396,6 +3510,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .iteration-comparison {
+                grid-template-columns: 1fr;
+            }
+
             .research-usage-layout {
                 grid-template-columns: 1fr;
             }
@@ -3779,6 +3897,15 @@
 
             .eval-bar {
                 width: 26px;
+            }
+
+            .iteration-card {
+                padding: 20px;
+            }
+
+            .iteration-shot__frame {
+                min-height: 220px;
+                max-height: 440px;
             }
 
             .inner-card,
@@ -5546,6 +5673,72 @@
             </div>
         </div>
     </div>
+
+    <div class="inner-card flow-gap-top iteration-refinement">
+        <div>
+            <h3 class="card-title card-title--large">Iterative Refinement</h3>
+            <p class="iteration-refinement__intro">User feedback from the early prototype directly shaped three visible improvements. Each comparison shows the original design problem, the updated interface, and how the change better supports first-time use, visual quality, and immersive route experience.</p>
+        </div>
+
+        <div class="iteration-grid">
+            <article class="iteration-card">
+                <div class="iteration-card__header">
+                    <span class="iteration-card__eyebrow">Iteration 01</span>
+                    <h4 class="iteration-card__title">First-time user guidance</h4>
+                    <p class="iteration-card__copy">Users reported that the first version was not clear enough for first-time use. In response, we added a beginner guide so new users can understand the main interaction flow before they start exploring routes.</p>
+                </div>
+                <div class="iteration-comparison">
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/before/1.png" alt="Before iteration: original first-use experience without beginner guidance">
+                    </figure>
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/after/1.png" alt="After iteration: first-use beginner guidance added for new users">
+                    </figure>
+                </div>
+                <p class="iteration-result"><strong>Result:</strong> The onboarding flow now reduces uncertainty and helps first-time users understand how to begin the MileScape experience.</p>
+            </article>
+
+            <article class="iteration-card">
+                <div class="iteration-card__header">
+                    <span class="iteration-card__eyebrow">Iteration 02</span>
+                    <h4 class="iteration-card__title">Achievement page visual refinement</h4>
+                    <p class="iteration-card__copy">Users felt that the first achievement interface was not visually attractive enough. We redesigned it into the current style, with a more polished layout and clearer reward presentation.</p>
+                </div>
+                <div class="iteration-comparison">
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/before/2.png" alt="Before iteration: earlier achievement page design">
+                    </figure>
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/after/2.png" alt="After iteration: refined achievement page with improved visual style">
+                    </figure>
+                </div>
+                <p class="iteration-result"><strong>Result:</strong> Users recognized the revised achievement page as more visually appealing and better aligned with the collectible reward experience.</p>
+            </article>
+
+            <article class="iteration-card">
+                <div class="iteration-card__header">
+                    <span class="iteration-card__eyebrow">Iteration 03</span>
+                    <h4 class="iteration-card__title">From 2D route map to 3D scene</h4>
+                    <p class="iteration-card__copy">The first simulated running route used Mapbox 2D rendering. Users felt that the immersive feeling was not strong enough, so we changed the route experience into a 3D scene rendering.</p>
+                </div>
+                <div class="iteration-comparison">
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/before/3.png" alt="Before iteration: 2D Mapbox route simulation">
+                    </figure>
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/after/3.png" alt="After iteration: 3D route scene rendering for stronger immersion">
+                    </figure>
+                </div>
+                <p class="iteration-result"><strong>Result:</strong> The updated 3D scene improves the sense of presence and makes simulated route exploration feel closer to a playful journey.</p>
+            </article>
+        </div>
+    </div>
 </div>
 
 <div class="section-container" id="references">
@@ -5664,7 +5857,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame media-frame--interview"
-                        src="images/Interview1.jpg"
+                        src="images/moodboard/Interview1.jpg"
                         alt="Interview screenshot about running mileage, wearable data, and satisfaction"
                     >
                 </div>
@@ -5674,7 +5867,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame media-frame--interview"
-                        src="images/Interview2.jpg"
+                        src="images/moodboard/Interview2.jpg"
                         alt="Interview screenshot about VO2max, pressure, and online running events"
                     >
                 </div>
@@ -5684,7 +5877,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame media-frame--interview"
-                        src="images/Interview3.jpg"
+                        src="images/moodboard/Interview3.jpg"
                         alt="Interview screenshot about removing competition and connecting mileage with activities"
                     >
                 </div>
@@ -5694,7 +5887,7 @@
                 <div class="media-panel media-panel--compact">
                     <img
                         class="media-frame media-frame--interview"
-                        src="images/interview4.jpg"
+                        src="images/moodboard/interview4.jpg"
                         alt="Interview photo showing an in-person user interview on a running track"
                     >
                 </div>

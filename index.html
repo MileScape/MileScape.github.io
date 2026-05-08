@@ -752,37 +752,53 @@
             color: var(--text-primary);
         }
 
-        .motivation-text p:nth-last-of-type(-n+2) {
-            margin-bottom: 0;
-            padding: 18px 0 0;
-            border-radius: 0;
-            border: none;
-            box-shadow: none;
+        .research-question-list {
             display: grid;
-            grid-template-columns: auto minmax(0, 1fr);
+            gap: 18px;
+            margin-top: 6px;
+        }
+
+        .research-question {
+            display: grid;
+            grid-template-columns: 120px minmax(0, 1fr);
+            gap: 18px;
             align-items: start;
-            column-gap: 16px;
-            background: transparent;
+            padding: 18px 0;
+            border-top: 1px solid rgba(222, 216, 207, 0.8);
         }
 
-        .motivation-text p:nth-last-of-type(2) {
-            margin-bottom: 16px;
+        .research-question:last-child {
+            border-bottom: 1px solid rgba(222, 216, 207, 0.8);
         }
 
-        .motivation-text p:nth-last-of-type(-n+2) strong {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 34px;
-            padding: 0 14px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-            color: #fffdf8;
-            font-size: 13px;
+        .research-question__label {
+            display: grid;
+            gap: 4px;
+            align-content: start;
+        }
+
+        .research-question__eyebrow {
+            color: var(--primary);
+            font-size: 11px;
             font-weight: 800;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            white-space: nowrap;
+        }
+
+        .research-question__index {
+            font-family: "Fraunces", serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            color: var(--foreground);
+        }
+
+        .research-question__text {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-primary);
         }
 
         .persona-grid {
@@ -1228,11 +1244,6 @@
             width: 100%;
             max-width: 720px;
             display: block;
-            padding: 12px;
-            border: var(--line);
-            border-radius: 18px;
-            box-shadow: var(--hard-shadow);
-            background: rgba(255, 255, 255, 0.04);
         }
 
         .caption-note {
@@ -2397,6 +2408,19 @@
                 line-height: 1.75;
             }
 
+            .research-question {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .research-question__index {
+                font-size: 28px;
+            }
+
+            .research-question__text {
+                font-size: 18px;
+            }
+
             .persona-header {
                 align-items: flex-start;
             }
@@ -2814,9 +2838,23 @@
 
             <p>Based on the above issues, our group has identified the following two research questions.</p>
 
-            <p><strong>RQ1:</strong> How can playful and creative running applications enhance user engagement and sustain long-term interest in running activities?</p>
+            <div class="research-question-list" aria-label="Research questions">
+                <article class="research-question">
+                    <div class="research-question__label">
+                        <span class="research-question__eyebrow">Research Question</span>
+                        <span class="research-question__index">RQ1</span>
+                    </div>
+                    <p class="research-question__text">How can playful and creative running applications enhance user engagement and sustain long-term interest in running activities?</p>
+                </article>
 
-            <p><strong>RQ2:</strong> How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
+                <article class="research-question">
+                    <div class="research-question__label">
+                        <span class="research-question__eyebrow">Research Question</span>
+                        <span class="research-question__index">RQ2</span>
+                    </div>
+                    <p class="research-question__text">How can human-centered design principles enhance runners’ emotional engagement and overall user experience in running applications?</p>
+                </article>
+            </div>
         </div>
     </div>
 </div>
@@ -2824,6 +2862,14 @@
 <div class="section-container" id="research-gap">
     <h2 class="section-title">Research & The Gap</h2>
     <p class="section-subtitle">Positioning MileScape between academic research and existing commercial products</p>
+
+    <div class="inner-card flow-gap-bottom">
+        <h3 class="content-heading">Survey Basis</h3>
+        <div class="text-block-md">
+            <p>Based on our questionnaire responses, 70% of participants were regular runners and 30% had experience organizing running activities. These two groups informed our primary and secondary personas.</p>
+            <p>The charts below summarize patterns from our questionnaire and market observation, including commonly used running apps, perceived problems in existing fitness products, and preferred playful features.</p>
+        </div>
+    </div>
 
     <div class="persona-grid">
         <!-- Market Analysis -->
@@ -2840,7 +2886,7 @@
                         alt="Figure 1: Market Distribution Pie Chart"
                     >
                 </div>
-                <p class="caption-note">Example: Keep 45%</p>
+                <p class="caption-note">Questionnaire-based app usage snapshot; for example, Keep was selected by 45% of surveyed participants.</p>
 
                 <p class="u-mt-16"><strong>Market Issues (Runner Perspective)</strong></p>
                 <div class="u-mt-8">
@@ -2889,7 +2935,7 @@
         <div class="inner-card">
             <h3 class="content-heading">Organizer Insights</h3>
             <div class="text-block-sm">
-                <p>Although organizers represent only 30% of users, they strongly influence participation.</p>
+                <p>Although organizers represented only 30% of our survey participants, they strongly influence participation.</p>
                 <p>They reported that:</p>
                 <p>• Runner motivation declines quickly after initial enthusiasm</p>
                 <p>• Existing apps struggle to retain users</p>
@@ -3069,7 +3115,7 @@
                 </div>
                 <div>
                     <h3 class="persona-title">Persona 1: Runner (Primary User)</h3>
-                    <span class="persona-meta">Li, Consistent Runner · Market Size: 70%</span>
+                    <span class="persona-meta">Li, Consistent Runner · Survey Segment: 70%</span>
                 </div>
             </div>
 
@@ -3126,7 +3172,7 @@
                 </div>
                 <div>
                     <h3 class="persona-title">Persona 2: Organizer (Secondary User)</h3>
-                    <span class="persona-meta">Niu, Running Organizer · Market Size: 30
+                    <span class="persona-meta">Niu, Running Organizer · Survey Segment: 30
                         %</span>
                 </div>
             </div>

@@ -1730,35 +1730,14 @@
         }
 
         .scrapbook {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 26px;
             padding: 24px 8px 28px;
-            overflow-x: auto;
-            overflow-y: visible;
-            scroll-snap-type: x mandatory;
-            scroll-padding-inline: 14px;
-            overscroll-behavior-x: contain;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .scrapbook::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .scrapbook::-webkit-scrollbar-track {
-            background: rgba(222, 216, 207, 0.42);
-            border-radius: 999px;
-        }
-
-        .scrapbook::-webkit-scrollbar-thumb {
-            background: rgba(93, 112, 82, 0.42);
-            border-radius: 999px;
         }
 
         .scrapbook-item {
             position: relative;
-            flex: 0 0 clamp(260px, 42vw, 380px);
-            scroll-snap-align: center;
             background: #fff;
             padding: 10px 10px 28px;
             border-radius: 4px;
@@ -1766,6 +1745,23 @@
                 0 1px 3px rgba(0, 0, 0, 0.08),
                 0 6px 16px rgba(0, 0, 0, 0.06);
             transition: transform 300ms var(--bounce), box-shadow 300ms var(--bounce);
+        }
+
+        .scrapbook-item:nth-child(4),
+        .scrapbook-item:nth-child(5) {
+            grid-column: span 1;
+        }
+
+        .scrapbook-item:nth-child(4) {
+            grid-column: 1 / 2;
+            justify-self: end;
+            width: 100%;
+        }
+
+        .scrapbook-item:nth-child(5) {
+            grid-column: 2 / 3;
+            justify-self: start;
+            width: 100%;
         }
 
         .scrapbook-item:nth-child(1) { transform: rotate(-1.8deg); }
@@ -1805,11 +1801,12 @@
 
         .scrapbook-img {
             width: 100%;
-            height: clamp(260px, 42vw, 430px);
+            height: auto;
+            aspect-ratio: 4 / 3;
             display: block;
             border-radius: 2px;
             background: #f4f0e8;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
         }
 
@@ -1823,11 +1820,7 @@
         }
 
         .scrapbook-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
+            display: none;
         }
 
         .scrapbook-control {
@@ -1869,22 +1862,25 @@
 
         @media (max-width: 768px) {
             .scrapbook {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
                 padding: 18px 2px 24px;
             }
 
-            .scrapbook-item {
-                flex-basis: min(78vw, 340px);
+            .scrapbook-item:nth-child(5) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                max-width: 50%;
             }
         }
 
         @media (max-width: 480px) {
-            .scrapbook-item {
-                flex-basis: min(82vw, 300px);
+            .scrapbook {
+                grid-template-columns: 1fr;
             }
 
-            .scrapbook-control {
-                min-width: 104px;
+            .scrapbook-item:nth-child(5) {
+                max-width: 100%;
             }
         }
 

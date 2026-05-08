@@ -1668,7 +1668,40 @@
 
         .appendix-block {
             display: grid;
-            gap: 24px;
+            gap: 16px;
+        }
+
+        .appendix-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .appendix-grid:has(> :nth-child(3)) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .appendix-grid:has(> :nth-child(2)):not(:has(> :nth-child(3))) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .appendix-item {
+            display: grid;
+            gap: 8px;
+        }
+
+        .appendix-item-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.02em;
+        }
+
+        .appendix-item .media-panel {
+            margin-top: 0;
+        }
+
+        .appendix-item .media-frame {
+            padding: 8px;
         }
 
         .media-grid--two {
@@ -3260,6 +3293,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .appendix-grid {
+                grid-template-columns: 1fr !important;
+            }
+
             .research-viz-card {
                 padding: 18px;
             }
@@ -3487,6 +3524,7 @@
     <a href="#technical">Technical</a>
     <a href="#evaluation">Impact</a>
     <a href="#references">References</a>
+    <a href="#appendix">Appendix</a>
 </nav>
 <svg class="nav-progress-ring" aria-hidden="true" fill="none">
     <path class="nav-progress-track"/>
@@ -4887,58 +4925,6 @@
     </div>
 </div>
 
-<div class="section-container" id="appendix">
-    <h2 class="section-title">Appendix</h2>
-    <p class="section-subtitle">Original evaluation figures retained as source references for the interactive chart above</p>
-
-    <div class="inner-card appendix-block flow-gap-bottom">
-        <h3 class="content-heading content-heading--large">Original Evaluation Figures</h3>
-        <div class="media-grid media-grid--two">
-            <div class="media-panel media-panel--compact">
-                <img
-                    class="media-frame media-frame--ueqs"
-                    src="images/ueqs_item_square.png"
-                    alt="Original UEQ-S comparison figure"
-                >
-            </div>
-            <div class="media-panel media-panel--compact">
-                <img
-                    class="media-frame media-frame--imi"
-                    src="images/imi_item_bar_chart.png"
-                    alt="Original IMI comparison figure"
-                >
-            </div>
-        </div>
-    </div>
-
-    <div class="inner-card appendix-block flow-gap-bottom">
-        <h3 class="content-heading content-heading--large">Original Research Figures</h3>
-        <div class="media-grid">
-            <div class="media-panel media-panel--compact">
-                <img
-                    class="image-frame-panel"
-                    src="images/fitness_app_usage_transparent.png"
-                    alt="Original fitness app usage figure"
-                >
-            </div>
-            <div class="media-panel media-panel--compact">
-                <img
-                    class="image-frame-panel"
-                    src="images/fitness_app_gaps_ranked_bar_transparent.png"
-                    alt="Original fitness app gap ranking figure"
-                >
-            </div>
-            <div class="media-panel media-panel--compact">
-                <img
-                    class="image-frame-panel"
-                    src="images/desired_playful_features_radar_8_dimensions.png"
-                    alt="Original playful feature preference figure"
-                >
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="section-container" id="references">
     <h2 class="section-title">References &amp; Acknowledgments</h2>
     <p class="section-subtitle">Academic sources and AI disclosure</p>
@@ -4967,6 +4953,73 @@
             <p>[6] Ryan, R. M. (1982). Control and information in the intrapersonal sphere: An extension of cognitive evaluation theory. <em>Journal of Personality and Social Psychology</em>, 43(3), 450–461.</p>
 
             <p>[7] ByteDance Doubao, <em>Seedream 4.5</em>, accessed 5 April 2026. [Online]. Available: https://www.doubao.com. Applied to generate the conceptual hero image in the illustrative figure. Prompt: "Minimal abstract visualization of 70% runners and 30% organizers, contains two overlapping circles, clean Apple-style, flat design, soft shadows, no pie chart, no bar chart."</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="appendix">
+    <h2 class="section-title">Appendix</h2>
+    <p class="section-subtitle">Original figures retained as source references for the interactive charts above</p>
+
+    <div class="inner-card appendix-block">
+        <h3 class="content-heading">Original Evaluation Figures</h3>
+        <div class="appendix-grid">
+            <div class="appendix-item">
+                <div class="appendix-item-label">UEQ-S Comparison</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame"
+                        src="images/ueqs_item_square.png"
+                        alt="Original UEQ-S comparison figure"
+                    >
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label">IMI Comparison</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame"
+                        src="images/imi_item_bar_chart.png"
+                        alt="Original IMI comparison figure"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card appendix-block flow-gap-top">
+        <h3 class="content-heading">Original Research Figures</h3>
+        <div class="appendix-grid">
+            <div class="appendix-item">
+                <div class="appendix-item-label">App Usage Distribution</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame"
+                        src="images/fitness_app_usage_transparent.png"
+                        alt="Original fitness app usage figure"
+                    >
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label">Gap Ranking</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame"
+                        src="images/fitness_app_gaps_ranked_bar_transparent.png"
+                        alt="Original fitness app gap ranking figure"
+                    >
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label">Feature Preferences</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame"
+                        src="images/desired_playful_features_radar_8_dimensions.png"
+                        alt="Original playful feature preference figure"
+                    >
+                </div>
+            </div>
         </div>
     </div>
 </div>

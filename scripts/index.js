@@ -713,6 +713,7 @@
         dotsContainerId: "profiDots",
         dotLabelPrefix: "Go to Version Pro screen"
     });
+
 }());
 
 (function () {

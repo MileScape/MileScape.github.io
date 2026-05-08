@@ -242,6 +242,103 @@
             color: var(--foreground);
         }
 
+        .site-footer {
+            width: min(1120px, calc(100vw - 48px));
+            margin: 8px auto 0;
+            padding: 0 0 8px;
+            color: var(--foreground);
+        }
+
+        .site-footer__brand {
+            font-family: "Fraunces", "Times New Roman", serif;
+            font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+        }
+
+        .site-footer__tagline {
+            margin: 12px 0 0;
+            color: var(--muted-foreground);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .site-footer__nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 20px 0 0;
+        }
+
+        .site-footer__nav a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .site-footer__nav a:hover,
+        .site-footer__nav a:focus-visible {
+            color: var(--primary);
+        }
+
+        .site-footer__divider {
+            border: 0;
+            border-top: var(--line);
+            margin: 22px 0 16px;
+        }
+
+        .site-footer__copyright {
+            margin: 0;
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .prototype-heading {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .prototype-link-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(93, 112, 82, 0.18);
+            background: linear-gradient(180deg, rgba(255, 253, 249, 0.96) 0%, rgba(240, 235, 229, 0.98) 100%);
+            color: var(--foreground);
+            text-decoration: none;
+            box-shadow: 0 10px 24px -18px rgba(93, 112, 82, 0.34);
+            transition: transform 0.25s var(--bounce), box-shadow 0.25s var(--bounce), border-color 0.25s var(--bounce);
+        }
+
+        .prototype-link-chip:hover,
+        .prototype-link-chip:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(193, 140, 93, 0.45);
+            box-shadow: 0 14px 28px -18px rgba(193, 140, 93, 0.4);
+            outline: none;
+        }
+
+        .prototype-link-chip__label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+
+        .prototype-link-chip__text {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--foreground);
+        }
+
         .hero-card {
             width: 100vw;
             max-width: none;
@@ -2122,7 +2219,7 @@
     <a href="#references">References</a>
 </nav>
 
-<div class="hero-card" role="banner" aria-label="MileScape 首页主视觉">
+<div class="hero-card" id="top" role="banner" aria-label="MileScape 首页主视觉">
     <div class="hero-slider" id="heroSlider" aria-hidden="true">
         <div class="hero-slide hero-slide--tokyo is-active"></div>
         <div class="hero-slide hero-slide--newyork"></div>
@@ -2880,7 +2977,19 @@
     </div>
 
     <div class="inner-card flow-gap-top">
-        <h3 class="card-title">Low-Fi Prototype</h3>
+        <div class="prototype-heading">
+            <h3 class="card-title">Low-Fi Prototype</h3>
+            <a
+                class="prototype-link-chip"
+                href="https://www.figma.com/proto/H7QpI1PgyFgl2eg6vI0sbC/CPT208_GroupC1-2_MileScape_Low-Fi-Prototype?node-id=0-1&t=qa9ZkeNCy2ZbsSEe-1"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open Low-Fi Prototype in a new tab"
+            >
+                <span class="prototype-link-chip__label">Click</span>
+                <span class="prototype-link-chip__text">Open prototype</span>
+            </a>
+        </div>
         <div class="content-stack">
             <p>Early wireframes and interaction flows tested through Figma prototype.</p>
             <div class="media-panel">
@@ -3108,6 +3217,19 @@
         </div>
     </div>
 </div>
+
+<footer class="site-footer" aria-label="MileScape copyright footer">
+    <p class="site-footer__brand">MileScape</p>
+    <p class="site-footer__tagline">"Run locally, explore globally."</p>
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+        <a href="https://milescape.vercel.app" target="_blank" rel="noreferrer">MileScape</a>
+        <a href="https://github.com/MileScape/MileScape" target="_blank" rel="noreferrer">Github</a>
+        <a href="https://www.figma.com/proto/H7QpI1PgyFgl2eg6vI0sbC/CPT208_GroupC1-2_MileScape_Low-Fi-Prototype?node-id=0-1&t=qa9ZkeNCy2ZbsSEe-1" target="_blank" rel="noreferrer">Low-Fi Prototype</a>
+        <a href="#">Video</a>
+    </nav>
+    <hr class="site-footer__divider">
+    <p class="site-footer__copyright">© 2026 MileScape. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

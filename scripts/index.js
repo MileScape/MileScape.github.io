@@ -541,3 +541,482 @@
         dotLabelPrefix: "Go to high-fidelity screen"
     });
 }());
+
+(function () {
+    const chartRoot = document.querySelector("[data-evaluation-chart]");
+
+    if (!chartRoot) {
+        return;
+    }
+
+    const barsContainer = chartRoot.querySelector("[data-eval-bars]");
+    const buttons = Array.from(chartRoot.querySelectorAll("[data-eval-view]"));
+    const caption = chartRoot.querySelector("[data-eval-caption]");
+    const summaryValueMap = {
+        mileAverage: chartRoot.querySelector('[data-eval-summary="mile-average"]'),
+        averageGap: chartRoot.querySelector('[data-eval-summary="average-gap"]'),
+        topDimension: chartRoot.querySelector('[data-eval-summary="top-dimension"]')
+    };
+    const summaryNoteMap = {
+        mileAverage: chartRoot.querySelector('[data-eval-summary-note="mile-average"]'),
+        averageGap: chartRoot.querySelector('[data-eval-summary-note="average-gap"]'),
+        topDimension: chartRoot.querySelector('[data-eval-summary-note="top-dimension"]')
+    };
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const datasets = {
+        ueqs: {
+            label: "UEQ-S",
+            description: "User experience quality across 8 semantic differential scales.",
+            items: [
+                { label: "Supportive", keep: 6.1, mile: 6.0 },
+                { label: "Easy", keep: 4.0, mile: 6.1 },
+                { label: "Efficient", keep: 3.2, mile: 5.7 },
+                { label: "Clear", keep: 3.1, mile: 6.0 },
+                { label: "Exciting", keep: 3.9, mile: 6.0 },
+                { label: "Interesting", keep: 3.6, mile: 5.7 },
+                { label: "Inventive", keep: 3.4, mile: 6.1 },
+                { label: "Leading Edge", keep: 3.1, mile: 6.0 }
+            ]
+        },
+        imi: {
+            label: "IMI",
+            description: "Interest/enjoyment and value/usefulness indicators linked to intrinsic motivation.",
+            items: [
+                { label: "IE1", keep: 3.4, mile: 6.1 },
+                { label: "IE2", keep: 3.0, mile: 5.9 },
+                { label: "IE3", keep: 2.7, mile: 5.9 },
+                { label: "IE4", keep: 3.4, mile: 5.7 },
+                { label: "IE5", keep: 2.6, mile: 5.3 },
+                { label: "VU1", keep: 4.1, mile: 6.3 },
+                { label: "VU2", keep: 3.7, mile: 6.1 },
+                { label: "VU3", keep: 4.1, mile: 6.0 },
+                { label: "VU4", keep: 4.4, mile: 5.9 }
+            ]
+        }
+    };
+    let currentKey = "ueqs";
+    let hasEnteredViewport = false;
+
+    function formatNumber(value) {
+        return value.toFixed(1);
+    }
+
+    function getPercent(value) {
+        return Math.max(0, Math.min(100, (value / 7) * 100));
+    }
+
+    function getAverage(items, key) {
+        const total = items.reduce(function (sum, item) {
+            return sum + item[key];
+        }, 0);
+
+        return total / items.length;
+    }
+
+    function updateSummary(dataset) {
+        const mileAverage = getAverage(dataset.items, "mile");
+        const keepAverage = getAverage(dataset.items, "keep");
+        const topItem = dataset.items.reduce(function (best, item) {
+            return (item.mile - item.keep) > (best.mile - best.keep) ? item : best;
+        });
+        const averageGap = mileAverage - keepAverage;
+
+        if (summaryValueMap.mileAverage) {
+            summaryValueMap.mileAverage.textContent = formatNumber(mileAverage);
+        }
+
+        if (summaryNoteMap.mileAverage) {
+            summaryNoteMap.mileAverage.textContent = dataset.label + " mean score across all displayed items";
+        }
+
+        if (summaryValueMap.averageGap) {
+            summaryValueMap.averageGap.textContent = (averageGap >= 0 ? "+" : "") + formatNumber(averageGap);
+        }
+
+        if (summaryNoteMap.averageGap) {
+            summaryNoteMap.averageGap.textContent = "Compared with Keep's " + formatNumber(keepAverage) + " average";
+        }
+
+        if (summaryValueMap.topDimension) {
+            summaryValueMap.topDimension.textContent = topItem.label;
+        }
+
+        if (summaryNoteMap.topDimension) {
+            summaryNoteMap.topDimension.textContent = "MileScape leads by " + formatNumber(topItem.mile - topItem.keep) + " points";
+        }
+    }
+
+    function buildGroup(item) {
+        const gap = item.mile - item.keep;
+        const gapClass = gap >= 0 ? "is-positive" : "is-negative";
+        const gapPrefix = gap >= 0 ? "+" : "";
+
+        return [
+            '<article class="eval-group">',
+            '  <div class="eval-bar-pair">',
+            '    <div class="eval-bar" style="--target-height: ', getPercent(item.keep), '%;">',
+            '      <span class="eval-bar-value">', formatNumber(item.keep), '</span>',
+            '      <span class="eval-bar-fill eval-bar-fill--keep" data-target-height="', getPercent(item.keep), '%"></span>',
+            "    </div>",
+            '    <div class="eval-bar" style="--target-height: ', getPercent(item.mile), '%;">',
+            '      <span class="eval-bar-value">', formatNumber(item.mile), '</span>',
+            '      <span class="eval-bar-fill eval-bar-fill--mile" data-target-height="', getPercent(item.mile), '%"></span>',
+            "    </div>",
+            "  </div>",
+            '  <div class="eval-group-meta">',
+            '      <div class="eval-group-label">', item.label, "</div>",
+            '      <div class="eval-group-gap ', gapClass, '">MileScape ', gapPrefix, formatNumber(gap), "</div>",
+            "  </div>",
+            "</article>"
+        ].join("");
+    }
+
+    function animateBars() {
+        const fills = Array.from(chartRoot.querySelectorAll(".eval-bar-fill"));
+
+        fills.forEach(function (fill) {
+            fill.style.height = "0%";
+        });
+
+        window.requestAnimationFrame(function () {
+            fills.forEach(function (fill, index) {
+                const targetHeight = fill.getAttribute("data-target-height") || "0%";
+                const delay = prefersReducedMotion.matches ? 0 : index * 28;
+
+                window.setTimeout(function () {
+                    fill.style.height = targetHeight;
+                }, delay);
+            });
+        });
+    }
+
+    function render(nextKey) {
+        const dataset = datasets[nextKey];
+
+        if (!dataset || !barsContainer) {
+            return;
+        }
+
+        currentKey = nextKey;
+        buttons.forEach(function (button) {
+            const isActive = button.getAttribute("data-eval-view") === nextKey;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+
+        barsContainer.innerHTML = dataset.items.map(buildGroup).join("");
+        barsContainer.setAttribute("aria-label", dataset.label + " comparison chart");
+
+        if (caption) {
+            caption.textContent = dataset.label + ": " + dataset.description;
+        }
+
+        updateSummary(dataset);
+
+        if (hasEnteredViewport || prefersReducedMotion.matches) {
+            animateBars();
+        }
+    }
+
+    buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const nextKey = button.getAttribute("data-eval-view");
+
+            if (nextKey && nextKey !== currentKey) {
+                render(nextKey);
+            }
+        });
+    });
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting && !hasEnteredViewport) {
+                    hasEnteredViewport = true;
+                    animateBars();
+                    observer.disconnect();
+                }
+            });
+        }, {
+            threshold: 0.25
+        });
+
+        observer.observe(chartRoot);
+    } else {
+        hasEnteredViewport = true;
+    }
+
+    render(currentKey);
+}());
+
+(function () {
+    const usageRoot = document.querySelector("[data-research-usage-chart]");
+    const gapRoot = document.querySelector("[data-research-gap-chart]");
+    const radarRoot = document.querySelector("[data-research-radar-chart]");
+    const usageLegend = document.querySelector("[data-research-usage-legend]");
+    const gapBars = document.querySelector("[data-research-gap-bars]");
+    const radarSvg = document.querySelector("[data-research-radar-svg]");
+
+    if (!usageRoot && !gapRoot && !radarRoot) {
+        return;
+    }
+
+    const usageData = [
+        { label: "Keep", value: 24, color: "#86c6c1" },
+        { label: "Huawei Health", value: 13, color: "#ffbe73" },
+        { label: "Mi Fitness", value: 11, color: "#fb7d6e" },
+        { label: "Nike Run Club", value: 11, color: "#79a8cf" },
+        { label: "Strava", value: 10, color: "#b0abd6" },
+        { label: "Apple Fitness", value: 9, color: "#ddcfc2" },
+        { label: "Garmin Connect", value: 7, color: "#a0a0a0" },
+        { label: "Codoon", value: 6, color: "#9ccfad" },
+        { label: "Adidas Running", value: 5, color: "#f6d362" },
+        { label: "Others", value: 4, color: "#b8b8b8" }
+    ];
+    const gapData = [
+        { label: "Too focused on statistics", value: 75, color: "#b9b9b9" },
+        { label: "Lack of fun / playful elements", value: 62, color: "#b3add8" },
+        { label: "Repetitive experience", value: 62, color: "#7ca8cb" },
+        { label: "Lack of meaningful rewards", value: 62, color: "#ffc078" },
+        { label: "Too much competition and ranking", value: 50, color: "#86c6c1" }
+    ];
+    const radarData = [
+        { label: "Rewards", value: 75 },
+        { label: "Exploration", value: 75 },
+        { label: "Game\nFeatures", value: 62.5 },
+        { label: "Collection", value: 62.5 },
+        { label: "Progress", value: 65 },
+        { label: "Personal\nGoals", value: 45 },
+        { label: "Blind\nBox", value: 72 },
+        { label: "Social\nInteraction", value: 68 }
+    ];
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function animateCount(el, target, duration) {
+        if (prefersReducedMotion.matches) {
+            el.textContent = target + "%";
+            return;
+        }
+        var start = 0;
+        var startTime = null;
+        var isDecimal = target % 1 !== 0;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = start + (target - start) * eased;
+            el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + "%";
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    function observeOnce(element, callback) {
+        if (!element) {
+            return;
+        }
+
+        if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
+            callback();
+            return;
+        }
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    callback();
+                    observer.disconnect();
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        observer.observe(element);
+    }
+
+    if (usageRoot && usageLegend) {
+        const donut = usageRoot.querySelector(".research-donut");
+        const donutCenter = usageRoot.querySelector(".research-donut-center");
+        const donutStrong = donutCenter ? donutCenter.querySelector("strong") : null;
+        const donutStops = usageData.reduce(function (parts, item, index) {
+            const start = usageData.slice(0, index).reduce(function (sum, current) {
+                return sum + current.value;
+            }, 0);
+            const end = start + item.value;
+            parts.push(item.color + " " + start + "% " + end + "%");
+            return parts;
+        }, []).join(", ");
+
+        if (donut) {
+            donut.style.setProperty("--donut-stops", donutStops);
+        }
+
+        usageLegend.innerHTML = usageData.map(function (item) {
+            return [
+                '<div class="research-legend-row">',
+                '  <span class="research-legend-swatch" style="background:', item.color, ';"></span>',
+                '  <span class="research-legend-label">', item.label, "</span>",
+                '  <span class="research-legend-value">', item.value, "%</span>",
+                "</div>"
+            ].join("");
+        }).join("");
+
+        observeOnce(usageRoot, function () {
+            usageRoot.classList.add("is-visible");
+            if (donut) {
+                donut.classList.add("is-visible");
+            }
+
+            if (donutCenter) {
+                window.setTimeout(function () {
+                    donutCenter.classList.add("is-visible");
+                    if (donutStrong) {
+                        animateCount(donutStrong, 24, 800);
+                    }
+                }, prefersReducedMotion.matches ? 0 : 400);
+            }
+
+            Array.from(usageLegend.querySelectorAll(".research-legend-row")).forEach(function (row, index) {
+                window.setTimeout(function () {
+                    row.classList.add("is-visible");
+                }, prefersReducedMotion.matches ? 0 : 200 + index * 80);
+            });
+        });
+    }
+
+    if (gapRoot && gapBars) {
+        gapBars.innerHTML = gapData.map(function (item) {
+            return [
+                '<article class="research-bar-row">',
+                '  <div class="research-bar-head">',
+                '    <span class="research-bar-label">', item.label, "</span>",
+                '    <span class="research-bar-value" data-count-target="', item.value, '">', item.value, "%</span>",
+                "  </div>",
+                '  <div class="research-bar-track">',
+                '    <div class="research-bar-fill" style="background:', item.color, '; --target-width:', item.value, '%;"></div>',
+                "  </div>",
+                "</article>"
+            ].join("");
+        }).join("");
+
+        observeOnce(gapRoot, function () {
+            gapRoot.classList.add("is-visible");
+            var rows = Array.from(gapBars.querySelectorAll(".research-bar-row"));
+            rows.forEach(function (row, index) {
+                var delay = prefersReducedMotion.matches ? 0 : index * 100;
+                window.setTimeout(function () {
+                    row.classList.add("is-visible");
+                    var bar = row.querySelector(".research-bar-fill");
+                    if (bar) {
+                        bar.classList.add("is-visible");
+                    }
+                    var valueEl = row.querySelector(".research-bar-value");
+                    if (valueEl) {
+                        var target = parseFloat(valueEl.getAttribute("data-count-target"));
+                        animateCount(valueEl, target, 700);
+                    }
+                }, delay);
+            });
+        });
+    }
+
+    if (radarRoot && radarSvg) {
+        const centerX = 260;
+        const centerY = 220;
+        const radius = 148;
+        const levels = [25, 50, 75, 100];
+
+        function pointFor(value, index, length) {
+            const angle = (-Math.PI / 2) + (Math.PI * 2 * index / length);
+            const scaledRadius = radius * (value / 100);
+            return {
+                x: centerX + Math.cos(angle) * scaledRadius,
+                y: centerY + Math.sin(angle) * scaledRadius
+            };
+        }
+
+        function polygonPoints(value, length) {
+            return radarData.map(function (_, index) {
+                const point = pointFor(value, index, length);
+                return point.x.toFixed(2) + "," + point.y.toFixed(2);
+            }).join(" ");
+        }
+
+        const gridMarkup = levels.map(function (level) {
+            return '<polygon class="research-radar-grid" points="' + polygonPoints(level, radarData.length) + '"></polygon>';
+        }).join("");
+
+        const spokeMarkup = radarData.map(function (_, index) {
+            const point = pointFor(100, index, radarData.length);
+            return '<line class="research-radar-spoke" x1="' + centerX + '" y1="' + centerY + '" x2="' + point.x.toFixed(2) + '" y2="' + point.y.toFixed(2) + '"></line>';
+        }).join("");
+
+        const areaPoints = radarData.map(function (item, index) {
+            const point = pointFor(item.value, index, radarData.length);
+            return point.x.toFixed(2) + "," + point.y.toFixed(2);
+        }).join(" ");
+
+        const dotMarkup = radarData.map(function (item, index) {
+            const point = pointFor(item.value, index, radarData.length);
+            return '<circle class="research-radar-dot" cx="' + point.x.toFixed(2) + '" cy="' + point.y.toFixed(2) + '" r="5"></circle>';
+        }).join("");
+
+        const labelMarkup = radarData.map(function (item, index) {
+            const point = pointFor(118, index, radarData.length);
+            const valuePoint = pointFor(item.value + 10, index, radarData.length);
+            const labelLines = item.label.split("\n");
+            const textAnchor = point.x < centerX - 12 ? "end" : point.x > centerX + 12 ? "start" : "middle";
+            const label = [
+                '<text class="research-radar-label" x="' + point.x.toFixed(2) + '" y="' + point.y.toFixed(2) + '" text-anchor="' + textAnchor + '">'
+            ];
+
+            labelLines.forEach(function (line, lineIndex) {
+                label.push('<tspan x="' + point.x.toFixed(2) + '" dy="' + (lineIndex === 0 ? 0 : 15) + '">' + line + "</tspan>");
+            });
+
+            label.push("</text>");
+            label.push('<text class="research-radar-value" x="' + valuePoint.x.toFixed(2) + '" y="' + valuePoint.y.toFixed(2) + '" text-anchor="middle">' + item.value + "%</text>");
+            return label.join("");
+        }).join("");
+
+        radarSvg.innerHTML = [
+            '<g aria-hidden="true">', gridMarkup, spokeMarkup, "</g>",
+            '<polygon class="research-radar-outline" points="', areaPoints, '"></polygon>',
+            '<polygon class="research-radar-area" points="', areaPoints, '"></polygon>',
+            dotMarkup,
+            labelMarkup
+        ].join("");
+
+        observeOnce(radarRoot, function () {
+            radarRoot.classList.add("is-visible");
+            const outline = radarSvg.querySelector(".research-radar-outline");
+            const area = radarSvg.querySelector(".research-radar-area");
+            const dots = Array.from(radarSvg.querySelectorAll(".research-radar-dot"));
+
+            if (outline) {
+                var pathLength = outline.getTotalLength();
+                outline.style.setProperty("--radar-path-length", pathLength);
+                window.setTimeout(function () {
+                    outline.classList.add("is-visible");
+                }, prefersReducedMotion.matches ? 0 : 60);
+            }
+
+            if (area) {
+                window.setTimeout(function () {
+                    area.classList.add("is-visible");
+                }, prefersReducedMotion.matches ? 0 : 300);
+            }
+
+            dots.forEach(function (dot, index) {
+                window.setTimeout(function () {
+                    dot.classList.add("is-visible");
+                }, prefersReducedMotion.matches ? 0 : 400 + index * 60);
+            });
+        });
+    }
+}());

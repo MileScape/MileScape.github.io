@@ -1893,6 +1893,36 @@
             gap: 16px;
         }
 
+        .appendix-summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+            transition: color 0.2s;
+        }
+
+        .appendix-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .appendix-summary::before {
+            content: "\25B6";
+            font-size: 11px;
+            color: var(--primary);
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        details[open] > .appendix-summary::before {
+            transform: rotate(90deg);
+        }
+
+        .appendix-summary:hover {
+            color: var(--primary);
+        }
+
         .appendix-grid {
             display: grid;
             gap: 16px;
@@ -4052,7 +4082,7 @@
             <h3 class="content-heading">Market Analysis</h3>
             <div class="text-block-sm">
                 <p><strong>Common Products in the Market</strong></p>
-                <p>Existing running and fitness applications such as Keep, Nike Run Club, Strava, and Apple Fitness focus heavily on performance tracking and structured training.</p>
+                <p>Existing running and fitness applications such as Keep, Huawei Health, Nike Run Club, and Apple Fitness focus heavily on performance tracking and structured training.</p>
 
                 <div class="research-viz-card" data-research-usage-chart>
                     <div class="research-viz-head">
@@ -4060,7 +4090,7 @@
                             <span class="research-viz-kicker">Dynamic Distribution</span>
                             <p class="research-viz-title">App usage landscape among target users</p>
                         </div>
-                        <div class="research-viz-note">Top four products account for 59% of mentions, with Keep leading the market.</div>
+                        <div class="research-viz-note">The four selected benchmark products account for 57% of mentions, with Keep leading the group.</div>
                     </div>
                     <div class="research-usage-layout">
                         <div class="research-donut-wrap">
@@ -4073,7 +4103,7 @@
                         <div class="research-usage-legend" data-research-usage-legend></div>
                     </div>
                 </div>
-                <p class="caption-note">Questionnaire-based app usage snapshot; for example, Keep was selected by 45% of surveyed participants.</p>
+                <p class="caption-note">Questionnaire-based app usage snapshot; for example, Keep was selected by 24% of surveyed participants.</p>
 
                 <p class="u-mt-16"><strong>Market Issues (Runner Perspective)</strong></p>
                 <div class="research-viz-card" data-research-gap-chart>
@@ -4226,7 +4256,7 @@
                     </tr>
                     <tr>
                         <td data-label="Commercial Product">
-                            <div class="comparison-product">Apple Fitness / Garmin Connect</div>
+                            <div class="comparison-product">Apple Fitness</div>
                         </td>
                         <td data-label="What It Does Well">
                             <p class="comparison-copy">Integrates well with wearable devices and health data. Provides reliable tracking of heart rate, distance, pace, and long-term physical progress. Supports users who want accurate self-monitoring and training insights.</p>
@@ -4373,7 +4403,7 @@
 
             <div class="persona-copy persona-copy--first">
                 <strong>Background:</strong><br>
-                Li is a runner who insists on running a half marathon. During the competition season, his mileage reaches a peak of 70 kilometers per month, but drops to 40 kilometers per month during the off-season. He uses professional equipment (Apple Watch/Garmin), but feels that pure physiological data tracking is saturated and cannot provide psychological motivation during the long and lonely off-season running. He likes to establish his own visual profile of effort (such as tracking running shoe mileage), but actively avoids the intense ranking culture, which is often dominated by "naturally talented runners" and brings him peer pressure rather than fun.
+                Li is a runner who insists on running a half marathon. During the competition season, his mileage reaches a peak of 70 kilometers per month, but drops to 40 kilometers per month during the off-season. He uses professional equipment such as an Apple Watch, but feels that pure physiological data tracking is saturated and cannot provide psychological motivation during the long and lonely off-season running. He likes to establish his own visual profile of effort (such as tracking running shoe mileage), but actively avoids the intense ranking culture, which is often dominated by "naturally talented runners" and brings him peer pressure rather than fun.
             </div>
 
             <div class="persona-copy">
@@ -5093,7 +5123,7 @@
         <div class="crazy8-slider" id="crazy8Slider">
             <div class="crazy8-slider-head">
                 <div>
-                    <h3 class="card-title" style="margin-bottom: 8px;">Crazy Eights</h3>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Crazy Eights(3*3)</h3>
                     <div class="crazy8-chip">Sketch Flow</div>
                     <p class="crazy8-hint">Rapid ideation sketches exploring multiple UI directions and interaction concepts.</p>
                 </div>
@@ -5524,8 +5554,8 @@
     <h2 class="section-title">Appendix</h2>
     <p class="section-subtitle">Original figures retained as source references for the interactive charts above</p>
 
-    <div class="inner-card appendix-block">
-        <h3 class="content-heading">Original Evaluation Figures</h3>
+    <details class="inner-card appendix-block">
+        <summary class="content-heading appendix-summary">Original Evaluation Figures</summary>
         <div class="appendix-grid">
             <div class="appendix-item">
                 <div class="appendix-item-label">UEQ-S Comparison</div>
@@ -5548,10 +5578,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </details>
 
-    <div class="inner-card appendix-block flow-gap-top">
-        <h3 class="content-heading">Original Research Figures</h3>
+    <details class="inner-card appendix-block flow-gap-top">
+        <summary class="content-heading appendix-summary">Original Research Figures</summary>
         <div class="appendix-grid">
             <div class="appendix-item">
                 <div class="appendix-item-label">App Usage Distribution</div>
@@ -5590,6 +5620,96 @@
                 <p class="evidence-link-note">Full questionnaire record retained for traceability alongside the summarized research figures.</p>
             </div>
             <a class="evidence-link-button" href="evidence/milescape-questionnaire.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+        </div>
+    </details>
+
+    <details class="inner-card appendix-block flow-gap-top">
+        <summary class="content-heading appendix-summary">Interview Evidence</summary>
+        <div class="text-block-sm">
+            <p>Original interview screenshots and field interview photo are preserved here as qualitative evidence for runner motivation, pressure from performance metrics, and the decision to shift from competition toward meaningful progress.</p>
+        </div>
+        <div class="appendix-grid">
+            <div class="appendix-item">
+                <div class="appendix-item-label">Interview Evidence 1</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame media-frame--interview"
+                        src="images/Interview1.jpg"
+                        alt="Interview screenshot about running mileage, wearable data, and satisfaction"
+                    >
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label">Interview Evidence 2</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame media-frame--interview"
+                        src="images/Interview2.jpg"
+                        alt="Interview screenshot about VO2max, pressure, and online running events"
+                    >
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label">Interview Evidence 3</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame media-frame--interview"
+                        src="images/Interview3.jpg"
+                        alt="Interview screenshot about removing competition and connecting mileage with activities"
+                    >
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label">Interview Evidence 4</div>
+                <div class="media-panel media-panel--compact">
+                    <img
+                        class="media-frame media-frame--interview"
+                        src="images/interview4.jpg"
+                        alt="Interview photo showing an in-person user interview on a running track"
+                    >
+                </div>
+            </div>
+        </div>
+    </details>
+</div>
+
+<div class="section-container" id="contributions">
+    <h2 class="section-title">Individual Contributions</h2>
+    <p class="section-subtitle">A breakdown of what each team member built across the MileScape project.</p>
+
+    <div class="inner-card">
+        <div class="table-scroll">
+            <table class="contribution-table">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Key Contributions</th>
+                        <th>Share</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Member"><strong>Chenrui Zhu</strong></td>
+                        <td data-label="Key Contributions">Design system architecture; system-wide UI/UX design; welcome page; watch UI design; high-fidelity prototype; MyPace page design</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Member"><strong>Shengyang Yin</strong></td>
+                        <td data-label="Key Contributions">Gumball machine feature design; questionnaire design &amp; user survey management</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Member"><strong>Yize Zheng</strong></td>
+                        <td data-label="Key Contributions">Figma poster illustration; achievements system design; low-fidelity prototyping</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Member"><strong>Qi Chen</strong></td>
+                        <td data-label="Key Contributions">Map feature design; poster design; portfolio website UI design; low-fidelity prototyping</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

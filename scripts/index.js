@@ -937,14 +937,9 @@
     const usageData = [
         { label: "Keep", value: 24, color: "#86c6c1" },
         { label: "Huawei Health", value: 13, color: "#ffbe73" },
-        { label: "Mi Fitness", value: 11, color: "#fb7d6e" },
         { label: "Nike Run Club", value: 11, color: "#79a8cf" },
-        { label: "Strava", value: 10, color: "#b0abd6" },
         { label: "Apple Fitness", value: 9, color: "#ddcfc2" },
-        { label: "Garmin Connect", value: 7, color: "#a0a0a0" },
-        { label: "Codoon", value: 6, color: "#9ccfad" },
-        { label: "Adidas Running", value: 5, color: "#f6d362" },
-        { label: "Others", value: 4, color: "#b8b8b8" }
+        { label: "Others", value: 43, color: "#b8b8b8" }
     ];
     const gapData = [
         { label: "Too focused on statistics", value: 75, color: "#b9b9b9" },

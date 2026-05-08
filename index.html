@@ -1832,6 +1832,104 @@
             border-bottom: none;
         }
 
+        .comparison-card {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .comparison-intro {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+        }
+
+        .comparison-product {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--foreground);
+            letter-spacing: 0.01em;
+        }
+
+        .comparison-copy {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.75;
+            color: var(--text-primary);
+        }
+
+        .comparison-copy strong {
+            color: var(--foreground);
+        }
+
+        .comparison-evidence {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comparison-evidence-title {
+            margin: 0;
+            color: var(--foreground);
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .comparison-evidence-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 16px;
+            border: var(--line);
+            border-radius: 22px;
+            background:
+                radial-gradient(circle at top left, rgba(193, 140, 93, 0.1) 0, rgba(193, 140, 93, 0) 34%),
+                rgba(255, 255, 255, 0.42);
+        }
+
+        .comparison-evidence-group-title {
+            margin: 0;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .comparison-evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .comparison-evidence-item {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .comparison-evidence-image {
+            width: 100%;
+            height: 340px;
+            display: block;
+            object-fit: contain;
+            object-position: top center;
+            padding: 8px;
+            border: var(--line);
+            border-radius: 18px;
+            background: rgba(26, 25, 21, 0.9);
+            box-shadow: 0 18px 34px -26px rgba(26, 25, 21, 0.58);
+        }
+
+        .comparison-evidence-caption {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
         .crazy8-card {
             grid-column: 1 / -1;
         }
@@ -2186,6 +2284,10 @@
                 grid-template-columns: 1fr;
                 grid-template-rows: minmax(280px, 1fr) auto;
             }
+
+            .comparison-evidence-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -2327,6 +2429,14 @@
 
             .journey-map-subtitle {
                 font-size: 24px;
+            }
+
+            .comparison-evidence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-evidence-image {
+                height: 300px;
             }
 
             .contribution-table,
@@ -2786,6 +2896,153 @@
                 <p>• Group coordination is time-consuming and difficult</p>
 
                 <p>These findings suggest the need for systems that reduce reliance on organizers while supporting intrinsic motivation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card comparison-card flow-gap-top">
+        <h3 class="content-heading">Commercial Product Comparison</h3>
+        <p class="comparison-intro">We compared MileScape against widely used running and fitness products to understand where current tools succeed, and where they leave room for more playful, emotionally meaningful running experiences.</p>
+        <div class="table-scroll">
+            <table class="contribution-table" aria-label="Comparison of commercial running products">
+                <thead>
+                    <tr>
+                        <th scope="col">Commercial Product</th>
+                        <th scope="col">What It Does Well</th>
+                        <th scope="col">What It Misses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Commercial Product">
+                            <div class="comparison-product">Keep</div>
+                        </td>
+                        <td data-label="What It Does Well">
+                            <p class="comparison-copy">Provides structured running records, including distance, pace, calories, and workout summaries. Offers training plans and a large fitness content ecosystem. Has strong popularity among Chinese users, making it familiar and easy to adopt.</p>
+                        </td>
+                        <td data-label="What It Misses">
+                            <p class="comparison-copy">The screenshots show map-based running, AI guidance, competitions, and medals, so the issue is not a total lack of features. The limitation is that these modules are separated into running, discovery, events, and badges, while progress still ends as local route records or campaign participation rather than a continuous collectible journey.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Commercial Product">
+                            <div class="comparison-product">Huawei Health</div>
+                        </td>
+                        <td data-label="What It Does Well">
+                            <p class="comparison-copy">Integrates well with Huawei wearable devices and provides accurate tracking of running distance, pace, heart rate, calories, and training load. Offers health data visualization and long-term fitness records. Supports users who rely on smart watches for daily exercise monitoring.</p>
+                        </td>
+                        <td data-label="What It Misses">
+                            <p class="comparison-copy">The Huawei screenshots include achievements, badges, and live map tracking, but the reward logic is still tied to steps, distance, calories, rings, personal bests, and threshold-based medals. It offers recognition, yet not much route storytelling, landmark discovery, shared collection, or emotional progress beyond quantified performance.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Commercial Product">
+                            <div class="comparison-product">Nike Run Club</div>
+                        </td>
+                        <td data-label="What It Does Well">
+                            <p class="comparison-copy">Offers guided runs, coaching content, and a polished user interface. Uses achievements and challenges to encourage continued participation. Provides a beginner-friendly running experience with motivational audio guidance.</p>
+                        </td>
+                        <td data-label="What It Misses">
+                            <p class="comparison-copy">The screenshots show activity records and challenges framed as 5K, 15K, 30K, and 80K mileage goals with badges. This makes achievement visible, but the reward remains a numeric completion badge rather than a route story, landmark collection, or collaborative long-term journey.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Commercial Product">
+                            <div class="comparison-product">Apple Fitness / Garmin Connect</div>
+                        </td>
+                        <td data-label="What It Does Well">
+                            <p class="comparison-copy">Integrates well with wearable devices and health data. Provides reliable tracking of heart rate, distance, pace, and long-term physical progress. Supports users who want accurate self-monitoring and training insights.</p>
+                        </td>
+                        <td data-label="What It Misses">
+                            <p class="comparison-copy">The Apple Fitness screenshots emphasize activity rings, steps, walking distance, workout summaries, badges, and sharing. These support self-monitoring and encouragement, but the reward layer remains abstract and metric-driven, with little exploratory map context, destination narrative, or non-competitive collective progress.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comparison-evidence" aria-label="Commercial app screenshot evidence">
+            <h4 class="comparison-evidence-title">Screenshot Evidence</h4>
+            <p class="comparison-intro">The screenshots clarify that leading products already support tracking, maps, challenges, medals, and sharing. MileScape's opportunity is therefore more specific: connect running data to an ongoing sense of place, collection, and shared exploration.</p>
+
+            <div class="comparison-evidence-group">
+                <h5 class="comparison-evidence-group-title">Keep</h5>
+                <div class="comparison-evidence-grid">
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Keep1.jpg" alt="Keep outdoor running start screen showing map, AI guidance, music, equipment, and Go button">
+                        <figcaption class="comparison-evidence-caption">Keep provides map-based outdoor running, AI guidance, music, and equipment entry points.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Keep2.jpg" alt="Keep live running screen showing map, total distance, duration, and real-time pace">
+                        <figcaption class="comparison-evidence-caption">During a run, Keep focuses on distance, duration, real-time pace, and current location.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Keep3.jpg" alt="Keep live map view showing running location and performance drawer">
+                        <figcaption class="comparison-evidence-caption">The larger map still frames progress as a live route record rather than a collectible journey.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Keep4.jpg" alt="Keep discovery page showing competitions, brand events, and running activities">
+                        <figcaption class="comparison-evidence-caption">Keep's events and competitions sit in discovery, separate from the personal running journey.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="comparison-evidence-group">
+                <h5 class="comparison-evidence-group-title">Huawei Health</h5>
+                <div class="comparison-evidence-grid">
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Huawei1.jpg" alt="Huawei Health achievements screen showing steps, mileage, days, and calories">
+                        <figcaption class="comparison-evidence-caption">Huawei achievements are organized around cumulative steps, mileage, active days, and calories.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Huawei2.jpg" alt="Huawei Health badge screen showing activity rings, walking, and challenge medals">
+                        <figcaption class="comparison-evidence-caption">Badges make effort visible, but they mainly reward metric thresholds and activity rings.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/Huawei3.jpg" alt="Huawei Health live workout screen showing map, target distance, calories, pace, and steps">
+                        <figcaption class="comparison-evidence-caption">The live workout view combines map tracking with distance, time, calories, pace, and steps.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="comparison-evidence-group">
+                <h5 class="comparison-evidence-group-title">Nike Run Club</h5>
+                <div class="comparison-evidence-grid">
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/NikeRun1.jpg" alt="Nike Run Club activity screen showing weekly distance, pace, duration, and shoe mileage">
+                        <figcaption class="comparison-evidence-caption">Nike Run Club foregrounds weekly mileage, pace, duration, and activity records.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/NikeRun2.jpg" alt="Nike Run Club weekly challenge list showing 30K, 15K, and 5K challenges">
+                        <figcaption class="comparison-evidence-caption">Nike weekly challenges are structured around distance targets and badge-like rewards.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/NikeRun3.jpg" alt="Nike Run Club monthly 80K challenge screen with locked badge">
+                        <figcaption class="comparison-evidence-caption">The monthly 80K challenge turns progress into a locked badge, not a location-based story.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="comparison-evidence-group">
+                <h5 class="comparison-evidence-group-title">Apple Fitness</h5>
+                <div class="comparison-evidence-grid">
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/AppleFitness1.jpg" alt="Apple Fitness summary screen showing rings, calories, steps, walking distance, and badges">
+                        <figcaption class="comparison-evidence-caption">Apple Fitness centers rings, steps, walking distance, trends, and activity badges.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/AppleFitness2.jpg" alt="Apple Fitness workout details showing duration, distance, calories, pace, and heart rate">
+                        <figcaption class="comparison-evidence-caption">Workout details present a dense physiological summary of time, distance, calories, pace, and heart rate.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/AppleFitness3.jpg" alt="Apple Fitness badge screen showing walking workout record based on calories burned">
+                        <figcaption class="comparison-evidence-caption">Badges reward record moments, such as highest calories burned in walking training.</figcaption>
+                    </figure>
+                    <figure class="comparison-evidence-item">
+                        <img class="comparison-evidence-image" src="images/AppleFitness4.jpg" alt="Apple Fitness sharing screen inviting friends to share workout records">
+                        <figcaption class="comparison-evidence-caption">Sharing invites friends around fitness records, but does not create a shared route journey.</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
     </div>

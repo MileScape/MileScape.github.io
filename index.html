@@ -1697,84 +1697,38 @@
             color: var(--text-secondary);
         }
 
-        .alternatives-list {
-            display: grid;
-            gap: 18px;
+        .alternatives-table th,
+        .alternatives-table td {
+            font-size: 15px;
+            line-height: 1.65;
         }
 
-        .alt-option {
-            display: grid;
-            grid-template-columns: 72px minmax(0, 1fr);
-            gap: 18px;
-            align-items: start;
-            padding: 0 0 18px;
-            border-bottom: 1px solid rgba(222, 216, 207, 0.78);
-        }
-
-        .alt-option:last-child {
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .alt-option-index {
-            font-family: "Fraunces", serif;
-            font-size: 34px;
-            font-weight: 700;
-            line-height: 0.95;
-            color: rgba(93, 112, 82, 0.72);
-        }
-
-        .alt-option-body {
-            display: grid;
-            gap: 8px;
-        }
-
-        .alt-option-heading {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .alt-option-kicker {
-            color: var(--primary);
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .alt-option strong {
-            display: block;
-            margin: 0;
-            font-size: 24px;
-            line-height: 1.15;
+        .alternatives-table td:first-child {
             color: var(--foreground);
-            letter-spacing: -0.02em;
-            text-transform: none;
+            font-weight: 800;
         }
 
-        .alt-option-copy {
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--text-primary);
-            max-width: 68ch;
-        }
-
-        .alt-option-tag {
+        .decision-pill {
             display: inline-flex;
             align-items: center;
             min-height: 28px;
-            padding: 0 12px;
-            border-radius: 999px;
-            background: rgba(93, 112, 82, 0.12);
-            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
             font-size: 11px;
             font-weight: 800;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             white-space: nowrap;
+        }
+
+        .decision-pill--selected {
+            background: rgba(93, 112, 82, 0.12);
+            color: var(--primary);
+        }
+
+        .decision-pill--rejected {
+            background: rgba(168, 84, 72, 0.1);
+            color: var(--destructive);
         }
 
         .architecture-block {
@@ -2430,19 +2384,6 @@
                 gap: 12px;
             }
 
-            .alt-option {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .alt-option-index {
-                font-size: 28px;
-            }
-
-            .alt-option strong {
-                font-size: 21px;
-            }
-
             .journey-map-scroll.is-enhanced-mobile {
                 display: none;
             }
@@ -2927,7 +2868,7 @@
                 <p>To identify effective incentives, we examined users’ interests beyond running, including gaming and travel.</p>
                 <p>Users showed strong interest in exploration and collection mechanisms, such as unlocking items and discovering new places.</p>
                 <p>Therefore, MileScape integrates these two core elements to create a more engaging running experience.</p>
-                <p>Although blind-box mechanics were considered, they were ultimately rejected due to the difficulty of delivering meaningful surprise and value in a digital environment.</p>
+                <p>Pure blind-box rewards were considered as an alternative, but we rejected them because random rewards alone can feel disconnected from running effort. The final capsule machine keeps the surprise element, but ties rewards to route progress and collectible assets.</p>
             </div>
         </div>
 
@@ -3816,43 +3757,40 @@
     <div class="inner-card alternatives-block flow-gap-top">
         <div class="alternatives-header">
             <h3 class="card-title">Design Alternatives</h3>
-            <p class="alternatives-intro">We compared three directions to understand which concept could balance usability, motivation, and lasting emotional engagement.</p>
+            <p class="alternatives-intro">We compared three directions to decide how MileScape could move from competitive gamification toward collaborative exploration.</p>
         </div>
 
-        <div class="alternatives-list">
-            <article class="alt-option">
-                <div class="alt-option-index">01</div>
-                <div class="alt-option-body">
-                    <div class="alt-option-heading">
-                        <span class="alt-option-kicker">Option 1</span>
-                        <strong>Data-driven Dashboard</strong>
-                    </div>
-                    <p class="alt-option-copy">Clear metrics and direct performance reading, but it lacks enough engagement to sustain curiosity over time.</p>
-                </div>
-            </article>
-
-            <article class="alt-option">
-                <div class="alt-option-index">02</div>
-                <div class="alt-option-body">
-                    <div class="alt-option-heading">
-                        <span class="alt-option-kicker">Option 2</span>
-                        <strong>Gamified Rewards System</strong>
-                    </div>
-                    <p class="alt-option-copy">Creates stronger short-term motivation, but risks feeling superficial if rewards are disconnected from the running journey.</p>
-                </div>
-            </article>
-
-            <article class="alt-option">
-                <div class="alt-option-index">03</div>
-                <div class="alt-option-body">
-                    <div class="alt-option-heading">
-                        <span class="alt-option-kicker">Option 3</span>
-                        <strong>Exploration-based Journey</strong>
-                        <span class="alt-option-tag">Chosen</span>
-                    </div>
-                    <p class="alt-option-copy">Builds long-term engagement, emotional connection, and stronger alignment with what users actually wanted from the experience.</p>
-                </div>
-            </article>
+        <div class="table-scroll">
+            <table class="contribution-table alternatives-table" aria-label="Design alternatives comparison">
+                <thead>
+                    <tr>
+                        <th>Alternative</th>
+                        <th>Strengths</th>
+                        <th>Problems</th>
+                        <th>Decision</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Alternative">Blind Box Rewards</td>
+                        <td data-label="Strengths">Provides short-term excitement and surprise.</td>
+                        <td data-label="Problems">Cannot support meaningful long-term accumulation if rewards are disconnected from running effort.</td>
+                        <td data-label="Decision"><span class="decision-pill decision-pill--rejected">Rejected</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Alternative">Real-Time Shared Running</td>
+                        <td data-label="Strengths">Creates immediate social presence.</td>
+                        <td data-label="Problems">Hard to focus on dynamic screen information while running; may introduce peer pressure and implicit comparison.</td>
+                        <td data-label="Decision"><span class="decision-pill decision-pill--rejected">Rejected</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Alternative">Landmark-Based Social Exploration</td>
+                        <td data-label="Strengths">Converts mileage into route progress and shared milestones.</td>
+                        <td data-label="Problems">Requires meaningful route and landmark content to make progress feel valuable.</td>
+                        <td data-label="Decision"><span class="decision-pill decision-pill--selected">Selected</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

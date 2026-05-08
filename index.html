@@ -1726,17 +1726,15 @@
 
         .scrapbook {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            padding: 20px;
-            max-width: 720px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 24px;
         }
 
         .scrapbook-item {
             position: relative;
             background: #fff;
-            padding: 8px 8px 22px;
+            padding: 10px 10px 28px;
             border-radius: 4px;
             box-shadow:
                 0 1px 3px rgba(0, 0, 0, 0.08),
@@ -1797,16 +1795,15 @@
 
         @media (max-width: 768px) {
             .scrapbook {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
                 gap: 14px;
                 padding: 16px;
-                max-width: none;
             }
         }
 
         @media (max-width: 480px) {
             .scrapbook {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 12px;
                 padding: 12px;
             }
@@ -4242,18 +4239,6 @@
             <div class="scrapbook-item">
                 <img class="scrapbook-img" src="images/Interview3.jpg" alt="User interview session 3">
                 <div class="scrapbook-caption">User interview</div>
-            </div>
-            <div class="scrapbook-item">
-                <img class="scrapbook-img" src="images/AppleFitness1.jpg" alt="Apple Fitness reference">
-                <div class="scrapbook-caption">Apple Fitness</div>
-            </div>
-            <div class="scrapbook-item">
-                <img class="scrapbook-img" src="images/Keep2.jpg" alt="Keep app reference">
-                <div class="scrapbook-caption">Keep app</div>
-            </div>
-            <div class="scrapbook-item">
-                <img class="scrapbook-img" src="images/Huawei2.jpg" alt="Huawei Health reference">
-                <div class="scrapbook-caption">Huawei Health</div>
             </div>
         </div>
     </div>

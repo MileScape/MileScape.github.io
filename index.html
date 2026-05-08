@@ -1262,6 +1262,119 @@
             min-height: 320px;
         }
 
+        .impact-grid--stacked {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .impact-card--snapshot,
+        .impact-card--findings {
+            gap: 20px;
+        }
+
+        .impact-card--snapshot {
+            padding: 30px;
+        }
+
+        .impact-card--snapshot .card-title,
+        .impact-card--findings .card-title {
+            margin-bottom: 0;
+        }
+
+        .impact-card--snapshot .media-panel {
+            width: min(100%, 1040px);
+            margin: 0 auto;
+            padding: 18px;
+        }
+
+        .impact-card--snapshot .media-frame {
+            width: 100%;
+            padding: 14px;
+        }
+
+        .impact-card--snapshot .media-frame--ueqs {
+            max-height: 760px;
+            object-fit: contain;
+        }
+
+        .impact-card--snapshot .media-frame--imi {
+            max-height: 620px;
+            object-fit: contain;
+        }
+
+        .impact-card--findings {
+            min-height: auto;
+        }
+
+        .impact-card--findings .content-stack {
+            gap: 18px;
+            font-size: 17px;
+            line-height: 1.95;
+        }
+
+        .impact-card--findings .feedback-block {
+            margin-top: 14px;
+        }
+
+        .findings-intro {
+            display: inline-block;
+            width: fit-content;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .findings-list {
+            display: grid;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .findings-item {
+            padding: 0;
+        }
+
+        .findings-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--primary);
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .findings-item p {
+            margin: 0;
+        }
+
+        .feedback-block--quotes {
+            padding: 0;
+            border: none;
+            background: transparent;
+        }
+
+        .feedback-list {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .feedback-quote {
+            margin: 0;
+            padding-left: 0;
+            border-left: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
         .feedback-block {
             margin-top: 6px;
         }
@@ -1555,19 +1668,135 @@
             text-transform: uppercase;
         }
 
+        .alternatives-block {
+            display: grid;
+            gap: 22px;
+        }
+
+        .alternatives-header {
+            display: grid;
+            gap: 10px;
+            max-width: 760px;
+        }
+
+        .alternatives-intro {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .alternatives-list {
+            display: grid;
+            gap: 18px;
+        }
+
         .alt-option {
-            padding: 18px 18px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(222, 216, 207, 0.78);
-            background: rgba(255, 255, 255, 0.42);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+            padding: 0 0 18px;
+            border-bottom: 1px solid rgba(222, 216, 207, 0.78);
+        }
+
+        .alt-option:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .alt-option-index {
+            font-family: "Fraunces", serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 0.95;
+            color: rgba(93, 112, 82, 0.72);
+        }
+
+        .alt-option-body {
+            display: grid;
+            gap: 8px;
+        }
+
+        .alt-option-heading {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alt-option-kicker {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         .alt-option strong {
             display: block;
-            margin-bottom: 8px;
-            font-size: 17px;
+            margin: 0;
+            font-size: 24px;
+            line-height: 1.15;
+            color: var(--foreground);
+            letter-spacing: -0.02em;
+            text-transform: none;
+        }
+
+        .alt-option-copy {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
             color: var(--text-primary);
+            max-width: 68ch;
+        }
+
+        .alt-option-tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(93, 112, 82, 0.12);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .architecture-block {
+            display: grid;
+            gap: 20px;
+        }
+
+        .architecture-header {
+            display: grid;
+            gap: 10px;
+            max-width: 760px;
+        }
+
+        .architecture-summary {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .architecture-figure {
+            margin: 0;
+        }
+
+        .architecture-image {
+            width: 100%;
+            display: block;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            object-fit: contain;
         }
 
         .impact-card--insight {
@@ -2073,6 +2302,19 @@
             .persona-details {
                 grid-template-columns: 1fr;
                 gap: 12px;
+            }
+
+            .alt-option {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .alt-option-index {
+                font-size: 28px;
+            }
+
+            .alt-option strong {
+                font-size: 21px;
             }
 
             .journey-map-scroll.is-enhanced-mobile {
@@ -3268,23 +3510,46 @@
         </div>
     </div>
 
-    <div class="persona-grid flow-gap-top">
-        <div class="inner-card">
+    <div class="inner-card alternatives-block flow-gap-top">
+        <div class="alternatives-header">
             <h3 class="card-title">Design Alternatives</h3>
-            <div class="content-stack">
-                <div class="alt-option">
-                    <strong>Option 1: Data-driven Dashboard</strong>
-                    <div>Clear metrics and direct performance reading, but it lacks enough engagement to sustain curiosity over time.</div>
+            <p class="alternatives-intro">We compared three directions to understand which concept could balance usability, motivation, and lasting emotional engagement.</p>
+        </div>
+
+        <div class="alternatives-list">
+            <article class="alt-option">
+                <div class="alt-option-index">01</div>
+                <div class="alt-option-body">
+                    <div class="alt-option-heading">
+                        <span class="alt-option-kicker">Option 1</span>
+                        <strong>Data-driven Dashboard</strong>
+                    </div>
+                    <p class="alt-option-copy">Clear metrics and direct performance reading, but it lacks enough engagement to sustain curiosity over time.</p>
                 </div>
-                <div class="alt-option">
-                    <strong>Option 2: Gamified Rewards System</strong>
-                    <div>Creates stronger short-term motivation, but risks feeling superficial if rewards are disconnected from the running journey.</div>
+            </article>
+
+            <article class="alt-option">
+                <div class="alt-option-index">02</div>
+                <div class="alt-option-body">
+                    <div class="alt-option-heading">
+                        <span class="alt-option-kicker">Option 2</span>
+                        <strong>Gamified Rewards System</strong>
+                    </div>
+                    <p class="alt-option-copy">Creates stronger short-term motivation, but risks feeling superficial if rewards are disconnected from the running journey.</p>
                 </div>
-                <div class="alt-option">
-                    <strong>Option 3: Exploration-based Journey (Chosen)</strong>
-                    <div>Builds long-term engagement, emotional connection, and stronger alignment with what users actually wanted from the experience.</div>
+            </article>
+
+            <article class="alt-option">
+                <div class="alt-option-index">03</div>
+                <div class="alt-option-body">
+                    <div class="alt-option-heading">
+                        <span class="alt-option-kicker">Option 3</span>
+                        <strong>Exploration-based Journey</strong>
+                        <span class="alt-option-tag">Chosen</span>
+                    </div>
+                    <p class="alt-option-copy">Builds long-term engagement, emotional connection, and stronger alignment with what users actually wanted from the experience.</p>
                 </div>
-            </div>
+            </article>
         </div>
     </div>
 
@@ -3319,20 +3584,18 @@
     <h2 class="section-title">Technical Implementation</h2>
     <p class="section-subtitle">System design and development details</p>
 
-    <div class="persona-grid">
-        <div class="inner-card">
+    <div class="inner-card architecture-block">
+        <div class="architecture-header">
             <h3 class="card-title">System Architecture</h3>
-            <div class="content-stack">
-                <p>Overview of how the web application handles user data, map rendering, and interaction logic.</p>
-                <div class="media-panel media-panel--compact">
-                    <img
-                        class="media-frame"
-                        src="images/milescape_system_flow.png"
-                        alt="MileScape System Architecture Diagram"
-                    >
-                </div>
-            </div>
+            <p class="architecture-summary">Overview of how the web application handles user data, map rendering, and interaction logic.</p>
         </div>
+        <figure class="architecture-figure">
+            <img
+                class="architecture-image"
+                src="images/milescape_system_flow.png"
+                alt="MileScape System Architecture Diagram"
+            >
+        </figure>
     </div>
 
     <div class="inner-card crazy8-card flow-gap-top">
@@ -3400,39 +3663,6 @@
         </div>
     </div>
 
-    <div class="inner-card flow-gap-top">
-        <h3 class="content-heading">Individual Contributions</h3>
-        <div class="text-block-sm">
-            <div class="table-scroll">
-                <table class="contribution-table" aria-label="Individual contributions">
-                    <thead>
-                        <tr>
-                            <th scope="col">Member</th>
-                            <th scope="col">Contribution</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Member">Shengyang Yin</td>
-                            <td data-label="Contribution">Algorithm &amp; Backend Development</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Member">Yize Zheng</td>
-                            <td data-label="Contribution">UI/UX Design</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Member">Chenrui Zhu</td>
-                            <td data-label="Contribution">Mobile &amp; System Integration</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Member">Qi Chen</td>
-                            <td data-label="Contribution">Product Strategy &amp; Testing</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="section-container" id="evaluation">
@@ -3450,46 +3680,56 @@
         </div>
     </div>
 
-    <div class="impact-grid">
-        <div class="inner-card impact-card impact-card--min">
+    <div class="impact-grid impact-grid--stacked">
+        <div class="inner-card impact-card impact-card--snapshot impact-card--min">
             <h3 class="card-title">UEQ-S Snapshot</h3>
             <div class="media-panel media-panel--compact">
                 <img
-                    class="media-frame"
+                    class="media-frame media-frame--ueqs"
                     src="images/ueqs_item_square.png"
                     alt="Figure 1: UEQ-S Item Square"
                 >
             </div>
         </div>
 
-        <div class="inner-card impact-card impact-card--min">
+        <div class="inner-card impact-card impact-card--snapshot impact-card--min">
             <h3 class="card-title">IMI Snapshot</h3>
             <div class="media-panel media-panel--compact">
                 <img
-                    class="media-frame"
+                    class="media-frame media-frame--imi"
                     src="images/imi_item_bar_chart.png"
                     alt="Figure 2: IMI Item Bar Chart"
                 >
             </div>
         </div>
 
-        <div class="inner-card impact-card impact-card--insight impact-card--min">
+        <div class="inner-card impact-card impact-card--findings impact-card--min">
             <h3 class="card-title">Key Findings</h3>
             <div class="content-stack">
-                <p>MileScape consistently achieved higher scores than Keep across multiple dimensions, particularly in enjoyment, motivation, and novelty.</p>
+                <div class="findings-intro">Comparative Insights</div>
+                <div class="findings-list">
+                    <article class="findings-item">
+                        <strong>Higher emotional engagement</strong>
+                        <p>MileScape consistently achieved higher scores than Keep across multiple dimensions, particularly in enjoyment, motivation, and novelty.</p>
+                    </article>
 
-                <p>Although MileScape falls slightly behind Keep in terms of supportiveness, the gap is minimal. This demonstrates that MileScape has achieved comparable functionality with simple data presentation and a clean interface.</p>
+                    <article class="findings-item">
+                        <strong>Comparable practical usability</strong>
+                        <p>Although MileScape falls slightly behind Keep in terms of supportiveness, the gap is minimal. This demonstrates that MileScape has achieved comparable functionality with simple data presentation and a clean interface.</p>
+                    </article>
 
-                <p>IMI-based results further indicate that users found MileScape more engaging and meaningful, suggesting stronger intrinsic motivation and perceived long-term value.</p>
+                    <article class="findings-item">
+                        <strong>Stronger long-term value perception</strong>
+                        <p>IMI-based results further indicate that users found MileScape more engaging and meaningful, suggesting stronger intrinsic motivation and perceived long-term value.</p>
+                    </article>
+                </div>
             </div>
 
-            <div class="feedback-block">
+            <div class="feedback-block feedback-block--quotes">
                 <div class="feedback-title">User Feedback</div>
-                <div class="persona-quote quote-spacing">
-                    “MileScape feels more engaging and meaningful.”
-                </div>
-                <div class="persona-quote quote-spacing--last">
-                    “Unlocking landmarks makes running more enjoyable.”
+                <div class="feedback-list">
+                    <p class="feedback-quote">“MileScape feels more engaging and meaningful.”</p>
+                    <p class="feedback-quote">“Unlocking landmarks makes running more enjoyable.”</p>
                 </div>
             </div>
         </div>

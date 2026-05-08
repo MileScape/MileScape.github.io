@@ -678,8 +678,8 @@
         .team-member {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+            align-items: center;
+            text-align: center;
         }
 
         .avatar-placeholder {
@@ -758,8 +758,11 @@
             border-radius: 0;
             border: none;
             box-shadow: none;
-            background:
-                linear-gradient(90deg, rgba(193, 140, 93, 0.08) 0, rgba(193, 140, 93, 0.08) 4px, transparent 4px);
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: start;
+            column-gap: 16px;
+            background: transparent;
         }
 
         .motivation-text p:nth-last-of-type(2) {
@@ -769,8 +772,8 @@
         .motivation-text p:nth-last-of-type(-n+2) strong {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             min-height: 34px;
-            margin-bottom: 12px;
             padding: 0 14px;
             border-radius: 999px;
             background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
@@ -779,6 +782,7 @@
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .persona-grid {
@@ -1483,9 +1487,12 @@
             border-bottom: none;
         }
 
+        .crazy8-card {
+            grid-column: 1 / -1;
+        }
+
         .crazy8-slider {
-            margin-top: 18px;
-            padding: 24px;
+            padding: 28px;
             border-radius: 24px;
             border: var(--line);
             background:
@@ -1543,7 +1550,7 @@
 
         .crazy8-viewport {
             position: relative;
-            min-height: 560px;
+            min-height: 480px;
             padding: 8px 0 14px;
             overflow: hidden;
         }
@@ -1552,10 +1559,10 @@
             position: absolute;
             inset: 8px 0 14px;
             display: grid;
-            grid-template-rows: minmax(260px, 1fr) auto;
-            gap: 16px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 24px;
             min-height: 100%;
-            padding: 18px;
+            padding: 20px;
             border-radius: 22px;
             border: var(--line);
             background:
@@ -1563,7 +1570,7 @@
             box-shadow: none;
             opacity: 0;
             pointer-events: none;
-            transform: translateY(18px) scale(0.94);
+            transform: translateY(18px) scale(0.96);
             transform-origin: center center;
             transition: transform 0.38s var(--bounce), opacity 0.28s var(--bounce), box-shadow 0.32s var(--bounce);
         }
@@ -1578,20 +1585,22 @@
 
         .crazy8-slide.is-prev {
             z-index: 2;
-            transform: translateY(14px) scale(0.965);
-            box-shadow: 0 12px 24px -24px rgba(44, 44, 36, 0.28);
+            opacity: 0.5;
+            transform: translateY(10px) scale(0.975);
+            box-shadow: 0 12px 24px -24px rgba(44, 44, 36, 0.2);
         }
 
         .crazy8-slide.is-next {
             z-index: 1;
-            transform: translateY(26px) scale(0.93);
-            box-shadow: 0 10px 20px -24px rgba(44, 44, 36, 0.24);
+            opacity: 0.25;
+            transform: translateY(18px) scale(0.95);
+            box-shadow: 0 10px 20px -24px rgba(44, 44, 36, 0.15);
         }
 
         .crazy8-slide.is-hidden {
             z-index: 0;
-            opacity: 1;
-            transform: translateY(34px) scale(0.9);
+            opacity: 0;
+            transform: translateY(24px) scale(0.93);
             box-shadow: none;
         }
 
@@ -1601,20 +1610,20 @@
             border: var(--line);
             background: rgba(255, 255, 255, 0.5);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
         }
 
         .crazy8-slide-media img {
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .crazy8-slide-media--contain {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
             background:
                 radial-gradient(circle at top, rgba(255, 255, 255, 0.92) 0%, rgba(244, 240, 232, 0.94) 58%, rgba(234, 228, 216, 0.98) 100%);
         }
@@ -1624,8 +1633,11 @@
         }
 
         .crazy8-slide-body {
-            display: grid;
-            gap: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            padding: 8px 0;
         }
 
         .crazy8-slide-kicker {
@@ -1809,7 +1821,7 @@
             }
 
             .crazy8-slider {
-                padding: 18px;
+                padding: 20px;
             }
 
             .crazy8-slider-head {
@@ -1823,6 +1835,11 @@
 
             .crazy8-viewport {
                 min-height: 520px;
+            }
+
+            .crazy8-slide {
+                grid-template-columns: 1fr;
+                grid-template-rows: minmax(280px, 1fr) auto;
             }
         }
 
@@ -2029,11 +2046,12 @@
             }
 
             .crazy8-viewport {
-                min-height: 470px;
+                min-height: 440px;
                 padding-bottom: 10px;
             }
 
             .crazy8-slide {
+                grid-template-columns: 1fr;
                 grid-template-rows: minmax(220px, 1fr) auto;
                 gap: 14px;
                 padding: 14px;
@@ -2151,10 +2169,11 @@
             }
 
             .crazy8-viewport {
-                min-height: min(420px, 68vh);
+                min-height: min(400px, 68vh);
             }
 
             .crazy8-slide {
+                grid-template-columns: 1fr;
                 grid-template-rows: minmax(180px, 1fr) auto;
             }
         }
@@ -2887,64 +2906,61 @@
     <h2 class="section-title">Ideation &amp; Alternatives</h2>
     <p class="section-subtitle">Exploration of design ideas and decision-making process</p>
 
-    <div class="persona-grid">
-        <div class="inner-card">
-            <h3 class="card-title">Crazy Eights</h3>
-            <div class="content-stack">
-                <p>Rapid ideation sketches exploring multiple UI directions and interaction concepts.</p>
-                <div class="crazy8-slider" id="crazy8Slider">
-                    <div class="crazy8-slider-head">
-                        <div>
-                            <div class="crazy8-chip">Sketch Flow</div>
-                            <p class="crazy8-hint">Keep one sketch in focus while the other sheets stay stacked behind it for a cleaner view.</p>
-                        </div>
-                        <div class="crazy8-page-indicator" id="crazy8PageIndicator" aria-live="polite">1 / 3</div>
-                    </div>
-
-                    <div class="crazy8-viewport" id="crazy8Viewport" tabindex="0" aria-label="Crazy Eights sketch slider">
-                        <article class="crazy8-slide is-active" data-index="0">
-                            <div class="crazy8-slide-media">
-                                <img src="images/crazy8-1.jpg" alt="Crazy Eights Sketch 1">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">Crazy Eights</div>
-                                <div class="crazy8-slide-title">Concept Sheet 01</div>
-                                <div class="crazy8-slide-description">Early layout directions exploring how route discovery, milestone rewards, and playful running feedback could live together in one flow.</div>
-                            </div>
-                        </article>
-
-                        <article class="crazy8-slide" data-index="1">
-                            <div class="crazy8-slide-media">
-                                <img src="images/crazy8-2.jpg" alt="Crazy Eights Sketch 2">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">Crazy Eights</div>
-                                <div class="crazy8-slide-title">Concept Sheet 02</div>
-                                <div class="crazy8-slide-description">Alternative compositions testing map-first navigation, progress reveal, and how reward moments could appear without overloading the screen.</div>
-                            </div>
-                        </article>
-
-                        <article class="crazy8-slide" data-index="2">
-                            <div class="crazy8-slide-media">
-                                <img src="images/crazy8-3.jpg" alt="Crazy Eights Sketch 3">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">Crazy Eights</div>
-                                <div class="crazy8-slide-title">Concept Sheet 03</div>
-                                <div class="crazy8-slide-description">Refined sketch directions comparing feature density, route storytelling, and landmark collection interactions across several product layouts.</div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="crazy8-controls">
-                        <button class="crazy8-control" id="crazy8Prev" type="button" aria-label="Previous Crazy Eights sketch">Previous</button>
-                        <div class="crazy8-dots" id="crazy8Dots" aria-label="Crazy Eights page indicators"></div>
-                        <button class="crazy8-control" id="crazy8Next" type="button" aria-label="Next Crazy Eights sketch">Next</button>
-                    </div>
+    <div class="inner-card crazy8-card">
+        <div class="crazy8-slider" id="crazy8Slider">
+            <div class="crazy8-slider-head">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Crazy Eights</h3>
+                    <div class="crazy8-chip">Sketch Flow</div>
+                    <p class="crazy8-hint">Rapid ideation sketches exploring multiple UI directions and interaction concepts.</p>
                 </div>
+                <div class="crazy8-page-indicator" id="crazy8PageIndicator" aria-live="polite">1 / 3</div>
+            </div>
+
+            <div class="crazy8-viewport" id="crazy8Viewport" tabindex="0" aria-label="Crazy Eights sketch slider">
+                <article class="crazy8-slide is-active" data-index="0">
+                    <div class="crazy8-slide-media">
+                        <img src="images/crazy8-1.jpg" alt="Crazy Eights Sketch 1">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Crazy Eights</div>
+                        <div class="crazy8-slide-title">Concept Sheet 01</div>
+                        <div class="crazy8-slide-description">Early layout directions exploring how route discovery, milestone rewards, and playful running feedback could live together in one flow.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="1">
+                    <div class="crazy8-slide-media">
+                        <img src="images/crazy8-2.jpg" alt="Crazy Eights Sketch 2">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Crazy Eights</div>
+                        <div class="crazy8-slide-title">Concept Sheet 02</div>
+                        <div class="crazy8-slide-description">Alternative compositions testing map-first navigation, progress reveal, and how reward moments could appear without overloading the screen.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="2">
+                    <div class="crazy8-slide-media">
+                        <img src="images/crazy8-3.jpg" alt="Crazy Eights Sketch 3">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">Crazy Eights</div>
+                        <div class="crazy8-slide-title">Concept Sheet 03</div>
+                        <div class="crazy8-slide-description">Refined sketch directions comparing feature density, route storytelling, and landmark collection interactions across several product layouts.</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="crazy8-controls">
+                <button class="crazy8-control" id="crazy8Prev" type="button" aria-label="Previous Crazy Eights sketch">Previous</button>
+                <div class="crazy8-dots" id="crazy8Dots" aria-label="Crazy Eights page indicators"></div>
+                <button class="crazy8-control" id="crazy8Next" type="button" aria-label="Next Crazy Eights sketch">Next</button>
             </div>
         </div>
+    </div>
 
+    <div class="persona-grid flow-gap-top">
         <div class="inner-card">
             <h3 class="card-title">Design Alternatives</h3>
             <div class="content-stack">
@@ -3009,72 +3025,69 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="inner-card">
-            <h3 class="card-title">High-Fi Prototype</h3>
-            <div class="content-stack">
-                <p>Interactive high-fidelity prototype screens presented with the same stacked page-flip browsing effect as the Crazy Eights sketches.</p>
-                <div class="crazy8-slider" id="highfiSlider">
-                    <div class="crazy8-slider-head">
-                        <div>
-                            <div class="crazy8-chip">High-Fi Flow</div>
-                            <p class="crazy8-hint">Browse the polished mobile screens one by one while the next views stay layered behind the current page.</p>
-                        </div>
-                        <div class="crazy8-page-indicator" id="highfiPageIndicator" aria-live="polite">1 / 4</div>
-                    </div>
-
-                    <div class="crazy8-viewport" id="highfiViewport" tabindex="0" aria-label="High-fidelity prototype slider">
-                        <article class="crazy8-slide is-active" data-index="0">
-                            <div class="crazy8-slide-media crazy8-slide-media--contain">
-                                <img src="images/start.png" alt="MileScape high-fidelity prototype start screen">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
-                                <div class="crazy8-slide-title">Start Screen</div>
-                                <div class="crazy8-slide-description">Landing view introducing the route card interaction and the press-and-hold flip metaphor for exploration-based running.</div>
-                            </div>
-                        </article>
-
-                        <article class="crazy8-slide" data-index="1">
-                            <div class="crazy8-slide-media crazy8-slide-media--contain">
-                                <img src="images/微信图片_20260423223748_8000_389.png" alt="MileScape high-fidelity route detail screen">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
-                                <div class="crazy8-slide-title">Route Detail</div>
-                                <div class="crazy8-slide-description">Map-based route selection view showing progress setup, exploration framing, and the primary call to start the run.</div>
-                            </div>
-                        </article>
-
-                        <article class="crazy8-slide" data-index="2">
-                            <div class="crazy8-slide-media crazy8-slide-media--contain">
-                                <img src="images/微信图片_20260423223747_7999_389.png" alt="MileScape high-fidelity run result screen">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
-                                <div class="crazy8-slide-title">Run Result</div>
-                                <div class="crazy8-slide-description">Post-run summary with route context, earned rewards, and health metrics presented in a calm, polished dashboard.</div>
-                            </div>
-                        </article>
-
-                        <article class="crazy8-slide" data-index="3">
-                            <div class="crazy8-slide-media crazy8-slide-media--contain">
-                                <img src="images/微信图片_20260423223746_7998_389.png" alt="MileScape high-fidelity collectible route card screen">
-                            </div>
-                            <div class="crazy8-slide-body">
-                                <div class="crazy8-slide-kicker">High-Fi Prototype</div>
-                                <div class="crazy8-slide-title">Collectible Route Card</div>
-                                <div class="crazy8-slide-description">Shareable city card view combining destination imagery, collectible value, and the signature flip interaction for emotional reward.</div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="crazy8-controls">
-                        <button class="crazy8-control" id="highfiPrev" type="button" aria-label="Previous high-fidelity screen">Previous</button>
-                        <div class="crazy8-dots" id="highfiDots" aria-label="High-fidelity page indicators"></div>
-                        <button class="crazy8-control" id="highfiNext" type="button" aria-label="Next high-fidelity screen">Next</button>
-                    </div>
+    <div class="inner-card crazy8-card flow-gap-top">
+        <div class="crazy8-slider" id="highfiSlider">
+            <div class="crazy8-slider-head">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">High-Fi Prototype</h3>
+                    <div class="crazy8-chip">High-Fi Flow</div>
+                    <p class="crazy8-hint">Interactive high-fidelity prototype screens with page-flip browsing effect.</p>
                 </div>
+                <div class="crazy8-page-indicator" id="highfiPageIndicator" aria-live="polite">1 / 4</div>
+            </div>
+
+            <div class="crazy8-viewport" id="highfiViewport" tabindex="0" aria-label="High-fidelity prototype slider">
+                <article class="crazy8-slide is-active" data-index="0">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/start.png" alt="MileScape high-fidelity prototype start screen">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                        <div class="crazy8-slide-title">Start Screen</div>
+                        <div class="crazy8-slide-description">Landing view introducing the route card interaction and the press-and-hold flip metaphor for exploration-based running.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="1">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/微信图片_20260423223748_8000_389.png" alt="MileScape high-fidelity route detail screen">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                        <div class="crazy8-slide-title">Route Detail</div>
+                        <div class="crazy8-slide-description">Map-based route selection view showing progress setup, exploration framing, and the primary call to start the run.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="2">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/微信图片_20260423223747_7999_389.png" alt="MileScape high-fidelity run result screen">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                        <div class="crazy8-slide-title">Run Result</div>
+                        <div class="crazy8-slide-description">Post-run summary with route context, earned rewards, and health metrics presented in a calm, polished dashboard.</div>
+                    </div>
+                </article>
+
+                <article class="crazy8-slide" data-index="3">
+                    <div class="crazy8-slide-media crazy8-slide-media--contain">
+                        <img src="images/微信图片_20260423223746_7998_389.png" alt="MileScape high-fidelity collectible route card screen">
+                    </div>
+                    <div class="crazy8-slide-body">
+                        <div class="crazy8-slide-kicker">High-Fi Prototype</div>
+                        <div class="crazy8-slide-title">Collectible Route Card</div>
+                        <div class="crazy8-slide-description">Shareable city card view combining destination imagery, collectible value, and the signature flip interaction for emotional reward.</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="crazy8-controls">
+                <button class="crazy8-control" id="highfiPrev" type="button" aria-label="Previous high-fidelity screen">Previous</button>
+                <div class="crazy8-dots" id="highfiDots" aria-label="High-fidelity page indicators"></div>
+                <button class="crazy8-control" id="highfiNext" type="button" aria-label="Next high-fidelity screen">Next</button>
             </div>
         </div>
     </div>

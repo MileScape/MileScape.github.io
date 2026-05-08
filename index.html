@@ -66,7 +66,7 @@
 
         body {
             margin: 0;
-            padding: 0 0 calc(56px + env(safe-area-inset-bottom, 0px));
+            padding: 0;
             color: var(--text-primary);
             font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
@@ -269,54 +269,104 @@
         }
 
         .site-footer {
+            width: 100%;
+            margin: 72px 0 0;
+            padding: 72px 0 42px;
+            color: rgba(246, 241, 233, 0.94);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            background:
+                linear-gradient(180deg, rgba(52, 54, 47, 0.98) 0%, rgba(43, 45, 39, 1) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .site-footer__inner {
             width: min(1120px, calc(100vw - 48px));
-            margin: 8px auto 0;
-            padding: 0 0 8px;
-            color: var(--foreground);
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .site-footer__content {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+            gap: 56px;
+            align-items: start;
+        }
+
+        .site-footer__intro {
+            display: grid;
+            gap: 18px;
+            max-width: 34rem;
         }
 
         .site-footer__brand {
             font-family: "Fraunces", "Times New Roman", serif;
-            font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+            font-size: clamp(1.8rem, 1.35rem + 1vw, 2.55rem);
             font-weight: 700;
             line-height: 1.1;
             margin: 0;
+            letter-spacing: -0.02em;
         }
 
         .site-footer__tagline {
-            margin: 12px 0 0;
-            color: var(--muted-foreground);
-            font-size: 0.98rem;
-            line-height: 1.6;
+            margin: 0;
+            color: rgba(246, 241, 233, 0.72);
+            font-size: 1.05rem;
+            line-height: 1.75;
         }
 
-        .site-footer__nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin: 20px 0 0;
+        .site-footer__meta {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
         }
 
-        .site-footer__nav a {
-            color: var(--foreground);
-            text-decoration: none;
+        .site-footer__group {
+            display: grid;
+            gap: 16px;
+            align-content: start;
+        }
+
+        .site-footer__eyebrow {
+            margin: 0;
+            color: rgba(246, 241, 233, 0.38);
+            font-size: 0.82rem;
             font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .site-footer__nav,
+        .site-footer__links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 0;
+        }
+
+        .site-footer__nav a,
+        .site-footer__links a {
+            color: rgba(246, 241, 233, 0.82);
+            text-decoration: none;
+            font-size: 1.02rem;
+            font-weight: 500;
         }
 
         .site-footer__nav a:hover,
-        .site-footer__nav a:focus-visible {
-            color: var(--primary);
+        .site-footer__nav a:focus-visible,
+        .site-footer__links a:hover,
+        .site-footer__links a:focus-visible {
+            color: rgba(255, 255, 255, 1);
         }
 
         .site-footer__divider {
             border: 0;
-            border-top: var(--line);
-            margin: 22px 0 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 72px 0 18px;
         }
 
         .site-footer__copyright {
             margin: 0;
-            color: var(--muted-foreground);
+            color: rgba(246, 241, 233, 0.38);
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -3310,7 +3360,8 @@
             padding: 12px;
         }
 
-        .crazy8-slide-media img {
+        .crazy8-slide-media img,
+        .crazy8-slide-media video {
             width: 100%;
             height: 100%;
             display: block;
@@ -3324,6 +3375,114 @@
 
         .crazy8-slide-media--contain img {
             object-fit: contain;
+        }
+
+        .video-showcase-stack {
+            display: grid;
+            gap: 22px;
+        }
+
+        .video-showcase-card {
+            display: grid;
+            gap: 22px;
+        }
+
+        .video-showcase-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 220px minmax(280px, 0.7fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .video-showcase-media {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            overflow: hidden;
+            border-radius: 22px;
+            border: var(--line);
+            background:
+                radial-gradient(circle at top, rgba(245, 242, 235, 0.96) 0%, rgba(234, 228, 216, 0.96) 58%, rgba(224, 216, 202, 0.98) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+        }
+
+        .video-showcase-media video {
+            width: auto;
+            max-width: 100%;
+            height: min(72vh, 760px);
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+            border-radius: 18px;
+            background: rgba(35, 36, 31, 0.96);
+            box-shadow: 0 16px 34px -22px rgba(24, 24, 20, 0.55);
+        }
+
+        .video-showcase-copy {
+            display: grid;
+            gap: 10px;
+            align-content: center;
+        }
+
+        .video-showcase-preview {
+            display: grid;
+            gap: 14px;
+            align-content: center;
+            justify-items: center;
+        }
+
+        .video-showcase-preview-label {
+            margin: 0;
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .video-showcase-flipbook {
+            position: relative;
+            width: min(100%, 180px);
+            aspect-ratio: 3 / 5;
+        }
+
+        .video-showcase-flipbook-card {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: var(--line);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(240, 234, 223, 0.96) 100%);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .video-showcase-flipbook-card:nth-child(1) {
+            transform: rotate(-7deg) translate(-10px, 12px);
+            opacity: 0.46;
+        }
+
+        .video-showcase-flipbook-card:nth-child(2) {
+            transform: rotate(5deg) translate(10px, 6px);
+            opacity: 0.72;
+        }
+
+        .video-showcase-flipbook-card:nth-child(3) {
+            display: grid;
+            place-items: center;
+            padding: 18px;
+            transform: rotate(-1deg);
+            background:
+                linear-gradient(180deg, rgba(252, 249, 244, 0.98) 0%, rgba(235, 228, 215, 0.98) 100%);
+        }
+
+        .video-showcase-flipbook-note {
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.6;
+            text-align: center;
+            letter-spacing: 0.04em;
         }
 
         .crazy8-slide-body {
@@ -3602,7 +3761,7 @@
 
             body {
                 gap: 24px;
-                padding-bottom: calc(36px + env(safe-area-inset-bottom, 0px));
+                padding-bottom: 0;
             }
 
             .apple-nav {
@@ -3742,6 +3901,48 @@
 
             .comparison-evidence-image {
                 max-height: 420px;
+            }
+
+            .video-showcase-shell {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .video-showcase-media {
+                padding: 14px;
+            }
+
+            .video-showcase-media video {
+                width: 100%;
+                height: auto;
+                max-height: min(72vh, 560px);
+            }
+
+            .video-showcase-preview {
+                justify-items: flex-start;
+            }
+
+            .video-showcase-flipbook {
+                width: min(180px, 46vw);
+            }
+
+            .site-footer {
+                margin-top: 56px;
+                padding: 52px 0 32px;
+            }
+
+            .site-footer__content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .site-footer__meta {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .site-footer__divider {
+                margin-top: 44px;
             }
 
             .comparison-table td:first-child {
@@ -3969,7 +4170,7 @@
 
             body {
                 gap: 20px;
-                padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+                padding-bottom: 0;
             }
 
             .apple-nav {
@@ -5900,6 +6101,153 @@
         </div>
     </div>
 
+    <div class="video-showcase-stack flow-gap-top" id="video">
+        <div class="inner-card video-showcase-card">
+            <div class="prototype-heading">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Welcome Page</h3>
+                    <div class="crazy8-chip">Video Module 01</div>
+                </div>
+            </div>
+            <div class="video-showcase-shell">
+                <div class="video-showcase-media">
+                    <video src="images/video/welcomepage.mp4" controls preload="metadata" playsinline></video>
+                </div>
+                <div class="video-showcase-preview" aria-label="Welcome Page screenshot flipbook placeholder">
+                    <p class="video-showcase-preview-label">Flip Screens</p>
+                    <div class="video-showcase-flipbook">
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card">
+                            <div class="video-showcase-flipbook-note">Screenshot placeholders for this video module</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-showcase-copy">
+                    <div class="crazy8-slide-kicker">Video Showcase</div>
+                    <div class="crazy8-slide-title">Welcome Flow</div>
+                    <div class="crazy8-slide-description">Opening interaction video showing the welcome flow, first impression, and the visual tone that introduces MileScape's exploration-based running experience.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card video-showcase-card">
+            <div class="prototype-heading">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Running Time</h3>
+                    <div class="crazy8-chip">Video Module 03</div>
+                </div>
+            </div>
+            <div class="video-showcase-shell">
+                <div class="video-showcase-media">
+                    <video src="images/video/runningtime.mp4" controls preload="metadata" playsinline></video>
+                </div>
+                <div class="video-showcase-preview" aria-label="Running Time screenshot flipbook placeholder">
+                    <p class="video-showcase-preview-label">Flip Screens</p>
+                    <div class="video-showcase-flipbook">
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card">
+                            <div class="video-showcase-flipbook-note">Screenshot placeholders for this video module</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-showcase-copy">
+                    <div class="crazy8-slide-kicker">Video Showcase</div>
+                    <div class="crazy8-slide-title">Active Exploration State</div>
+                    <div class="crazy8-slide-description">Core running-state video highlighting motion feedback, route simulation, and the moment-to-moment experience during active exploration.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card video-showcase-card">
+            <div class="prototype-heading">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Paceport</h3>
+                    <div class="crazy8-chip">Video Module 02</div>
+                </div>
+            </div>
+            <div class="video-showcase-shell">
+                <div class="video-showcase-media">
+                    <video src="images/video/paceport.mp4" controls preload="metadata" playsinline></video>
+                </div>
+                <div class="video-showcase-preview" aria-label="Paceport screenshot flipbook placeholder">
+                    <p class="video-showcase-preview-label">Flip Screens</p>
+                    <div class="video-showcase-flipbook">
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card">
+                            <div class="video-showcase-flipbook-note">Screenshot placeholders for this video module</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-showcase-copy">
+                    <div class="crazy8-slide-kicker">Video Showcase</div>
+                    <div class="crazy8-slide-title">Route Progress Experience</div>
+                    <div class="crazy8-slide-description">Video walkthrough of the Paceport experience, focusing on route progress, destination framing, and how users move through collectible running journeys.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card video-showcase-card">
+            <div class="prototype-heading">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">PaceCrew</h3>
+                    <div class="crazy8-chip">Video Module 04</div>
+                </div>
+            </div>
+            <div class="video-showcase-shell">
+                <div class="video-showcase-media">
+                    <video src="images/video/pacecrew.mp4" controls preload="metadata" playsinline></video>
+                </div>
+                <div class="video-showcase-preview" aria-label="PaceCrew screenshot flipbook placeholder">
+                    <p class="video-showcase-preview-label">Flip Screens</p>
+                    <div class="video-showcase-flipbook">
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card">
+                            <div class="video-showcase-flipbook-note">Screenshot placeholders for this video module</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-showcase-copy">
+                    <div class="crazy8-slide-kicker">Video Showcase</div>
+                    <div class="crazy8-slide-title">Collaborative Team Flow</div>
+                    <div class="crazy8-slide-description">Collaborative team-running flow demonstrating how group progress, shared milestones, and social motivation are framed without competitive pressure.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card video-showcase-card">
+            <div class="prototype-heading">
+                <div>
+                    <h3 class="card-title" style="margin-bottom: 8px;">Achievements</h3>
+                    <div class="crazy8-chip">Video Module 05</div>
+                </div>
+            </div>
+            <div class="video-showcase-shell">
+                <div class="video-showcase-media">
+                    <video src="images/video/achievements.mp4" controls preload="metadata" playsinline></video>
+                </div>
+                <div class="video-showcase-preview" aria-label="Achievements screenshot flipbook placeholder">
+                    <p class="video-showcase-preview-label">Flip Screens</p>
+                    <div class="video-showcase-flipbook">
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card"></div>
+                        <div class="video-showcase-flipbook-card">
+                            <div class="video-showcase-flipbook-note">Screenshot placeholders for this video module</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-showcase-copy">
+                    <div class="crazy8-slide-kicker">Video Showcase</div>
+                    <div class="crazy8-slide-title">Reward Outcome</div>
+                    <div class="crazy8-slide-description">Reward-focused video showing collectible achievements, visual feedback, and how MileScape turns progress into a memorable emotional outcome.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="section-container" id="evaluation">
@@ -6281,16 +6629,37 @@
 </div>
 
 <footer class="site-footer" aria-label="MileScape copyright footer">
-    <p class="site-footer__brand">MileScape</p>
-    <p class="site-footer__tagline">"Run locally, explore globally."</p>
-    <nav class="site-footer__nav" aria-label="Footer navigation">
-        <a href="https://milescape.vercel.app" target="_blank" rel="noreferrer">MileScape</a>
-        <a href="https://github.com/MileScape/MileScape" target="_blank" rel="noreferrer">Github</a>
-        <a href="https://www.figma.com/proto/H7QpI1PgyFgl2eg6vI0sbC/CPT208_GroupC1-2_MileScape_Low-Fi-Prototype?node-id=0-1&t=qa9ZkeNCy2ZbsSEe-1" target="_blank" rel="noreferrer">Low-Fi Prototype</a>
-        <a href="#">Video</a>
-    </nav>
-    <hr class="site-footer__divider">
-    <p class="site-footer__copyright">© 2026 MileScape. All rights reserved.</p>
+    <div class="site-footer__inner">
+        <div class="site-footer__content">
+            <div class="site-footer__intro">
+                <p class="site-footer__brand">MileScape</p>
+                <p class="site-footer__tagline">CPT208 Group Project exploring how running can feel more meaningful through route storytelling, collectible landmarks, and collaborative progress.</p>
+            </div>
+
+            <div class="site-footer__meta">
+                <section class="site-footer__group" aria-label="Project links">
+                    <p class="site-footer__eyebrow">Project</p>
+                    <nav class="site-footer__nav" aria-label="Footer navigation">
+                        <a href="https://milescape.vercel.app" target="_blank" rel="noreferrer">Live Prototype</a>
+                        <a href="https://github.com/MileScape/MileScape" target="_blank" rel="noreferrer">GitHub</a>
+                        <a href="https://www.figma.com/proto/H7QpI1PgyFgl2eg6vI0sbC/CPT208_GroupC1-2_MileScape_Low-Fi-Prototype?node-id=0-1&t=qa9ZkeNCy2ZbsSEe-1" target="_blank" rel="noreferrer">Low-Fi Prototype</a>
+                        <a href="#">Video</a>
+                    </nav>
+                </section>
+
+                <section class="site-footer__group" aria-label="Reference links">
+                    <p class="site-footer__eyebrow">References</p>
+                    <div class="site-footer__links">
+                        <a href="#references">Academic Sources</a>
+                        <a href="#appendix">Appendix Evidence</a>
+                        <a href="#evaluation">Evaluation Results</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <hr class="site-footer__divider">
+        <p class="site-footer__copyright">© 2026 MileScape. All rights reserved.</p>
+    </div>
 </footer>
 
 </body>

@@ -1833,114 +1833,6 @@
             gap: 22px;
         }
 
-        .evaluation-alpha-card {
-            display: grid;
-            gap: 18px;
-            padding: 20px 22px;
-            border-radius: 26px;
-            border: 1px solid rgba(222, 216, 207, 0.84);
-            background:
-                radial-gradient(circle at top left, rgba(193, 140, 93, 0.12) 0, rgba(193, 140, 93, 0) 38%),
-                linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(247, 241, 232, 0.98) 100%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
-        }
-
-        .evaluation-alpha-intro {
-            margin: 0;
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.8;
-        }
-
-        .evaluation-alpha-rating {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            align-items: center;
-            gap: 14px;
-            margin-top: 4px;
-            padding: 14px 16px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.58);
-            border: 1px solid rgba(222, 216, 207, 0.72);
-        }
-
-        .evaluation-alpha-rating svg {
-            width: 86px;
-            height: 86px;
-            overflow: visible;
-        }
-
-        .evaluation-alpha-rating-track {
-            fill: none;
-            stroke: rgba(93, 112, 82, 0.16);
-            stroke-width: 10;
-        }
-
-        .evaluation-alpha-rating-fill {
-            fill: none;
-            stroke: var(--primary);
-            stroke-width: 10;
-            stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            stroke-dasharray: 188.5;
-            stroke-dashoffset: 188.5;
-            filter: drop-shadow(0 6px 10px rgba(93, 112, 82, 0.18));
-            transition: stroke-dashoffset 1400ms cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .evaluation-alpha-rating-score {
-            font-family: "Fraunces", serif;
-            font-size: 18px;
-            font-weight: 700;
-            fill: var(--foreground);
-            opacity: 0;
-            transform: translateY(4px);
-            transform-origin: 50% 50%;
-            transition: opacity 420ms ease 220ms, transform 420ms ease 220ms;
-        }
-
-        .evaluation-alpha-rating-scale {
-            font-size: 9px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            fill: var(--text-secondary);
-            opacity: 0;
-            transform: translateY(4px);
-            transform-origin: 50% 50%;
-            transition: opacity 420ms ease 320ms, transform 420ms ease 320ms;
-        }
-
-        .evaluation-alpha-rating-copy {
-            display: grid;
-            gap: 4px;
-        }
-
-        .evaluation-alpha-rating-label {
-            margin: 0;
-            color: var(--foreground);
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-        .evaluation-alpha-rating-note {
-            margin: 0;
-            color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-fill {
-            stroke-dashoffset: 9.4;
-        }
-
-        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-score,
-        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-scale {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .evaluation-impact-intro,
         .evaluation-limitations-intro {
             margin: 0;
@@ -6488,6 +6380,45 @@
         </div>
     </div>
 
+    <div class="inner-card flow-gap-top" id="contributions">
+        <h3 class="card-title card-title--large">Individual Contributions</h3>
+        <p class="comparison-intro">A breakdown of what each team member built across the MileScape project.</p>
+
+        <div class="table-scroll">
+            <table class="contribution-table">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Key Contributions</th>
+                        <th>Share</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Member"><strong>Chenrui Zhu</strong></td>
+                        <td data-label="Key Contributions">Design system architecture; system-wide UI/UX design; welcome page; watch UI design; high-fidelity prototype; MyPace page design</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Member"><strong>Shengyang Yin</strong></td>
+                        <td data-label="Key Contributions">Gumball machine feature design; questionnaire design &amp; user survey management</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Member"><strong>Yize Zheng</strong></td>
+                        <td data-label="Key Contributions">Figma poster illustration; achievements system design; low-fidelity prototyping</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Member"><strong>Qi Chen</strong></td>
+                        <td data-label="Key Contributions">Map feature design; poster design; portfolio website UI design; low-fidelity prototyping</td>
+                        <td data-label="Share">25%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 <div class="section-container" id="evaluation">
@@ -6502,60 +6433,6 @@
             <p>A simplified version of the User Experience Questionnaire (UEQ-S) was used to assess usability and experience quality across 8 semantic differential scales, including ease of use, efficiency, clarity, excitement, and novelty.</p>
 
             <p>Additionally, inspired by the Intrinsic Motivation Inventory (IMI), we incorporated measures of interest/enjoyment and perceived value to better capture users’ motivation and long-term engagement.</p>
-        </div>
-    </div>
-
-    <div class="inner-card flow-gap-bottom">
-        <h3 class="card-title card-title--large">Usability Testing: Alpha Version</h3>
-        <div class="content-stack content-stack--comfortable">
-            <p>Before final refinement, we tested the Alpha version of MileScape with 3 real users. The sessions were moderated and qualitative: each participant explored the prototype while thinking aloud, and we recorded moments of hesitation, confusion, positive reaction, and post-test comments.</p>
-
-            <p><strong>Test goal:</strong> identify whether new users could understand the running journey concept, start route exploration, interpret achievements and rewards, and feel that the route experience was different from a normal fitness map.</p>
-
-            <p><strong>Core tasks:</strong> enter the prototype, inspect a Paceport route, understand the reward and achievement loop, and try the simulated route experience. The purpose was formative issue discovery rather than statistical validation.</p>
-        </div>
-
-        <div class="table-scroll u-mt-16">
-            <table class="contribution-table" aria-label="Alpha usability testing results with three real users">
-                <thead>
-                    <tr>
-                        <th scope="col">Participant</th>
-                        <th scope="col">Test Focus</th>
-                        <th scope="col">Observed Result</th>
-                        <th scope="col">Severity</th>
-                        <th scope="col">Design Response</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Participant"><strong>P1</strong><br>First-time user</td>
-                        <td data-label="Test Focus">Start from the entry flow and understand how to begin route exploration.</td>
-                        <td data-label="Observed Result">The user understood the travel concept after explanation, but the Alpha version did not clearly guide what to do first. This caused hesitation before entering the main route flow.</td>
-                        <td data-label="Severity">High</td>
-                        <td data-label="Design Response">Added a beginner guide for first-time users so the main interaction flow is introduced before route exploration starts.</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Participant"><strong>P2</strong><br>Reward-oriented runner</td>
-                        <td data-label="Test Focus">Review achievements, unlocked rewards, and the sense of collection.</td>
-                        <td data-label="Observed Result">The user understood that achievements were connected to running progress, but felt the Alpha achievement interface was not visually attractive enough to make rewards feel collectible.</td>
-                        <td data-label="Severity">Medium</td>
-                        <td data-label="Design Response">Redesigned the achievement page with a more polished layout, stronger visual hierarchy, and clearer reward presentation.</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Participant"><strong>P3</strong><br>Fitness app user</td>
-                        <td data-label="Test Focus">Try the simulated running route and compare the feeling with normal map-based fitness apps.</td>
-                        <td data-label="Observed Result">The 2D Mapbox route was readable, but the user felt it was not immersive enough and did not strongly communicate the feeling of travelling through a virtual route.</td>
-                        <td data-label="Severity">Medium-High</td>
-                        <td data-label="Design Response">Replaced the 2D route simulation with a 3D scene rendering to strengthen presence, route atmosphere, and exploratory motivation.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="content-stack content-stack--comfortable u-mt-16">
-            <p><strong>Synthesis:</strong> the Alpha test showed that MileScape's core idea was understandable and appealing, but three usability risks needed attention before the final version: first-use guidance, visual reward quality, and route immersion. These findings directly led to the three before/after iterations shown below.</p>
-
-            <p><strong>Limitation:</strong> because the usability test involved only 3 participants, we treated the results as qualitative design evidence rather than a representative quantitative conclusion. The later UEQ-S and IMI comparison was used to complement these formative findings.</p>
         </div>
     </div>
 
@@ -6785,23 +6662,56 @@
     </div>
 
     <div class="inner-card flow-gap-top">
-        <div class="evaluation-alpha-card">
-            <div>
-                <h3 class="card-title card-title--large">Alpha Testing</h3>
-                <p class="evaluation-alpha-intro">We invited users who had never used our latest product but already had a running habit to test the Alpha prototype through hands-on experience. After their first experience with the Alpha version, overall satisfaction was high. Testers felt that the product was easy to operate, the core functions matched running needs well, onboarding felt smooth, and the overall experience was positive.</p>
-            </div>
-            <div class="evaluation-alpha-rating" aria-label="Alpha testing satisfaction rating">
-                <svg viewBox="0 0 86 86" role="img" aria-label="Satisfaction score 3.8 out of 4">
-                    <circle class="evaluation-alpha-rating-track" cx="43" cy="43" r="30"></circle>
-                    <circle class="evaluation-alpha-rating-fill" cx="43" cy="43" r="30"></circle>
-                    <text class="evaluation-alpha-rating-score" x="43" y="39" text-anchor="middle">3/3</text>
-                    <text class="evaluation-alpha-rating-scale" x="43" y="54" text-anchor="middle">3.8 / 4</text>
-                </svg>
-                <div class="evaluation-alpha-rating-copy">
-                    <p class="evaluation-alpha-rating-label">Alpha satisfaction</p>
-                    <p class="evaluation-alpha-rating-note">All 3 of 3 runners reported a positive first-use impression, with an average satisfaction score of 3.8 out of 4.</p>
-                </div>
-            </div>
+        <h3 class="card-title card-title--large">Usability Testing: Alpha Version</h3>
+        <div class="content-stack content-stack--comfortable">
+            <p>Before final refinement, we tested the Alpha version of MileScape with 3 real users. The sessions were moderated and qualitative: each participant explored the prototype while thinking aloud, and we recorded moments of hesitation, confusion, positive reaction, and post-test comments.</p>
+
+            <p><strong>Test goal:</strong> identify whether new users could understand the running journey concept, start route exploration, interpret achievements and rewards, and feel that the route experience was different from a normal fitness map.</p>
+
+            <p><strong>Core tasks:</strong> enter the prototype, inspect a Paceport route, understand the reward and achievement loop, and try the simulated route experience. The purpose was formative issue discovery rather than statistical validation.</p>
+        </div>
+
+        <div class="table-scroll u-mt-16">
+            <table class="contribution-table" aria-label="Alpha usability testing results with three real users">
+                <thead>
+                    <tr>
+                        <th scope="col">Participant</th>
+                        <th scope="col">Test Focus</th>
+                        <th scope="col">Observed Result</th>
+                        <th scope="col">Severity</th>
+                        <th scope="col">Design Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Participant"><strong>P1</strong><br>First-time user</td>
+                        <td data-label="Test Focus">Start from the entry flow and understand how to begin route exploration.</td>
+                        <td data-label="Observed Result">The user understood the travel concept after explanation, but the Alpha version did not clearly guide what to do first. This caused hesitation before entering the main route flow.</td>
+                        <td data-label="Severity">High</td>
+                        <td data-label="Design Response">Added a beginner guide for first-time users so the main interaction flow is introduced before route exploration starts.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Participant"><strong>P2</strong><br>Reward-oriented runner</td>
+                        <td data-label="Test Focus">Review achievements, unlocked rewards, and the sense of collection.</td>
+                        <td data-label="Observed Result">The user understood that achievements were connected to running progress, but felt the Alpha achievement interface was not visually attractive enough to make rewards feel collectible.</td>
+                        <td data-label="Severity">Medium</td>
+                        <td data-label="Design Response">Redesigned the achievement page with a more polished layout, stronger visual hierarchy, and clearer reward presentation.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Participant"><strong>P3</strong><br>Fitness app user</td>
+                        <td data-label="Test Focus">Try the simulated running route and compare the feeling with normal map-based fitness apps.</td>
+                        <td data-label="Observed Result">The 2D Mapbox route was readable, but the user felt it was not immersive enough and did not strongly communicate the feeling of travelling through a virtual route.</td>
+                        <td data-label="Severity">Medium-High</td>
+                        <td data-label="Design Response">Replaced the 2D route simulation with a 3D scene rendering to strengthen presence, route atmosphere, and exploratory motivation.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-stack content-stack--comfortable u-mt-16">
+            <p><strong>Synthesis:</strong> the Alpha test showed that MileScape's core idea was understandable and appealing, but three usability risks needed attention before the final version: first-use guidance, visual reward quality, and route immersion. These findings directly led to the three before/after iterations shown above.</p>
+
+            <p><strong>Limitation:</strong> because the usability test involved only 3 participants, we treated the results as qualitative design evidence rather than a representative quantitative conclusion. The later UEQ-S and IMI comparison was used to complement these formative findings.</p>
         </div>
     </div>
 
@@ -7038,47 +6948,6 @@
             </div>
         </div>
     </details>
-</div>
-
-<div class="section-container" id="contributions">
-    <h2 class="section-title">Individual Contributions</h2>
-    <p class="section-subtitle">A breakdown of what each team member built across the MileScape project.</p>
-
-    <div class="inner-card">
-        <div class="table-scroll">
-            <table class="contribution-table">
-                <thead>
-                    <tr>
-                        <th>Member</th>
-                        <th>Key Contributions</th>
-                        <th>Share</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Member"><strong>Chenrui Zhu</strong></td>
-                        <td data-label="Key Contributions">Design system architecture; system-wide UI/UX design; welcome page; watch UI design; high-fidelity prototype; MyPace page design</td>
-                        <td data-label="Share">25%</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Member"><strong>Shengyang Yin</strong></td>
-                        <td data-label="Key Contributions">Gumball machine feature design; questionnaire design &amp; user survey management</td>
-                        <td data-label="Share">25%</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Member"><strong>Yize Zheng</strong></td>
-                        <td data-label="Key Contributions">Figma poster illustration; achievements system design; low-fidelity prototyping</td>
-                        <td data-label="Share">25%</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Member"><strong>Qi Chen</strong></td>
-                        <td data-label="Key Contributions">Map feature design; poster design; portfolio website UI design; low-fidelity prototyping</td>
-                        <td data-label="Share">25%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </div>
 
 <footer class="site-footer" aria-label="MileScape copyright footer">

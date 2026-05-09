@@ -956,7 +956,7 @@
         { label: "Collection", value: 62.5 },
         { label: "Progress", value: 65 },
         { label: "Personal\nGoals", value: 45 },
-        { label: "Blind\nBox", value: 72 },
+        { label: "Random\nRewards", value: 72 },
         { label: "Social\nInteraction", value: 68 }
     ];
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");

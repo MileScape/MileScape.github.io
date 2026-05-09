@@ -3241,6 +3241,10 @@
             color: var(--text-primary);
         }
 
+        .comparison-copy + .comparison-copy {
+            margin-top: 8px;
+        }
+
         .comparison-copy strong {
             color: var(--foreground);
         }
@@ -4541,11 +4545,11 @@
 
     <div class="motivation-content">
         <div class="motivation-text">
-            <p>In their daily exercise routines, runners require an app to help them plan their training schedules and provide support during workouts, driven by a desire for self-discipline and the ability to track their progress.</p>
+            <p>In their daily exercise routines, runners often rely on apps to support workouts, maintain self-discipline, and track their progress.</p>
 
-            <p>Existing fitness apps merely quantify running in terms of distance and duration, providing feedback in the form of figures such as calories burned or weekly summaries [1]. While such self-monitoring features are useful for basic activity tracking, they struggle to address the repetitive nature of running itself, making it difficult to maintain long-term motivation.</p>
+            <p>Many fitness apps still center the running experience on quantification, such as distance, duration, calories burned, or weekly summaries [1]. While such self-monitoring features are useful for basic activity tracking, they struggle to address the repetitive nature of running itself, making it difficult to maintain long-term motivation.</p>
 
-            <p>Research indicates that up to 42% of users lose interest in fitness trackers within six months [2]. This high attrition rate is partly due to saturation and redundancy in the information provided by fitness apps, as well as a lack of meaningful feedback and a sense of belonging [2][3].</p>
+            <p>Research indicates that up to 42% of users lose interest in fitness trackers within six months [2]. This high attrition risk is echoed by research showing that many health and fitness apps use gamification superficially, relying on rewards and competition without enough narrative depth or behavior-theory integration [3].</p>
 
             <p>Based on the above issues, our group has identified the following two research questions.</p>
 
@@ -4638,7 +4642,7 @@
         <div class="inner-card">
             <h3 class="content-heading">Problem Identification</h3>
             <div class="text-block-sm">
-                <p>Our group survey revealed that most existing running applications focus excessively on data—such as mileage and calories—while lacking fun and engaging elements.</p>
+                <p>Our group survey suggested that many existing running applications focus heavily on data—such as mileage and calories—while offering fewer playful or emotionally meaningful elements.</p>
                 <p>Many users reported that these systems fail to provide fresh experiences or meaningful rewards, making it difficult to sustain long-term motivation.</p>
                 <p>Approximately half of the users mentioned that competitive ranking systems introduce stress rather than enjoyment.</p>
                 <p>Although social features can increase engagement, they often require continuous coordination by organizers and may not suit all users.</p>
@@ -4649,7 +4653,7 @@
                             <span class="research-viz-kicker">Dynamic Preference Map</span>
                             <p class="research-viz-title">Playful features users want most in running apps</p>
                         </div>
-                        <div class="research-viz-note">Exploration, rewards, and collection-oriented progression consistently outperform social novelty alone.</div>
+                        <div class="research-viz-note">Exploration and rewards were the strongest signals, while collection, progress, and social interaction also remained relevant.</div>
                     </div>
                     <div class="research-radar-wrap">
                         <svg class="research-radar-svg" viewBox="0 0 520 440" role="img" aria-label="Preferred playful features radar chart" data-research-radar-svg></svg>
@@ -4666,9 +4670,9 @@
             <h3 class="content-heading">User Requirements</h3>
             <div class="text-block-sm">
                 <p>To identify effective incentives, we examined users’ interests beyond running, including gaming and travel.</p>
-                <p>Users showed strong interest in exploration and collection mechanisms, such as unlocking items and discovering new places.</p>
-                <p>Therefore, MileScape integrates these two core elements to create a more engaging running experience.</p>
-                <p>Pure blind-box rewards were considered as an alternative, but we rejected them because random rewards alone can feel disconnected from running effort. The final capsule machine keeps the surprise element, but ties rewards to route progress and collectible assets.</p>
+                <p>Users showed strong interest in exploration, rewards, and collection mechanisms, such as unlocking items and discovering new places.</p>
+                <p>Therefore, MileScape integrates exploration, collection, and effort-linked rewards to create a more engaging running experience.</p>
+                <p>Pure random rewards were considered as an alternative, but we rejected them because surprise alone can feel disconnected from running effort. The final capsule machine keeps the surprise element, but ties rewards to route progress and collectible assets.</p>
             </div>
         </div>
 
@@ -4687,35 +4691,72 @@
         </div>
     </div>
 
-    <div class="inner-card flow-gap-top">
-        <h3 class="content-heading">Three Must-Have Playful Features</h3>
-        <div class="text-block-md">
-            <p>Based on our user research, MileScape must include the following three playful features to transform running from a repetitive tracking activity into an engaging exploration experience.</p>
+    <div class="inner-card comparison-card flow-gap-top">
+        <div class="comparison-header">
+            <h3 class="content-heading">Academic Research Comparison</h3>
+            <p class="comparison-intro">After reviewing the original papers, we used four academic sources to connect fitness data, gamification limitations, motivational affordances, and physical-activity feedback design to MileScape's design gap.</p>
         </div>
         <div class="table-scroll">
-            <table class="contribution-table" aria-label="Three must-have playful features for MileScape">
+            <table class="contribution-table comparison-table" aria-label="Comparison of academic research sources">
                 <thead>
                     <tr>
-                        <th scope="col">Must-Have Feature</th>
-                        <th scope="col">User Need Addressed</th>
-                        <th scope="col">How MileScape Responds</th>
+                        <th scope="col">Academic Source</th>
+                        <th scope="col">What It Contributes</th>
+                        <th scope="col">What It Leaves Open</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-label="Must-Have Feature"><strong>Exploration-Based Route Progress</strong></td>
-                        <td data-label="User Need Addressed">Users want running to feel less repetitive and more goal-oriented.</td>
-                        <td data-label="How MileScape Responds">MileScape converts local running distance into progress along virtual global routes, allowing users to experience running as a journey rather than a task.</td>
+                        <td data-label="Academic Source"><div class="comparison-product">Fitness Data Analytics [1]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Shows that fitness app data supports daily fitness management and health-goal monitoring.</p>
+                            <p class="comparison-copy">2. Uses six-month Samsung Health walking data to demonstrate the value of longitudinal activity analysis.</p>
+                            <p class="comparison-copy">3. Identifies practical issues such as sparse data, missing records, interoperability, and privacy risks.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Focuses on analytics and recommendations rather than playful interaction design.</p>
+                            <p class="comparison-copy">2. Does not explain how repeated running can become a narrative route or collectible journey.</p>
+                            <p class="comparison-copy">3. Leaves collaborative route progress and reward-state handling outside its scope.</p>
+                        </td>
                     </tr>
                     <tr>
-                        <td data-label="Must-Have Feature"><strong>Landmark Unlocking and Collection</strong></td>
-                        <td data-label="User Need Addressed">Users want meaningful rewards that can accumulate over time.</td>
-                        <td data-label="How MileScape Responds">Users unlock postcard-style landmarks and collectible route achievements when they reach distance milestones. This creates a long-term visual record of their running effort.</td>
+                        <td data-label="Academic Source"><div class="comparison-product">Gamification in Health Apps [3]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Reviews 132 health and fitness apps to assess gamification, game elements, and health behavior constructs.</p>
+                            <p class="comparison-copy">2. Finds that gamification is common, but many apps lack strong behavior-theory integration or clear design standards.</p>
+                            <p class="comparison-copy">3. Shows that narrative context and 3D environments were rare in the reviewed apps, both appearing in only 6.06% of the sample.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Does not design a concrete running product that combines narrative, 3D space, and rewards.</p>
+                            <p class="comparison-copy">2. Does not explain how gamified rewards can become place-based landmarks or personal collections.</p>
+                            <p class="comparison-copy">3. Does not address cooperative route progress as an alternative to competition and peer pressure.</p>
+                        </td>
                     </tr>
                     <tr>
-                        <td data-label="Must-Have Feature"><strong>PaceCrew Collaborative Exploration</strong></td>
-                        <td data-label="User Need Addressed">Users want social motivation without ranking pressure.</td>
-                        <td data-label="How MileScape Responds">PaceCrew allows users to contribute mileage to shared team journeys asynchronously, supporting belonging and cooperation without real-time competition.</td>
+                        <td data-label="Academic Source"><div class="comparison-product">Goal Orientations &amp; Affordances [4]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Maps key fitness app affordances: self-monitoring, exercise guidance, rewards, and social comparison.</p>
+                            <p class="comparison-copy">2. Shows that 417 Strava users with different goal orientations engage with these affordances differently.</p>
+                            <p class="comparison-copy">3. Supports tailoring motivational features instead of assuming one design fits all runners.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Focuses on Strava affordance use rather than a complete running product experience.</p>
+                            <p class="comparison-copy">2. Does not specify how mastery progress can be visualized through places, landmarks, or collections.</p>
+                            <p class="comparison-copy">3. Does not address non-competitive team progress or organizer workload in group running.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Academic Source"><div class="comparison-product">Goal-Setting and Sharing [6]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Studies goal-setting, rewards, self-monitoring, and sharing through a 3-week online physical-activity intervention.</p>
+                            <p class="comparison-copy">2. Finds that self-monitoring and achievable goals were useful, while generic trophies and ribbons often failed to motivate participants.</p>
+                            <p class="comparison-copy">3. Shows that Facebook sharing could create social discomfort, unwanted disclosure, or oversharing concerns.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Does not design a place-based running interface with landmarks, route progress, and collectible rewards.</p>
+                            <p class="comparison-copy">2. Leaves room for rewards that feel more meaningful than generic badges or ribbons.</p>
+                            <p class="comparison-copy">3. Does not explore low-pressure cooperative progress as an alternative to public social sharing.</p>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -4725,7 +4766,7 @@
     <div class="inner-card comparison-card flow-gap-top">
         <div class="comparison-header">
             <h3 class="content-heading">Commercial Product Comparison</h3>
-            <p class="comparison-intro">We compared MileScape against widely used running and fitness products to understand where current tools succeed, and where they leave room for more playful, emotionally meaningful running experiences.</p>
+            <p class="comparison-intro">We also compared four commercial products used or recognized by our target users. Each product shows strong tracking or training support, but also leaves gaps around route storytelling, collection, and non-competitive collaboration.</p>
         </div>
         <div class="table-scroll">
             <table class="contribution-table comparison-table" aria-label="Comparison of commercial running products">
@@ -4738,47 +4779,55 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-label="Commercial Product">
-                            <div class="comparison-product">Keep</div>
-                        </td>
+                        <td data-label="Commercial Product"><div class="comparison-product">Keep</div></td>
                         <td data-label="What It Does Well">
-                            <p class="comparison-copy">Provides structured running records, including distance, pace, calories, and workout summaries. Offers training plans and a large fitness content ecosystem. Has strong popularity among Chinese users, making it familiar and easy to adopt.</p>
+                            <p class="comparison-copy">1. Provides structured records for distance, pace, calories, and workout summaries.</p>
+                            <p class="comparison-copy">2. Offers training plans and a large fitness content ecosystem.</p>
+                            <p class="comparison-copy">3. Is familiar to many Chinese runners, making adoption easier.</p>
                         </td>
                         <td data-label="What It Misses">
-                            <p class="comparison-copy">The screenshots show map-based running, AI guidance, competitions, and medals, so the issue is not a total lack of features. The limitation is that these modules are separated into running, discovery, events, and badges, while progress still ends as local route records or campaign participation rather than a continuous collectible journey.</p>
+                            <p class="comparison-copy">1. Running records remain mainly metric-based rather than story-based.</p>
+                            <p class="comparison-copy">2. Running, discovery, events, and medals feel separated.</p>
+                            <p class="comparison-copy">3. Progress does not become a continuous collectible journey.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td data-label="Commercial Product">
-                            <div class="comparison-product">Huawei Health</div>
-                        </td>
+                        <td data-label="Commercial Product"><div class="comparison-product">Huawei Health</div></td>
                         <td data-label="What It Does Well">
-                            <p class="comparison-copy">Integrates well with Huawei wearable devices and provides accurate tracking of running distance, pace, heart rate, calories, and training load. Offers health data visualization and long-term fitness records. Supports users who rely on smart watches for daily exercise monitoring.</p>
+                            <p class="comparison-copy">1. Integrates well with Huawei wearable devices.</p>
+                            <p class="comparison-copy">2. Tracks distance, pace, heart rate, calories, and training load accurately.</p>
+                            <p class="comparison-copy">3. Provides long-term health records for daily monitoring.</p>
                         </td>
                         <td data-label="What It Misses">
-                            <p class="comparison-copy">The Huawei screenshots include achievements, badges, and live map tracking, but the reward logic is still tied to steps, distance, calories, rings, personal bests, and threshold-based medals. It offers recognition, yet not much route storytelling, landmark discovery, shared collection, or emotional progress beyond quantified performance.</p>
+                            <p class="comparison-copy">1. Achievements are still tied mainly to steps, calories, distance, and active days.</p>
+                            <p class="comparison-copy">2. Badges recognize thresholds but do not create a route story.</p>
+                            <p class="comparison-copy">3. Shared collection and collaborative exploration are limited.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td data-label="Commercial Product">
-                            <div class="comparison-product">Nike Run Club</div>
-                        </td>
+                        <td data-label="Commercial Product"><div class="comparison-product">Nike Run Club</div></td>
                         <td data-label="What It Does Well">
-                            <p class="comparison-copy">Offers guided runs, coaching content, and a polished user interface. Uses achievements and challenges to encourage continued participation. Provides a beginner-friendly running experience with motivational audio guidance.</p>
+                            <p class="comparison-copy">1. Offers guided runs and coaching content.</p>
+                            <p class="comparison-copy">2. Uses challenges and achievements to encourage participation.</p>
+                            <p class="comparison-copy">3. Provides a polished, beginner-friendly running interface.</p>
                         </td>
                         <td data-label="What It Misses">
-                            <p class="comparison-copy">The screenshots show activity records and challenges framed as 5K, 15K, 30K, and 80K mileage goals with badges. This makes achievement visible, but the reward remains a numeric completion badge rather than a route story, landmark collection, or collaborative long-term journey.</p>
+                            <p class="comparison-copy">1. Challenges are mostly framed as mileage targets.</p>
+                            <p class="comparison-copy">2. Rewards remain badge-like rather than place-based or collectible.</p>
+                            <p class="comparison-copy">3. Social motivation is not organized around a shared route journey.</p>
                         </td>
                     </tr>
                     <tr>
-                        <td data-label="Commercial Product">
-                            <div class="comparison-product">Apple Fitness</div>
-                        </td>
+                        <td data-label="Commercial Product"><div class="comparison-product">Apple Fitness</div></td>
                         <td data-label="What It Does Well">
-                            <p class="comparison-copy">Integrates well with wearable devices and health data. Provides reliable tracking of heart rate, distance, pace, and long-term physical progress. Supports users who want accurate self-monitoring and training insights.</p>
+                            <p class="comparison-copy">1. Integrates smoothly with wearable devices and health data.</p>
+                            <p class="comparison-copy">2. Tracks heart rate, distance, pace, calories, and workout history reliably.</p>
+                            <p class="comparison-copy">3. Uses rings, summaries, trends, and badges to support self-monitoring.</p>
                         </td>
                         <td data-label="What It Misses">
-                            <p class="comparison-copy">The Apple Fitness screenshots emphasize activity rings, steps, walking distance, workout summaries, badges, and sharing. These support self-monitoring and encouragement, but the reward layer remains abstract and metric-driven, with little exploratory map context, destination narrative, or non-competitive collective progress.</p>
+                            <p class="comparison-copy">1. Rewards are abstract and metric-driven rather than exploratory.</p>
+                            <p class="comparison-copy">2. There is little destination narrative or landmark-based progress.</p>
+                            <p class="comparison-copy">3. Sharing centers on activity records, not non-competitive collective progress.</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4872,11 +4921,46 @@
     </div>
 
     <div class="inner-card flow-gap-top">
+        <h3 class="content-heading">Three Must-Have Playful Features</h3>
+        <div class="text-block-md">
+            <p>Based on our user research, MileScape must include the following three playful features to transform running from a repetitive tracking activity into an engaging exploration experience.</p>
+        </div>
+        <div class="table-scroll">
+            <table class="contribution-table" aria-label="Three must-have playful features for MileScape">
+                <thead>
+                    <tr>
+                        <th scope="col">Must-Have Feature</th>
+                        <th scope="col">User Need Addressed</th>
+                        <th scope="col">How MileScape Responds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Must-Have Feature"><strong>Exploration-Based Route Progress</strong></td>
+                        <td data-label="User Need Addressed">Users want running to feel less repetitive and more goal-oriented.</td>
+                        <td data-label="How MileScape Responds">MileScape converts local running distance into progress along virtual global routes, allowing users to experience running as a journey rather than a task.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Must-Have Feature"><strong>Landmark Unlocking and Collection</strong></td>
+                        <td data-label="User Need Addressed">Users want meaningful rewards that can accumulate over time.</td>
+                        <td data-label="How MileScape Responds">Users unlock postcard-style landmarks and collectible route achievements when they reach distance milestones. This creates a long-term visual record of their running effort.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Must-Have Feature"><strong>PaceCrew Collaborative Exploration</strong></td>
+                        <td data-label="User Need Addressed">Users want social motivation without ranking pressure.</td>
+                        <td data-label="How MileScape Responds">PaceCrew allows users to contribute mileage to shared team journeys asynchronously, supporting belonging and cooperation without real-time competition.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-top">
         <h3 class="content-heading">Identified Gap</h3>
         <div class="text-block-md">
-            <p>Current running apps focus on data tracking and competition, while lacking engagement, fun, and emotional rewards.</p>
-            <p>There is a clear gap between user expectations and existing solutions.</p>
-            <p><strong>→ MileScape addresses this gap by combining exploration, collection, and emotional engagement into a unified running experience.</strong></p>
+            <p>Academic research explains why tracking, retention, app quality, and motivational affordances matter, but it does not by itself provide a complete interaction model for playful, place-based, non-competitive running motivation.</p>
+            <p>Commercial products already support tracking, coaching, badges, maps, and sharing, but they rarely combine these into a continuous route story, landmark collection, and collaborative team journey.</p>
+            <p><strong>MileScape addresses this gap by combining exploration-based route progress, landmark collection, capsule rewards, My Scape personalization, and PaceCrew collaboration into one running experience.</strong></p>
         </div>
     </div>
 </div>
@@ -4919,7 +5003,7 @@
 
             <div class="persona-copy persona-copy--first">
                 <strong>Background:</strong><br>
-                Li is a runner who insists on running a half marathon. During the competition season, his mileage reaches a peak of 70 kilometers per month, but drops to 40 kilometers per month during the off-season. He uses professional equipment such as an Apple Watch, but feels that pure physiological data tracking is saturated and cannot provide psychological motivation during the long and lonely off-season running. He likes to establish his own visual profile of effort (such as tracking running shoe mileage), but actively avoids the intense ranking culture, which is often dominated by "naturally talented runners" and brings him peer pressure rather than fun.
+                Li is a runner who regularly trains for half-marathon goals. During the competition season, his mileage reaches a peak of 70 kilometers per month, but drops to 40 kilometers per month during the off-season. He uses professional equipment such as an Apple Watch, but feels that pure physiological data tracking is saturated and cannot provide psychological motivation during the long and lonely off-season running. He likes to establish his own visual profile of effort (such as tracking running shoe mileage), but actively avoids the intense ranking culture, which is often dominated by "naturally talented runners" and brings him peer pressure rather than fun.
             </div>
 
             <div class="persona-copy">
@@ -4938,7 +5022,7 @@
             <div class="persona-copy">
                 <strong>Needs:</strong><br>
                 • Seamless data synchronization with his existing wearable devices.<br>
-                • Visual progress feedback transforms repeated milestones into exploratory journeys.<br>
+                • Visual progress feedback that transforms repeated milestones into exploratory journeys.<br>
                 • A collaborative team model that clearly divides individual contributions.
             </div>
         </div>
@@ -4950,8 +5034,7 @@
                 </div>
                 <div>
                     <h3 class="persona-title">Persona 2: Organizer (Secondary User)</h3>
-                    <span class="persona-meta">Niu, Running Organizer · Survey Segment: 30
-                        %</span>
+                    <span class="persona-meta">Niu, Running Organizer · Survey Segment: 30%</span>
                 </div>
             </div>
 
@@ -4996,7 +5079,7 @@
                 <strong>Needs:</strong><br>
                 • A centralized dashboard for automatic data aggregation.<br>
                 • A low-cost coordination tool for organizing activities.<br>
-                • Team based collective goals (e.g. relay tasks).
+                • Team-based collective goals (e.g. relay tasks).
             </div>
         </div>
     </div>
@@ -5092,7 +5175,7 @@
                 <p>3. Transform scattered running sessions into long-term route progress.</p>
                 <p>4. Turn running routes into collectible destinations.</p>
                 <p>5. Allow users to repeat the same route and earn advanced achievements.</p>
-                <p>6. Reduce the burden of manual recording through wearable-device integration.</p>
+                <p>6. Reduce the burden of manual recording through wearable-device pairing and sync concepts.</p>
                 <p>7. Use PaceCrew to shift group running from competition and ranking to collaborative exploration.</p>
                 <p>8. Directly connect social motivation with content unlocking, creating team-exclusive reward mechanisms.</p>
             </div>
@@ -5102,12 +5185,12 @@
     <div class="inner-card">
         <h3 class="content-heading content-heading--large">Why This Experience Is Engaging or Human-Centric</h3>
         <div class="text-block-md">
-            <p>MileScape has created an attractive and user-centered experience by transforming the repetitive action of running from simple digital tracking into an interactive journey full of exploration and discovery.</p>
+            <p>MileScape is designed to create a more attractive and user-centered experience by transforming the repetitive action of running from simple digital tracking into an interactive journey full of exploration and discovery.</p>
             <p>Firstly, the system turns running into an exploration-filled journey, guided by landmarks, thereby enhancing the users' intrinsic motivation.</p>
             <p>Secondly, MileScape brings emotional value and a sense of belonging to users through meaningful rewards.</p>
             <p>Thirdly, the design focuses on creating a sense of belonging and connection. Through features such as "PaceCrew", users can participate in team challenges and strive towards a common goal, thus transforming running from a personal activity into a socially significant one.</p>
-            <p>Finally, the system adopts a minimalist design style and an iterative design approach to ensure that the interaction operations remain simple and intuitive, while continuously optimizing based on user feedback.</p>
-            <p><strong>Overall, the MileScape project provides effective solutions for our RQ1 and RQ2.</strong></p>
+            <p>Finally, the system adopts a minimalist design style and an iterative design approach to keep interactions simple and intuitive while improving the prototype based on user feedback.</p>
+            <p><strong>Overall, the MileScape project responds to the directions raised by RQ1 and RQ2.</strong></p>
         </div>
     </div>
 </div>
@@ -5122,9 +5205,9 @@
         <div class="stage-header">1. Goal Setting</div>
         <div class="stage-header">2. Landmark Selection</div>
         <div class="stage-header">3. Running</div>
-        <div class="stage-header">4. Unlock & Share</div>
-        <div class="stage-header">5. Milestone Unlock</div>
-        <div class="stage-header">6. Sharing</div>
+        <div class="stage-header">4. Post-run Unlock</div>
+        <div class="stage-header">5. Long-term Milestone</div>
+        <div class="stage-header">6. Social Sharing</div>
 
         <div class="row-label">Actions</div>
         <div class="col">
@@ -5148,7 +5231,7 @@
         <div class="col">
             <div class="item-card action-card">
                 <div class="action-item">Finish run and sync progress</div>
-                <div class="action-item">Unlock landmark and generate share card</div>
+                <div class="action-item">Unlock landmark and preview share card</div>
             </div>
         </div>
         <div class="col">
@@ -5159,7 +5242,7 @@
         </div>
         <div class="col">
             <div class="item-card action-card">
-                <div class="action-item">Generate running poster</div>
+                <div class="action-item">Generate final running poster</div>
                 <div class="action-item">Share to social platforms</div>
             </div>
         </div>
@@ -5747,7 +5830,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-label="Alternative">Blind Box Rewards</td>
+                        <td data-label="Alternative">Pure Random Rewards</td>
                         <td data-label="Strengths">Provides short-term excitement and surprise.</td>
                         <td data-label="Problems">Cannot support meaningful long-term accumulation if rewards are disconnected from running effort.</td>
                         <td data-label="Decision"><span class="decision-pill decision-pill--rejected">Rejected</span></td>
@@ -5826,6 +5909,47 @@
         </figure>
     </div>
 
+    <div class="inner-card flow-gap-top">
+        <h3 class="card-title card-title--large">Data Handling &amp; Interaction State</h3>
+        <div class="content-stack content-stack--comfortable">
+            <p>MileScape uses structured prototype data and browser-side interaction state to connect user actions with visible feedback. The main flow is: user action → state update → progress or reward logic → updated interface.</p>
+        </div>
+        <div class="table-scroll u-mt-16">
+            <table class="contribution-table" aria-label="MileScape data handling and interaction state examples">
+                <thead>
+                    <tr>
+                        <th scope="col">User Action</th>
+                        <th scope="col">State Managed</th>
+                        <th scope="col">UI Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="User Action">Select a Paceport route or start a simulated run</td>
+                        <td data-label="State Managed">Selected route, completed distance, route progress, current milestone</td>
+                        <td data-label="UI Response">Route detail, progress view, and landmark timeline update according to the selected journey.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="User Action">Reach a route milestone or finish a run</td>
+                        <td data-label="State Managed">Unlocked landmarks, earned stamps, run result, achievement status</td>
+                        <td data-label="UI Response">Landmark cards, achievement badges, result feedback, and reward summaries change from locked to unlocked.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="User Action">Draw capsule rewards or edit My Scape</td>
+                        <td data-label="State Managed">Stamp balance, reward inventory, duplicate rewards, placed items</td>
+                        <td data-label="UI Response">Capsule result, inventory, duplicate conversion, and My Scape scene reflect the user's collection state.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="User Action">Join or contribute to a PaceCrew mission</td>
+                        <td data-label="State Managed">Crew mission progress, member contribution, shared route state</td>
+                        <td data-label="UI Response">The team route progress updates collaboratively without ranking individual runners.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="research-source-note">Prototype scope: these states are represented with predefined data and simulated client-side logic; a production version would persist the same state model through user accounts and cloud storage.</p>
+    </div>
+
     <div class="inner-card crazy8-card flow-gap-top">
         <div class="crazy8-slider" id="highfiSlider">
             <div class="crazy8-slider-head">
@@ -5877,8 +6001,8 @@
                     </div>
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">High-Fi Prototype</div>
-                        <div class="crazy8-slide-title">Collectible Route Card</div>
-                        <div class="crazy8-slide-description">Shareable city card view combining destination imagery, collectible value, and the signature flip interaction for emotional reward.</div>
+                        <div class="crazy8-slide-title">Wearable Companion</div>
+                        <div class="crazy8-slide-description">Compact wearable view showing how essential running feedback can stay glanceable while the phone experience handles richer route and reward details.</div>
                     </div>
                 </article>
             </div>
@@ -5897,7 +6021,7 @@
                 <div>
                     <h3 class="card-title" style="margin-bottom: 8px;">Version Pro Final App Flow</h3>
                     <div class="crazy8-chip">Pro Flow</div>
-                    <p class="crazy8-hint">This sequence shows the latest MileScape build from entry and route discovery to PaceCrew, My Scape rewards, capsule draws, wearable sync, and profile settings.</p>
+                    <p class="crazy8-hint">This sequence shows the Version Pro prototype flow from entry and route discovery to PaceCrew, My Scape rewards, capsule draws, wearable sync, and profile settings.</p>
                 </div>
                 <div class="crazy8-page-indicator" id="profiPageIndicator" aria-live="polite">1 / 31</div>
             </div>
@@ -6185,7 +6309,7 @@
                     <div class="crazy8-slide-body">
                         <div class="crazy8-slide-kicker">Version Pro</div>
                         <div class="crazy8-slide-title">Wearable Pairing</div>
-                        <div class="crazy8-slide-description">The wearable entry explains how external run data can be brought into MileScape before starting device setup.</div>
+                        <div class="crazy8-slide-description">The wearable entry explains how external run data would be brought into MileScape before starting device setup.</div>
                     </div>
                 </article>
 
@@ -6256,7 +6380,7 @@
     <div class="video-showcase-stack flow-gap-top" id="video">
         <div class="video-showcase-header">
             <h3 class="card-title" style="margin-bottom: 0;">Product Demo Videos</h3>
-            <p class="crazy8-hint">Instead of repeating static screens, this section focuses on how the final product behaves in motion across onboarding, running, collaboration, route progress, and rewards.</p>
+            <p class="crazy8-hint">Instead of repeating static screens, this section focuses on how the final prototype behaves in motion across onboarding, running, collaboration, route progress, and rewards.</p>
         </div>
 
         <div class="inner-card video-showcase-card">
@@ -6369,7 +6493,7 @@
                     <div class="video-showcase-index">06</div>
                     <div class="crazy8-slide-kicker">Achievements</div>
                     <div class="crazy8-slide-title">Reward Reveal And Emotional Payoff</div>
-                    <p class="video-showcase-note">This final demo focuses on the reward layer, showing how achievements, collectible outcomes, and visual celebration turn sustained running effort into something memorable.</p>
+                    <p class="video-showcase-note">This demo focuses on the reward layer, showing how achievements, collectible outcomes, and visual celebration turn sustained running effort into something memorable.</p>
                     <div class="video-showcase-tags">
                         <span class="video-showcase-tag">Collectibles</span>
                         <span class="video-showcase-tag">Reward Layer</span>
@@ -6401,7 +6525,7 @@
                     </tr>
                     <tr>
                         <td data-label="Member"><strong>Shengyang Yin</strong></td>
-                        <td data-label="Key Contributions">Gumball machine feature design; questionnaire design &amp; user survey management</td>
+                        <td data-label="Key Contributions">Capsule reward feature design; questionnaire design &amp; user survey management</td>
                         <td data-label="Share">25%</td>
                     </tr>
                     <tr>
@@ -6423,12 +6547,14 @@
 
 <div class="section-container" id="evaluation">
     <h2 class="section-title">Early Evaluation &amp; Impact</h2>
-    <p class="section-subtitle">How we evaluated MileScape in an early-stage user study</p>
+    <p class="section-subtitle">How we evaluated MileScape through comparative ratings and Alpha usability testing</p>
 
     <div class="inner-card flow-gap-bottom">
-        <h3 class="card-title card-title--large">Evaluation Method</h3>
+        <h3 class="card-title card-title--large">Comparative Evaluation Method</h3>
         <div class="content-stack content-stack--comfortable">
             <p>We conducted a small-scale comparative user study with 7 participants to evaluate the early MileScape prototype against a mainstream fitness app, Keep. Participants first explored the core MileScape flow, then compared their experience with Keep using the same rating scale.</p>
+
+            <p>This rating-based comparison was separate from the 3-person Alpha usability test described below: the comparative study captured perceived experience quality, while the Alpha sessions captured detailed usability issues.</p>
 
             <p>A simplified version of the User Experience Questionnaire (UEQ-S) was used to assess usability and experience quality across 8 semantic differential scales, including ease of use, efficiency, clarity, excitement, and novelty.</p>
 
@@ -6480,19 +6606,19 @@
             <div class="eval-summary">
                 <article class="eval-summary-item">
                     <div class="eval-summary-label">MileScape Average</div>
-                    <div class="eval-summary-value" data-eval-summary="mile-average">5.9</div>
+                    <div class="eval-summary-value" data-eval-summary="mile-average">6.0</div>
                     <div class="eval-summary-note" data-eval-summary-note="mile-average">Overall mean across the selected dataset</div>
                 </article>
 
                 <article class="eval-summary-item">
                     <div class="eval-summary-label">Average Lead</div>
-                    <div class="eval-summary-value" data-eval-summary="average-gap">+2.0</div>
+                    <div class="eval-summary-value" data-eval-summary="average-gap">+2.1</div>
                     <div class="eval-summary-note" data-eval-summary-note="average-gap">MileScape minus Keep</div>
                 </article>
 
                 <article class="eval-summary-item">
                     <div class="eval-summary-label">Strongest Lift</div>
-                    <div class="eval-summary-value" data-eval-summary="top-dimension">Inventive</div>
+                    <div class="eval-summary-value" data-eval-summary="top-dimension">Clear</div>
                     <div class="eval-summary-note" data-eval-summary-note="top-dimension">Largest positive difference in the current view</div>
                 </article>
             </div>
@@ -6565,7 +6691,7 @@
     <div class="inner-card flow-gap-top evaluation-impact-card">
         <div>
             <h3 class="card-title card-title--large">Design Impact</h3>
-            <p class="evaluation-impact-intro">The early study was used to decide what should be strengthened before the demo. Instead of treating the ratings as final evidence, we used them to identify which parts of the experience needed clearer guidance, stronger visual feedback, and better connection between running effort and rewards.</p>
+            <p class="evaluation-impact-intro">The early evaluation activities, including the 7-person comparison and the 3-person Alpha usability test, were used to decide what should be strengthened before the demo. Instead of treating the ratings or usability notes as final evidence, we used them to identify which parts of the experience needed clearer guidance, stronger visual feedback, and better connection between running effort and rewards.</p>
         </div>
 
         <div class="evaluation-impact-grid">
@@ -6595,68 +6721,29 @@
         </div>
     </div>
 
-    <div class="inner-card flow-gap-top iteration-refinement">
+    <div class="inner-card flow-gap-top evaluation-limitations">
         <div>
-            <h3 class="card-title card-title--large">Iterative Refinement</h3>
-            <p class="iteration-refinement__intro">User feedback from the early prototype directly shaped three visible improvements. Each comparison shows the original design problem, the updated interface, and how the change better supports first-time use, visual quality, and immersive route experience.</p>
+            <h3 class="card-title card-title--large">Comparative Study Limitations</h3>
+            <p class="evaluation-limitations-intro">The 7-person comparison helped us improve the prototype, but it was still an early-stage study. We therefore avoid presenting the results as a full product validation and keep the conclusions limited to design direction.</p>
         </div>
 
-        <div class="iteration-grid">
-            <article class="iteration-card">
-                <div class="iteration-card__header">
-                    <span class="iteration-card__eyebrow">Iteration 01</span>
-                    <h4 class="iteration-card__title">First-time user guidance</h4>
-                    <p class="iteration-card__copy">Users reported that the first version was not clear enough for first-time use. In response, we added a beginner guide so new users can understand the main interaction flow before they start exploring routes.</p>
-                </div>
-                <div class="iteration-comparison">
-                    <figure class="iteration-shot">
-                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
-                        <img class="iteration-shot__frame" src="images/evaluation/before/1.png" alt="Before iteration: original first-use experience without beginner guidance">
-                    </figure>
-                    <figure class="iteration-shot">
-                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
-                        <img class="iteration-shot__frame" src="images/evaluation/after/1.png" alt="After iteration: first-use beginner guidance added for new users">
-                    </figure>
-                </div>
-                <p class="iteration-result"><strong>Result:</strong> The onboarding flow now reduces uncertainty and helps first-time users understand how to begin the MileScape experience.</p>
+        <div class="evaluation-limit-grid">
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Sample Size</span>
+                <h4 class="evaluation-limit-title">Small participant group</h4>
+                <p class="evaluation-limit-copy">With only 7 participants in the comparative rating study, the results indicate useful patterns but cannot represent the wider running app market.</p>
             </article>
 
-            <article class="iteration-card">
-                <div class="iteration-card__header">
-                    <span class="iteration-card__eyebrow">Iteration 02</span>
-                    <h4 class="iteration-card__title">Achievement page visual refinement</h4>
-                    <p class="iteration-card__copy">Users felt that the first achievement interface was not visually attractive enough. We redesigned it into the current style, with a more polished layout and clearer reward presentation.</p>
-                </div>
-                <div class="iteration-comparison">
-                    <figure class="iteration-shot">
-                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
-                        <img class="iteration-shot__frame" src="images/evaluation/before/2.png" alt="Before iteration: earlier achievement page design">
-                    </figure>
-                    <figure class="iteration-shot">
-                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
-                        <img class="iteration-shot__frame" src="images/evaluation/after/2.png" alt="After iteration: refined achievement page with improved visual style">
-                    </figure>
-                </div>
-                <p class="iteration-result"><strong>Result:</strong> Users recognized the revised achievement page as more visually appealing and better aligned with the collectible reward experience.</p>
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Prototype Stage</span>
+                <h4 class="evaluation-limit-title">Demo-based interaction</h4>
+                <p class="evaluation-limit-copy">Participants evaluated an early prototype rather than a fully deployed app connected to long-term running data.</p>
             </article>
 
-            <article class="iteration-card">
-                <div class="iteration-card__header">
-                    <span class="iteration-card__eyebrow">Iteration 03</span>
-                    <h4 class="iteration-card__title">From 2D route map to 3D scene</h4>
-                    <p class="iteration-card__copy">The first simulated running route used Mapbox 2D rendering. Users felt that the immersive feeling was not strong enough, so we changed the route experience into a 3D scene rendering.</p>
-                </div>
-                <div class="iteration-comparison">
-                    <figure class="iteration-shot">
-                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
-                        <img class="iteration-shot__frame" src="images/evaluation/before/3.png" alt="Before iteration: 2D Mapbox route simulation">
-                    </figure>
-                    <figure class="iteration-shot">
-                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
-                        <img class="iteration-shot__frame" src="images/evaluation/after/3.png" alt="After iteration: 3D route scene rendering for stronger immersion">
-                    </figure>
-                </div>
-                <p class="iteration-result"><strong>Result:</strong> The updated 3D scene improves the sense of presence and makes simulated route exploration feel closer to a playful journey.</p>
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Next Step</span>
+                <h4 class="evaluation-limit-title">Longer field testing</h4>
+                <p class="evaluation-limit-copy">Future work should test repeated running sessions to see whether route exploration and collection still motivate users over time.</p>
             </article>
         </div>
     </div>
@@ -6709,38 +6796,79 @@
         </div>
 
         <div class="content-stack content-stack--comfortable u-mt-16">
-            <p><strong>Synthesis:</strong> the Alpha test showed that MileScape's core idea was understandable and appealing, but three usability risks needed attention before the final version: first-use guidance, visual reward quality, and route immersion. These findings directly led to the three before/after iterations shown above.</p>
+            <p><strong>Synthesis:</strong> the Alpha test showed that MileScape's core idea was understandable and appealing, but three usability risks needed attention before the final version: first-use guidance, visual reward quality, and route immersion. These findings directly led to the three before/after iterations shown below.</p>
 
-            <p><strong>Limitation:</strong> because the usability test involved only 3 participants, we treated the results as qualitative design evidence rather than a representative quantitative conclusion. The later UEQ-S and IMI comparison was used to complement these formative findings.</p>
+            <p><strong>Limitation:</strong> because the usability test involved only 3 participants, we treated the results as qualitative design evidence rather than a representative quantitative conclusion.</p>
         </div>
     </div>
 
-    <div class="inner-card flow-gap-top evaluation-limitations">
+    <div class="inner-card flow-gap-top iteration-refinement">
         <div>
-            <h3 class="card-title card-title--large">Evaluation Limitations</h3>
-            <p class="evaluation-limitations-intro">This evaluation helped us improve the prototype, but it was still an early-stage study. We therefore avoid presenting the results as a full product validation and keep the conclusions limited to design direction.</p>
+            <h3 class="card-title card-title--large">Iterative Refinement</h3>
+            <p class="iteration-refinement__intro">Each comparison shows the original design problem, the updated interface, and how the change better supports first-time use, visual quality, and immersive route experience.</p>
         </div>
 
-        <div class="evaluation-limit-grid">
-            <article class="evaluation-limit-item">
-                <span class="evaluation-limit-label">Sample Size</span>
-                <h4 class="evaluation-limit-title">Small participant group</h4>
-                <p class="evaluation-limit-copy">With only 7 participants, the results indicate useful patterns but cannot represent the wider running app market.</p>
+        <div class="iteration-grid">
+            <article class="iteration-card">
+                <div class="iteration-card__header">
+                    <span class="iteration-card__eyebrow">Iteration 01</span>
+                    <h4 class="iteration-card__title">First-time user guidance</h4>
+                    <p class="iteration-card__copy">Users reported that the first version was not clear enough for first-time use. In response, we added a beginner guide so new users can understand the main interaction flow before they start exploring routes.</p>
+                </div>
+                <div class="iteration-comparison">
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/before/1.png" alt="Before iteration: original first-use experience without beginner guidance">
+                    </figure>
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/after/1.png" alt="After iteration: first-use beginner guidance added for new users">
+                    </figure>
+                </div>
+                <p class="iteration-result"><strong>Result:</strong> The onboarding flow now reduces uncertainty and helps first-time users understand how to begin the MileScape experience.</p>
             </article>
 
-            <article class="evaluation-limit-item">
-                <span class="evaluation-limit-label">Prototype Stage</span>
-                <h4 class="evaluation-limit-title">Demo-based interaction</h4>
-                <p class="evaluation-limit-copy">Participants evaluated an early prototype rather than a fully deployed app connected to long-term running data.</p>
+            <article class="iteration-card">
+                <div class="iteration-card__header">
+                    <span class="iteration-card__eyebrow">Iteration 02</span>
+                    <h4 class="iteration-card__title">Achievement page visual refinement</h4>
+                    <p class="iteration-card__copy">Users felt that the first achievement interface was not visually attractive enough. We redesigned it into the current style, with a more polished layout and clearer reward presentation.</p>
+                </div>
+                <div class="iteration-comparison">
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/before/2.png" alt="Before iteration: earlier achievement page design">
+                    </figure>
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/after/2.png" alt="After iteration: refined achievement page with improved visual style">
+                    </figure>
+                </div>
+                <p class="iteration-result"><strong>Result:</strong> The revised achievement page is more visually polished and better aligned with the collectible reward experience.</p>
             </article>
 
-            <article class="evaluation-limit-item">
-                <span class="evaluation-limit-label">Next Step</span>
-                <h4 class="evaluation-limit-title">Longer field testing</h4>
-                <p class="evaluation-limit-copy">Future work should test repeated running sessions to see whether route exploration and collection still motivate users over time.</p>
+            <article class="iteration-card">
+                <div class="iteration-card__header">
+                    <span class="iteration-card__eyebrow">Iteration 03</span>
+                    <h4 class="iteration-card__title">From 2D route map to 3D scene</h4>
+                    <p class="iteration-card__copy">The first simulated running route used Mapbox 2D rendering. Users felt that the immersive feeling was not strong enough, so we changed the route experience into a 3D scene rendering.</p>
+                </div>
+                <div class="iteration-comparison">
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--before">Before</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/before/3.png" alt="Before iteration: 2D Mapbox route simulation">
+                    </figure>
+                    <figure class="iteration-shot">
+                        <span class="iteration-shot__label iteration-shot__label--after">After</span>
+                        <img class="iteration-shot__frame" src="images/evaluation/after/3.png" alt="After iteration: 3D route scene rendering for stronger immersion">
+                    </figure>
+                </div>
+                <p class="iteration-result"><strong>Result:</strong> The updated 3D scene improves the sense of presence and makes simulated route exploration feel closer to a playful journey.</p>
             </article>
         </div>
     </div>
+
+
 </div>
 
 <div class="section-container" id="references">
@@ -6751,7 +6879,7 @@
         <h3 class="content-heading content-heading--large">AI Disclosure</h3>
         <div class="text-block-md">
             <p>AI tools were used for visual asset generation, language refinement, and limited assistance in scaffolding selected portfolio and interface code. The project motivation, user research, design decisions, and evaluation analysis were completed by the group.</p>
-            <p>AI-generated outputs were reviewed, edited, and verified before inclusion. Factual claims, chart interpretations, and prototype behavior were checked against our own research materials and implementation. Prompt details for the AI-generated conceptual hero image are disclosed in the reference entry below.</p>
+            <p>AI-generated outputs were reviewed, edited, and verified before inclusion. Factual claims, chart interpretations, and prototype behavior were checked against our own research materials and implementation. Prompt details for the AI-generated conceptual research illustration are disclosed in the reference entry below.</p>
         </div>
     </div>
 
@@ -6771,19 +6899,19 @@
     <div class="inner-card">
         <h3 class="content-heading content-heading--large">References</h3>
         <div class="text-block-lg">
-            <p>[1] Y. Bhargava and J. Nabi, "The opportunities, challenges and obligations of Fitness Data Analytics," <em>Procedia Computer Science</em>, vol. 167, pp. 1354–1362, 2020, doi: 10.1016/j.procs.2020.03.346.</p>
+            <p>[1] Y. Bhargava and J. Nabi, "The opportunities, challenges and obligations of fitness data analytics," <em>Procedia Computer Science</em>, vol. 167, pp. 1354-1362, 2020, doi: 10.1016/j.procs.2020.03.346.</p>
 
-            <p>[2] Natalie, "42 percent of users lose interest in fitness trackers after 6 months," <em>Big Think</em>, 2015. [Online]. Available: https://bigthink.com/ideafeed/users-lose-interest-in-fitness-trackers-after-6-months</p>
+            <p>[2] Natalie, "42 percent of users lose interest in fitness trackers after 6 months," <em>Big Think</em>, 2015. [Online]. Available: https://bigthink.com/ideafeed/users-lose-interest-in-fitness-trackers-after-6-months.</p>
 
-            <p>[3] X. Yu and S. Wang, "Research on the Development Status, Problems and Countermeasures of Sports and Fitness APPs," <em>Asian Journal of Social Pharmacy</em>, vol. 20, no. 1, pp. 88–93, 2025.</p>
+            <p>[3] C. Lister, J. H. West, B. Cannon, T. Sax, and D. Brodegard, "Just a fad? Gamification in health and fitness apps," <em>JMIR Serious Games</em>, vol. 2, no. 2, e9, 2014, doi: 10.2196/games.3413.</p>
 
-            <p>[4] R. Rockmann and H. Gewald, "Individual fitness app use: The role of goal orientations and motivational affordances," in <em>Proc. Americas Conf. on Information Systems (AMCIS)</em>, Cancun, Mexico, 2019. [Online]. Available: https://aisel.aisnet.org/amcis2019/healthcare_it/healthcare_it/3</p>
+            <p>[4] R. Rockmann and H. Gewald, "Individual fitness app use: The role of goal orientations and motivational affordances," in <em>Proc. Americas Conf. on Information Systems (AMCIS)</em>, Cancun, Mexico, 2019. [Online]. Available: https://aisel.aisnet.org/amcis2019/healthcare_it/healthcare_it/3.</p>
 
-            <p>[5] M. Schrepp, A. Hinderks, and J. Thomaschewski, "Design and Evaluation of a Short Version of the User Experience Questionnaire (UEQ-S)," <em>International Journal of Interactive Multimedia and Artificial Intelligence</em>, vol. 4, no. 6, pp. 103–108, 2017.</p>
+            <p>[5] M. Schrepp, A. Hinderks, and J. Thomaschewski, "Design and evaluation of a short version of the User Experience Questionnaire (UEQ-S)," <em>International Journal of Interactive Multimedia and Artificial Intelligence</em>, vol. 4, no. 6, pp. 103-108, 2017, doi: 10.9781/ijimai.2017.09.001.</p>
 
-            <p>[6] Ryan, R. M. (1982). Control and information in the intrapersonal sphere: An extension of cognitive evaluation theory. <em>Journal of Personality and Social Psychology</em>, 43(3), 450–461.</p>
+            <p>[6] S. A. Munson and S. Consolvo, "Exploring goal-setting, rewards, self-monitoring, and sharing to motivate physical activity," in <em>2012 6th International Conference on Pervasive Computing Technologies for Healthcare (PervasiveHealth) and Workshops</em>, San Diego, CA, USA, 2012, pp. 25-32, doi: 10.4108/icst.pervasivehealth.2012.248691.</p>
 
-            <p>[7] ByteDance Doubao, <em>Seedream 4.5</em>, accessed 5 April 2026. [Online]. Available: https://www.doubao.com. Applied to generate the conceptual hero image in the illustrative figure. Prompt: "Minimal abstract visualization of 70% runners and 30% organizers, contains two overlapping circles, clean Apple-style, flat design, soft shadows, no pie chart, no bar chart."</p>
+            <p>[7] ByteDance Doubao, <em>Seedream 4.5</em>, accessed 5 April 2026. [Online]. Available: https://www.doubao.com. Applied to generate a conceptual research illustration. Prompt: "Minimal abstract visualization of 70% runners and 30% organizers, contains two overlapping circles, clean Apple-style, flat design, soft shadows, no pie chart, no bar chart."</p>
         </div>
     </div>
 </div>
@@ -6913,38 +7041,38 @@
     <details class="inner-card appendix-block flow-gap-top">
         <summary class="content-heading appendix-summary">AI Log — Tools &amp; Prompt Categories</summary>
         <div class="text-block-sm">
-            <p></p>
+            <p>This log summarizes how AI support was used in the portfolio and prototype presentation. The entries are grouped by task category rather than listing every individual prompt.</p>
         </div>
         <div class="appendix-grid">
             <div class="appendix-item">
-                <div class="appendix-item-label"></div>
+                <div class="appendix-item-label">Visual Asset Generation</div>
                 <div class="text-block-sm">
-                    <p></p>
+                    <p>AI image generation was used for selected conceptual visuals and decorative assets. Outputs were reviewed and edited before inclusion so they supported, rather than replaced, the group's design decisions.</p>
                 </div>
             </div>
             <div class="appendix-item">
-                <div class="appendix-item-label"></div>
+                <div class="appendix-item-label">Language Refinement</div>
                 <div class="text-block-sm">
-                    <p></p>
+                    <p>AI assistance helped refine English wording, section transitions, and concise explanations. Claims were checked against the team's research notes, questionnaire evidence, and prototype behavior.</p>
                 </div>
             </div>
             <div class="appendix-item">
-                <div class="appendix-item-label"></div>
+                <div class="appendix-item-label">Portfolio Implementation</div>
                 <div class="text-block-sm">
-                    <p></p>
+                    <p>AI support was used to scaffold selected responsive sections, organize comparison tables, debug layout details, and keep image, video, and appendix references consistent.</p>
                 </div>
             </div>
             <div class="appendix-item">
-                <div class="appendix-item-label"></div>
+                <div class="appendix-item-label">Verification</div>
                 <div class="text-block-sm">
-                    <p></p>
+                    <p>The team reviewed AI-assisted outputs for factual accuracy, accessibility, responsive behavior, source traceability, and alignment with the three must-have playful features.</p>
                 </div>
             </div>
         </div>
         <div class="evidence-link-panel">
             <div class="evidence-link-copy">
-                <p class="evidence-link-title"></p>
-                <p class="evidence-link-note"></p>
+                <p class="evidence-link-title">Responsibility Statement</p>
+                <p class="evidence-link-note">Final responsibility for research interpretation, design decisions, evaluation conclusions, and submitted portfolio content remained with the MileScape team.</p>
             </div>
         </div>
     </details>

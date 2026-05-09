@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MileScape - Project Portfolio</title>
+    <link rel="icon" type="image/png" href="./images/logo/milescape.png">
+    <link rel="apple-touch-icon" href="./images/logo/milescape.png">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;500;600;700;800&display=swap");
 
@@ -150,6 +152,7 @@
             -webkit-backdrop-filter: blur(24px) saturate(140%);
             overscroll-behavior-x: contain;
             scroll-snap-type: x proximity;
+            isolation: isolate;
             transition: background 0.28s var(--bounce), box-shadow 0.28s var(--bounce), color 0.28s var(--bounce);
         }
 
@@ -186,6 +189,8 @@
         }
 
         .apple-nav a {
+            position: relative;
+            z-index: 1;
             text-decoration: none;
             color: rgba(255, 248, 240, 0.92);
             font-size: 12px;
@@ -243,14 +248,11 @@
         }
 
         .nav-progress-ring {
-            position: fixed;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 141;
-            width: fit-content;
-            max-width: min(calc(100vw - 28px), 1120px);
-            height: 44px;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             overflow: visible;
         }
@@ -1772,6 +1774,180 @@
             color: var(--text-secondary);
             font-size: 14px;
             line-height: 1.7;
+        }
+
+        .evaluation-scope-grid,
+        .evaluation-impact-grid,
+        .evaluation-limit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .evaluation-scope-item,
+        .evaluation-impact-item,
+        .evaluation-limit-item {
+            display: grid;
+            gap: 10px;
+            padding: 18px 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(222, 216, 207, 0.84);
+            background:
+                radial-gradient(circle at top left, rgba(93, 112, 82, 0.1) 0, rgba(93, 112, 82, 0) 42%),
+                linear-gradient(180deg, rgba(255, 253, 248, 0.94) 0%, rgba(247, 241, 232, 0.96) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.66);
+        }
+
+        .evaluation-scope-label,
+        .evaluation-impact-label,
+        .evaluation-limit-label {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .evaluation-scope-value,
+        .evaluation-impact-title,
+        .evaluation-limit-title {
+            margin: 0;
+            color: var(--foreground);
+            font-size: 17px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .evaluation-scope-copy,
+        .evaluation-impact-copy,
+        .evaluation-limit-copy {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .evaluation-impact-card,
+        .evaluation-limitations {
+            display: grid;
+            gap: 22px;
+        }
+
+        .evaluation-alpha-card {
+            display: grid;
+            gap: 18px;
+            padding: 20px 22px;
+            border-radius: 26px;
+            border: 1px solid rgba(222, 216, 207, 0.84);
+            background:
+                radial-gradient(circle at top left, rgba(193, 140, 93, 0.12) 0, rgba(193, 140, 93, 0) 38%),
+                linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(247, 241, 232, 0.98) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+        .evaluation-alpha-intro {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .evaluation-alpha-rating {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 14px;
+            margin-top: 4px;
+            padding: 14px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(222, 216, 207, 0.72);
+        }
+
+        .evaluation-alpha-rating svg {
+            width: 86px;
+            height: 86px;
+            overflow: visible;
+        }
+
+        .evaluation-alpha-rating-track {
+            fill: none;
+            stroke: rgba(93, 112, 82, 0.16);
+            stroke-width: 10;
+        }
+
+        .evaluation-alpha-rating-fill {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke-dasharray: 188.5;
+            stroke-dashoffset: 188.5;
+            filter: drop-shadow(0 6px 10px rgba(93, 112, 82, 0.18));
+            transition: stroke-dashoffset 1400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .evaluation-alpha-rating-score {
+            font-family: "Fraunces", serif;
+            font-size: 18px;
+            font-weight: 700;
+            fill: var(--foreground);
+            opacity: 0;
+            transform: translateY(4px);
+            transform-origin: 50% 50%;
+            transition: opacity 420ms ease 220ms, transform 420ms ease 220ms;
+        }
+
+        .evaluation-alpha-rating-scale {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            fill: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(4px);
+            transform-origin: 50% 50%;
+            transition: opacity 420ms ease 320ms, transform 420ms ease 320ms;
+        }
+
+        .evaluation-alpha-rating-copy {
+            display: grid;
+            gap: 4px;
+        }
+
+        .evaluation-alpha-rating-label {
+            margin: 0;
+            color: var(--foreground);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .evaluation-alpha-rating-note {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-fill {
+            stroke-dashoffset: 9.4;
+        }
+
+        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-score,
+        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-scale {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .evaluation-impact-intro,
+        .evaluation-limitations-intro {
+            margin: 0;
+            max-width: 980px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
         }
 
         .iteration-refinement {
@@ -3738,6 +3914,12 @@
                 grid-template-columns: 1fr;
             }
 
+            .evaluation-scope-grid,
+            .evaluation-impact-grid,
+            .evaluation-limit-grid {
+                grid-template-columns: 1fr;
+            }
+
             .iteration-comparison {
                 grid-template-columns: 1fr;
             }
@@ -4387,11 +4569,11 @@
     <a href="#evaluation">Impact</a>
     <a href="#references">References</a>
     <a href="#appendix">Appendix</a>
+    <svg class="nav-progress-ring" aria-hidden="true" fill="none">
+        <path class="nav-progress-track"/>
+        <path class="nav-progress-fill"/>
+    </svg>
 </nav>
-<svg class="nav-progress-ring" aria-hidden="true" fill="none">
-    <path class="nav-progress-track"/>
-    <path class="nav-progress-fill"/>
-</svg>
 
 <div class="hero-card" id="top" role="banner" aria-label="MileScape 首页主视觉">
     <div class="hero-slider" id="heroSlider" aria-hidden="true">
@@ -6229,10 +6411,30 @@
             <div class="video-showcase-shell">
                 <div class="video-showcase-media">
                     <span class="video-showcase-screen-label">Demo Reel 03</span>
-                    <video src="images/video/paceport.mp4" poster="images/video/paceport-poster.jpg" controls preload="metadata" playsinline></video>
+                    <video src="images/video/mypace.mp4" poster="images/video/mypace-poster.jpg" controls preload="metadata" playsinline></video>
                 </div>
                 <div class="video-showcase-copy">
                     <div class="video-showcase-index">03</div>
+                    <div class="crazy8-slide-kicker">My Pace</div>
+                    <div class="crazy8-slide-title">Personal Progress And Daily Rhythm</div>
+                    <p class="video-showcase-note">This module focuses on the personal dashboard layer, showing how MileScape turns everyday running data into a calmer self-tracking view with progress, rhythm, and ongoing motivation.</p>
+                    <div class="video-showcase-tags">
+                        <span class="video-showcase-tag">Personal Dashboard</span>
+                        <span class="video-showcase-tag">Progress Review</span>
+                        <span class="video-showcase-tag">Daily Motivation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-card video-showcase-card video-showcase-card--reverse">
+            <div class="video-showcase-shell">
+                <div class="video-showcase-media">
+                    <span class="video-showcase-screen-label">Demo Reel 04</span>
+                    <video src="images/video/paceport.mp4" poster="images/video/paceport-poster.jpg" controls preload="metadata" playsinline></video>
+                </div>
+                <div class="video-showcase-copy">
+                    <div class="video-showcase-index">04</div>
                     <div class="crazy8-slide-kicker">Paceport</div>
                     <div class="crazy8-slide-title">Route Progress And Destination Framing</div>
                     <p class="video-showcase-note">This module shows how users read route milestones, track distance progression, and experience destinations as collectible journeys instead of flat mileage logs.</p>
@@ -6245,14 +6447,14 @@
             </div>
         </div>
 
-        <div class="inner-card video-showcase-card video-showcase-card--reverse">
+        <div class="inner-card video-showcase-card">
             <div class="video-showcase-shell">
                 <div class="video-showcase-media">
-                    <span class="video-showcase-screen-label">Demo Reel 04</span>
+                    <span class="video-showcase-screen-label">Demo Reel 05</span>
                     <video src="images/video/pacecrew.mp4" poster="images/video/pacecrew-poster.jpg" controls preload="metadata" playsinline></video>
                 </div>
                 <div class="video-showcase-copy">
-                    <div class="video-showcase-index">04</div>
+                    <div class="video-showcase-index">05</div>
                     <div class="crazy8-slide-kicker">PaceCrew</div>
                     <div class="crazy8-slide-title">Collaborative Team Exploration</div>
                     <p class="video-showcase-note">The PaceCrew video demonstrates a softer social layer, where users contribute to shared travel progress and team milestones without relying on competitive ranking pressure.</p>
@@ -6265,14 +6467,14 @@
             </div>
         </div>
 
-        <div class="inner-card video-showcase-card">
+        <div class="inner-card video-showcase-card video-showcase-card--reverse">
             <div class="video-showcase-shell">
                 <div class="video-showcase-media">
-                    <span class="video-showcase-screen-label">Demo Reel 05</span>
+                    <span class="video-showcase-screen-label">Demo Reel 06</span>
                     <video src="images/video/achievements.mp4" poster="images/video/achievements-poster.jpg" controls preload="metadata" playsinline></video>
                 </div>
                 <div class="video-showcase-copy">
-                    <div class="video-showcase-index">05</div>
+                    <div class="video-showcase-index">06</div>
                     <div class="crazy8-slide-kicker">Achievements</div>
                     <div class="crazy8-slide-title">Reward Reveal And Emotional Payoff</div>
                     <p class="video-showcase-note">This final demo focuses on the reward layer, showing how achievements, collectible outcomes, and visual celebration turn sustained running effort into something memorable.</p>
@@ -6295,7 +6497,7 @@
     <div class="inner-card flow-gap-bottom">
         <h3 class="card-title card-title--large">Evaluation Method</h3>
         <div class="content-stack content-stack--comfortable">
-            <p>We conducted a small-scale comparative user study (n=7) to evaluate the user experience of MileScape and a mainstream fitness app (Keep).</p>
+            <p>We conducted a small-scale comparative user study with 7 participants to evaluate the early MileScape prototype against a mainstream fitness app, Keep. Participants first explored the core MileScape flow, then compared their experience with Keep using the same rating scale.</p>
 
             <p>A simplified version of the User Experience Questionnaire (UEQ-S) was used to assess usability and experience quality across 8 semantic differential scales, including ease of use, efficiency, clarity, excitement, and novelty.</p>
 
@@ -6355,6 +6557,32 @@
 
             <p><strong>Limitation:</strong> because the usability test involved only 3 participants, we treated the results as qualitative design evidence rather than a representative quantitative conclusion. The later UEQ-S and IMI comparison was used to complement these formative findings.</p>
         </div>
+    </div>
+
+    <div class="evaluation-scope-grid flow-gap-bottom">
+        <article class="evaluation-scope-item">
+            <span class="evaluation-scope-label">Participants</span>
+            <h3 class="evaluation-scope-value">n=7 early testers</h3>
+            <p class="evaluation-scope-copy">A small convenience sample of target users was used for early validation, so the results are treated as design feedback rather than statistical proof.</p>
+        </article>
+
+        <article class="evaluation-scope-item">
+            <span class="evaluation-scope-label">Task Flow</span>
+            <h3 class="evaluation-scope-value">Explore, run, collect</h3>
+            <p class="evaluation-scope-copy">Participants reviewed the main loop: route discovery in Paceport, simulated running progress, capsule reward feedback, and My Scape collection.</p>
+        </article>
+
+        <article class="evaluation-scope-item">
+            <span class="evaluation-scope-label">Comparison</span>
+            <h3 class="evaluation-scope-value">MileScape vs Keep</h3>
+            <p class="evaluation-scope-copy">Keep was selected as a familiar reference point because it represents a mainstream running and fitness tracking experience.</p>
+        </article>
+
+        <article class="evaluation-scope-item">
+            <span class="evaluation-scope-label">Measures</span>
+            <h3 class="evaluation-scope-value">UEQ-S + IMI items</h3>
+            <p class="evaluation-scope-copy">UEQ-S captured pragmatic and hedonic qualities, while IMI-inspired items focused on enjoyment and perceived long-term value.</p>
+        </article>
     </div>
 
     <div class="impact-grid impact-grid--stacked">
@@ -6432,17 +6660,17 @@
                 <div class="findings-list">
                     <article class="findings-item">
                         <strong>Higher emotional engagement</strong>
-                        <p>MileScape consistently achieved higher scores than Keep across multiple dimensions, particularly in enjoyment, motivation, and novelty.</p>
+                        <p>MileScape scored higher than Keep across most measured dimensions, especially enjoyment, excitement, novelty, and perceived value.</p>
                     </article>
 
                     <article class="findings-item">
                         <strong>Comparable practical usability</strong>
-                        <p>Although MileScape falls slightly behind Keep in terms of supportiveness, the gap is minimal. This demonstrates that MileScape has achieved comparable functionality with simple data presentation and a clean interface.</p>
+                        <p>MileScape was close to Keep on supportiveness, suggesting that the playful concept did not prevent users from understanding the basic running flow.</p>
                     </article>
 
                     <article class="findings-item">
                         <strong>Stronger long-term value perception</strong>
-                        <p>IMI-based results further indicate that users found MileScape more engaging and meaningful, suggesting stronger intrinsic motivation and perceived long-term value.</p>
+                        <p>IMI-inspired results suggest that users saw more personal meaning in collecting landmarks and building a visible record of running progress.</p>
                     </article>
                 </div>
             </div>
@@ -6454,6 +6682,39 @@
                     <p class="feedback-quote">“Unlocking landmarks makes running more enjoyable.”</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-top evaluation-impact-card">
+        <div>
+            <h3 class="card-title card-title--large">Design Impact</h3>
+            <p class="evaluation-impact-intro">The early study was used to decide what should be strengthened before the demo. Instead of treating the ratings as final evidence, we used them to identify which parts of the experience needed clearer guidance, stronger visual feedback, and better connection between running effort and rewards.</p>
+        </div>
+
+        <div class="evaluation-impact-grid">
+            <article class="evaluation-impact-item">
+                <span class="evaluation-impact-label">Onboarding</span>
+                <h4 class="evaluation-impact-title">Clearer first-use guidance</h4>
+                <p class="evaluation-impact-copy">Because some users were unsure how the route, reward, and My Scape systems connected, we added a beginner guide to explain the main loop before exploration starts.</p>
+            </article>
+
+            <article class="evaluation-impact-item">
+                <span class="evaluation-impact-label">Reward Feedback</span>
+                <h4 class="evaluation-impact-title">More visible payoff</h4>
+                <p class="evaluation-impact-copy">Positive responses to landmark unlocking encouraged us to make capsule rewards and achievement feedback more visually memorable.</p>
+            </article>
+
+            <article class="evaluation-impact-item">
+                <span class="evaluation-impact-label">Immersion</span>
+                <h4 class="evaluation-impact-title">Stronger route experience</h4>
+                <p class="evaluation-impact-copy">Feedback that the early route simulation felt flat led us to move from a 2D route map toward a more immersive 3D scene rendering.</p>
+            </article>
+
+            <article class="evaluation-impact-item">
+                <span class="evaluation-impact-label">Social Use</span>
+                <h4 class="evaluation-impact-title">Crew progress made clearer</h4>
+                <p class="evaluation-impact-copy">The evaluation reinforced the need to show shared mission progress clearly, so PaceCrew was refined around visible team goals and route access.</p>
+            </article>
         </div>
     </div>
 
@@ -6519,6 +6780,54 @@
                     </figure>
                 </div>
                 <p class="iteration-result"><strong>Result:</strong> The updated 3D scene improves the sense of presence and makes simulated route exploration feel closer to a playful journey.</p>
+            </article>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-top">
+        <div class="evaluation-alpha-card">
+            <div>
+                <h3 class="card-title card-title--large">Alpha Testing</h3>
+                <p class="evaluation-alpha-intro">We invited users who had never used our latest product but already had a running habit to test the Alpha prototype through hands-on experience. After their first experience with the Alpha version, overall satisfaction was high. Testers felt that the product was easy to operate, the core functions matched running needs well, onboarding felt smooth, and the overall experience was positive.</p>
+            </div>
+            <div class="evaluation-alpha-rating" aria-label="Alpha testing satisfaction rating">
+                <svg viewBox="0 0 86 86" role="img" aria-label="Satisfaction score 3.8 out of 4">
+                    <circle class="evaluation-alpha-rating-track" cx="43" cy="43" r="30"></circle>
+                    <circle class="evaluation-alpha-rating-fill" cx="43" cy="43" r="30"></circle>
+                    <text class="evaluation-alpha-rating-score" x="43" y="39" text-anchor="middle">3/3</text>
+                    <text class="evaluation-alpha-rating-scale" x="43" y="54" text-anchor="middle">3.8 / 4</text>
+                </svg>
+                <div class="evaluation-alpha-rating-copy">
+                    <p class="evaluation-alpha-rating-label">Alpha satisfaction</p>
+                    <p class="evaluation-alpha-rating-note">All 3 of 3 runners reported a positive first-use impression, with an average satisfaction score of 3.8 out of 4.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-top evaluation-limitations">
+        <div>
+            <h3 class="card-title card-title--large">Evaluation Limitations</h3>
+            <p class="evaluation-limitations-intro">This evaluation helped us improve the prototype, but it was still an early-stage study. We therefore avoid presenting the results as a full product validation and keep the conclusions limited to design direction.</p>
+        </div>
+
+        <div class="evaluation-limit-grid">
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Sample Size</span>
+                <h4 class="evaluation-limit-title">Small participant group</h4>
+                <p class="evaluation-limit-copy">With only 7 participants, the results indicate useful patterns but cannot represent the wider running app market.</p>
+            </article>
+
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Prototype Stage</span>
+                <h4 class="evaluation-limit-title">Demo-based interaction</h4>
+                <p class="evaluation-limit-copy">Participants evaluated an early prototype rather than a fully deployed app connected to long-term running data.</p>
+            </article>
+
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Next Step</span>
+                <h4 class="evaluation-limit-title">Longer field testing</h4>
+                <p class="evaluation-limit-copy">Future work should test repeated running sessions to see whether route exploration and collection still motivate users over time.</p>
             </article>
         </div>
     </div>
@@ -6687,6 +6996,45 @@
                         alt="Interview photo showing an in-person user interview on a running track"
                     >
                 </div>
+            </div>
+        </div>
+    </details>
+
+    <details class="inner-card appendix-block flow-gap-top">
+        <summary class="content-heading appendix-summary">AI Log — Tools &amp; Prompt Categories</summary>
+        <div class="text-block-sm">
+            <p></p>
+        </div>
+        <div class="appendix-grid">
+            <div class="appendix-item">
+                <div class="appendix-item-label"></div>
+                <div class="text-block-sm">
+                    <p></p>
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label"></div>
+                <div class="text-block-sm">
+                    <p></p>
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label"></div>
+                <div class="text-block-sm">
+                    <p></p>
+                </div>
+            </div>
+            <div class="appendix-item">
+                <div class="appendix-item-label"></div>
+                <div class="text-block-sm">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="evidence-link-panel">
+            <div class="evidence-link-copy">
+                <p class="evidence-link-title"></p>
+                <p class="evidence-link-note"></p>
             </div>
         </div>
     </details>

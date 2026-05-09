@@ -1215,11 +1215,13 @@
     }
 
     function syncSize() {
-        var rect = nav.getBoundingClientRect();
-        var w = rect.width;
-        var h = rect.height;
-        svg.style.width = w + "px";
-        svg.style.height = h + "px";
+        var w = Math.round(nav.clientWidth);
+        var h = Math.round(nav.clientHeight);
+
+        if (!w || !h) {
+            return;
+        }
+
         svg.setAttribute("viewBox", "0 0 " + w + " " + h);
         var d = pillPath(w, h);
         track.setAttribute("d", d);
@@ -1239,6 +1241,19 @@
         fill.style.strokeDashoffset = pathLength * (1 - progress);
     }
 
+    var progressFrame = 0;
+
+    function scheduleProgressUpdate() {
+        if (progressFrame) {
+            return;
+        }
+
+        progressFrame = window.requestAnimationFrame(function () {
+            progressFrame = 0;
+            updateProgress();
+        });
+    }
+
     syncSize();
     updateProgress();
 
@@ -1251,5 +1266,17 @@
         }, 100);
     });
 
-    window.addEventListener("scroll", updateProgress, { passive: true });
+    if (typeof ResizeObserver === "function") {
+        var navResizeObserver = new ResizeObserver(function () {
+            syncSize();
+            updateProgress();
+        });
+        navResizeObserver.observe(nav);
+    }
+
+    window.addEventListener("load", function () {
+        syncSize();
+        updateProgress();
+    });
+    window.addEventListener("scroll", scheduleProgressUpdate, { passive: true });
 }());

@@ -150,6 +150,7 @@
             -webkit-backdrop-filter: blur(24px) saturate(140%);
             overscroll-behavior-x: contain;
             scroll-snap-type: x proximity;
+            isolation: isolate;
             transition: background 0.28s var(--bounce), box-shadow 0.28s var(--bounce), color 0.28s var(--bounce);
         }
 
@@ -186,6 +187,8 @@
         }
 
         .apple-nav a {
+            position: relative;
+            z-index: 1;
             text-decoration: none;
             color: rgba(255, 248, 240, 0.92);
             font-size: 12px;
@@ -243,14 +246,11 @@
         }
 
         .nav-progress-ring {
-            position: fixed;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 141;
-            width: fit-content;
-            max-width: min(calc(100vw - 28px), 1120px);
-            height: 44px;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             overflow: visible;
         }
@@ -4387,11 +4387,11 @@
     <a href="#evaluation">Impact</a>
     <a href="#references">References</a>
     <a href="#appendix">Appendix</a>
+    <svg class="nav-progress-ring" aria-hidden="true" fill="none">
+        <path class="nav-progress-track"/>
+        <path class="nav-progress-fill"/>
+    </svg>
 </nav>
-<svg class="nav-progress-ring" aria-hidden="true" fill="none">
-    <path class="nav-progress-track"/>
-    <path class="nav-progress-fill"/>
-</svg>
 
 <div class="hero-card" id="top" role="banner" aria-label="MileScape 首页主视觉">
     <div class="hero-slider" id="heroSlider" aria-hidden="true">

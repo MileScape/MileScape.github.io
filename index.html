@@ -6303,6 +6303,60 @@
         </div>
     </div>
 
+    <div class="inner-card flow-gap-bottom">
+        <h3 class="card-title card-title--large">Usability Testing: Alpha Version</h3>
+        <div class="content-stack content-stack--comfortable">
+            <p>Before final refinement, we tested the Alpha version of MileScape with 3 real users. The sessions were moderated and qualitative: each participant explored the prototype while thinking aloud, and we recorded moments of hesitation, confusion, positive reaction, and post-test comments.</p>
+
+            <p><strong>Test goal:</strong> identify whether new users could understand the running journey concept, start route exploration, interpret achievements and rewards, and feel that the route experience was different from a normal fitness map.</p>
+
+            <p><strong>Core tasks:</strong> enter the prototype, inspect a Paceport route, understand the reward and achievement loop, and try the simulated route experience. The purpose was formative issue discovery rather than statistical validation.</p>
+        </div>
+
+        <div class="table-scroll u-mt-16">
+            <table class="contribution-table" aria-label="Alpha usability testing results with three real users">
+                <thead>
+                    <tr>
+                        <th scope="col">Participant</th>
+                        <th scope="col">Test Focus</th>
+                        <th scope="col">Observed Result</th>
+                        <th scope="col">Severity</th>
+                        <th scope="col">Design Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Participant"><strong>P1</strong><br>First-time user</td>
+                        <td data-label="Test Focus">Start from the entry flow and understand how to begin route exploration.</td>
+                        <td data-label="Observed Result">The user understood the travel concept after explanation, but the Alpha version did not clearly guide what to do first. This caused hesitation before entering the main route flow.</td>
+                        <td data-label="Severity">High</td>
+                        <td data-label="Design Response">Added a beginner guide for first-time users so the main interaction flow is introduced before route exploration starts.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Participant"><strong>P2</strong><br>Reward-oriented runner</td>
+                        <td data-label="Test Focus">Review achievements, unlocked rewards, and the sense of collection.</td>
+                        <td data-label="Observed Result">The user understood that achievements were connected to running progress, but felt the Alpha achievement interface was not visually attractive enough to make rewards feel collectible.</td>
+                        <td data-label="Severity">Medium</td>
+                        <td data-label="Design Response">Redesigned the achievement page with a more polished layout, stronger visual hierarchy, and clearer reward presentation.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Participant"><strong>P3</strong><br>Fitness app user</td>
+                        <td data-label="Test Focus">Try the simulated running route and compare the feeling with normal map-based fitness apps.</td>
+                        <td data-label="Observed Result">The 2D Mapbox route was readable, but the user felt it was not immersive enough and did not strongly communicate the feeling of travelling through a virtual route.</td>
+                        <td data-label="Severity">Medium-High</td>
+                        <td data-label="Design Response">Replaced the 2D route simulation with a 3D scene rendering to strengthen presence, route atmosphere, and exploratory motivation.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-stack content-stack--comfortable u-mt-16">
+            <p><strong>Synthesis:</strong> the Alpha test showed that MileScape's core idea was understandable and appealing, but three usability risks needed attention before the final version: first-use guidance, visual reward quality, and route immersion. These findings directly led to the three before/after iterations shown below.</p>
+
+            <p><strong>Limitation:</strong> because the usability test involved only 3 participants, we treated the results as qualitative design evidence rather than a representative quantitative conclusion. The later UEQ-S and IMI comparison was used to complement these formative findings.</p>
+        </div>
+    </div>
+
     <div class="impact-grid impact-grid--stacked">
         <div class="inner-card impact-card impact-card--interactive impact-card--min" data-evaluation-chart>
             <div class="eval-card-head">

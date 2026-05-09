@@ -1191,6 +1191,40 @@
 }());
 
 (function () {
+    var ratings = Array.prototype.slice.call(document.querySelectorAll(".evaluation-alpha-rating"));
+
+    if (!ratings.length) {
+        return;
+    }
+
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function revealRating(rating) {
+        rating.classList.add("is-visible");
+    }
+
+    if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
+        ratings.forEach(revealRating);
+        return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                revealRating(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.35
+    });
+
+    ratings.forEach(function (rating) {
+        observer.observe(rating);
+    });
+}());
+
+(function () {
     var nav = document.querySelector(".apple-nav");
     var svg = document.querySelector(".nav-progress-ring");
     if (!nav || !svg) return;

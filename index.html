@@ -1833,6 +1833,114 @@
             gap: 22px;
         }
 
+        .evaluation-alpha-card {
+            display: grid;
+            gap: 18px;
+            padding: 20px 22px;
+            border-radius: 26px;
+            border: 1px solid rgba(222, 216, 207, 0.84);
+            background:
+                radial-gradient(circle at top left, rgba(193, 140, 93, 0.12) 0, rgba(193, 140, 93, 0) 38%),
+                linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(247, 241, 232, 0.98) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+        .evaluation-alpha-intro {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .evaluation-alpha-rating {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 14px;
+            margin-top: 4px;
+            padding: 14px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(222, 216, 207, 0.72);
+        }
+
+        .evaluation-alpha-rating svg {
+            width: 86px;
+            height: 86px;
+            overflow: visible;
+        }
+
+        .evaluation-alpha-rating-track {
+            fill: none;
+            stroke: rgba(93, 112, 82, 0.16);
+            stroke-width: 10;
+        }
+
+        .evaluation-alpha-rating-fill {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke-dasharray: 188.5;
+            stroke-dashoffset: 188.5;
+            filter: drop-shadow(0 6px 10px rgba(93, 112, 82, 0.18));
+            transition: stroke-dashoffset 1400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .evaluation-alpha-rating-score {
+            font-family: "Fraunces", serif;
+            font-size: 18px;
+            font-weight: 700;
+            fill: var(--foreground);
+            opacity: 0;
+            transform: translateY(4px);
+            transform-origin: 50% 50%;
+            transition: opacity 420ms ease 220ms, transform 420ms ease 220ms;
+        }
+
+        .evaluation-alpha-rating-scale {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            fill: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(4px);
+            transform-origin: 50% 50%;
+            transition: opacity 420ms ease 320ms, transform 420ms ease 320ms;
+        }
+
+        .evaluation-alpha-rating-copy {
+            display: grid;
+            gap: 4px;
+        }
+
+        .evaluation-alpha-rating-label {
+            margin: 0;
+            color: var(--foreground);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .evaluation-alpha-rating-note {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-fill {
+            stroke-dashoffset: 9.4;
+        }
+
+        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-score,
+        .evaluation-alpha-rating.is-visible .evaluation-alpha-rating-scale {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .evaluation-impact-intro,
         .evaluation-limitations-intro {
             margin: 0;
@@ -6619,6 +6727,27 @@
                 </div>
                 <p class="iteration-result"><strong>Result:</strong> The updated 3D scene improves the sense of presence and makes simulated route exploration feel closer to a playful journey.</p>
             </article>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-top">
+        <div class="evaluation-alpha-card">
+            <div>
+                <h3 class="card-title card-title--large">Alpha Testing</h3>
+                <p class="evaluation-alpha-intro">We invited users who had never used our latest product but already had a running habit to test the Alpha prototype through hands-on experience. After their first experience with the Alpha version, overall satisfaction was high. Testers felt that the product was easy to operate, the core functions matched running needs well, onboarding felt smooth, and the overall experience was positive.</p>
+            </div>
+            <div class="evaluation-alpha-rating" aria-label="Alpha testing satisfaction rating">
+                <svg viewBox="0 0 86 86" role="img" aria-label="Satisfaction score 3.8 out of 4">
+                    <circle class="evaluation-alpha-rating-track" cx="43" cy="43" r="30"></circle>
+                    <circle class="evaluation-alpha-rating-fill" cx="43" cy="43" r="30"></circle>
+                    <text class="evaluation-alpha-rating-score" x="43" y="39" text-anchor="middle">3/3</text>
+                    <text class="evaluation-alpha-rating-scale" x="43" y="54" text-anchor="middle">3.8 / 4</text>
+                </svg>
+                <div class="evaluation-alpha-rating-copy">
+                    <p class="evaluation-alpha-rating-label">Alpha satisfaction</p>
+                    <p class="evaluation-alpha-rating-note">All 3 of 3 runners reported a positive first-use impression, with an average satisfaction score of 3.8 out of 4.</p>
+                </div>
+            </div>
         </div>
     </div>
 

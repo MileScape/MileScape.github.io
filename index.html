@@ -1784,6 +1784,10 @@
             gap: 16px;
         }
 
+        .ai-reflection-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .evaluation-scope-item,
         .evaluation-impact-item,
         .evaluation-limit-item {
@@ -4578,6 +4582,78 @@
     <h2 class="section-title">Research & The Gap</h2>
     <p class="section-subtitle">Positioning MileScape between academic research and existing commercial products</p>
 
+    <div class="inner-card comparison-card flow-gap-top">
+        <div class="comparison-header">
+            <h3 class="content-heading">Academic Research Comparison</h3>
+            <p class="comparison-intro">After reviewing the original papers, we used four academic sources to connect fitness data, gamification limitations, motivational affordances, and physical-activity feedback design to MileScape's design gap.</p>
+        </div>
+        <div class="table-scroll">
+            <table class="contribution-table comparison-table" aria-label="Comparison of academic research sources">
+                <thead>
+                    <tr>
+                        <th scope="col">Academic Source</th>
+                        <th scope="col">What It Contributes</th>
+                        <th scope="col">What It Leaves Open</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Academic Source"><div class="comparison-product">Fitness Data Analytics [1]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Shows that fitness app data supports daily fitness management and health-goal monitoring.</p>
+                            <p class="comparison-copy">2. Uses six-month Samsung Health walking data to demonstrate the value of longitudinal activity analysis.</p>
+                            <p class="comparison-copy">3. Identifies practical issues such as sparse data, missing records, interoperability, and privacy risks.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Focuses on analytics and recommendations rather than playful interaction design.</p>
+                            <p class="comparison-copy">2. Does not explain how repeated running can become a narrative route or collectible journey.</p>
+                            <p class="comparison-copy">3. Leaves collaborative route progress and reward-state handling outside its scope.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Academic Source"><div class="comparison-product">Gamification in Health Apps [3]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Reviews 132 health and fitness apps to assess gamification, game elements, and health behavior constructs.</p>
+                            <p class="comparison-copy">2. Finds that gamification is common, but many apps lack strong behavior-theory integration or clear design standards.</p>
+                            <p class="comparison-copy">3. Shows that narrative context and 3D environments were rare in the reviewed apps, both appearing in only 6.06% of the sample.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Does not design a concrete running product that combines narrative, 3D space, and rewards.</p>
+                            <p class="comparison-copy">2. Does not explain how gamified rewards can become place-based landmarks or personal collections.</p>
+                            <p class="comparison-copy">3. Does not address cooperative route progress as an alternative to competition and peer pressure.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Academic Source"><div class="comparison-product">Goal Orientations &amp; Affordances [4]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Maps key fitness app affordances: self-monitoring, exercise guidance, rewards, and social comparison.</p>
+                            <p class="comparison-copy">2. Shows that 417 Strava users with different goal orientations engage with these affordances differently.</p>
+                            <p class="comparison-copy">3. Supports tailoring motivational features instead of assuming one design fits all runners.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Focuses on Strava affordance use rather than a complete running product experience.</p>
+                            <p class="comparison-copy">2. Does not specify how mastery progress can be visualized through places, landmarks, or collections.</p>
+                            <p class="comparison-copy">3. Does not address non-competitive team progress or organizer workload in group running.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Academic Source"><div class="comparison-product">Goal-Setting and Sharing [6]</div></td>
+                        <td data-label="What It Contributes">
+                            <p class="comparison-copy">1. Studies goal-setting, rewards, self-monitoring, and sharing through a 3-week online physical-activity intervention.</p>
+                            <p class="comparison-copy">2. Finds that self-monitoring and achievable goals were useful, while generic trophies and ribbons often failed to motivate participants.</p>
+                            <p class="comparison-copy">3. Shows that Facebook sharing could create social discomfort, unwanted disclosure, or oversharing concerns.</p>
+                        </td>
+                        <td data-label="What It Leaves Open">
+                            <p class="comparison-copy">1. Does not design a place-based running interface with landmarks, route progress, and collectible rewards.</p>
+                            <p class="comparison-copy">2. Leaves room for rewards that feel more meaningful than generic badges or ribbons.</p>
+                            <p class="comparison-copy">3. Does not explore low-pressure cooperative progress as an alternative to public social sharing.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div class="inner-card flow-gap-bottom">
         <h3 class="content-heading">Survey Basis</h3>
         <div class="text-block-md">
@@ -4688,78 +4764,6 @@
 
                 <p>These findings suggest the need for systems that reduce reliance on organizers while supporting intrinsic motivation.</p>
             </div>
-        </div>
-    </div>
-
-    <div class="inner-card comparison-card flow-gap-top">
-        <div class="comparison-header">
-            <h3 class="content-heading">Academic Research Comparison</h3>
-            <p class="comparison-intro">After reviewing the original papers, we used four academic sources to connect fitness data, gamification limitations, motivational affordances, and physical-activity feedback design to MileScape's design gap.</p>
-        </div>
-        <div class="table-scroll">
-            <table class="contribution-table comparison-table" aria-label="Comparison of academic research sources">
-                <thead>
-                    <tr>
-                        <th scope="col">Academic Source</th>
-                        <th scope="col">What It Contributes</th>
-                        <th scope="col">What It Leaves Open</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Academic Source"><div class="comparison-product">Fitness Data Analytics [1]</div></td>
-                        <td data-label="What It Contributes">
-                            <p class="comparison-copy">1. Shows that fitness app data supports daily fitness management and health-goal monitoring.</p>
-                            <p class="comparison-copy">2. Uses six-month Samsung Health walking data to demonstrate the value of longitudinal activity analysis.</p>
-                            <p class="comparison-copy">3. Identifies practical issues such as sparse data, missing records, interoperability, and privacy risks.</p>
-                        </td>
-                        <td data-label="What It Leaves Open">
-                            <p class="comparison-copy">1. Focuses on analytics and recommendations rather than playful interaction design.</p>
-                            <p class="comparison-copy">2. Does not explain how repeated running can become a narrative route or collectible journey.</p>
-                            <p class="comparison-copy">3. Leaves collaborative route progress and reward-state handling outside its scope.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td data-label="Academic Source"><div class="comparison-product">Gamification in Health Apps [3]</div></td>
-                        <td data-label="What It Contributes">
-                            <p class="comparison-copy">1. Reviews 132 health and fitness apps to assess gamification, game elements, and health behavior constructs.</p>
-                            <p class="comparison-copy">2. Finds that gamification is common, but many apps lack strong behavior-theory integration or clear design standards.</p>
-                            <p class="comparison-copy">3. Shows that narrative context and 3D environments were rare in the reviewed apps, both appearing in only 6.06% of the sample.</p>
-                        </td>
-                        <td data-label="What It Leaves Open">
-                            <p class="comparison-copy">1. Does not design a concrete running product that combines narrative, 3D space, and rewards.</p>
-                            <p class="comparison-copy">2. Does not explain how gamified rewards can become place-based landmarks or personal collections.</p>
-                            <p class="comparison-copy">3. Does not address cooperative route progress as an alternative to competition and peer pressure.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td data-label="Academic Source"><div class="comparison-product">Goal Orientations &amp; Affordances [4]</div></td>
-                        <td data-label="What It Contributes">
-                            <p class="comparison-copy">1. Maps key fitness app affordances: self-monitoring, exercise guidance, rewards, and social comparison.</p>
-                            <p class="comparison-copy">2. Shows that 417 Strava users with different goal orientations engage with these affordances differently.</p>
-                            <p class="comparison-copy">3. Supports tailoring motivational features instead of assuming one design fits all runners.</p>
-                        </td>
-                        <td data-label="What It Leaves Open">
-                            <p class="comparison-copy">1. Focuses on Strava affordance use rather than a complete running product experience.</p>
-                            <p class="comparison-copy">2. Does not specify how mastery progress can be visualized through places, landmarks, or collections.</p>
-                            <p class="comparison-copy">3. Does not address non-competitive team progress or organizer workload in group running.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td data-label="Academic Source"><div class="comparison-product">Goal-Setting and Sharing [6]</div></td>
-                        <td data-label="What It Contributes">
-                            <p class="comparison-copy">1. Studies goal-setting, rewards, self-monitoring, and sharing through a 3-week online physical-activity intervention.</p>
-                            <p class="comparison-copy">2. Finds that self-monitoring and achievable goals were useful, while generic trophies and ribbons often failed to motivate participants.</p>
-                            <p class="comparison-copy">3. Shows that Facebook sharing could create social discomfort, unwanted disclosure, or oversharing concerns.</p>
-                        </td>
-                        <td data-label="What It Leaves Open">
-                            <p class="comparison-copy">1. Does not design a place-based running interface with landmarks, route progress, and collectible rewards.</p>
-                            <p class="comparison-copy">2. Leaves room for rewards that feel more meaningful than generic badges or ribbons.</p>
-                            <p class="comparison-copy">3. Does not explore low-pressure cooperative progress as an alternative to public social sharing.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 
@@ -6884,15 +6888,40 @@
     </div>
 
     <div class="inner-card flow-gap-bottom">
+        <h3 class="content-heading content-heading--large">AI Prompt Log</h3>
+        <div class="evidence-link-panel">
+            <div class="evidence-link-copy">
+                <p class="evidence-link-title">Project AI Prompt Evidence</p>
+                <p class="evidence-link-note">The repository includes the MileScape project prompt log used during feature development.</p>
+            </div>
+            <a class="evidence-link-button" href="ai-logs/prompts.md" target="_blank" rel="noreferrer">Open AI Log</a>
+        </div>
+    </div>
+
+    <div class="inner-card flow-gap-bottom">
         <h3 class="content-heading content-heading--large">Technical Reflection on AI Use</h3>
         <div class="text-block-lg">
-            <p><strong>Prompt use:</strong> We used AI assistance for limited implementation support, including prompts to scaffold responsive portfolio sections, organize before-and-after evaluation content, refine CSS layout details, and debug interface issues such as broken paths, mobile spacing, and interactive slider behavior. These prompts were task-specific and based on our own research findings, sketches, prototype screens, and evaluation notes.</p>
+            <p>Across both examples, AI was most useful for quickly generating implementation options and revealing hidden state or layout issues. Its main limitation was that it could not judge whether an output matched MileScape's intended user experience, so the team had to test, reject, refine, or manually rewrite the result.</p>
+        </div>
 
-            <p><strong>Verification:</strong> AI-generated code was not accepted directly as final work. We checked whether each change matched the three must-have playful requirements: exploration-based route progress, landmark unlocking and collection, and PaceCrew collaborative exploration. We also verified links, image paths, alt text, responsive behavior, and whether the implementation accurately represented our user research and prototype logic.</p>
+        <div class="evaluation-limit-grid ai-reflection-grid">
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Example 01</span>
+                <h4 class="evaluation-limit-title">Run distance and progress logic</h4>
+                <p class="evaluation-limit-copy"><strong>Prompt:</strong> We asked AI to improve the run distance selection and completion logic, including when custom distance should appear, how the progress count should behave after repeated laps, and how progress should reset after crossing the finish line.</p>
+                <p class="evaluation-limit-copy"><strong>Outcome:</strong> Partly successful, but buggy. AI helped identify the relevant state variables and interaction flow, but the first output did not fully handle the counter display or the custom distance placement in the way we wanted.</p>
+                <p class="evaluation-limit-copy"><strong>Action:</strong> We moved custom distance into Settings, refined the reset logic, and manually tested the interaction until the slider and progress behaviour matched the intended run flow.</p>
+                <p class="evaluation-limit-copy">This example shows how AI supported state-management reasoning, but still required manual product judgement to keep the main running flow simple.</p>
+            </article>
 
-            <p><strong>Ethical considerations:</strong> We treated AI as a development assistant rather than a design decision-maker. The motivation, personas, research interpretation, feature selection, and evaluation conclusions were kept as group-authored work. We reviewed AI-assisted wording to avoid overstating evidence, checked that visual and interaction changes did not introduce misleading claims, and considered accessibility by preserving descriptive alt text, keyboard-friendly controls, readable labels, and responsive layouts.</p>
-
-            <p><strong>Limitations and responsibility:</strong> AI support can introduce layout errors, inaccessible interaction patterns, or biased assumptions about users. For this reason, final responsibility remained with the group: we compared the implementation against user feedback, corrected inaccurate or incomplete AI outputs, and made sure the portfolio clearly distinguishes research evidence from generated or assisted production work.</p>
+            <article class="evaluation-limit-item">
+                <span class="evaluation-limit-label">Example 02</span>
+                <h4 class="evaluation-limit-title">Route map and visual style</h4>
+                <p class="evaluation-limit-copy"><strong>Prompt:</strong> We asked AI to explore Mapbox GL as a replacement for the static route area and later to improve route realism, visual style, and invalid path geometry for the Journey experience.</p>
+                <p class="evaluation-limit-copy"><strong>Outcome:</strong> Mixed. AI suggested useful route-data and map-rendering ideas, but some outputs were visually off, such as a flat black-and-white look, visible borders, a watermark, and a weak 3D feeling.</p>
+                <p class="evaluation-limit-copy"><strong>Action:</strong> We rolled back the unsatisfactory version, kept the parts that were useful for route definition, and redirected the implementation toward the approved Journey design direction.</p>
+                <p class="evaluation-limit-copy">This example shows that AI was helpful for technical exploration, but less reliable for deciding visual atmosphere and immersive quality.</p>
+            </article>
         </div>
     </div>
 
@@ -7038,44 +7067,6 @@
         </div>
     </details>
 
-    <details class="inner-card appendix-block flow-gap-top">
-        <summary class="content-heading appendix-summary">AI Log — Tools &amp; Prompt Categories</summary>
-        <div class="text-block-sm">
-            <p>This log summarizes how AI support was used in the portfolio and prototype presentation. The entries are grouped by task category rather than listing every individual prompt.</p>
-        </div>
-        <div class="appendix-grid">
-            <div class="appendix-item">
-                <div class="appendix-item-label">Visual Asset Generation</div>
-                <div class="text-block-sm">
-                    <p>AI image generation was used for selected conceptual visuals and decorative assets. Outputs were reviewed and edited before inclusion so they supported, rather than replaced, the group's design decisions.</p>
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Language Refinement</div>
-                <div class="text-block-sm">
-                    <p>AI assistance helped refine English wording, section transitions, and concise explanations. Claims were checked against the team's research notes, questionnaire evidence, and prototype behavior.</p>
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Portfolio Implementation</div>
-                <div class="text-block-sm">
-                    <p>AI support was used to scaffold selected responsive sections, organize comparison tables, debug layout details, and keep image, video, and appendix references consistent.</p>
-                </div>
-            </div>
-            <div class="appendix-item">
-                <div class="appendix-item-label">Verification</div>
-                <div class="text-block-sm">
-                    <p>The team reviewed AI-assisted outputs for factual accuracy, accessibility, responsive behavior, source traceability, and alignment with the three must-have playful features.</p>
-                </div>
-            </div>
-        </div>
-        <div class="evidence-link-panel">
-            <div class="evidence-link-copy">
-                <p class="evidence-link-title">Responsibility Statement</p>
-                <p class="evidence-link-note">Final responsibility for research interpretation, design decisions, evaluation conclusions, and submitted portfolio content remained with the MileScape team.</p>
-            </div>
-        </div>
-    </details>
 </div>
 
 <footer class="site-footer" aria-label="MileScape copyright footer">

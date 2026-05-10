@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MileScape AI Prompts Log</title>
+    <style>
+        :root {
+            --background: #fdfcf8;
+            --foreground: #2c2c24;
+            --muted: #78786c;
+            --border: #ded8cf;
+            --card: #fefefa;
+            --accent: #5d7052;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--foreground);
+            background: var(--background);
+            line-height: 1.7;
+        }
+
+        .page {
+            width: min(920px, calc(100vw - 32px));
+            margin: 0 auto;
+            padding: 40px 0 56px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 10px 30px rgba(44, 44, 36, 0.06);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.15;
+        }
+
+        .intro {
+            margin: 0 0 24px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        h2 {
+            margin: 28px 0 10px;
+            font-size: 20px;
+            color: var(--accent);
+        }
+
+        p,
+        li {
+            font-size: 15px;
+        }
+
+        p {
+            margin: 0 0 12px;
+        }
+
+        ul {
+            margin: 0 0 12px 20px;
+            padding: 0;
+        }
+
+        .prompt + .prompt {
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="card">
+            <h1>MileScape AI Prompts Log</h1>
+            <p class="intro">UTF-8 encoded prompt archive for the MileScape project.</p>
+
+            <article class="prompt">
+                <h2>Prompt 1</h2>
+                <p>You are a senior frontend engineer. Please help me implement the currency and shop system for my React + TypeScript + Vite + Tailwind project called "MileScape".</p>
+                <p>Important branded terms:</p>
+                <ul>
+                    <li>Paceport is intentional and must not be renamed to Passport</li>
+                    <li>PaceCrew is the name of the social running group feature</li>
+                    <li>Stamps is the in-app currency</li>
+                </ul>
+            </article>
+
+            <article class="prompt"><h2>Prompt 2</h2><p>Refactor my MileScape React + TypeScript + Vite + Tailwind project to support a custom feature called Paceport.</p></article>
+            <article class="prompt"><h2>Prompt 3</h2><p>Please update my MileScape React + TypeScript + Vite + Tailwind project to improve the run distance selection and run completion logic.</p></article>
+            <article class="prompt"><h2>Prompt 4</h2><p>I want custom distance to appear only when the slider reaches 20 km. If the selected distance exceeds the remaining route progress, show a count such as 2 next to the progress indicator. Do not show 1; keep the current UI for the first lap.</p></article>
+            <article class="prompt"><h2>Prompt 5</h2><p>After crossing the finish line once, the route progress should reset to 0.</p></article>
+            <article class="prompt"><h2>Prompt 6</h2><p>Remove the "This run goes..." copy and improve the custom distance UI because the current design feels unattractive.</p></article>
+            <article class="prompt"><h2>Prompt 7</h2><p>Collapse custom distance by default. Only show a summary row first, then reveal the input after the user opens it. Also check why progress does not change when the progress count becomes 2.</p></article>
+            <article class="prompt"><h2>Prompt 8</h2><p>Move custom distance out of the main screen and into Settings. Add a custom maximum distance module. For example, if a user sets the maximum to 50 km, the slider should move from 0 to 50 km. Restore the previous short / long slider text.</p></article>
+            <article class="prompt"><h2>Prompt 9</h2><p>Please help me commit the current changes to GitHub.</p></article>
+
+            <article class="prompt">
+                <h2>Prompt 10</h2>
+                <p>You are a senior frontend product engineer. Please help me design and implement a new social module for my React + TypeScript + Vite + Tailwind project called "MileScape".</p>
+                <p>Important branded terms:</p>
+                <ul>
+                    <li>Paceport is intentional and must not be renamed to Passport</li>
+                    <li>PaceCrew is the name of the social running group feature</li>
+                    <li>Stamps is the in-app currency</li>
+                </ul>
+            </article>
+
+            <article class="prompt"><h2>Prompt 11</h2><p>I want the PaceCrew module to be split into several pages instead of showing everything on one page. It should work like a home page, with Create, Joined, and Discover pages. Please make the UI cleaner.</p></article>
+            <article class="prompt"><h2>Prompt 12</h2><p>Please improve the navigation drawer exit logic. After entering from the left drawer, the top-left icon should be an exit/back icon instead of a menu icon, and it should return to the main page. The top-right compass-like icon does not seem useful, so remove it.</p></article>
+            <article class="prompt"><h2>Prompt 13</h2><p>The Choose Journey page should feel like the main home page. The welcome page should only appear once when entering the app.</p></article>
+            <article class="prompt"><h2>Prompt 14</h2><p>Optimize Accepted Missions so users can tap into a mission list. If the user enters a lower-level page such as Joined PaceCrews, pressing back should return to the PaceCrew page rather than the app home page.</p></article>
+            <article class="prompt"><h2>Prompt 15</h2><p>Since each user can only create one organization, adjust the Create PaceCrew logic. If the user has not created a PaceCrew, show a create prompt inside Organizing. After creating one, hide the Create entry on the PaceCrew page. Missions should follow the same logic, and users should manage their organized group from Organizing, including disbanding, leaving, and publishing missions.</p></article>
+            <article class="prompt"><h2>Prompt 16</h2><p>Did you implement the deposit logic correctly?</p></article>
+            <article class="prompt"><h2>Prompt 17</h2><p>Clean up all pages and remove unnecessary explanatory text, such as "manage your organized PaceCrew".</p></article>
+            <article class="prompt"><h2>Prompt 18</h2><p>Allow users to switch the app language between Chinese and English in Settings.</p></article>
+            <article class="prompt"><h2>Prompt 19</h2><p>Do you know Mapbox GL? I want the reserved image areas for West Lake and Central Park to be replaced with 3D Mapbox GL views. Do you think this is possible?</p></article>
+            <article class="prompt"><h2>Prompt 20</h2><p>Yes, please help me implement it.</p></article>
+            <article class="prompt"><h2>Prompt 21</h2><p>Please add the Mapbox token to the environment configuration. [Token removed from public log.]</p></article>
+            <article class="prompt"><h2>Prompt 22</h2><p>I am not satisfied with the current result. First, can the Mapbox watermark be removed? Second, why is the map black and white? I do not like this style.</p></article>
+            <article class="prompt"><h2>Prompt 23</h2><p>Please remove Mapbox if necessary. Visually, the map seems to have white borders on both sides, which affects the look, and it does not have a 3D feeling.</p></article>
+            <article class="prompt"><h2>Prompt 24</h2><p>I do not want a satellite-map feeling. I want a stronger 3D feeling, preferably with green land and blue water. The current style feels too serious. Can the Mapbox watermark be removed?</p></article>
+            <article class="prompt"><h2>Prompt 25</h2><p>OK.</p></article>
+            <article class="prompt"><h2>Prompt 26</h2><p>I have two optimisation requests: remove the Hangzhou UI section, and make the map borderless. I do not want the view to feel constrained by a frame. If OpenFreeMap attribution must remain, reduce its visual footprint.</p></article>
+            <article class="prompt"><h2>Prompt 27</h2><p>Can the OpenFreeMap visual attribution be moved outside the map, below it, or placed near the bottom of the map without a background?</p></article>
+            <article class="prompt"><h2>Prompt 28</h2><p>Can the map render a loop route? For example, when I select Central Park Loop, it should render the loop road. West Lake should work similarly.</p></article>
+            <article class="prompt"><h2>Prompt 29</h2><p>Yes.</p></article>
+            <article class="prompt"><h2>Prompt 30</h2><p>Please roll back to the Mapbox stage. Our design has a problem.</p></article>
+            <article class="prompt"><h2>Prompt 31</h2><p>Please roll back to the first Mapbox version with the green-water and mountain-like feeling.</p></article>
+
+            <article class="prompt">
+                <h2>Prompt 32</h2>
+                <p>You are updating an existing React + Vite + Tailwind mobile UI page for the MileScape project.</p>
+                <p>Goal: Redesign the current "Choose Journey / West Lake Loop" page into a more Apple-inspired, map-led, immersive mobile interface.</p>
+            </article>
+
+            <article class="prompt"><h2>Prompt 33</h2><p>I have pushed the project to the remote repository and connected it to Vercel, but it says there is no token. Can you help configure it?</p></article>
+
+            <article class="prompt">
+                <h2>Prompt 34</h2>
+                <p>You are refactoring the UI of an existing React + Vite + Tailwind mobile app called MileScape.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>Do NOT redesign or modify the Journey page.</li>
+                    <li>The Journey page is already approved and should remain unchanged.</li>
+                    <li>Only refactor these parts: PaceCrew, Paceport, and the side menu / navigation drawer.</li>
+                </ul>
+            </article>
+
+            <article class="prompt">
+                <h2>Prompt 35</h2>
+                <p>You are a senior frontend mapping/product engineer. Please help me improve the route system in my MileScape project.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>For this task, focus ONLY on the route-definition and route-visualization problem.</li>
+                    <li>Do NOT refactor the map container into a single persistent Mapbox instance yet.</li>
+                    <li>Do NOT focus on destination switching animation yet.</li>
+                    <li>Only solve the problem of how each destination route is defined, stored, and displayed on the map.</li>
+                </ul>
+            </article>
+
+            <article class="prompt">
+                <h2>Prompt 36</h2>
+                <p>You are a senior frontend mapping/product engineer. Please improve the route system in my MileScape project, with a strong focus on route realism and avoiding invalid path geometry.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>For this task, focus ONLY on the destination route definition problem.</li>
+                    <li>Do NOT refactor the whole map lifecycle yet.</li>
+                    <li>Do NOT solve the single persistent Mapbox instance problem yet.</li>
+                    <li>Do NOT focus on destination switching animations yet.</li>
+                    <li>Only solve how destination routes should be defined, stored, and displayed in a believable way.</li>
+                </ul>
+            </article>
+
+            <article class="prompt"><h2>Prompt 37</h2><p>Please roll back to the version before adding routes. This technical implementation still has problems.</p></article>
+
+            <article class="prompt">
+                <h2>Prompt 38</h2>
+                <p>You are refactoring the PaceCrew page of an existing React + Vite + Tailwind mobile app called MileScape.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>Redesign ONLY the PaceCrew page.</li>
+                    <li>Do NOT redesign the Journey page.</li>
+                    <li>The new PaceCrew page should visually align much more closely with the approved Journey page design language.</li>
+                    <li>Preserve existing functionality and navigation targets as much as possible.</li>
+                    <li>Focus on layout, hierarchy, interaction presentation, and visual system refinement rather than business logic changes.</li>
+                </ul>
+            </article>
+
+            <article class="prompt">
+                <h2>Prompt 39</h2>
+                <p>You are refactoring a mobile page in an existing React + Vite + Tailwind app called MileScape.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>Redesign ONLY the current PaceCrew page.</li>
+                    <li>Do NOT redesign the Journey page.</li>
+                    <li>Preserve existing functionality, routes, and click targets as much as possible.</li>
+                    <li>Focus on simplifying the internal UI structure and removing the current modular / card-based feeling.</li>
+                    <li>Do not add unnecessary visual complexity.</li>
+                </ul>
+            </article>
+
+            <article class="prompt">
+                <h2>Prompt 40</h2>
+                <p>You are refactoring a mobile page in an existing React + Vite + Tailwind app called MileScape.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>Redesign ONLY the current PaceCrew page.</li>
+                    <li>Rename this page from "PaceCrew" to "MileScape Club".</li>
+                    <li>Do NOT redesign the Journey page.</li>
+                    <li>Preserve existing functionality and navigation targets as much as possible.</li>
+                    <li>Focus on improving information architecture, simplifying the page, and replacing the current modular / feature-list feeling with a cleaner product experience.</li>
+                </ul>
+            </article>
+
+            <article class="prompt">
+                <h2>Prompt 41</h2>
+                <p>You are refactoring a mobile page in an existing React + Vite + Tailwind app called MileScape.</p>
+                <p>Important:</p>
+                <ul>
+                    <li>Redesign ONLY the current "MileScape Club" page.</li>
+                    <li>Do NOT redesign the Journey page.</li>
+                    <li>Preserve existing functionality, routes, and click targets as much as possible.</li>
+                    <li>Keep the current Joined / Organizing information architecture.</li>
+                    <li>The problem is now visual language, not page structure.</li>
+                </ul>
+            </article>
+
+            <article class="prompt"><h2>Prompt 42</h2><p>Make the Joined / Organizing switch feel like Apple's liquid glass style. Simplify the Organizing logic so tapping Organizing directly shows my club details. I do not want a card-based design. Make it as clean and Apple-like as possible. Also update the side-menu entry because it still says PaceCrew.</p></article>
+            <article class="prompt"><h2>Prompt 43</h2><p>Organizing and Joined should not need internal drawers. At the next level, show all information openly. The design is still not simple enough. Remove obvious redundant information, such as showing "current club count: 1" when a user can only create one organization.</p></article>
+            <article class="prompt"><h2>Prompt 44</h2><p>请优化 MileScape 的新手引导流程，让第一次进入应用的用户能够理解 Choose Journey、开始跑步、解锁地标和查看奖励的基本路径。</p></article>
+            <article class="prompt"><h2>Prompt 45</h2><p>请改进成就页面的视觉设计，让已解锁和未解锁的 achievement 状态更加清楚，同时保持整体风格和 Journey 页面一致。</p></article>
+            <article class="prompt"><h2>Prompt 46</h2><p>请帮我把路线进度和 landmark 解锁逻辑整理清楚：用户完成模拟跑步距离后，需要更新 route progress，并在到达指定距离节点时解锁对应 landmark。</p></article>
+            <article class="prompt"><h2>Prompt 47</h2><p>请优化 capsule reward 的交互逻辑，确保用户完成路线进度后可以获得奖励，并把 reward 正确加入 inventory、stamps 或 My Scape 相关状态中。</p></article>
+            <article class="prompt"><h2>Prompt 48</h2><p>请检查 My Scape 的装饰物放置逻辑，用户从 inventory 选择装饰物后，需要保存 placement state，并且刷新页面后仍然能看到已经放置的物品。</p></article>
+            <article class="prompt"><h2>Prompt 49</h2><p>请优化 PaceCrew 的团队距离贡献逻辑，用户提交跑步距离后，团队总进度、个人贡献和 mission 状态都需要同步更新。</p></article>
+            <article class="prompt"><h2>Prompt 50</h2><p>请检查中英文切换功能，确保 Settings 中切换语言后，主要页面标题、按钮、路线信息和 PaceCrew 文案都能正确更新。</p></article>
+            <article class="prompt"><h2>Prompt 51</h2><p>请检查移动端页面的布局细节，重点看按钮文字是否溢出、卡片间距是否一致、底部导航是否遮挡内容，以及不同屏幕宽度下是否仍然可用。</p></article>
+            <article class="prompt"><h2>Prompt 52</h2><p>你是一个资深前端工程师，请帮我在 MileScape 这个 React + TypeScript + Vite + Tailwind 项目中实现 Stamps 货币和商店系统。请保留 Paceport、PaceCrew、Stamps 这些品牌命名，不要把 Paceport 改成 Passport。</p></article>
+            <article class="prompt"><h2>Prompt 53</h2><p>请重构 MileScape 项目，让它支持 Paceport 功能。Paceport 应该作为用户查看路线进度、地标收集和奖励记录的核心页面之一。</p></article>
+            <article class="prompt"><h2>Prompt 54</h2><p>请优化跑步距离选择和完成逻辑。用户拖动距离滑杆后，系统需要根据选择的距离更新路线进度，并在超过终点时正确处理下一轮进度。</p></article>
+            <article class="prompt"><h2>Prompt 55</h2><p>请调整自定义距离的显示逻辑：只有当滑杆拖到 20km 时才显示 custom distance 选项；如果用户选择的距离超过当前路线剩余进度，需要在进度显示旁边标出这是第几圈，但第一圈不要显示 1。</p></article>
+            <article class="prompt"><h2>Prompt 56</h2><p>请修复路线完成后的 reset 逻辑：当用户第一次跑完整条路线后，route progress 应该回到 0，方便重新开始下一轮。</p></article>
+            <article class="prompt"><h2>Prompt 57</h2><p>请去掉 “This run goes...” 这类说明文案，并优化 custom distance 的视觉设计，现在的样式不好看。</p></article>
+            <article class="prompt"><h2>Prompt 58</h2><p>请把 custom distance 默认折叠，只先显示 summary row，用户点开后再出现输入区。同时帮我检查为什么 progress count 变成 2 之后，route progress 没有正常变化。</p></article>
+            <article class="prompt"><h2>Prompt 59</h2><p>请把 custom distance 从主页面移到 Settings，并新增一个 custom maximum distance 模块。比如用户把最大值设成 50km 后，滑杆就应该能从 0 拖到 50km。同时恢复之前 short / long 的滑杆文案。</p></article>
+            <article class="prompt"><h2>Prompt 60</h2><p>请帮我设计并实现一个新的社交模块 PaceCrew。它应该支持用户加入、创建和发现跑步社群，并和 MileScape 的路线探索体验结合起来。</p></article>
+            <article class="prompt"><h2>Prompt 61</h2><p>请把 PaceCrew 模块拆成多个页面，不要所有内容都堆在一个页面里。它应该更像 home page 结构，包含 Create、Joined 和 Discover 等页面，同时整体 UI 要更干净。</p></article>
+            <article class="prompt"><h2>Prompt 62</h2><p>请优化导航抽屉的退出逻辑。从左侧 drawer 进入下级页面后，左上角应该显示 exit/back icon，而不是 menu icon，并且点击后应返回主页面。右上角那个类似 compass 的 icon 没什么用，可以删掉。</p></article>
+            <article class="prompt"><h2>Prompt 63</h2><p>Choose Journey 页面应该更像应用真正的 home page。欢迎页 welcome page 只应该在第一次进入应用时出现一次。</p></article>
+            <article class="prompt"><h2>Prompt 64</h2><p>请优化 Accepted Missions 的结构，让用户可以点进 mission list。如果用户进入 Joined PaceCrews 这类次级页面，点击返回时应该回到 PaceCrew 页面，而不是整个 app 的 home page。</p></article>
+            <article class="prompt"><h2>Prompt 65</h2><p>由于每个用户只能创建一个组织，请调整 Create PaceCrew 的逻辑。如果用户还没有创建 PaceCrew，就在 Organizing 区域内显示创建入口；创建之后，PaceCrew 页面上不再显示 Create 入口。Mission 也应遵循类似逻辑，并且用户要能在 Organizing 中管理自己的组织、解散、退出和发布任务。</p></article>
+            <article class="prompt"><h2>Prompt 66</h2><p>请改进路线定义和路线可视化逻辑，重点避免不真实的路线几何形状。每条目的地路线都应该有清晰的数据结构，并能在地图上可信地显示。</p></article>
+            <article class="prompt"><h2>Prompt 67</h2><p>请只重构 PaceCrew 页面，不要改 Journey 页面。新的 PaceCrew 页面需要更接近已经确认的 Journey 页面视觉风格，同时保留已有功能和跳转入口。</p></article>
+            <article class="prompt"><h2>Prompt 68</h2><p>请把 MileScape Club 页面里的 Joined 和 Organizing 做得更简洁，不需要层层抽屉。用户点进对应区域后，重要信息应该直接展示出来。</p></article>
+            <article class="prompt"><h2>Prompt 69</h2><p>请把 Joined / Organizing 的切换做成更接近 Apple 风格的液态玻璃效果，同时更新侧边栏入口名称，避免还显示旧的 PaceCrew 文案。</p></article>
+            <article class="prompt"><h2>Prompt 70</h2><p>请检查整个移动端应用的交互一致性，包括底部导航、返回按钮、抽屉入口、页面标题和按钮状态，确保用户在不同模块之间切换时不会迷路。</p></article>
+        </section>
+    </main>
+</body>
+</html>
